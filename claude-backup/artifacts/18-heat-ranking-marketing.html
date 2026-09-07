@@ -1,0 +1,587 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1"><style>:root{color-scheme:light}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}</style></head><body>
+<title>무더위 체감 랭킹 — 마케팅 분석</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<style>
+:root {
+  --bg: #F2F4FA;
+  --surface: #FFFFFF;
+  --surface-2: #F7F8FC;
+  --border: #DDE3F0;
+  --text: #111827;
+  --text-muted: #5B6278;
+  --text-faint: #9BA5BE;
+  --orange: #EA6D1E;
+  --orange-mid: rgba(234,109,30,0.15);
+  --orange-dim: rgba(234,109,30,0.07);
+  --blue: #2563EB;
+  --blue-dim: rgba(37,99,235,0.08);
+  --green: #059669;
+  --green-dim: rgba(5,150,105,0.1);
+  --red: #DC2626;
+  --red-dim: rgba(220,38,38,0.08);
+  --yellow: #D97706;
+}
+@media (prefers-color-scheme:dark){:root{
+  --bg:#0B0E1A;--surface:#131726;--surface-2:#1B1F30;--border:#242A40;
+  --text:#E6EAF8;--text-muted:#7880A2;--text-faint:#3A4060;
+  --orange:#F97316;--orange-mid:rgba(249,115,22,0.18);--orange-dim:rgba(249,115,22,0.07);
+  --blue:#60A5FA;--blue-dim:rgba(96,165,250,0.08);
+  --green:#34D399;--green-dim:rgba(52,211,153,0.1);
+  --red:#F87171;--red-dim:rgba(248,113,113,0.08);
+  --yellow:#FBBF24;
+}}
+:root[data-theme="dark"]{
+  --bg:#0B0E1A;--surface:#131726;--surface-2:#1B1F30;--border:#242A40;
+  --text:#E6EAF8;--text-muted:#7880A2;--text-faint:#3A4060;
+  --orange:#F97316;--orange-mid:rgba(249,115,22,0.18);--orange-dim:rgba(249,115,22,0.07);
+  --blue:#60A5FA;--blue-dim:rgba(96,165,250,0.08);
+  --green:#34D399;--green-dim:rgba(52,211,153,0.1);
+  --red:#F87171;--red-dim:rgba(248,113,113,0.08);
+  --yellow:#FBBF24;
+}
+:root[data-theme="light"]{
+  --bg:#F2F4FA;--surface:#FFFFFF;--surface-2:#F7F8FC;--border:#DDE3F0;
+  --text:#111827;--text-muted:#5B6278;--text-faint:#9BA5BE;
+  --orange:#EA6D1E;--orange-mid:rgba(234,109,30,0.15);--orange-dim:rgba(234,109,30,0.07);
+  --blue:#2563EB;--blue-dim:rgba(37,99,235,0.08);
+  --green:#059669;--green-dim:rgba(5,150,105,0.1);
+  --red:#DC2626;--red-dim:rgba(220,38,38,0.08);
+  --yellow:#D97706;
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Apple SD Gothic Neo','Noto Sans KR',sans-serif;font-size:14px;line-height:1.5;padding:24px 20px;max-width:1160px;margin:0 auto}
+
+/* Header */
+.hdr{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:24px;padding-bottom:18px;border-bottom:1px solid var(--border)}
+.hdr-title{font-size:18px;font-weight:700;letter-spacing:-0.02em}
+.hdr-sub{display:flex;align-items:center;gap:10px;margin-top:5px}
+.badge-live{display:inline-flex;align-items:center;gap:5px;font-size:10px;font-weight:700;letter-spacing:0.04em;text-transform:uppercase;padding:3px 9px;border-radius:20px;background:var(--orange-mid);color:var(--orange);border:1px solid currentColor}
+.badge-live::before{content:'';width:6px;height:6px;border-radius:50%;background:currentColor;animation:blink 2s ease-in-out infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.25}}
+.hdr-date{font-size:11px;color:var(--text-muted)}
+.hdr-meta{text-align:right;font-size:11px;color:var(--text-faint);line-height:1.7}
+
+/* KPI grid */
+.kpi-row{display:grid;grid-template-columns:repeat(6,1fr);gap:10px;margin-bottom:12px}
+@media(max-width:860px){.kpi-row{grid-template-columns:repeat(3,1fr)}}
+.kpi{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:13px 15px}
+.kpi-label{font-size:9px;font-weight:700;letter-spacing:0.09em;text-transform:uppercase;color:var(--text-faint)}
+.kpi-val{font-size:24px;font-weight:800;letter-spacing:-0.03em;font-variant-numeric:tabular-nums;margin:5px 0 3px;line-height:1}
+.kpi-sub{font-size:10px;color:var(--text-muted);font-variant-numeric:tabular-nums}
+.kpi-sub.up{color:var(--green)} .kpi-sub.dn{color:var(--red)}
+
+/* Layout grids */
+.row2{display:grid;grid-template-columns:1fr 264px;gap:12px;margin-bottom:12px}
+.row3{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px}
+.row4{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-bottom:4px}
+@media(max-width:860px){.row2,.row3,.row4{grid-template-columns:1fr}}
+
+/* Card */
+.card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:18px}
+.card-title{font-size:12px;font-weight:700;color:var(--text);margin-bottom:14px;display:flex;align-items:center;justify-content:space-between}
+.card-label{font-size:9px;font-weight:600;letter-spacing:0.07em;text-transform:uppercase;color:var(--text-faint)}
+
+/* Canvas charts */
+canvas{width:100%;display:block}
+.chart-wrap{width:100%}
+
+/* Retention table */
+.ret-table{width:100%;border-collapse:collapse;font-size:12px}
+.ret-table th{font-size:9px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-faint);padding:5px 8px;border-bottom:1px solid var(--border);text-align:left}
+.ret-table th:not(:first-child){text-align:center;width:60px}
+.ret-table td{padding:9px 8px;border-bottom:1px solid var(--border);vertical-align:middle}
+.ret-table tr:last-child td{border-bottom:none}
+.ch-name{font-weight:600;font-size:12px;color:var(--text)}
+.ch-n{font-size:9px;color:var(--text-faint);font-variant-numeric:tabular-nums}
+.r-cell{display:inline-flex;align-items:center;justify-content:center;width:46px;height:24px;border-radius:5px;font-size:11px;font-weight:700;font-variant-numeric:tabular-nums}
+
+/* Push panel */
+.push-block{border-radius:8px;padding:11px 13px;margin-bottom:10px;border:1px solid var(--border)}
+.push-block-label{font-size:9px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:6px}
+.status-pill{display:inline-flex;align-items:center;font-size:9px;font-weight:800;letter-spacing:0.05em;text-transform:uppercase;padding:2px 7px;border-radius:20px;color:#fff;margin-right:6px}
+.push-desc{font-size:11px;color:var(--text-muted);margin-top:6px;line-height:1.55}
+.push-stat-pair{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px}
+.push-stat{background:var(--surface-2);border:1px solid var(--border);border-radius:7px;padding:9px 10px;text-align:center}
+.push-stat-num{font-size:22px;font-weight:800;letter-spacing:-0.02em;font-variant-numeric:tabular-nums}
+.push-stat-l{font-size:9px;color:var(--text-muted);margin-top:2px}
+
+/* Insight cards */
+.ins-dot{width:8px;height:8px;border-radius:50%;display:inline-block;margin-right:7px;flex-shrink:0}
+.ins-title{font-size:12px;font-weight:700;display:flex;align-items:center;margin-bottom:7px}
+.ins-body{font-size:11px;color:var(--text-muted);line-height:1.65}
+.ins-body strong{color:var(--text);font-weight:700}
+.ins-action{display:inline-flex;align-items:center;gap:4px;font-size:9px;font-weight:700;letter-spacing:0.05em;text-transform:uppercase;padding:3px 9px;border-radius:20px;background:var(--surface-2);border:1px solid var(--border);color:var(--text-muted);margin-top:10px}
+
+/* Legend row */
+.legend{display:flex;gap:14px;flex-wrap:wrap;align-items:center}
+.leg{display:flex;align-items:center;gap:5px;font-size:10px;color:var(--text-muted)}
+.leg-sq{width:10px;height:10px;border-radius:2px;flex-shrink:0}
+.leg-line{width:16px;height:2px;border-radius:1px;flex-shrink:0}
+</style>
+
+<!-- HEADER -->
+<div class="hdr">
+  <div>
+    <div class="hdr-title">🌡️ 무더위 체감 랭킹 — 마케팅 분석</div>
+    <div class="hdr-sub">
+      <span class="badge-live">챌린지 측정 D+6</span>
+      <span class="hdr-date">2026.07.16 – 08.06 · 22일 누적</span>
+    </div>
+  </div>
+  <div class="hdr-meta">
+    <div>miniAppId: 52367</div>
+    <div>기준 2026-08-06 20:56 KST</div>
+  </div>
+</div>
+
+<!-- KPI ROW -->
+<div class="kpi-row">
+  <div class="kpi">
+    <div class="kpi-label">누적 AU</div>
+    <div class="kpi-val">89</div>
+    <div class="kpi-sub">7/16 출시 이후</div>
+  </div>
+  <div class="kpi">
+    <div class="kpi-label">신규 AU</div>
+    <div class="kpi-val">58</div>
+    <div class="kpi-sub">복귀 31명</div>
+  </div>
+  <div class="kpi">
+    <div class="kpi-label">최고 DAU</div>
+    <div class="kpi-val" style="color:var(--orange)">14</div>
+    <div class="kpi-sub">7/24 &amp; 7/26 스파이크</div>
+  </div>
+  <div class="kpi">
+    <div class="kpi-label">이번 주 AU</div>
+    <div class="kpi-val">20</div>
+    <div class="kpi-sub dn">▼ 57.4% WoW</div>
+  </div>
+  <div class="kpi">
+    <div class="kpi-label">D+1 리텐션</div>
+    <div class="kpi-val" style="color:var(--red)">5.2%</div>
+    <div class="kpi-sub">전체 코호트 58명</div>
+  </div>
+  <div class="kpi">
+    <div class="kpi-label">전체탭 D+1</div>
+    <div class="kpi-val" style="color:var(--green)">60%</div>
+    <div class="kpi-sub up">↑ 최고 채널</div>
+  </div>
+</div>
+
+<!-- ROW 2: DAU chart + Push panel -->
+<div class="row2">
+  <div class="card">
+    <div class="card-title">
+      DAU 추이 &amp; 유입경로
+      <div class="legend">
+        <div class="leg"><div class="leg-line" style="background:var(--blue)"></div>전체 DAU</div>
+        <div class="leg"><div class="leg-sq" style="background:var(--orange);opacity:.8;border-radius:50%"></div>신규 AU</div>
+        <div class="leg"><div class="leg-sq" style="background:var(--orange);opacity:.25"></div>푸시 비중</div>
+      </div>
+    </div>
+    <div class="chart-wrap"><canvas id="dauChart" height="210"></canvas></div>
+  </div>
+  <div class="card" style="display:flex;flex-direction:column;gap:10px">
+    <div class="card-title" style="margin-bottom:4px">스마트발송 현황</div>
+    <div class="push-block" style="background:var(--red-dim);border-color:var(--red)">
+      <div class="push-block-label" style="color:var(--red)">F6-1 스마트발송</div>
+      <span class="status-pill" style="background:var(--red)">0 발송</span>
+      <span style="font-size:11px;color:var(--text-muted)">템플릿 삭제됨</span>
+      <div class="push-desc">7/24–7/26 스파이크 이후 캠페인 만료. 재등록이 가장 시급한 과제.</div>
+    </div>
+    <div class="push-block" style="background:var(--orange-dim);border-color:var(--orange)">
+      <div class="push-block-label" style="color:var(--orange)">F6-4 기능성 알림</div>
+      <span class="status-pill" style="background:var(--orange)">발송 중</span>
+      <span style="font-size:11px;color:var(--text-muted)">매일 11:00 KST</span>
+      <div class="push-desc">캠페인 107998 (mudeowerank-daily). 8/1 이후 매일 1–2명 꾸준히 유입.</div>
+    </div>
+    <div style="margin-top:2px">
+      <div class="card-label" style="margin-bottom:8px">7/24–7/26 스파이크 성과</div>
+      <div class="push-stat-pair">
+        <div class="push-stat">
+          <div class="push-stat-num" style="color:var(--orange)">33</div>
+          <div class="push-stat-l">신규 유입</div>
+        </div>
+        <div class="push-stat">
+          <div class="push-stat-num" style="color:var(--red)">0</div>
+          <div class="push-stat-l">D+1 복귀</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ROW 3: Retention + Session -->
+<div class="row3">
+  <div class="card">
+    <div class="card-title">채널별 리텐션 <span class="card-label">유입경로 코호트</span></div>
+    <div style="overflow-x:auto">
+      <table class="ret-table">
+        <thead><tr><th>채널</th><th>D+1</th><th>D+2</th><th>D+7</th></tr></thead>
+        <tbody id="retBody"></tbody>
+      </table>
+    </div>
+    <div style="margin-top:12px;font-size:11px;color:var(--text-faint);line-height:1.6">
+      ※ 기타(n=17): 1명의 파워유저가 장기간 방문 중으로 추정 (약 5.9% = 1/17)<br>
+      ※ 전체탭: 유기적 발견 유저의 압도적 충성도
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-title">
+      평균 세션 시간
+      <span class="card-label">초(sec) 기준</span>
+    </div>
+    <div class="chart-wrap"><canvas id="sessionChart" height="160"></canvas></div>
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-top:14px">
+      <div style="text-align:center">
+        <div style="font-size:18px;font-weight:800;color:var(--green);font-variant-numeric:tabular-nums">63.2s</div>
+        <div style="font-size:9px;color:var(--text-muted);margin-top:2px">기능성 알림 기간</div>
+      </div>
+      <div style="text-align:center">
+        <div style="font-size:18px;font-weight:800;color:var(--orange);font-variant-numeric:tabular-nums">44.1s</div>
+        <div style="font-size:9px;color:var(--text-muted);margin-top:2px">스파이크 기간</div>
+      </div>
+      <div style="text-align:center">
+        <div style="font-size:18px;font-weight:800;font-variant-numeric:tabular-nums">27.2s</div>
+        <div style="font-size:9px;color:var(--text-muted);margin-top:2px">최근 3일 평균</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ROW 4: Demographics -->
+<div class="row3">
+  <div class="card">
+    <div class="card-title">연령 분포</div>
+    <div class="chart-wrap"><canvas id="ageChart" height="150"></canvas></div>
+  </div>
+  <div class="card" style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
+    <div>
+      <div class="card-title" style="margin-bottom:10px">성별</div>
+      <canvas id="genderChart" height="130"></canvas>
+    </div>
+    <div>
+      <div class="card-title" style="margin-bottom:10px">OS</div>
+      <canvas id="osChart" height="130"></canvas>
+    </div>
+  </div>
+</div>
+
+<!-- INSIGHTS ROW -->
+<div class="row4">
+  <div class="card" style="border-left:3px solid var(--red)">
+    <div class="ins-title"><span class="ins-dot" style="background:var(--red)"></span>리텐션 위기</div>
+    <div class="ins-body">스파이크 유입 33명 중 D+1 복귀 <strong>0명</strong>. 푸시가 일회성 클릭만 유도하고 있고, 앱 자체의 재방문 동기가 부족함.</div>
+    <div class="ins-action">→ 첫 진입 경험 개선 우선</div>
+  </div>
+  <div class="card" style="border-left:3px solid var(--green)">
+    <div class="ins-title"><span class="ins-dot" style="background:var(--green)"></span>전체탭 채널 잠재력</div>
+    <div class="ins-body">전체탭 5명이 D+1 <strong>60%</strong>, D+2 <strong>40%</strong> 달성. 유기적 발견 유저가 푸시 유입 대비 압도적으로 충성도 높음. 노출 최적화 검토 필요.</div>
+    <div class="ins-action">→ 전체탭 키워드·아이콘 최적화</div>
+  </div>
+  <div class="card" style="border-left:3px solid var(--yellow)">
+    <div class="ins-title"><span class="ins-dot" style="background:var(--yellow)"></span>F6-1 스마트발송 복구 시급</div>
+    <div class="ins-body">기능성 알림(F6-4)은 세션 시간 <strong>+43%</strong> 확인으로 실효성 입증. 단 볼륨이 작음. F6-1 재등록으로 신규 유입 볼륨 복구해야 챌린지 DAU 확보 가능.</div>
+    <div class="ins-action">→ F6-1 캠페인 즉시 재등록</div>
+  </div>
+</div>
+
+<script>
+const DAU = [
+  {d:'7/16',dau:3,neu:3,pp:0},{d:'7/17',dau:5,neu:3,pp:0},{d:'7/18',dau:3,neu:1,pp:0},
+  {d:'7/19',dau:1,neu:0,pp:0},{d:'7/20',dau:1,neu:0,pp:0},{d:'7/21',dau:2,neu:1,pp:0},
+  {d:'7/22',dau:1,neu:0,pp:0},{d:'7/23',dau:1,neu:0,pp:0},
+  {d:'7/24',dau:14,neu:13,pp:62.5},{d:'7/25',dau:8,neu:7,pp:70},{d:'7/26',dau:14,neu:13,pp:86.7},
+  {d:'7/27',dau:6,neu:4,pp:57.1},{d:'7/28',dau:1,neu:0,pp:0},{d:'7/29',dau:3,neu:2,pp:66.7},
+  {d:'7/30',dau:3,neu:2,pp:20},{d:'7/31',dau:1,neu:0,pp:0},
+  {d:'8/1',dau:4,neu:2,pp:40},{d:'8/2',dau:3,neu:2,pp:20},{d:'8/3',dau:2,neu:1,pp:33.3},
+  {d:'8/4',dau:1,neu:0,pp:50},{d:'8/5',dau:6,neu:4,pp:12.5},{d:'8/6',dau:6,neu:0,pp:12.5}
+];
+
+const SESSION = [
+  {d:'7/16',s:47.4},{d:'7/17',s:42.4},{d:'7/18',s:48.7},
+  {d:'7/24',s:44.1},{d:'7/25',s:44.8},{d:'7/26',s:48.8},{d:'7/27',s:33.5},
+  {d:'7/29',s:64.7},{d:'7/30',s:62.3},{d:'7/31',s:60.0},{d:'8/1',s:64.9},
+  {d:'8/2',s:56.1},{d:'8/3',s:25.3},{d:'8/4',s:30.0},{d:'8/5',s:26.1}
+];
+
+const RETENTION = [
+  {ch:'전체탭',n:5,d1:60,d2:40,d7:0},
+  {ch:'기타',n:17,d1:5.9,d2:5.9,d7:5.9},
+  {ch:'미니앱홈',n:7,d1:14.3,d2:0,d7:0},
+  {ch:'푸시알림',n:40,d1:2.5,d2:2.5,d7:0},
+  {ch:'검색',n:1,d1:0,d2:0,d7:0}
+];
+
+const AGE = [
+  {l:'20대 초반',p:2.2},{l:'20대 후반',p:6.7},{l:'30대 초반',p:14.6},
+  {l:'30대 후반',p:42.7},{l:'40대',p:19.1},{l:'50대',p:12.4},{l:'60대+',p:2.2}
+];
+
+function cv(n){return getComputedStyle(document.documentElement).getPropertyValue(n).trim()}
+
+// Setup canvas with DPR
+function setup(id,h){
+  const c=document.getElementById(id),dpr=window.devicePixelRatio||1;
+  const w=c.parentElement.offsetWidth||c.offsetWidth||300;
+  c.width=Math.round(w*dpr); c.height=Math.round(h*dpr);
+  c.style.width=w+'px'; c.style.height=h+'px';
+  const ctx=c.getContext('2d'); ctx.scale(dpr,dpr);
+  return {ctx,w,h};
+}
+
+// Draw DAU chart
+function drawDAU(){
+  const {ctx,w,h}=setup('dauChart',210);
+  const pl=38,pr=14,pt=22,pb=32;
+  const cw=w-pl-pr,ch=h-pt-pb,n=DAU.length;
+  const bw=cw/n,maxY=16;
+
+  // Event markers (behind everything)
+  const EVT=[
+    {i:8,label:'스마트발송',c:'#F97316'},
+    {i:13,label:'기능성 알림',c:'#A78BFA'},
+    {i:16,label:'챌린지 시작',c:'#34D399'}
+  ];
+
+  EVT.forEach(ev=>{
+    const x=pl+(ev.i+0.5)*bw;
+    ctx.strokeStyle=ev.c; ctx.lineWidth=1;
+    ctx.setLineDash([3,3]);
+    ctx.beginPath(); ctx.moveTo(x,pt); ctx.lineTo(x,pt+ch); ctx.stroke();
+    ctx.setLineDash([]);
+    ctx.fillStyle=ev.c; ctx.font='bold 9px system-ui';
+    ctx.textAlign='center'; ctx.fillText(ev.label,x,pt-6);
+  });
+
+  // Push % overlay bars
+  DAU.forEach((d,i)=>{
+    if(d.pp>0){
+      const x=pl+i*bw, barH=(d.pp/100)*ch;
+      ctx.fillStyle='rgba(249,115,22,0.11)';
+      ctx.fillRect(x,pt+ch-barH,bw,barH);
+    }
+  });
+
+  // Grid
+  const grids=[0,4,8,12,16];
+  grids.forEach(v=>{
+    const y=pt+ch-(v/maxY)*ch;
+    ctx.strokeStyle=cv('--border'); ctx.lineWidth=0.5;
+    ctx.beginPath(); ctx.moveTo(pl,y); ctx.lineTo(pl+cw,y); ctx.stroke();
+    ctx.fillStyle=cv('--text-faint'); ctx.font='9px system-ui';
+    ctx.textAlign='right'; ctx.fillText(v,pl-5,y+3);
+  });
+
+  // DAU area fill
+  const pts=DAU.map((d,i)=>({x:pl+(i+0.5)*bw, y:pt+ch-(d.dau/maxY)*ch}));
+  ctx.beginPath();
+  pts.forEach((p,i)=>i===0?ctx.moveTo(p.x,p.y):ctx.lineTo(p.x,p.y));
+  ctx.lineTo(pts[n-1].x,pt+ch); ctx.lineTo(pts[0].x,pt+ch); ctx.closePath();
+  const g=ctx.createLinearGradient(0,pt,0,pt+ch);
+  g.addColorStop(0,'rgba(96,165,250,0.22)'); g.addColorStop(1,'rgba(96,165,250,0.02)');
+  ctx.fillStyle=g; ctx.fill();
+
+  // DAU line
+  ctx.beginPath(); ctx.strokeStyle=cv('--blue'); ctx.lineWidth=2; ctx.lineJoin='round';
+  pts.forEach((p,i)=>i===0?ctx.moveTo(p.x,p.y):ctx.lineTo(p.x,p.y));
+  ctx.stroke();
+
+  // New AU dots (orange)
+  DAU.forEach((d,i)=>{
+    if(d.neu>0){
+      const x=pl+(i+0.5)*bw, y=pt+ch-(d.neu/maxY)*ch;
+      ctx.beginPath(); ctx.arc(x,y,3.5,0,Math.PI*2);
+      ctx.fillStyle=cv('--orange'); ctx.fill();
+    }
+  });
+
+  // Push% text at spike days
+  [8,9,10].forEach(i=>{
+    const d=DAU[i], x=pl+(i+0.5)*bw, y=pt+ch-(d.dau/maxY)*ch-11;
+    ctx.fillStyle=cv('--orange'); ctx.font='bold 9px system-ui';
+    ctx.textAlign='center'; ctx.fillText(d.pp+'%',x,y);
+  });
+
+  // X labels
+  ctx.fillStyle=cv('--text-muted'); ctx.font='9px system-ui';
+  DAU.forEach((d,i)=>{
+    if(i%4===0||i===n-1){
+      ctx.textAlign='center';
+      ctx.fillText(d.d,pl+(i+0.5)*bw,pt+ch+18);
+    }
+  });
+}
+
+// Session time chart
+function drawSession(){
+  const {ctx,w,h}=setup('sessionChart',160);
+  const pl=40,pr=12,pt=14,pb=22;
+  const cw=w-pl-pr,ch=h-pt-pb,n=SESSION.length,step=cw/(n-1),maxS=120;
+
+  // Functional notification zone (idx 7 = 7/29, idx 10 = 8/1)
+  const fnX0=pl+7*step, fnX1=pl+10*step;
+  ctx.fillStyle=cv('--green-dim');
+  ctx.fillRect(fnX0,pt,fnX1-fnX0,ch);
+
+  // Grid
+  [0,30,60,90].forEach(v=>{
+    const y=pt+ch-(v/maxS)*ch;
+    ctx.strokeStyle=cv('--border'); ctx.lineWidth=0.5;
+    ctx.beginPath(); ctx.moveTo(pl,y); ctx.lineTo(pl+cw,y); ctx.stroke();
+    ctx.fillStyle=cv('--text-faint'); ctx.font='9px system-ui'; ctx.textAlign='right';
+    ctx.fillText(v+'s',pl-4,y+3);
+  });
+
+  const pts=SESSION.map((d,i)=>({x:pl+i*step,y:pt+ch-(d.s/maxS)*ch}));
+
+  // Area
+  ctx.beginPath();
+  pts.forEach((p,i)=>i===0?ctx.moveTo(p.x,p.y):ctx.lineTo(p.x,p.y));
+  ctx.lineTo(pts[n-1].x,pt+ch); ctx.lineTo(pts[0].x,pt+ch); ctx.closePath();
+  const g=ctx.createLinearGradient(0,pt,0,pt+ch);
+  g.addColorStop(0,'rgba(52,211,153,0.18)'); g.addColorStop(1,'rgba(52,211,153,0.02)');
+  ctx.fillStyle=g; ctx.fill();
+
+  // Line
+  ctx.beginPath(); ctx.strokeStyle=cv('--green'); ctx.lineWidth=2; ctx.lineJoin='round';
+  pts.forEach((p,i)=>i===0?ctx.moveTo(p.x,p.y):ctx.lineTo(p.x,p.y));
+  ctx.stroke();
+
+  // Highlight dots
+  SESSION.forEach((d,i)=>{
+    if(d.s>=60||d.s<30){
+      ctx.beginPath(); ctx.arc(pl+i*step,pt+ch-(d.s/maxS)*ch,3,0,Math.PI*2);
+      ctx.fillStyle=d.s>=60?cv('--green'):cv('--orange'); ctx.fill();
+    }
+  });
+
+  // Zone label
+  ctx.fillStyle=cv('--green'); ctx.font='bold 8px system-ui'; ctx.textAlign='center';
+  ctx.fillText('기능성 알림',(fnX0+fnX1)/2,pt+9);
+
+  // X labels
+  ctx.fillStyle=cv('--text-muted'); ctx.font='9px system-ui';
+  [0,4,7,10,14].forEach(i=>{
+    if(i<n){ctx.textAlign='center'; ctx.fillText(SESSION[i].d,pl+i*step,pt+ch+14);}
+  });
+}
+
+// Age chart (horizontal bars)
+function drawAge(){
+  const {ctx,w,h}=setup('ageChart',150);
+  const pl=72,pr=48,pt=6,pb=6;
+  const cw=w-pl-pr,ch=h-pt-pb,n=AGE.length;
+  const bh=Math.floor(ch/n)-4,gap=(ch-bh*n)/(n+1);
+  const maxP=50;
+
+  AGE.forEach((d,i)=>{
+    const y=pt+gap+(bh+gap)*i;
+    const bw=(d.p/maxP)*cw;
+    const isKey=d.l==='30대 후반';
+
+    // Bar
+    ctx.fillStyle=isKey?cv('--orange'):'rgba(96,165,250,0.45)';
+    ctx.beginPath();
+    const r=3;
+    ctx.moveTo(pl+r,y); ctx.lineTo(pl+bw-r,y);
+    ctx.arcTo(pl+bw,y,pl+bw,y+r,r);
+    ctx.lineTo(pl+bw,y+bh-r);
+    ctx.arcTo(pl+bw,y+bh,pl+bw-r,y+bh,r);
+    ctx.lineTo(pl+r,y+bh); ctx.arcTo(pl,y+bh,pl,y+bh-r,r);
+    ctx.lineTo(pl,y+r); ctx.arcTo(pl,y,pl+r,y,r);
+    ctx.closePath(); ctx.fill();
+
+    // Label
+    ctx.fillStyle=isKey?cv('--text'):cv('--text-muted');
+    ctx.font=(isKey?'bold ':'')+`11px system-ui`;
+    ctx.textAlign='right'; ctx.fillText(d.l,pl-6,y+bh/2+4);
+
+    // Pct
+    ctx.fillStyle=isKey?cv('--orange'):cv('--text-muted');
+    ctx.font='bold 10px system-ui'; ctx.textAlign='left';
+    ctx.fillText(d.p.toFixed(1)+'%',pl+bw+5,y+bh/2+4);
+  });
+}
+
+// Donut chart
+function drawDonut(id,segs){
+  const {ctx,w,h}=setup(id,130);
+  const cx=w*0.38,cy=h*0.5,r=Math.min(cx,cy)*0.82,ir=r*0.52;
+
+  let ang=-Math.PI/2;
+  segs.forEach(s=>{
+    const sweep=(s.p/100)*Math.PI*2;
+    ctx.beginPath(); ctx.moveTo(cx,cy);
+    ctx.arc(cx,cy,r,ang,ang+sweep); ctx.closePath();
+    ctx.fillStyle=s.c; ctx.fill();
+    ang+=sweep;
+  });
+  ctx.beginPath(); ctx.arc(cx,cy,ir,0,Math.PI*2);
+  ctx.fillStyle=cv('--surface'); ctx.fill();
+
+  // Legend
+  let ly=cy-(segs.length*20)/2+10;
+  segs.forEach(s=>{
+    ctx.fillStyle=s.c;
+    ctx.beginPath(); ctx.roundRect?ctx.roundRect(w*0.72,ly-6,8,8,2):ctx.rect(w*0.72,ly-6,8,8);
+    ctx.fill();
+    ctx.fillStyle=cv('--text-muted'); ctx.font='10px system-ui'; ctx.textAlign='left';
+    ctx.fillText(s.l,w*0.72+11,ly+3);
+    ctx.fillStyle=cv('--text'); ctx.font='bold 11px system-ui'; ctx.textAlign='right';
+    ctx.fillText(s.p+'%',w-4,ly+3);
+    ly+=20;
+  });
+}
+
+// Retention table
+function buildRet(){
+  function style(p){
+    if(p===0)return{bg:'transparent',c:cv('--text-faint')};
+    if(p>=40)return{bg:cv('--green-dim'),c:cv('--green')};
+    if(p>=10)return{bg:cv('--orange-mid'),c:cv('--orange')};
+    if(p>=5)return{bg:cv('--blue-dim'),c:cv('--blue')};
+    return{bg:cv('--red-dim'),c:cv('--red')};
+  }
+  const tb=document.getElementById('retBody');
+  tb.innerHTML='';
+  RETENTION.forEach(r=>{
+    const tr=document.createElement('tr');
+    const tc=document.createElement('td');
+    tc.innerHTML=`<div class="ch-name">${r.ch}</div><div class="ch-n">n=${r.n}</div>`;
+    tr.appendChild(tc);
+    [r.d1,r.d2,r.d7].forEach(p=>{
+      const td=document.createElement('td');
+      const s=style(p);
+      td.innerHTML=`<span class="r-cell" style="background:${s.bg};color:${s.c}">${p===0?'—':p.toFixed(1)+'%'}</span>`;
+      tr.appendChild(td);
+    });
+    tb.appendChild(tr);
+  });
+}
+
+const GEN=[{l:'남성',p:75.3,c:'rgba(96,165,250,0.85)'},{l:'여성',p:24.7,c:'rgba(249,115,22,0.75)'}];
+const OS=[{l:'Android',p:70.8,c:'rgba(52,211,153,0.85)'},{l:'iOS',p:29.2,c:'rgba(251,191,36,0.85)'}];
+
+function drawAll(){
+  buildRet();
+  drawDAU();
+  drawSession();
+  drawAge();
+  drawDonut('genderChart',GEN);
+  drawDonut('osChart',OS);
+}
+
+if(document.readyState==='loading'){
+  document.addEventListener('DOMContentLoaded',()=>requestAnimationFrame(drawAll));
+}else{
+  requestAnimationFrame(drawAll);
+}
+let resizeTimer;
+window.addEventListener('resize',()=>{clearTimeout(resizeTimer);resizeTimer=setTimeout(()=>requestAnimationFrame(drawAll),80);});
+</script>
+
+</body></html>
