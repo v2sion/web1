@@ -1,0 +1,1039 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1"><style>:root{color-scheme:light}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found]){display:none!important}</style></head><body>
+<title>아침 트레이닝 v3</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=IBM+Plex+Sans+KR:wght@400;500;600;700&display=swap">
+<style>
+  :root{
+    --ground:#EBEFF1;
+    --surface:#FFFFFF;
+    --surface-2:#F4F7F8;
+    --ink:#0E1518;
+    --ink-2:#4C5A61;
+    --ink-3:#78888F;
+    --line:#D4DCE0;
+    --line-strong:#B7C3C8;
+    --accent:#0F6152;
+    --accent-ink:#0F6152;
+    --accent-soft:#DDEDE8;
+    --i-high:#AC3826;
+    --i-high-bg:#F6E2DE;
+    --i-mid:#9A6913;
+    --i-mid-bg:#F6EBD8;
+    --i-low:#356F81;
+    --i-low-bg:#DFEBEF;
+    --i-rest:#6E7D84;
+    --i-rest-bg:#E7EBED;
+    --seg-prep:#A9BCB8;
+    --seg-main:#0F6152;
+    --seg-cardio:#4C87A0;
+    --seg-close:#CBD9D5;
+    --seg-yoga:#8E7BA6;
+    --seg-sport:#A87434;
+    --shadow:0 1px 2px rgba(14,21,24,.05), 0 8px 24px -12px rgba(14,21,24,.18);
+    color-scheme:light;
+  }
+  @media (prefers-color-scheme:dark){
+    :root:not([data-theme="light"]){
+      --ground:#0B1012;
+      --surface:#141B1E;
+      --surface-2:#192226;
+      --ink:#E3EAEC;
+      --ink-2:#A0AFB6;
+      --ink-3:#7C8C93;
+      --line:#273338;
+      --line-strong:#38474D;
+      --accent:#4CBFA4;
+      --accent-ink:#7FD4BE;
+      --accent-soft:#12312A;
+      --i-high:#E3806D;
+      --i-high-bg:#33201C;
+      --i-mid:#D3A34E;
+      --i-mid-bg:#312717;
+      --i-low:#77B2C6;
+      --i-low-bg:#18292F;
+      --i-rest:#8B9BA2;
+      --i-rest-bg:#1D2529;
+      --seg-prep:#4A6560;
+      --seg-main:#3E9E88;
+      --seg-cardio:#4F8299;
+      --seg-close:#2B3B39;
+      --seg-yoga:#6E5F84;
+      --seg-sport:#C79A5E;
+      --shadow:0 1px 2px rgba(0,0,0,.4), 0 8px 24px -14px rgba(0,0,0,.7);
+      color-scheme:dark;
+    }
+  }
+  :root[data-theme="dark"]{
+    --ground:#0B1012;
+    --surface:#141B1E;
+    --surface-2:#192226;
+    --ink:#E3EAEC;
+    --ink-2:#A0AFB6;
+    --ink-3:#7C8C93;
+    --line:#273338;
+    --line-strong:#38474D;
+    --accent:#4CBFA4;
+    --accent-ink:#7FD4BE;
+    --accent-soft:#12312A;
+    --i-high:#E3806D;
+    --i-high-bg:#33201C;
+    --i-mid:#D3A34E;
+    --i-mid-bg:#312717;
+    --i-low:#77B2C6;
+    --i-low-bg:#18292F;
+    --i-rest:#8B9BA2;
+    --i-rest-bg:#1D2529;
+    --seg-prep:#4A6560;
+    --seg-main:#3E9E88;
+    --seg-cardio:#4F8299;
+    --seg-close:#2B3B39;
+    --seg-yoga:#6E5F84;
+    --seg-sport:#C79A5E;
+    --shadow:0 1px 2px rgba(0,0,0,.4), 0 8px 24px -14px rgba(0,0,0,.7);
+    color-scheme:dark;
+  }
+
+  *{box-sizing:border-box}
+  body{
+    margin:0;
+    background:var(--ground);
+    color:var(--ink);
+    font-family:"IBM Plex Sans KR",-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+    font-size:15px;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:1080px;margin:0 auto;padding:40px 20px 72px}
+  .mono{font-family:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,monospace}
+  .num{font-variant-numeric:tabular-nums}
+
+  header{
+    display:flex;flex-wrap:wrap;align-items:flex-end;gap:16px 32px;
+    padding-bottom:24px;margin-bottom:28px;
+    border-bottom:1px solid var(--line-strong);
+  }
+  .eyebrow{
+    font-family:"IBM Plex Mono",monospace;font-size:11px;font-weight:600;
+    letter-spacing:.14em;text-transform:uppercase;color:var(--accent-ink);
+    margin:0 0 10px;
+  }
+  h1{
+    font-size:clamp(30px,5vw,44px);line-height:1.1;font-weight:700;
+    letter-spacing:-.02em;margin:0;text-wrap:balance;
+  }
+  .lede{margin:10px 0 0;color:var(--ink-2);max-width:48ch}
+  .slot{margin-left:auto;text-align:right;flex-shrink:0}
+  .slot .t{font-family:"IBM Plex Mono",monospace;font-size:26px;font-weight:600;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+  .slot .l{font-size:12px;color:var(--ink-3);letter-spacing:.04em}
+
+  section{margin:0 0 44px}
+  .sec-head{display:flex;align-items:baseline;gap:12px;margin:0 0 14px;flex-wrap:wrap}
+  h2{font-size:13px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;
+     font-family:"IBM Plex Mono",monospace;color:var(--ink-3);margin:0}
+  .sec-note{font-size:13px;color:var(--ink-3);margin:0}
+
+  /* ---------- review checklist ---------- */
+  .review-list{display:flex;flex-direction:column;gap:1px;background:var(--line);
+    border:1px solid var(--line);border-radius:3px;overflow:hidden}
+  .review-item{background:var(--surface);display:flex;gap:14px;padding:13px 18px;align-items:flex-start}
+  .rn{
+    flex-shrink:0;width:22px;height:22px;border-radius:50%;
+    border:1px solid var(--line-strong);color:var(--ink-3);
+    font-family:"IBM Plex Mono",monospace;font-size:11px;font-weight:600;
+    display:flex;align-items:center;justify-content:center;margin-top:1px;
+  }
+  .rt{font-weight:600;font-size:14px;margin:0 0 2px;letter-spacing:-.005em}
+  .rd{color:var(--ink-2);font-size:13.5px;margin:0;line-height:1.5}
+
+  /* ---------- today ---------- */
+  .today{
+    background:var(--surface);border:1px solid var(--line);
+    border-left:4px solid var(--accent);
+    border-radius:3px;padding:22px 24px;box-shadow:var(--shadow);
+    display:flex;flex-wrap:wrap;gap:20px 36px;align-items:center;
+  }
+  .today-day{font-family:"IBM Plex Mono",monospace;font-size:12px;font-weight:600;
+    letter-spacing:.14em;color:var(--accent-ink);text-transform:uppercase}
+  .today-title{font-size:24px;font-weight:700;letter-spacing:-.015em;margin:2px 0 0;line-height:1.25}
+  .today-focus{color:var(--ink-2);margin:6px 0 0;font-size:14px;max-width:52ch}
+
+  /* ---------- rules ---------- */
+  .rules{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:12px}
+  .rule{
+    background:var(--surface);border:1px solid var(--line);border-radius:3px;
+    padding:16px 18px;display:flex;gap:14px;align-items:flex-start;
+  }
+  .rule-k{
+    font-family:"IBM Plex Mono",monospace;font-size:11px;font-weight:600;
+    color:var(--ink-3);padding-top:3px;letter-spacing:.08em;flex-shrink:0;
+  }
+  .rule-b{font-weight:600;font-size:15px;margin:0;line-height:1.35}
+  .rule-s{color:var(--ink-2);font-size:13px;margin:4px 0 0;line-height:1.5}
+
+  /* ---------- intensity strip ---------- */
+  .strip{display:grid;grid-template-columns:repeat(7,1fr);gap:4px;margin-bottom:10px}
+  .strip-cell{border-radius:2px;padding:9px 6px 10px;text-align:center;border:1px solid transparent}
+  .strip-cell .d{font-family:"IBM Plex Mono",monospace;font-size:11px;font-weight:600;letter-spacing:.08em}
+  .strip-cell .v{font-size:11px;margin-top:2px;opacity:.85}
+  .is-high{background:var(--i-high-bg);color:var(--i-high)}
+  .is-mid{background:var(--i-mid-bg);color:var(--i-mid)}
+  .is-low{background:var(--i-low-bg);color:var(--i-low)}
+  .is-rest{background:var(--i-rest-bg);color:var(--i-rest)}
+  .strip-cell.today-cell{border-color:currentColor}
+  .legend{display:flex;flex-wrap:wrap;gap:6px 18px;font-size:12px;color:var(--ink-3)}
+  .legend span{display:inline-flex;align-items:center;gap:6px}
+  .dot{width:9px;height:9px;border-radius:2px;display:inline-block}
+
+  /* ---------- mode switch ---------- */
+  .modeSwitch{
+    display:inline-flex;background:var(--surface-2);border:1px solid var(--line);
+    border-radius:20px;padding:3px;gap:2px;flex-wrap:wrap;
+  }
+  .modeBtn{
+    appearance:none;border:none;background:transparent;color:var(--ink-2);
+    font-family:"IBM Plex Sans KR",sans-serif;font-size:12.5px;font-weight:500;
+    padding:7px 13px;border-radius:16px;cursor:pointer;white-space:nowrap;
+    transition:background .15s ease,color .15s ease;
+  }
+  .modeBtn:hover{color:var(--ink)}
+  .modeBtn.is-active{background:var(--accent);color:#fff;font-weight:600}
+  .modeBtn:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+
+  /* ---------- day cards ---------- */
+  .days{display:flex;flex-direction:column;gap:12px}
+  .day{background:var(--surface);border:1px solid var(--line);border-radius:3px;overflow:hidden}
+  .day.is-today{border-color:var(--accent);box-shadow:var(--shadow)}
+  .day-top{display:flex;flex-wrap:wrap;gap:10px 18px;align-items:center;padding:16px 20px 14px}
+  .day-mark{
+    font-family:"IBM Plex Mono",monospace;font-weight:600;font-size:12px;
+    letter-spacing:.12em;color:var(--ink-3);width:52px;flex-shrink:0;
+  }
+  .day.is-today .day-mark{color:var(--accent-ink)}
+  .day-name{font-size:17px;font-weight:600;letter-spacing:-.01em;margin:0;flex:1;min-width:180px}
+  .chip{
+    font-family:"IBM Plex Mono",monospace;font-size:10px;font-weight:600;
+    letter-spacing:.1em;text-transform:uppercase;padding:4px 8px;border-radius:2px;white-space:nowrap;
+  }
+  .modeChip{background:var(--surface-2);color:var(--ink-3);border:1px solid var(--line)}
+  .total{font-family:"IBM Plex Mono",monospace;font-size:13px;color:var(--ink-3);font-variant-numeric:tabular-nums}
+
+  .bar{display:flex;gap:2px;height:26px;padding:0 20px;margin-bottom:8px}
+  .seg{
+    display:flex;align-items:center;justify-content:center;border-radius:2px;
+    font-family:"IBM Plex Mono",monospace;font-size:10px;font-weight:600;
+    color:#fff;overflow:hidden;white-space:nowrap;letter-spacing:.02em;min-width:0;
+  }
+  .seg[data-k="prep"]{background:var(--seg-prep)}
+  .seg[data-k="main"]{background:var(--seg-main)}
+  .seg[data-k="cardio"]{background:var(--seg-cardio)}
+  .seg[data-k="close"]{background:var(--seg-close);color:var(--ink-2)}
+  .seg[data-k="yoga"]{background:var(--seg-yoga)}
+  .seg[data-k="sport"]{background:var(--seg-sport)}
+  .bar-legend{
+    padding:0 20px 14px;font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--ink-3);
+    display:flex;flex-wrap:wrap;gap:4px 14px;font-variant-numeric:tabular-nums;
+  }
+
+  .hint{
+    margin:0 20px 10px;padding:8px 12px;font-size:12.5px;color:var(--ink-2);
+    background:var(--surface-2);border-radius:2px;border-left:2px solid var(--seg-sport);
+  }
+
+  /* ---------- collapsible "more info" sections ---------- */
+  details > summary{list-style:none;cursor:pointer}
+  details > summary::-webkit-details-marker{display:none}
+  details > summary::marker{display:none}
+
+  .fold{background:var(--surface);border:1px solid var(--line);border-radius:3px;overflow:hidden;margin-bottom:10px}
+  .fold summary{display:flex;align-items:center;gap:10px;padding:16px 20px;user-select:none}
+  .fold summary:hover{background:var(--surface-2)}
+  .fold-title{font-family:"IBM Plex Mono",monospace;font-size:12.5px;font-weight:600;
+    letter-spacing:.08em;text-transform:uppercase;color:var(--ink)}
+  .fold-note{font-size:12px;color:var(--ink-3);font-weight:400;text-transform:none;
+    letter-spacing:0;margin-left:2px}
+  .fold summary .chev{margin-left:auto;color:var(--ink-3);font-size:11px;
+    transition:transform .15s ease;flex-shrink:0}
+  .fold[open] summary .chev{transform:rotate(90deg)}
+  .fold-body{padding:0 20px 22px}
+  .fold-body>*:first-child{margin-top:0}
+
+  .other-days-label{
+    font-family:"IBM Plex Mono",monospace;font-size:11px;font-weight:600;
+    letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);
+    margin:16px 0 8px;
+  }
+  details.day-fold{cursor:default}
+  details.day-fold>summary.day-top{cursor:pointer}
+  details.day-fold>summary.day-top::after{
+    content:"▸";margin-left:auto;color:var(--ink-3);font-size:12px;
+    transition:transform .15s ease;flex-shrink:0;padding-left:6px;
+  }
+  details.day-fold[open]>summary.day-top::after{transform:rotate(90deg)}
+  .day-fold-body>*:first-child{margin-top:2px}
+
+  /* ---------- install banner ---------- */
+  .installBanner{
+    display:flex;align-items:flex-start;gap:12px;
+    background:var(--accent-soft);border:1px solid var(--accent);border-radius:4px;
+    padding:12px 16px;margin-bottom:24px;
+  }
+  .installBanner .ico{font-size:18px;line-height:1;flex-shrink:0;margin-top:1px}
+  .installBanner .body{flex:1;min-width:0}
+  .installBanner .t{font-weight:600;font-size:13.5px;color:var(--ink);margin:0 0 3px}
+  .installBanner .s{font-size:12.5px;color:var(--ink-2);line-height:1.55;margin:0}
+  .installBanner .s b{color:var(--ink);font-weight:600}
+  .installBanner .x{
+    appearance:none;border:none;background:transparent;color:var(--ink-3);
+    font-size:13px;cursor:pointer;padding:2px 4px;line-height:1;flex-shrink:0;
+  }
+  .installBanner .x:hover{color:var(--ink)}
+
+  .ex-wrap{overflow-x:auto;padding:0 20px 4px}
+  table{border-collapse:collapse;width:100%;min-width:460px;font-size:14px}
+  th{
+    text-align:left;font-family:"IBM Plex Mono",monospace;font-size:10px;
+    font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);
+    padding:0 12px 7px 0;border-bottom:1px solid var(--line);
+  }
+  th:last-child,td:last-child{padding-right:0}
+  td{padding:9px 12px 9px 0;border-bottom:1px solid var(--line);vertical-align:top}
+  tr:last-child td{border-bottom:none}
+  td.sets{font-family:"IBM Plex Mono",monospace;font-variant-numeric:tabular-nums;
+    white-space:nowrap;color:var(--ink);font-weight:500}
+  td.cue{color:var(--ink-3);font-size:13px}
+  td.mach{color:var(--ink-2)}
+  td.partner{color:var(--accent-ink)}
+  .none{padding:2px 20px 6px;color:var(--ink-2);font-size:14px}
+
+  .exlink{color:inherit;text-decoration:underline;text-decoration-style:dotted;
+    text-decoration-color:var(--line-strong);text-underline-offset:2px}
+  .exlink:hover{text-decoration-style:solid;color:var(--accent-ink);text-decoration-color:var(--accent-ink)}
+  .exlink::after{content:"↗";font-size:10px;margin-left:2px;color:var(--ink-3);text-decoration:none;display:inline-block}
+  .exlink:hover::after{color:var(--accent-ink)}
+
+  .day-note{
+    margin:12px 20px 18px;padding:11px 14px;border-radius:2px;
+    background:var(--surface-2);border-left:2px solid var(--line-strong);
+    font-size:13px;color:var(--ink-2);line-height:1.55;
+  }
+  .day-note b{color:var(--ink);font-weight:600}
+  .day-note.warn{border-left-color:var(--i-high);background:var(--i-high-bg);color:var(--i-high)}
+  .day-note.warn b{color:var(--i-high)}
+  .day-note.aside{border-left-color:var(--seg-yoga);background:var(--surface-2);color:var(--ink-2)}
+  .day-note.aside b{color:var(--ink)}
+
+  .limits{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:12px}
+  .limit{background:var(--surface);border:1px solid var(--line);border-radius:3px;padding:18px 20px}
+  .limit h3{font-size:15px;font-weight:600;margin:0 0 4px;letter-spacing:-.01em}
+  .limit .sub{font-size:12px;color:var(--ink-3);margin:0 0 12px;font-family:"IBM Plex Mono",monospace}
+  .limit ul{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:7px}
+  .limit li{font-size:13.5px;line-height:1.45;display:flex;gap:9px;color:var(--ink-2)}
+  .mk{flex-shrink:0;font-family:"IBM Plex Mono",monospace;font-size:11px;font-weight:600;padding-top:2px}
+  .mk.no{color:var(--i-high)}
+  .mk.yes{color:var(--accent-ink)}
+  .ask{background:var(--surface-2);border:1px solid var(--line);border-radius:2px;
+    padding:10px 12px;font-size:12.5px;color:var(--ink);line-height:1.6;margin:0}
+  .askLabel{font-size:12.5px;color:var(--ink-2);margin:0 0 8px}
+
+  /* ---------- home-mode decision table ---------- */
+  .homeTable{overflow-x:auto}
+  .homeTable table{min-width:640px;font-size:13.5px}
+  .homeTable th{background:var(--surface-2);padding:11px 14px}
+  .homeTable td{padding:12px 14px;line-height:1.5;color:var(--ink-2)}
+  .homeTable td:first-child{font-weight:600;color:var(--ink);white-space:nowrap}
+  .homeNotes{display:flex;flex-direction:column;gap:7px;margin-top:12px}
+  .homeNotes .verdict{font-size:13px}
+
+  .metrics{width:100%;background:var(--surface);border:1px solid var(--line);border-radius:3px;overflow:hidden}
+  .metrics table{min-width:520px;font-size:14px}
+  .metrics th{padding:14px 16px 11px;background:var(--surface-2)}
+  .metrics td{padding:12px 16px}
+  .metrics td:first-child{font-weight:600;white-space:nowrap}
+  .metrics .freq{font-family:"IBM Plex Mono",monospace;font-size:12.5px;color:var(--ink-2);white-space:nowrap}
+
+  .verdicts{display:flex;flex-direction:column;gap:8px;margin-top:12px}
+  .verdict{display:flex;gap:12px;align-items:flex-start;font-size:13.5px;color:var(--ink-2);line-height:1.5}
+  .verdict .sig{width:8px;height:8px;border-radius:50%;margin-top:7px;flex-shrink:0}
+
+  footer{
+    margin-top:44px;padding-top:20px;border-top:1px solid var(--line);
+    font-size:12.5px;color:var(--ink-3);display:flex;flex-wrap:wrap;gap:6px 20px;
+  }
+
+  @media (max-width:640px){
+    .wrap{padding:28px 14px 56px}
+    .slot{margin-left:0;text-align:left}
+    .day-name{min-width:0}
+    .bar{padding:0 14px}
+    .bar-legend,.ex-wrap,.hint{padding-left:14px;padding-right:14px;margin-left:0;margin-right:0}
+    .hint{margin:0 14px 10px}
+    .day-top{padding:14px 14px 12px}
+    .day-note{margin:12px 14px 16px}
+    .strip{grid-template-columns:repeat(7,1fr);gap:3px}
+    .strip-cell{padding:7px 2px 8px}
+    .strip-cell .v{display:none}
+    .review-item{padding:11px 14px}
+  }
+  @media (prefers-reduced-motion:no-preference){
+    .day{transition:border-color .18s ease}
+  }
+</style>
+
+<div class="wrap">
+
+  <div class="installBanner" id="installBanner" hidden>
+    <span class="ico">📲</span>
+    <div class="body">
+      <p class="t">홈 화면에 추가해두면 계속 최신 버전으로 열립니다</p>
+      <p class="s" id="installText"></p>
+    </div>
+    <button class="x" id="installDismiss" type="button" aria-label="닫기">✕</button>
+  </div>
+
+  <header>
+    <div>
+      <p class="eyebrow">건강 관리 · v3 개정</p>
+      <h1>아침 트레이닝</h1>
+      <p class="lede">요가·스쿼시는 07:30 정각 강습 시작 — 웨이트는 그 직후. 근골격관리는 09:00~09:30에 별도로 간다.</p>
+    </div>
+    <div class="slot">
+      <div class="t">06:30 → 07:30</div>
+      <div class="l mono">기상 → 헬스장 도착·시작</div>
+    </div>
+  </header>
+
+  <section>
+    <div class="sec-head"><h2>오늘</h2></div>
+    <div class="today" id="todayCard">
+      <div>
+        <div class="today-day" id="todayDay">—</div>
+        <p class="today-title" id="todayTitle">—</p>
+        <p class="today-focus" id="todayFocus"></p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head">
+      <h2>주간 부하 분포</h2>
+      <p class="sec-note">고강도는 주 3~4회가 상한. 방향 전환 종목(스쿼시·풋살)은 주 2회까지</p>
+    </div>
+    <div class="strip" id="strip"></div>
+    <div class="legend">
+      <span><i class="dot" style="background:var(--i-high)"></i>고강도</span>
+      <span><i class="dot" style="background:var(--i-mid)"></i>중강도</span>
+      <span><i class="dot" style="background:var(--i-low)"></i>저강도·회복</span>
+      <span><i class="dot" style="background:var(--i-rest)"></i>완전 휴식</span>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head">
+      <h2>요일별 세션</h2>
+      <p class="sec-note">오늘 세션이 먼저 펼쳐져 있다 · 막대는 실제 분 배분 · 종목 이름을 누르면 참고 이미지 검색이 열린다</p>
+    </div>
+    <div class="modeSwitch" role="group" aria-label="근무 형태" id="modeSwitch" style="margin-bottom:10px">
+      <button class="modeBtn is-active" data-mode="office" type="button">회사 출근</button>
+      <button class="modeBtn" data-mode="homeGym" type="button">재택 · 아파트 헬스장</button>
+      <button class="modeBtn" data-mode="homeRun" type="button">재택 · 러닝 대체</button>
+    </div>
+    <div class="modeSwitch" role="group" aria-label="파트너 여부" id="partnerSwitch" style="margin-bottom:16px">
+      <button class="modeBtn is-active" data-partner="solo" type="button">혼자</button>
+      <button class="modeBtn" data-partner="partner" type="button">파트너와 함께</button>
+    </div>
+    <div class="days" id="days"></div>
+    <p class="other-days-label">다른 요일 (눌러서 펼치기)</p>
+    <div class="days" id="otherDays"></div>
+  </section>
+
+  <section class="more">
+    <div class="sec-head">
+      <h2>더 보기</h2>
+      <p class="sec-note">지난 검토·핵심 원칙·부상 이력·재택 대체 원칙·추적 지표·다른 세션 연결 — 펼쳐서 확인</p>
+    </div>
+
+    <details class="fold">
+      <summary><span class="fold-title">지난 검토 19가지 반영<span class="fold-note">보내주신 순서 그대로</span></span><span class="chev">▸</span></summary>
+      <div class="fold-body">
+        <div class="review-list">
+          <div class="review-item"><span class="rn">1</span><div><p class="rt">단백질 타이밍</p><p class="rd">운동 전 섭취를 강제하지 않는다. 셀렉스는 운동 후 그대로 두고, 하루 총 단백질량과 취침 전 보충으로 방향 전환.</p></div></div>
+          <div class="review-item"><span class="rn">2</span><div><p class="rt">기상 06:30 / 시작 07:30</p><p class="rd">수면 기준선을 재계산 — 23:30 취침이 7시간 확보의 기준선.</p></div></div>
+          <div class="review-item"><span class="rn">3</span><div><p class="rt">요일 고정이 효과적인가</p><p class="rd">그렇다 — 회복 간격과 순서 규칙이 요일 고정에서만 자동으로 지켜진다. 강습 요일이 바뀌면 순서 규칙만 유지한 채 통째로 옮긴다.</p></div></div>
+          <div class="review-item"><span class="rn">4</span><div><p class="rt">머신 대안</p><p class="rd">종목마다 프리웨이트·머신을 함께 기재. 통증 유발 시 즉시 다른 쪽으로 전환.</p></div></div>
+          <div class="review-item"><span class="rn">5</span><div><p class="rt">스쿼시 워밍업</p><p class="rd">강습 직전 1~2분(발목 서클·카프레이즈·어깨 팔돌리기)으로 현실화. 강습 초반 랠리를 실질 워밍업으로 간주.</p></div></div>
+          <div class="review-item"><span class="rn">6</span><div><p class="rt">요가 시간 고정</p><p class="rd">요가를 세션 맨 앞으로 재배치. 종료 후 리액티베이션 2~3분 + 웨이트 첫 세트는 가볍게 시작해 근력 저하를 상쇄.</p></div></div>
+          <div class="review-item"><span class="rn">7</span><div><p class="rt">근골격관리 분리</p><p class="rd">시간표에서 완전히 제외. 09:00~09:30 별도 방문으로 목요일 카드에 표시만.</p></div></div>
+          <div class="review-item"><span class="rn">8</span><div><p class="rt">인바디·러닝 세션 연계</p><p class="rd">건강 관리 프로젝트에 기록 문서 2개 생성. 하단 "다른 세션과 연결" 참고.</p></div></div>
+          <div class="review-item"><span class="rn">9</span><div><p class="rt">종목 참고 이미지</p><p class="rd">종목 이름을 누르면 새 탭에서 이미지 검색이 열린다. 아래 요일별 세션 표에 전부 적용.</p></div></div>
+          <div class="review-item"><span class="rn">10</span><div><p class="rt">비출근일 (재택) 대체</p><p class="rd">요일별 세션 위쪽에 근무 형태 토글 추가 — 아파트 헬스장 / 러닝 대체를 선택하면 카드 내용이 바뀐다.</p></div></div>
+          <div class="review-item"><span class="rn">11</span><div><p class="rt">건강검진·혈압 통합 관리</p><p class="rd">인바디·러닝과 같은 방식으로 다리 연결 — claude/건강검진-기록.md 신설. 혈압 추이는 4주 재검토에 포함.</p></div></div>
+          <div class="review-item"><span class="rn">12</span><div><p class="rt">금요일 요가 강습 종료</p><p class="rd">07:30 도착은 그대로, 강습 없이 자가 웜업 5분 → 하체 2 → 천국의계단(15→20분 연장) → 마무리 스트레칭. 처방 재활은 자가 웜업에 통합.</p></div></div>
+          <div class="review-item"><span class="rn">13</span><div><p class="rt">파트너 옵션 — 월~금 전체 적용</p><p class="rd">요일별 세션 위에 "혼자/파트너와 함께" 토글 추가. 켜면 프리웨이트·머신 대안은 그대로 두고 파트너 옵션 칼럼이 하나 더 붙는다.</p></div></div>
+          <div class="review-item"><span class="rn">14</span><div><p class="rt">근골격센터 처방 5가지 통합</p><p class="rd">발목 가동범위 운동은 기존 웜업에 명칭만 통일. 정강이 앞·종아리·어깨 전방활주·내전근·골반 스트레칭은 화·목엔 기존 마무리 스트레칭에, 월·수·목엔 새로 마무리 스트레칭을 만들어 배치. 어깨 전방활주 교정운동과 hip airplane은 목·수 표에 세트×횟수 종목으로 추가.</p></div></div>
+          <div class="review-item"><span class="rn">15</span><div><p class="rt">인바디 실측 반영 · 측정 주기 변경</p><p class="rd">체중·골격근량·체지방률·기초대사량 실측치로 칼로리·단백질 목표를 확정. 측정 주기를 4주 1회 → 매주 금요일 운동 전으로 변경. 최신 수치와 추이는 18번 참고.</p></div></div>
+          <div class="review-item"><span class="rn">16</span><div><p class="rt">러닝 부상·흉통 이력 반영</p><p class="rd">기록에서 확인된 오른쪽 발목·왼쪽 종아리 부담, 왼쪽 무릎 valgus 느낌(폼 데이터상 이상 없음)을 부상 이력에 추가. 운동 중 흉통 2회(쉬면 소실)와 미확인 심전도 검사 권고는 최우선 확인 사항으로 별도 표시 — 가장 최근(29회차) 회복런은 흉통 없이 정상 진행됐지만 병원 확인 필요성은 그대로.</p></div></div>
+          <div class="review-item"><span class="rn">17</span><div><p class="rt">파트너 운동 — 종목 교체만이 아니라 시간·중량도 변화</p><p class="rd">스팟팅/보조형(바벨로우·벤치프레스·힙쓰러스트·풀업 등)은 마지막 세트를 실패(RIR 0)까지 밀고 평소보다 +5~10% 무겁게. 매뉴얼 레지스턴스형(컬·외회전·힙 어브덕션 등)은 중량 대신 에센트릭 템포를 늦춘다. 밸런스·폼체크형은 강도 변화 없이 시간만 늘어난다. 전체적으로 파트너 있는 날은 +10~15분 여유를 두고, 넘칠 것 같으면 "시간 남을 때만" 종목부터 생략.</p></div></div>
+          <div class="review-item"><span class="rn">18</span><div><p class="rt">인바디 3회차(09.04) — 지방 감량 목표 달성, 좌우 밸런스 관리 추가</p><p class="rd">체중 63.1kg·골격근량 29.9kg(유지)·체지방률 16.3%·내장지방단면적 37.4 — 목표(체지방률 16.5%↓·내장지방단면적 40↓) 달성, 07.16의 "골격근 감소 주의"도 해소됐다. 새로 관찰된 오른팔>왼팔 근육량 불균형은 새 종목 없이 기존 편측 종목(원암 로우·워킹런지·편측 카프레이즈 등)에서 약한 쪽(왼쪽)을 먼저 시작하는 순서로 관리한다. 다음 목표(10월 말): 골격근량 30.0kg 반등, 체지방률 15% 내외.</p></div></div>
+          <div class="review-item"><span class="rn">19</span><div><p class="rt">러닝 기록의 "권장 주간 루틴" — 현재 스케줄과 비교, 구조 변경 불필요로 결론</p><p class="rd">화 Zone2/목 페이스런/토 장거리·인터벌 권장안과 비교한 결과, 화(스쿼시)·목(스쿼시+재활)·토(장거리·인터벌 러닝)가 이미 같은 목적을 다른 방식으로 충족하고 있어 요일 구조는 그대로 둔다. 다만 재택·비출근일 러닝 대체를 고를 수 있는 날엔 Zone2 강도로 채우는 것을 권장 사항으로 추가.</p></div></div>
+        </div>
+      </div>
+    </details>
+
+    <details class="fold">
+      <summary><span class="fold-title">핵심 원칙<span class="fold-note">프로그램 세부보다 이 4가지가 감량 효과가 크다</span></span><span class="chev">▸</span></summary>
+      <div class="fold-body">
+        <div class="rules">
+          <div class="rule">
+            <span class="rule-k">총량</span>
+            <div>
+              <p class="rule-b">단백질은 타이밍보다 총량</p>
+              <p class="rule-s">운동 전 섭취가 어려우면 억지로 맞추지 않는다. 셀렉스는 운동 후 유지, 취침 전 소량(요거트·카제인 20~30g)으로 보완.</p>
+            </div>
+          </div>
+          <div class="rule">
+            <span class="rule-k">RIR 1–2</span>
+            <div>
+              <p class="rule-b">마지막 세트는 밀어붙인다</p>
+              <p class="rule-s">감량기엔 볼륨은 줄여도 중량은 유지. 12회 3세트를 다 채우면 다음 세션에 중량을 올린다.</p>
+            </div>
+          </div>
+          <div class="rule">
+            <span class="rule-k">23:30</span>
+            <div>
+              <p class="rule-b">취침 시각이 유일한 수면 지표</p>
+              <p class="rule-s">기상 06:30 고정이므로 7시간 기준선은 23:30 취침. 이 시각 하나만 관리하면 된다.</p>
+            </div>
+          </div>
+          <div class="rule">
+            <span class="rule-k">순서 &gt; 요일</span>
+            <div>
+              <p class="rule-b">스쿼시 다음날 하체, 전날은 금지</p>
+              <p class="rule-s">강습 요일이 바뀌거나 재택으로 스쿼시를 걸러도 이 순서 규칙만 지키면 된다.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </details>
+
+    <details class="fold">
+      <summary><span class="fold-title">부상 이력에 따른 제한<span class="fold-note">심혈관 항목은 확인 필요(최우선)</span></span><span class="chev">▸</span></summary>
+      <div class="fold-body">
+        <div class="limits">
+          <div class="limit">
+            <h3>오른쪽 어깨</h3>
+            <p class="sub">후방관절낭 타이트 · 외회전 제한</p>
+            <ul>
+              <li><span class="mk no">금지</span><span>오버헤드·밀리터리 프레스, 비하인드넥, 딥스</span></li>
+              <li><span class="mk no">금지</span><span>넓은 그립 벤치를 가슴까지 깊게, 레터럴 90도 이상</span></li>
+              <li><span class="mk yes">대체</span><span>랜드마인 프레스, 뉴트럴 그립 덤벨·체스트프레스 머신, 인클라인 30~45도</span></li>
+              <li><span class="mk yes">보강</span><span>페이스풀 3×15, 사이드라잉 외회전 2×15 (2~4kg)</span></li>
+              <li><span class="mk yes">처방</span><span>우측 어깨 전방활주 교정운동 2×10-15 (목), 전방활주 스트레칭 (월·목 마무리)</span></li>
+            </ul>
+          </div>
+          <div class="limit">
+            <h3>발목 안정성</h3>
+            <p class="sub">스쿼시·풋살의 방향 전환이 최대 위험</p>
+            <ul>
+              <li><span class="mk no">주의</span><span>강습이 7:30 정각 시작이라 긴 워밍업은 불가능 — 1~2분으로 압축</span></li>
+              <li><span class="mk yes">필수</span><span>코트 진입 전: 발목 가동범위 운동 10회, 카프레이즈 10회, 어깨 팔돌리기</span></li>
+              <li><span class="mk yes">보강</span><span>편측 카프레이즈 3×15/측, 싱글레그 밸런스 30초/측</span></li>
+              <li><span class="mk yes">처방</span><span>정강이 앞·종아리 스트레칭 (화·목 마무리 스트레칭)</span></li>
+              <li><span class="mk no">이력</span><span>러닝 14회차 이후 오른쪽 발목·왼쪽 종아리 부담 — 연속 러닝+장거리+언덕 조합 주의</span></li>
+            </ul>
+          </div>
+          <div class="limit">
+            <h3>골반</h3>
+            <p class="sub">중둔근 약화가 흔한 원인</p>
+            <ul>
+              <li><span class="mk yes">보강</span><span>클램셸, 사이드라잉 어브덕션, 밴드 몬스터워크</span></li>
+              <li><span class="mk yes">보강</span><span>데드버그, 버드독, 사이드 플랭크</span></li>
+              <li><span class="mk no">주의</span><span>런지·스텝업은 통증 없는 범위까지만 — 아프면 머신 대안으로</span></li>
+              <li><span class="mk yes">처방</span><span>짧아진 내전근: hip airplane 2×8/측 (수), 내전근·골반 스트레칭 (수·금 마무리)</span></li>
+            </ul>
+          </div>
+          <div class="limit">
+            <h3>심혈관 · 흉통</h3>
+            <p class="sub">확인 필요 — 최우선</p>
+            <ul>
+              <li><span class="mk no">확인 필요</span><span>러닝 중 왼쪽 흉통 2회 (19·21회차, 쉬면 소실) — 혈압 관리 중, 심전도 검사 권고받았으나 병원 방문 미확인</span></li>
+              <li><span class="mk no">주의</span><span>확인 전까지 천국의계단·인터벌·스쿼시에서 평소보다 컨디션을 주의 깊게 살핀다</span></li>
+              <li><span class="mk yes">참고</span><span>가장 최근(29회차) 회복런은 흉통 없이 정상 진행 — 저강도 결과라 병원 확인 필요성은 그대로</span></li>
+              <li><span class="mk yes">전달용</span><span>병원 방문 시: 흉통 2회·쉬면 소실 / 최대 심박 189bpm 기록 / 혈압 관리 중</span></li>
+            </ul>
+          </div>
+          <div class="limit">
+            <h3>상체 좌우 밸런스</h3>
+            <p class="sub">오른팔 > 왼팔 (인바디 09.04 관찰)</p>
+            <ul>
+              <li><span class="mk no">관찰</span><span>오른팔 근육량 102.2% vs 왼팔 95.5% — 부상 아님, 습관성 편측 사용 패턴 추정</span></li>
+              <li><span class="mk yes">교정</span><span>새 종목 추가 없이, 편측 종목(원암 로우·워킹런지·편측 카프레이즈 등)에서 약한 쪽(왼쪽)부터 시작</span></li>
+              <li><span class="mk yes">확인</span><span>다음 인바디(약 10월 말)에서 좌우 밸런스 변화 확인</span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </details>
+
+    <details class="fold">
+      <summary><span class="fold-title">재택근무 대체 원칙<span class="fold-note">위 토글로 카드가 바뀌는 원리. 판단 기준만 요약</span></span><span class="chev">▸</span></summary>
+      <div class="fold-body">
+        <div class="homeTable">
+          <table>
+            <thead>
+              <tr><th>원래 세션</th><th>아파트 헬스장 이용 시</th><th>러닝으로 전체 대체 시</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>요가일 (월·수)</td>
+                <td>자가 웜업 5분 → 예정 웨이트 그대로 → 유산소만 트레드밀·실외 조깅으로 → 마무리 스트레칭</td>
+                <td>이지~모더레이트 러닝 25~35분 + 어깨·둔근 맨몸 재활 2~3종목 5분 + 마무리 스트레칭</td>
+              </tr>
+              <tr>
+                <td>스쿼시일 (화·목)</td>
+                <td>트레드밀 인터벌·조깅 20분(방향전환이 빠져 발목엔 오히려 회복) → 예정 웨이트 그대로</td>
+                <td>러닝 25~35분 + 목요일이면 코어·재활 루틴 그대로(혼자/파트너 옵션도 동일 적용) / 화요일이면 어깨 보강 2종목만</td>
+              </tr>
+              <tr>
+                <td>금요일 (강습 없음)</td>
+                <td>원래도 강습이 없어 구조 차이가 작다 — 자가 웜업 5 + 하체 2(프리웨이트 우선) → 유산소는 트레드밀 20분</td>
+                <td>러닝 25~35분 + 힙쓰러스트·케틀벨스윙만 맨몸/밴드로 5분 + 마무리 스트레칭</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="homeNotes">
+          <div class="verdict"><span class="sig" style="background:var(--accent)"></span><span>아파트 헬스장에 특수 머신이 없을 가능성이 높다 — 표의 <b>프리웨이트(왼쪽) 칼럼</b>을 우선 참고한다.</span></div>
+          <div class="verdict"><span class="sig" style="background:var(--i-low)"></span><span>스쿼시를 러닝으로 대체하면 그 주 방향전환 부담이 줄어드는 부수 효과가 있다 — 발목엔 유리한 쪽이다.</span></div>
+          <div class="verdict"><span class="sig" style="background:var(--i-mid)"></span><span>같은 주에 러닝 대체가 겹치면 토요일 러닝은 가볍게 조정하거나 완전 휴식으로 바꿔 고강도 과다를 막는다.</span></div>
+          <div class="verdict"><span class="sig" style="background:var(--accent)"></span><span>재택·비출근일 러닝 대체를 고를 수 있다면, 가능한 날은 Zone2 강도로 채운다 — 주 1회 회복런 역할을 겸한다.</span></div>
+        </div>
+      </div>
+    </details>
+
+    <details class="fold">
+      <summary><span class="fold-title">추적 지표<span class="fold-note">인바디는 매주 금요일 운동 전</span></span><span class="chev">▸</span></summary>
+      <div class="fold-body">
+        <div class="metrics">
+          <div class="ex-wrap" style="padding:0">
+            <table>
+              <thead><tr><th>지표</th><th>측정 방법</th><th>주기</th></tr></thead>
+              <tbody>
+                <tr><td>취침 시각</td><td>23:30 기준선 대비</td><td class="freq">매일</td></tr>
+                <tr><td>체중</td><td>기상 직후 공복 · 주간 평균으로 판단</td><td class="freq">매일</td></tr>
+                <tr><td>리프트 중량</td><td>레그프레스 · 랫풀다운 · 체스트프레스</td><td class="freq">매 세션</td></tr>
+                <tr><td>수면 시간</td><td>워치 주간 평균, 7시간 목표</td><td class="freq">주 1회</td></tr>
+                <tr><td>허리둘레</td><td>배꼽 높이, 숨 내쉰 상태</td><td class="freq">주 1회</td></tr>
+                <tr><td>인바디</td><td>체지방량 · 골격근량</td><td class="freq">매주 금요일, 운동 전</td></tr>
+                <tr><td>혈압</td><td>수축기/이완기, 측정 상황</td><td class="freq">측정 시마다</td></tr>
+                <tr><td>건강검진</td><td>종합 결과</td><td class="freq">연 1회</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="verdicts">
+          <div class="verdict"><span class="sig" style="background:var(--accent)"></span><span><b>체중 감소 + 리프트 중량 유지·증가</b> — 정상. 지방 위주로 빠지고 있다.</span></div>
+          <div class="verdict"><span class="sig" style="background:var(--i-mid)"></span><span><b>체중과 리프트 중량이 함께 감소</b> — 칼로리 적자 과다 또는 단백질 부족. 적자를 줄이고 단백질을 올린다.</span></div>
+          <div class="verdict"><span class="sig" style="background:var(--i-high)"></span><span><b>4주 이상 정체</b> — 수면과 실제 섭취량부터 점검. 운동량을 늘리는 건 마지막 수단이다.</span></div>
+        </div>
+      </div>
+    </details>
+
+    <details class="fold">
+      <summary><span class="fold-title">다른 세션과 연결<span class="fold-note">인바디·러닝·건강검진·혈압은 별도 세션에서 진행 중</span></span><span class="chev">▸</span></summary>
+      <div class="fold-body">
+        <div class="limits">
+          <div class="limit">
+            <h3>인바디 기록</h3>
+            <p class="sub">claude/인바디-기록.md</p>
+            <p class="askLabel">인바디 세션이 끝나면 이 문구로 요청:</p>
+            <p class="ask mono">"이 결과를 건강 관리 프로젝트의 claude/인바디-기록.md에 추가해줘"</p>
+          </div>
+          <div class="limit">
+            <h3>러닝 기록</h3>
+            <p class="sub">claude/러닝-기록.md</p>
+            <p class="askLabel">러닝 세션이 끝나면 이 문구로 요청:</p>
+            <p class="ask mono">"이 결과를 건강 관리 프로젝트의 claude/러닝-기록.md에 추가해줘"</p>
+          </div>
+          <div class="limit">
+            <h3>건강검진·혈압</h3>
+            <p class="sub">claude/건강검진-기록.md</p>
+            <p class="askLabel">건강검진·혈압 체크 세션이 끝나면 이 문구로 요청:</p>
+            <p class="ask mono">"이 결과를 건강 관리 프로젝트의 claude/건강검진-기록.md에 추가해줘"</p>
+          </div>
+        </div>
+      </div>
+    </details>
+  </section>
+
+  <footer>
+    <span>2026-08-30 개정 · v3</span>
+    <span>상세 프로그램: 건강 관리 프로젝트 › 운동-프로그램-v1</span>
+    <span>4주 후 재검토</span>
+  </footer>
+</div>
+
+<script>
+const DAYS = [
+  {
+    key:1, mark:"MON",
+    focus:"요가 강습이 07:30 정각 시작 — 순서 고정. 종료 후 가벼운 리액티베이션으로 근력 저하를 상쇄한 뒤 웨이트.",
+    ex4:[
+      ["벤트오버 바벨로우","시티드 케이블 로우 · 랫풀다운(언더/뉴트럴)","3 × 10-12","어깨너비, 비하인드넥 금지"],
+      ["원암 덤벨 로우","체스트서포티드 로우머신 · T바로우","2 × 12/측",""],
+      ["밴드 보조 풀업","랫풀다운 뉴트럴그립","2 × 10-12","랫풀다운과 중복 시 생략"],
+      ["—","페이스풀 (케이블)","3 × 15","어깨 재활 겸용 — 생략 금지"],
+      ["덤벨 바이셉 컬","프리처컬 머신 · 케이블컬","2 × 12","시간 남을 때만"]
+    ],
+    partner:[
+      "파트너 스팟팅 바벨로우 (마지막 1~2회 그립 보조)",
+      "파트너 얼터네이팅 로우 (번갈아 세트, 폼 체크)",
+      "파트너 매뉴얼 어시스트 풀업 (허리·발목 살짝 받쳐 보조)",
+      "파트너 밴드 페이스풀 (반대쪽 고정)",
+      "파트너 매뉴얼 레지스턴스 컬 (손으로 저항)"
+    ],
+    runEx:[
+      ["밴드 외회전 (밴드 없으면 생략)","2 × 15",""],
+      ["클램셸","2 × 15/측",""],
+      ["데드버그","2 × 10",""]
+    ],
+    variants:{
+      office:{ name:"요가 + 상체 당기기", intensity:"mid", iLabel:"중강도", total:71,
+        segs:[["yoga",20,"요가"],["prep",3,"리액티베이션"],["main",25,"상체 당기기"],["cardio",20,"Zone 2 경사걷기"],["close",3,"마무리 스트레칭"]],
+        note:{t:"warn", h:"풋살이 있는 날", b:"아침 Zone 2 유산소를 생략한다. 저녁 풋살 → 다음날 07:30 스쿼시는 회복 시간이 10~11시간뿐이라 발목 위험이 가장 큰 조합이다. 가능하면 풋살을 토요일로 옮긴다. 마무리 스트레칭 3분(종아리, 우측 어깨 전방활주 — 근골격센터 처방)은 유산소를 생략해도 유지."} },
+      homeGym:{ name:"자가 웜업 + 상체 당기기 (재택)", intensity:"mid", iLabel:"중강도", total:60,
+        segs:[["prep",5,"자가 웜업"],["main",25,"상체 당기기"],["cardio",20,"트레드밀·조깅 Zone2"],["close",10,"마무리 스트레칭"]],
+        note:{h:"장비 팁", b:"아파트 헬스장엔 특수 머신이 없을 수 있다 — 아래 표에서 프리웨이트(왼쪽) 칼럼을 우선 참고."} },
+      homeRun:{ name:"러닝 대체 · 상체 당기기 주간", intensity:"mid", iLabel:"중강도", total:48,
+        segs:[["cardio",30,"이지~모더레이트 러닝"],["main",8,"어깨·둔근 맨몸 재활"],["close",10,"마무리 스트레칭"]],
+        note:{h:"이번 주 상체 당기기 보완", b:"오늘 빠진 볼륨은 이번 주 다른 요가일에 한 세트씩 추가하거나, 한 주 정도는 줄어도 괜찮다. 수면·일관성이 더 중요하다."} }
+    }
+  },
+  {
+    key:2, mark:"TUE",
+    focus:"강습이 바로 시작되므로 워밍업은 코트 진입 전 1~2분으로 압축. 어깨가 이미 피로한 날이라 프레스 볼륨은 짧게 — 표의 세트 수(벤치 3·인클라인 2·트라이셉/레터럴 2~3)를 그대로 따른다, 전 종목 3×12 통일 금지.",
+    ex4:[
+      ["뉴트럴그립 덤벨 벤치","체스트프레스 머신 (뉴트럴 핸들 우선)","3 × 10-12","팔꿈치 몸통에서 45도 이내"],
+      ["인클라인 덤벨 프레스 (30~45도)","인클라인 체스트프레스 머신","2 × 10","오버헤드 프레스 대체"],
+      ["—","트라이셉 푸시다운 (케이블)","3 × 12",""],
+      ["덤벨 사이드 레터럴 레이즈","레터럴 레이즈 머신 (있는 경우)","2 × 15","경량, 어깨 높이까지만"]
+    ],
+    partner:[
+      "파트너 스팟팅 벤치프레스 (마지막 1~2회 보조)",
+      "파트너 언랙 보조 인클라인 프레스",
+      "파트너 밴드 트라이셉 익스텐션 (반대쪽 고정)",
+      "파트너 매뉴얼 레지스턴스 레터럴레이즈 (손으로 저항)"
+    ],
+    runEx:[
+      ["사이드라잉 외회전","2 × 15/측",""],
+      ["밴드 외회전 (밴드 없으면 생략)","2 × 15",""]
+    ],
+    variants:{
+      office:{ name:"스쿼시 + 상체 밀기", intensity:"high", iLabel:"고강도", total:65,
+        segs:[["prep",2,"코트 워밍업"],["sport",38,"스쿼시"],["main",20,"상체 밀기"],["close",5,"마무리 스트레칭"]],
+        note:{h:"워밍업 1~2분", b:"옷 갈아입는 동안 발목 가동범위 운동 10회, 카프레이즈 10회, 어깨 팔돌리기(밴드 있으면 외회전 10회). 강습 초반 랠리를 실질 워밍업으로 간주. 마무리 스트레칭 5분에는 정강이 앞·종아리 스트레칭 포함(근골격센터 처방) — 스쿼시로 부하가 가장 큰 부위. 표의 세트 수를 차등대로 따른다 — 전 종목 3×12로 통일하면 계획보다 볼륨이 늘어나 피로가 커진다(운동일지 09.01)."} },
+      homeGym:{ name:"트레드밀 인터벌 + 상체 밀기 (재택)", intensity:"mid", iLabel:"중강도", total:45,
+        segs:[["cardio",20,"트레드밀 인터벌·조깅"],["main",20,"상체 밀기"],["close",5,"정리"]],
+        note:{h:"발목엔 오히려 회복일", b:"스쿼시의 방향 전환이 빠지므로 발목 부담이 줄어든다. 특수 머신이 없으면 프리웨이트(왼쪽) 칼럼 우선."} },
+      homeRun:{ name:"러닝 대체 · 상체 밀기 주간", intensity:"mid", iLabel:"중강도", total:43,
+        segs:[["cardio",30,"이지~모더레이트 러닝"],["main",8,"어깨 보강 맨몸"],["close",5,"정리"]],
+        note:{h:"스쿼시 스킵 = 발목 휴식", b:"이번 주 방향전환 종목이 하나 줄어드는 셈이라 발목엔 유리하다. 상체 밀기는 다음 스쿼시 날 보완."} }
+    }
+  },
+  {
+    key:3, mark:"WED",
+    focus:"화요일 스쿼시 다음날 = 하체를 넣기에 가장 좋은 슬롯. 주간 하체 볼륨의 절반이 여기서 나온다.",
+    ex4:[
+      ["고블릿 스쿼트","레그프레스","3 × 10-12","골반 통증 없는 범위"],
+      ["루마니안 데드리프트 (덤벨)","45도 백익스텐션 + 시티드 레그컬","3 × 10-12","햄스트링·둔근"],
+      ["워킹런지 · 스텝업","레그프레스 편측 · 스미스머신 런지","2 × 10/측","통증 시 머신으로 전환"],
+      ["—","레그컬 (머신)","3 × 12",""],
+      ["케이블 힙 어브덕션","힙 어브덕션 머신 (있으면 더 편함)","2 × 15/측","중둔근 — 골반 안정"],
+      ["편측 카프레이즈 (덤벨)","카프레이즈 머신 · 레그프레스 카프레이즈","3 × 15/측","발목 안정성"],
+      ["Hip Airplane","— (맨몸 전용, 밸런스 운동)","2 × 8/측","짧아진 내전근 관리 — 근골격센터 처방"]
+    ],
+    partner:[
+      "파트너 카운터밸런스 스쿼트 (손 맞잡고 균형 보조)",
+      "파트너 폼체크 RDL (골반 각도 확인·보조)",
+      "파트너 마주보고 번갈아 런지 (템포·카운트 맞추기)",
+      "파트너 매뉴얼 레그컬 (엎드려, 발목 저항 제공)",
+      "파트너 저항 힙 어브덕션 (손·밴드로 저항)",
+      "파트너 숄더 지지 카프레이즈 (어깨 잡고 균형 + 저항)",
+      "파트너 밸런스 스팟 (손 살짝 잡아 균형만 보조)"
+    ],
+    runEx:[
+      ["클램셸","2 × 15/측",""],
+      ["편측 카프레이즈 (맨몸)","2 × 15/측",""]
+    ],
+    variants:{
+      office:{ name:"요가 + 하체·둔근", intensity:"mid", iLabel:"중강도", total:79,
+        segs:[["yoga",20,"요가"],["prep",3,"리액티베이션"],["main",32,"하체·둔근"],["cardio",20,"Zone 2 경사걷기"],["close",4,"마무리 스트레칭"]],
+        note:{h:"요가 뒤 리액티베이션", b:"정적 스트레칭 뒤 근력이 일시적으로 5~10% 떨어진다. 가벼운 스쿼트 5회·점핑잭 10회로 깨운 뒤, 웨이트 첫 세트는 가벼운 워밍업 세트로 시작. 마무리 스트레칭 4분에는 내전근·골반 스트레칭 포함(근골격센터 처방) — 79분으로 여유가 가장 적은 요일이니 컨디션 안 좋으면 하체·둔근 세트 수를 줄여도 된다."} },
+      homeGym:{ name:"자가 웜업 + 하체·둔근 (재택)", intensity:"mid", iLabel:"중강도", total:65,
+        segs:[["prep",5,"자가 웜업"],["main",30,"하체·둔근"],["cardio",20,"트레드밀·조깅 Zone2"],["close",10,"마무리 스트레칭"]],
+        note:{h:"장비 팁", b:"아파트 헬스장엔 특수 머신이 없을 수 있다 — 아래 표에서 프리웨이트(왼쪽) 칼럼을 우선 참고."} },
+      homeRun:{ name:"러닝 대체 · 하체 주간", intensity:"mid", iLabel:"중강도", total:50,
+        segs:[["cardio",35,"이지~모더레이트 러닝"],["main",5,"둔근·발목 맨몸"],["close",10,"마무리 스트레칭"]],
+        note:{h:"러닝이 하체 자극을 대신한다", b:"오늘의 하체 웨이트는 러닝으로 대체된 것으로 본다. 별도로 채우지 않아도 된다."} }
+    }
+  },
+  {
+    key:4, mark:"THU",
+    focus:"화·목 스쿼시로 발목·어깨 부하가 정점에 오는 날. 웨이트 없이 코어·재활 위주로 짧게. 스쿼시 파트너가 남아있는 날엔 파트너 옵션으로. 종목 순서는 매트 계열 → 기구·스탠딩 계열로 배치해 동선을 줄였다(운동일지 09.03).",
+    ex4:[
+      ["데드버그","—","3 × 10","맨몸 전용 · 매트"],
+      ["사이드 플랭크","—","3 × 30초/측","맨몸 전용 · 매트"],
+      ["사이드라잉 외회전","밴드 외회전 (튜브 고정형)","3 × 15/측","어깨 외회전, 맨몸·경량 덤벨 · 매트"],
+      ["클램셸 · 몬스터워크 (밴드)","힙 어브덕션 머신","2세트","매트"],
+      ["—","페이스풀 (케이블)","2 × 15","케이블 없으면 밴드로 · 기구·스탠딩"],
+      ["우측 어깨 전방활주 교정운동","— (맨몸 전용)","2 × 10-15","근골격센터 처방, 사이드라잉 외회전과 같은 목적 · 기구·스탠딩"],
+      ["싱글레그 밸런스 + 편측 카프레이즈","카프레이즈 머신","2세트/측","발목 · 기구·스탠딩"]
+    ],
+    partner:[
+      "파트너 데드버그 (손·발 가볍게 눌러 저항)",
+      "파트너 사이드플랭크 (골반 밀어 챌린지)",
+      "파트너 매뉴얼 레지스턴스 외회전 (손으로 저항)",
+      "파트너 저항 클램셸 (무릎 눌러주기)",
+      "파트너 밴드 페이스풀 (반대쪽 고정)",
+      "파트너 자세 체크 (스캐폴라 위치 확인만)",
+      "파트너 밸런스 챌린지 (손으로 가볍게 밀기)"
+    ],
+    variants:{
+      office:{ name:"스쿼시 + 코어·재활", intensity:"high", iLabel:"고강도", total:65,
+        segs:[["prep",2,"코트 워밍업"],["sport",38,"스쿼시"],["main",22,"코어·재활"],["close",3,"마무리 스트레칭"]],
+        note:{t:"", h:"근골격관리 · 09:00~09:30 별도 방문", b:"아침 운동 시간표(90분)에는 포함하지 않는다. 운동 종료 후 이동해서 센터 방문. 이번 처방(전방활주 교정운동, 정강이 앞·종아리·어깨 전방활주 스트레칭)은 이미 코어·재활 표와 마무리 스트레칭에 반영해뒀다.", aside:true} },
+      homeGym:{ name:"트레드밀 인터벌 + 코어·재활 (재택)", intensity:"mid", iLabel:"중강도", total:40,
+        segs:[["cardio",20,"트레드밀 인터벌·조깅"],["main",20,"코어·재활"]],
+        note:{h:"근골격관리는 그대로", b:"재택이어도 이동 가능하면 09:00~09:30 센터 방문은 유지한다. 코어·재활은 원래도 맨몸이라 장소 상관없다.", aside:true} },
+      homeRun:{ name:"러닝 대체 · 코어·재활 그대로", intensity:"mid", iLabel:"중강도", total:50,
+        segs:[["cardio",30,"이지~모더레이트 러닝"],["main",20,"코어·재활 (원래 루틴 그대로)"]],
+        note:{h:"근골격관리는 그대로", b:"코어·재활은 장비가 필요 없어 오늘도 전체 루틴을 그대로 할 수 있다. 09:00~09:30 센터 방문도 유지.", aside:true} }
+    }
+  },
+  {
+    key:5, mark:"FRI",
+    focus:"요가 강습 종료 — 자가 웜업으로 바로 시작. 이번 주 유일한 고강도 유산소. 스쿼트 계열 대신 힌지·둔근으로 구성해 무릎 부담을 피한다.",
+    ex4:[
+      ["바벨 힙쓰러스트","힙쓰러스트 머신 · 글루트킥백 머신","3 × 12","둔근 주력"],
+      ["케틀벨 스윙","백익스텐션 머신","3 × 12","후면사슬"],
+      ["—","레그컬 (머신)","2 × 12",""],
+      ["케이블 힙 어브덕션","힙 어브덕션 머신","2 × 15/측",""]
+    ],
+    partner:[
+      "파트너 스팟팅 힙쓰러스트 (바 고정 보조, 마지막 반복 보조)",
+      "파트너 카운트 세트 (템포·폼 체크, 번갈아 세트)",
+      "파트너 매뉴얼 레그컬 (엎드려, 발목 저항 제공)",
+      "파트너 저항 힙 어브덕션 (손·밴드로 저항)"
+    ],
+    runEx:[
+      ["글루트 브릿지 (맨몸 힙쓰러스트)","2 × 15",""],
+      ["클램셸","2 × 15/측",""]
+    ],
+    variants:{
+      office:{ name:"자가 웜업 + 하체 2", intensity:"high", iLabel:"고강도", total:50,
+        segs:[["prep",5,"자가 웜업"],["main",20,"하체 2"],["cardio",20,"천국의계단"],["close",5,"마무리 스트레칭"]],
+        note:{h:"처방 재활 통합 · 매주 인바디", b:"운동 시작 전 인바디를 측정한다(매주, 90분 시간표 밖). 자가 웜업 5분에 발목 가동범위 운동·카프레이즈·밴드 외회전(화요일 스쿼시 워밍업과 동일)을 넣어 근골격센터 처방 통합 빈도를 유지한다. 마무리 스트레칭 5분에는 내전근·골반 스트레칭도 포함 — 하체2에 힙쓰러스트가 있어 타이밍이 맞는다. 천국의계단은 요가 종료로 확보한 시간을 재투자해 15→20분. 내일 러닝은 회복 주행 강도로."} },
+      homeGym:{ name:"자가 웜업 + 하체 2 (재택)", intensity:"mid", iLabel:"중강도", total:50,
+        segs:[["prep",5,"자가 웜업"],["main",20,"하체 2"],["cardio",20,"트레드밀·계단·조깅"],["close",5,"마무리 스트레칭"]],
+        note:{h:"장비 팁", b:"원래도 강습이 없는 구조라 재택 전환에 따른 차이가 크지 않다. 천국의계단이 없으면 트레드밀 고강도 경사 걷기나 계단 오르내리기로 대체."} },
+      homeRun:{ name:"러닝 대체 · 하체 2 주간", intensity:"mid", iLabel:"중강도", total:43,
+        segs:[["cardio",30,"이지~모더레이트 러닝"],["main",5,"둔근 맨몸"],["close",8,"마무리 스트레칭"]],
+        note:{h:"내일 러닝과 겹침 주의", b:"오늘도 러닝으로 대체했다면 내일 토요일 러닝은 가볍게 조정하거나 완전 휴식으로 바꿔 고강도가 과다해지지 않게 한다."} }
+    }
+  },
+  {
+    key:6, mark:"SAT",
+    focus:"러닝 기록 세션 결과 반영 예정 (하단 '다른 세션과 연결' 참고). 풋살을 옮긴다면 이 자리가 최적.",
+    ex:[], exNote:"러닝 후 정적 스트레칭 10분 필수 — 햄스트링, 종아리, 고관절 굴곡근.",
+    variants:{
+      office:{ name:"러닝", intensity:"mid", iLabel:"중강도", total:0, segs:[], note:null },
+      homeGym:{ name:"러닝", intensity:"mid", iLabel:"중강도", total:0, segs:[], note:null },
+      homeRun:{ name:"러닝", intensity:"mid", iLabel:"중강도", total:0, segs:[], note:null }
+    }
+  },
+  {
+    key:0, mark:"SUN",
+    focus:"근육은 훈련이 아니라 회복 중에 자란다. 이 날을 훈련일로 만들지 않는다.",
+    ex:[], exNote:"가벼운 산책 정도까지. 웨이트·유산소 없음.",
+    variants:{
+      office:{ name:"완전 휴식", intensity:"rest", iLabel:"휴식", total:0, segs:[], note:null },
+      homeGym:{ name:"완전 휴식", intensity:"rest", iLabel:"휴식", total:0, segs:[], note:null },
+      homeRun:{ name:"완전 휴식", intensity:"rest", iLabel:"휴식", total:0, segs:[], note:null }
+    }
+  }
+];
+
+const iClass = {high:"is-high", mid:"is-mid", low:"is-low", rest:"is-rest"};
+const todayKey = new Date().getDay();
+let mode = "office";
+let partnerOn = false;
+
+const esc = s => String(s).replace(/[&<>"]/g, m => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[m]));
+const exLink = (name) => {
+  if (!name || name === "—") return esc(name);
+  const q = encodeURIComponent(name.replace(/\([^)]*\)/g, "").trim() + " 운동 자세");
+  return '<a class="exlink" href="https://www.google.com/search?tbm=isch&q=' + q + '" rel="noreferrer">' + esc(name) + '</a>';
+};
+
+/* --- intensity strip (based on office mode, structural not mode-dependent) --- */
+const strip = document.getElementById("strip");
+DAYS.forEach(d => {
+  const v = d.variants.office;
+  const c = document.createElement("div");
+  c.className = "strip-cell " + iClass[v.intensity] + (d.key === todayKey ? " today-cell" : "");
+  c.innerHTML = '<div class="d">' + d.mark + '</div><div class="v">' + v.iLabel + '</div>';
+  strip.appendChild(c);
+});
+
+/* --- day cards --- */
+const wrapEl = document.getElementById("days");
+const otherWrapEl = document.getElementById("otherDays");
+
+function dayTopInner(d, v){
+  return '<span class="day-mark">' + d.mark + '</span>' +
+    '<h3 class="day-name">' + esc(v.name) + '</h3>' +
+    '<span class="chip ' + iClass[v.intensity] + '">' + v.iLabel + '</span>' +
+    (mode !== "office" ? '<span class="chip modeChip">' + (mode === "homeGym" ? "재택·헬스장" : "재택·러닝") + '</span>' : '') +
+    (v.total ? '<span class="total">' + v.total + '분</span>' : '');
+}
+
+function dayRestHTML(d, v){
+  let html = "";
+  if (v.segs && v.segs.length) {
+    html += '<div class="bar">';
+    v.segs.forEach(s => {
+      html += '<div class="seg" data-k="' + s[0] + '" style="flex:' + s[1] + '" title="' + esc(s[2]) + ' ' + s[1] + '분">' + s[1] + '</div>';
+    });
+    html += '</div><div class="bar-legend">';
+    v.segs.forEach(s => { html += '<span>' + esc(s[2]) + ' ' + s[1] + '</span>'; });
+    html += '</div>';
+  }
+
+  const useRunEx = mode === "homeRun" && d.runEx;
+  const exList = useRunEx ? d.runEx : d.ex;
+  const ex4List = useRunEx ? null : d.ex4;
+  const showPartner = partnerOn && !useRunEx && d.partner && d.partner.length;
+
+  if (mode === "homeGym" && ex4List) {
+    html += '<p class="hint">아파트 헬스장에서는 프리웨이트(왼쪽) 칼럼을 우선 참고하세요. 특수 머신이 없을 수 있습니다.</p>';
+  }
+  if (showPartner) {
+    html += '<p class="hint">파트너 옵션: "스팟팅/보조"는 마지막 세트를 실패까지 밀고 평소보다 +5~10% 무겁게, "매뉴얼 레지스턴스/저항"은 중량 대신 템포를 늦추고, 나머지(밸런스·폼체크)는 강도 변화 없이 시간만 늘어납니다. 90분을 넘길 것 같으면 "시간 남을 때만" 종목부터 생략하세요.</p>';
+  }
+
+  if (ex4List && ex4List.length) {
+    html += '<div class="ex-wrap"><table><thead><tr><th>프리웨이트</th><th>머신 대안</th>' +
+      (showPartner ? '<th>파트너 옵션</th>' : '') +
+      '<th>세트 × 횟수</th><th>비고</th></tr></thead><tbody>';
+    ex4List.forEach((e, i) => {
+      html += '<tr><td>' + exLink(e[0]) + '</td><td class="mach">' + exLink(e[1]) + '</td>' +
+        (showPartner ? '<td class="partner">' + esc(d.partner[i] || "—") + '</td>' : '') +
+        '<td class="sets">' + esc(e[2]) + '</td><td class="cue">' + esc(e[3]) + '</td></tr>';
+    });
+    html += '</tbody></table></div>';
+  } else if (exList && exList.length) {
+    html += '<div class="ex-wrap"><table><thead><tr><th>종목</th><th>세트 × 횟수</th><th>비고</th></tr></thead><tbody>';
+    exList.forEach(e => {
+      html += '<tr><td>' + exLink(e[0]) + '</td><td class="sets">' + esc(e[1]) + '</td><td class="cue">' + esc(e[2]) + '</td></tr>';
+    });
+    html += '</tbody></table></div>';
+  } else if (d.exNote) {
+    html += '<p class="none">' + esc(d.exNote) + '</p>';
+  }
+
+  if (v.note) {
+    const cls = v.note.t === "warn" ? " warn" : (v.note.aside ? " aside" : "");
+    html += '<div class="day-note' + cls + '"><b>' + esc(v.note.h) + '</b> — ' + esc(v.note.b) + '</div>';
+  }
+  return html;
+}
+
+function renderDays(){
+  wrapEl.innerHTML = "";
+  otherWrapEl.innerHTML = "";
+
+  DAYS.forEach(d => {
+    const v = d.variants[mode];
+    const isToday = d.key === todayKey;
+    const topInner = dayTopInner(d, v);
+    const rest = dayRestHTML(d, v);
+
+    if (isToday) {
+      const card = document.createElement("article");
+      card.className = "day is-today";
+      card.innerHTML = '<div class="day-top">' + topInner + '</div>' + rest;
+      wrapEl.appendChild(card);
+    } else {
+      const card = document.createElement("details");
+      card.className = "day day-fold";
+      card.innerHTML = '<summary class="day-top">' + topInner + '</summary><div class="day-fold-body">' + rest + '</div>';
+      otherWrapEl.appendChild(card);
+    }
+  });
+
+  const t = DAYS.find(d => d.key === todayKey);
+  const tv = t.variants[mode];
+  const dayKo = ["일","월","화","수","목","금","토"][todayKey];
+  document.getElementById("todayDay").textContent = t.mark + " · " + dayKo + "요일" + (mode !== "office" ? " · " + (mode === "homeGym" ? "재택·헬스장" : "재택·러닝") : "");
+  document.getElementById("todayTitle").textContent = tv.name;
+  document.getElementById("todayFocus").textContent = t.focus;
+}
+
+document.getElementById("modeSwitch").addEventListener("click", (e) => {
+  const btn = e.target.closest(".modeBtn");
+  if (!btn) return;
+  mode = btn.dataset.mode;
+  document.querySelectorAll("#modeSwitch .modeBtn").forEach(b => b.classList.toggle("is-active", b === btn));
+  renderDays();
+});
+
+document.getElementById("partnerSwitch").addEventListener("click", (e) => {
+  const btn = e.target.closest(".modeBtn");
+  if (!btn) return;
+  partnerOn = btn.dataset.partner === "partner";
+  document.querySelectorAll("#partnerSwitch .modeBtn").forEach(b => b.classList.toggle("is-active", b === btn));
+  renderDays();
+});
+
+renderDays();
+
+/* --- install banner: iOS/Android-aware "add to home screen" tip --- */
+(function(){
+  var banner = document.getElementById("installBanner");
+  var textEl = document.getElementById("installText");
+  var dismissBtn = document.getElementById("installDismiss");
+  if (!banner || !textEl || !dismissBtn) return;
+
+  var DISMISS_KEY = "trainingDashboard.installBannerDismissed";
+  var alreadyDismissed = false;
+  try { alreadyDismissed = localStorage.getItem(DISMISS_KEY) === "1"; } catch (e) {}
+
+  var isStandalone = false;
+  try {
+    isStandalone = window.matchMedia("(display-mode: standalone)").matches || window.navigator.standalone === true;
+  } catch (e) {}
+
+  if (alreadyDismissed || isStandalone) return;
+
+  var ua = navigator.userAgent || "";
+  var isIOS = /iPad|iPhone|iPod/.test(ua);
+  var isAndroid = /Android/.test(ua);
+
+  if (isIOS) {
+    textEl.innerHTML = "Safari 하단 <b>공유</b> 버튼 → <b>홈 화면에 추가</b>를 누르세요. (크롬 등 다른 브라우저에선 이 메뉴가 없어 Safari로 열어야 합니다)";
+  } else if (isAndroid) {
+    textEl.innerHTML = "Chrome 우측 상단 <b>⋮</b> 메뉴 → <b>홈 화면에 추가</b>(또는 앱 설치)를 누르세요.";
+  } else {
+    textEl.innerHTML = "휴대폰 브라우저에서 이 페이지를 열고 공유/메뉴에서 <b>홈 화면에 추가</b>를 선택하세요.";
+  }
+
+  banner.hidden = false;
+
+  dismissBtn.addEventListener("click", function(){
+    banner.hidden = true;
+    try { localStorage.setItem(DISMISS_KEY, "1"); } catch (e) {}
+  });
+})();
+</script>
+
+</body></html>
