@@ -1,0 +1,73 @@
+{
+  "backed_up_at": "2026-09-07T03:34Z",
+  "note": "Claude Routines(예약 트리거) 전체 백업. prompt는 서버에 저장된 원문 그대로입니다.",
+  "routine_count": 2,
+  "routines": [
+    {
+      "id": "trig_01F5e33AJFkyeVAMgnnFFvMi",
+      "name": "뉴스레터 아침 브리핑",
+      "cron_expression": "0 23 * * 0-4",
+      "cron_note": "UTC 기준. KST로는 월~금 08:00.",
+      "enabled": true,
+      "model": "claude-opus-5",
+      "created_at": "2026-08-30T23:39:17.118259Z",
+      "updated_at": "2026-09-04T12:47:01.965342Z",
+      "last_fired_at": "2026-09-06T23:11:27.989424Z",
+      "last_run_status": "SUCCEEDED",
+      "persist_session": false,
+      "notifications": { "push": true, "email": false },
+      "created_via": "meta_mcp",
+      "connectors": [
+        "PayPal",
+        "Google_Calendar",
+        "Figma",
+        "Claude_Code_Remote",
+        "Google_Drive",
+        "Gmail"
+      ],
+      "prompt": "사용자(v2sioninmymind@gmail.com)의 Gmail에 쌓인 뉴스레터를 읽고 주제별 한국어 브리핑을 만든다.\n\n## 지시 사항\n\n아래 Gmail 검색 쿼리로 전날 이후 도착한 업데이트 메일을 수집한다:\n\n```\ncategory:updates newer_than:1d\n```\n\n수집 후 아래 기준으로 **뉴스레터만 추려낸다**:\n- 포함: 정기 발송되는 뉴스레터/브리핑/레터 (뉴닉, 어피티 머니레터·잘쓸레터, 일분톡, 두부레터, 더중앙플러스, 순살브리핑(team@soonsal.com) 등 포함)\n- 제외: 프로모션·할인 메일, 결제·거래 알림, 로그인 알림, 채용 광고, 앱 알림, SNS 알림\n\n각 스레드는 `get_thread`로 열되 반드시 `messageFormat: \"PLAIN_TEXT\"`를 쓴다.\n\n대상 뉴스레터가 한 건도 없으면 작업을 종료한다.\n\n있으면 발신처별 나열이 아닌 **주제별로 묶은** 한국어 브리핑을 만든다:\n- 세 줄 요약 (맨 위)\n- 시장 스냅숏 (지수/환율 + 움직인 이유)\n- 그 주의 최대 주제 (AI·반도체 등)\n- 부동산·주거\n- 일자리·커리어\n- 챙기면 이득인 것들 (제도·지원금·마감 있는 혜택)\n- 읽고 나서 할 만한 일 (마감일 위주)\n\n결과를 자체완결형 HTML 파일(/home/claude/newsletter-brief.html)로 저장한다. CSS·JS 인라인, 외부 리소스 없음, 다크모드 대응, 한국어 폰트 스택 포함.\n\n파일을 SendUserFile로 사용자에게 전달하고, Artifact 툴로 게시한다. 이전 아티팩트가 있으면 action: \"list\"로 찾아 같은 URL에 업데이트한다.\n\n주의: 원문에 없는 숫자를 쓰지 않는다. 투자·대출·세제 항목에는 푸터에 \"결정 전 원문·공식 발표 확인\" 문구를 넣는다."
+    },
+    {
+      "id": "trig_016ox6wYnhsZZTsUBByerD6n",
+      "name": "운동 일지 체크인",
+      "cron_expression": "0 1 * * 1-5",
+      "cron_note": "UTC 기준. KST로는 월~금 10:00.",
+      "enabled": true,
+      "model": "claude-opus-5",
+      "created_at": "2026-08-30T23:34:49.646849Z",
+      "updated_at": "2026-09-05T02:42:08.842950Z",
+      "last_fired_at": "2026-09-07T01:07:48.041162Z",
+      "last_run_status": "SUCCEEDED",
+      "persist_session": false,
+      "notifications": { "push": true, "email": false },
+      "created_via": "meta_mcp",
+      "connectors": [
+        "PayPal",
+        "Google_Calendar",
+        "Figma",
+        "Claude_Code_Remote",
+        "Google_Drive",
+        "Gmail"
+      ],
+      "prompt": "매일 오전 10시(한국시간) 운동 일지 체크인입니다.\n\n1. \"건강 관리\" 프로젝트를 연다.\n2. 오늘 날짜 기준으로 이번 달 일지 파일(claude/일지/YYYY-MM.md)을 연다. 아직 없는 달이면 claude/일지/2026-08.md와 같은 구조(표 헤더: 날짜 | 요일 | 모드 | 계획 | 실제 수행 | 컨디션(1-5) | 특이사항)로 새로 만든다.\n3. claude/운동-프로그램-v1.md(v3)에서 오늘 요일에 해당하는 계획(요가/스쿼시 여부, 웨이트 부위, 유산소 등)을 확인한다.\n4. 한별님에게 짧게 묻는다: \"오늘 운동 어떠셨어요? 계획대로 하셨나요, 특이사항(통증, 컨디션, 시간 부족 등) 있으세요?\" — 이미 오늘 아침 운동을 마쳤을 시간대이므로 바로 물어보면 된다.\n5. 답변이 오면 날짜·요일·모드(회사/재택·헬스장/재택·러닝 중 하나, 언급 없으면 회사로 간주)·계획(3번에서 확인한 내용 요약)·실제 수행·컨디션(1-5, 언급 없으면 비워둠)·특이사항을 표 한 줄로 정리해서 그 달 일지 파일에 추가한다.\n6. 특이사항에 반복되는 통증이나 패턴이 보이면 \"이번 달 메모\" 섹션에도 한 줄 요약해둔다.\n7. 정리를 마치면 \"기록했습니다\"처럼 짧게 확인만 해주고 장황하게 설명하지 않는다.\n\n한별님이 답장을 늦게 하거나 오늘은 쉰다고 해도 괜찮다 — 강요하지 말고 짧게 받아들이고 기록한다."
+    }
+  ],
+  "environments": [
+    {
+      "environment_id": "env_017cTx9nfY4ynRrZMiRQpF6k",
+      "name": "v2sion_cloud",
+      "description": "Default environment created during onboarding",
+      "state": "active",
+      "kind": "anthropic_cloud",
+      "created_at": "2026-05-13T04:48:37.991593Z"
+    }
+  ],
+  "connectors_seen": [
+    { "name": "PayPal", "connector_uuid": "0b7d22d4-307f-405d-9bec-5b79b017bdf7" },
+    { "name": "Google_Calendar", "connector_uuid": "21f4017a-3c39-4f19-b9aa-cb74afa0a66f" },
+    { "name": "Figma", "connector_uuid": "a8850874-ad2b-4def-8378-9e4570a6d4fc" },
+    { "name": "Claude_Code_Remote", "connector_uuid": "bf7c680d-5fdc-5ef4-b4a0-abadb619bf0a" },
+    { "name": "Google_Drive", "connector_uuid": "ee0f4c31-43ea-4730-a122-23563c4180b1" },
+    { "name": "Gmail", "connector_uuid": "ff57a554-2ac4-4c51-94ad-f053caccaade" }
+  ]
+}
