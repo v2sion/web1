@@ -1,0 +1,454 @@
+{
+  "A. 클라우드 세션 — PC 없이 재개 가능": [
+    {
+      "date": "2026-09-07",
+      "status": "RUNNING",
+      "title": "세션 데이터 백업",
+      "id": "session_01FaaxQxiuGLqLnWsnRVuTHr"
+    },
+    {
+      "date": "2026-08-22",
+      "status": "IDLE",
+      "title": "사진 첨부 서비스 영향도 검토",
+      "id": "session_012BFqmEu2ZemQmchBmqtj6f"
+    },
+    {
+      "date": "2026-08-15",
+      "status": "IDLE",
+      "title": "Llama 3.3 70B 모델 변경 검토",
+      "id": "session_01V57WPc6ycXjQzf5whgWJDC"
+    },
+    {
+      "date": "2026-08-13",
+      "status": "IDLE",
+      "title": "전국 체감온도 순위 수집 실패",
+      "id": "session_019S4DEgGpojuHBn3bke8UXX"
+    },
+    {
+      "date": "2026-08-10",
+      "status": "IDLE",
+      "title": "Vercel Blob Advanced Requests 검토",
+      "id": "session_01SNycx6BWCCqm9H4RKu3eTF"
+    }
+  ],
+  "B. 브리지 · recoverable=true — PC 복귀 시 재개 가능성": [
+    {
+      "date": "2026-09-06",
+      "status": "IDLE",
+      "title": "로컬 파일 손실 복구",
+      "id": "session_01Px9hEHPGeTj8HpK62Z3wVf"
+    },
+    {
+      "date": "2026-09-05",
+      "status": "IDLE",
+      "title": "미니앱 운영 전략 및 폴더 구조 정리",
+      "id": "session_015XKGHCTjYRfoRd4AZUkAWd"
+    },
+    {
+      "date": "2026-09-05",
+      "status": "IDLE",
+      "title": "[업데이트]별핑계 기능 및 방향성 개선",
+      "id": "session_0117FWwrPX5qeh9hJYunqdQN"
+    },
+    {
+      "date": "2026-09-04",
+      "status": "IDLE",
+      "title": "토스 미니앱 SDK 전환 검토",
+      "id": "session_01G9cWXwRX4Lk2MPUBSj8ndp"
+    },
+    {
+      "date": "2026-09-04",
+      "status": "IDLE",
+      "title": "맛마따나 세션 킥오프",
+      "id": "session_013w27ry4c6zJ5UnqcYonRXR"
+    },
+    {
+      "date": "2026-09-04",
+      "status": "IDLE",
+      "title": "(폐기)언제 출발해 기획 및 설계",
+      "id": "session_01SWGQhXZpN5c3MkZQ7Bkk9B"
+    },
+    {
+      "date": "2026-09-03",
+      "status": "IDLE",
+      "title": "[운영]별핑계 이슈 및 버그 대응",
+      "id": "session_01MSWmEdtBE1M82prrkuRAgq"
+    },
+    {
+      "date": "2026-09-02",
+      "status": "IDLE",
+      "title": "지름신 대기실 미니앱 출시 준비",
+      "id": "session_016uYYucbF55rcFwFheRXxYH"
+    },
+    {
+      "date": "2026-09-02",
+      "status": "IDLE",
+      "title": "인생 챕터 검토 및 출시 준비",
+      "id": "session_01GFhwytbyL1iszUDzSp5Zbt"
+    },
+    {
+      "date": "2026-09-01",
+      "status": "IDLE",
+      "title": "[업데이트]별점 기능 및 방향성 개선",
+      "id": "session_011qVUp3HbPY3eGfUrcoEp8a"
+    },
+    {
+      "date": "2026-08-30",
+      "status": "IDLE",
+      "title": "[마케팅]별핑계 푸시·프로모션·핵심지표",
+      "id": "session_01GF1fJdDCJTahiGXmuD4PLk"
+    },
+    {
+      "date": "2026-08-30",
+      "status": "IDLE",
+      "title": "[마케팅]별점 푸시·프로모션·핵심지표",
+      "id": "session_01BFLRVQZsjhzdrwC8S4PzbA"
+    },
+    {
+      "date": "2026-08-29",
+      "status": "IDLE",
+      "title": "Toss 미니앱 출시 성공 사례 분석",
+      "id": "session_01ChqQsw3HP8J1baQJp8dFjW"
+    },
+    {
+      "date": "2026-07-12",
+      "status": "IDLE",
+      "title": "Dispatch background conversation",
+      "id": "session_019XVvkqDcYezUN99rvZhMeU"
+    }
+  ],
+  "C. 브리지 · 오류기록 없음 — PC 복귀 시 시도 대상": [
+    {
+      "date": "2026-08-17",
+      "status": "IDLE",
+      "title": "상태줄 확인해보기",
+      "id": "session_01Sffh9eP8e6TaT5XvLCeW8b"
+    },
+    {
+      "date": "2026-08-17",
+      "status": "IDLE",
+      "title": "Claude Code 사용 행태 분석 및 개선 전략",
+      "id": "session_01KGMLMJTGaE6syZaAFkH78R"
+    },
+    {
+      "date": "2026-08-16",
+      "status": "IDLE",
+      "title": "hbjh-concurrent-puffin",
+      "id": "session_01SD1L1VWzhVA2SrLqp7edsN"
+    },
+    {
+      "date": "2026-08-16",
+      "status": "IDLE",
+      "title": "[업데이트]별핑계 기능 및 방향성 개선",
+      "id": "session_01VpkefZ5WaFVQwzwzUQaM9M"
+    },
+    {
+      "date": "2026-08-16",
+      "status": "IDLE",
+      "title": "[업데이트]별점 기능 및 방향성 개선",
+      "id": "session_01H5dXseKNWXSkTC1H9jLGUc"
+    },
+    {
+      "date": "2026-08-16",
+      "status": "ARCHIVED",
+      "title": "[업데이트]별핑계 기능 및 방향성 개선",
+      "id": "session_01SMbmvsaAehMQN6XvxCxoei"
+    },
+    {
+      "date": "2026-08-15",
+      "status": "IDLE",
+      "title": "[운영]별핑계 이슈 및 버그 대응",
+      "id": "session_01H28UsX3Rgxdcs8Whtjzug7"
+    },
+    {
+      "date": "2026-08-15",
+      "status": "IDLE",
+      "title": "[업데이트]별핑계 기능 및 방향성 개선",
+      "id": "session_01J5oy4KxspFyihSssRYPQ3A"
+    },
+    {
+      "date": "2026-08-14",
+      "status": "IDLE",
+      "title": "[업데이트]별점 기능 및 방향성 개선",
+      "id": "session_01TpPminpL8aDfm13TFb2mhM"
+    },
+    {
+      "date": "2026-08-14",
+      "status": "ARCHIVED",
+      "title": "[업데이트]별핑계 기능 및 방향성 개선",
+      "id": "session_018mc8MFPv6BwY3wpKKR1X8Q"
+    },
+    {
+      "date": "2026-08-14",
+      "status": "ARCHIVED",
+      "title": "Windows PC 순차적 최적화 진행",
+      "id": "session_01AZuuVamoTNaVpM8mRiCoyU"
+    },
+    {
+      "date": "2026-08-13",
+      "status": "IDLE",
+      "title": "[업데이트]별핑계 기능 및 방향성 개선",
+      "id": "session_01S5f8DUpisgRCaAdyHjsWqU"
+    },
+    {
+      "date": "2026-08-13",
+      "status": "IDLE",
+      "title": "[업데이트]별점 기능 및 방향성 개선",
+      "id": "session_013crFFQ9ozNRpWbjpSDLxKD"
+    },
+    {
+      "date": "2026-08-13",
+      "status": "IDLE",
+      "title": "[마케팅]별점 푸시·프로모션·핵심지표",
+      "id": "session_01Xw8CAHRRAf4jfuQGGJoTwu"
+    },
+    {
+      "date": "2026-08-10",
+      "status": "IDLE",
+      "title": "토스 미니앱 로컬 저장소 용량 최적화",
+      "id": "session_01Qt1jtoHCzcND7ZuzCQgYEP"
+    },
+    {
+      "date": "2026-08-10",
+      "status": "IDLE",
+      "title": "[운영]별점 이슈 및 버그 대응",
+      "id": "session_01Jm5eJfwnUi7vgdWfbyRKb6"
+    },
+    {
+      "date": "2026-08-10",
+      "status": "ARCHIVED",
+      "title": "[운영]별핑계 이슈 및 버그 대응",
+      "id": "session_01YJqiUtqCtzmHVPW555qwuE"
+    },
+    {
+      "date": "2026-08-10",
+      "status": "ARCHIVED",
+      "title": "[업데이트]별핑계 기능 및 방향성 개선",
+      "id": "session_01HP59ayN5QKEdbzdh5BrgjL"
+    },
+    {
+      "date": "2026-08-10",
+      "status": "ARCHIVED",
+      "title": "[업데이트]별점 기능 및 방향성 개선",
+      "id": "session_01UJMzsTRzDWwWBYnp3C5vnv"
+    },
+    {
+      "date": "2026-08-10",
+      "status": "ARCHIVED",
+      "title": "[마케팅]별핑계 푸시·프로모션·핵심지표",
+      "id": "session_01S9d8FEzbuHZse34pMkyG5Q"
+    },
+    {
+      "date": "2026-08-10",
+      "status": "ARCHIVED",
+      "title": "[마케팅]별점 푸시·프로모션·핵심지표",
+      "id": "session_0158Lt75pPCvJAgJo3B1f4Xc"
+    },
+    {
+      "date": "2026-08-09",
+      "status": "IDLE",
+      "title": "[MVP]별핑계 첫 출시",
+      "id": "session_01EcA8qeYKzDTucJ68A9hsGF"
+    },
+    {
+      "date": "2026-08-09",
+      "status": "IDLE",
+      "title": "[MVP]별점 첫 출시",
+      "id": "session_01WVMm3XRTMiTmwDnmpLQBMd"
+    },
+    {
+      "date": "2026-08-08",
+      "status": "IDLE",
+      "title": "[MVP]별핑계 첫 출시",
+      "id": "session_01R93N8uxPXcNxYVazWf8xRd"
+    },
+    {
+      "date": "2026-08-08",
+      "status": "IDLE",
+      "title": "[MVP]별점 첫 출시",
+      "id": "session_01477VLbYPR1MyQNpC4yh6pu"
+    },
+    {
+      "date": "2026-08-07",
+      "status": "IDLE",
+      "title": "[MVP]별핑계 첫 출시",
+      "id": "session_018JHJVnNXHunRwbx76XzBUq"
+    },
+    {
+      "date": "2026-08-07",
+      "status": "IDLE",
+      "title": "[MVP]별점 첫 출시",
+      "id": "session_01FtBKksHqcerGEMHYFAYwMy"
+    },
+    {
+      "date": "2026-08-05",
+      "status": "IDLE",
+      "title": "새로운 앱 방향 기획 및 실행 전략 수립",
+      "id": "session_014mkCmeice2SduhWhVTLJdf"
+    },
+    {
+      "date": "2026-08-02",
+      "status": "IDLE",
+      "title": "[MVP] 보험천재",
+      "id": "session_01PnuGTb21vwfUgq7NYyrxNT"
+    },
+    {
+      "date": "2026-08-01",
+      "status": "ARCHIVED",
+      "title": "[마케팅] 무더위 랭킹 마케팅 분석",
+      "id": "session_015kdQ771NtNSpHihZpRCGFB"
+    },
+    {
+      "date": "2026-07-29",
+      "status": "IDLE",
+      "title": "[운영] 이슈 및 버그 대응_3",
+      "id": "session_01PqoV9QqckutYnNaXrH45Xc"
+    },
+    {
+      "date": "2026-07-29",
+      "status": "IDLE",
+      "title": "[업데이트] 기능 및 방향성 개선_3",
+      "id": "session_01UBVfkRcEqiyuFEEHqPLznx"
+    },
+    {
+      "date": "2026-07-29",
+      "status": "IDLE",
+      "title": "[마케팅] 푸시·프로모션·핵심지표_3",
+      "id": "session_01FUPpb9y2mFUYLQkzAjTqSQ"
+    },
+    {
+      "date": "2026-07-27",
+      "status": "ARCHIVED",
+      "title": "[업데이트] 기능 및 방향성 개선",
+      "id": "session_014pB11AA2Qrhp48Pd3VLpGF"
+    },
+    {
+      "date": "2026-07-26",
+      "status": "IDLE",
+      "title": "[MVP] 초기 히스토리_3",
+      "id": "session_01BvrSK9R8v7B1yVevjbgTE9"
+    },
+    {
+      "date": "2026-07-26",
+      "status": "IDLE",
+      "title": "[MVP] 보험천재",
+      "id": "session_018cD2ytNZVoNVwLvLZEYG84"
+    },
+    {
+      "date": "2026-07-25",
+      "status": "IDLE",
+      "title": "[MVP] 초기 히스토리_3",
+      "id": "session_018fMmy3prP9KqN3iqztPxUx"
+    },
+    {
+      "date": "2026-07-25",
+      "status": "ARCHIVED",
+      "title": "[업데이트] 기능 및 방향성 개선",
+      "id": "session_015Mf5Yko4zWL7ecxA8NnXbQ"
+    },
+    {
+      "date": "2026-07-25",
+      "status": "ARCHIVED",
+      "title": "[MVP] 보험천재",
+      "id": "session_016cbxo8LnDfN7LL4TuknToi"
+    },
+    {
+      "date": "2026-07-19",
+      "status": "IDLE",
+      "title": "[MVP] 초기 히스토리_2",
+      "id": "session_01PqXzTCtcSP25GPUWSs3ssT"
+    },
+    {
+      "date": "2026-07-19",
+      "status": "ARCHIVED",
+      "title": "백로그 정리: 게임 및 커뮤니티 앱 아이디어",
+      "id": "session_01VURGiHqtRwoHWrmvMDCqso"
+    },
+    {
+      "date": "2026-07-19",
+      "status": "ARCHIVED",
+      "title": "[업데이트] 기능 및 방향성 개선",
+      "id": "session_01Jdnc4Hd7ycfFK9mjcfYDvR"
+    },
+    {
+      "date": "2026-07-19",
+      "status": "ARCHIVED",
+      "title": "[업데이트] 기능 및 방향성 개선",
+      "id": "session_01J1rsaycGDLbq37uZq6PXLk"
+    },
+    {
+      "date": "2026-07-19",
+      "status": "ARCHIVED",
+      "title": "[마케팅] 푸시·프로모션·핵심지표",
+      "id": "session_01EyKUQzDHyiCXfdM7tiAovj"
+    },
+    {
+      "date": "2026-07-18",
+      "status": "ARCHIVED",
+      "title": "[업데이트] 기능 및 방향성 개선",
+      "id": "session_011aGonoyErf7c4iUNtYPnok"
+    },
+    {
+      "date": "2026-07-18",
+      "status": "ARCHIVED",
+      "title": "[MVP] 초기 히스토리_2",
+      "id": "session_013bNQMkbK2e8c42M1BqMF5T"
+    },
+    {
+      "date": "2026-07-17",
+      "status": "ARCHIVED",
+      "title": "[업데이트] 기능 및 방향성 개선",
+      "id": "session_01SNjNpqSg9CP8xV8EJ9gDUj"
+    },
+    {
+      "date": "2026-07-17",
+      "status": "ARCHIVED",
+      "title": "[마케팅] 푸시·프로모션·핵심지표",
+      "id": "session_0137jRhPwppHGLMvf1ZsZme7"
+    },
+    {
+      "date": "2026-07-17",
+      "status": "ARCHIVED",
+      "title": "[디자인]Global System",
+      "id": "session_01AtmV61CjBKx5T6MR9KnRsg"
+    },
+    {
+      "date": "2026-07-16",
+      "status": "IDLE",
+      "title": "앱인토스 콘솔 MCP 연결하기",
+      "id": "session_01LSm4cuTXnggdjj6UnZzJ4b"
+    },
+    {
+      "date": "2026-07-16",
+      "status": "ARCHIVED",
+      "title": "[운영] 이슈 및 버그 대응",
+      "id": "session_018QAvPNA8DKMrMNCndij5DC"
+    },
+    {
+      "date": "2026-07-15",
+      "status": "ARCHIVED",
+      "title": "Toss mini-app project guide",
+      "id": "session_01217cmqPuQJByvgUBtLf8Ns"
+    },
+    {
+      "date": "2026-07-14",
+      "status": "REQUIRES_ACTION",
+      "title": "Development continuation from briefs/mockups",
+      "id": "session_018SmnXs1pq8nYwhWBbBPAq7"
+    },
+    {
+      "date": "2026-07-12",
+      "status": "ARCHIVED",
+      "title": "hbjh-purrfect-jellyfish",
+      "id": "session_015McZRia7TygfEyoM1YH4Ls"
+    }
+  ],
+  "X. 환경 삭제됨 — 복구 불가 명시": [
+    {
+      "date": "2026-05-14",
+      "status": "ARCHIVED",
+      "title": "Dispatch background conversation",
+      "id": "session_019KpyY8bPVBKVF9iDT7wDgi"
+    }
+  ]
+}
