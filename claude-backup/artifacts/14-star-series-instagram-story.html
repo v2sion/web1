@@ -1,0 +1,532 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1"><style>:root{color-scheme:light}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}</style></head><body>
+<title>별 시리즈 인스타그램 스토리</title>
+<style>
+  /* ── 토큰 ── */
+  :root {
+    --bg:       #080d18;
+    --space:    #0c1320;
+    --card:     rgba(255,255,255,0.055);
+    --border:   rgba(255,255,255,0.10);
+    --blue:     #3182F6;
+    --orange:   #FF8000;
+    --gold:     #FFA75A;
+    --purple:   #a07eff;
+    --white:    #ffffff;
+    --muted:    rgba(255,255,255,0.48);
+    --faint:    rgba(255,255,255,0.22);
+    --mono-acc: rgba(255,167,90,0.75);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 32px 16px 48px;
+    font-family: 'JetBrains Mono', 'Consolas', 'Courier New', monospace;
+    color: var(--white);
+  }
+
+  /* ── Page header ── */
+  .page-header {
+    width: 100%;
+    max-width: 420px;
+    margin-bottom: 20px;
+  }
+  .page-header-eyebrow {
+    font-size: 9px;
+    letter-spacing: .25em;
+    color: var(--mono-acc);
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+  .page-header-title {
+    font-family: 'Noto Serif KR', 'Nanum Myeongjo', 'Batang', Georgia, serif;
+    font-size: 20px;
+    font-weight: 900;
+    color: var(--white);
+    margin-bottom: 4px;
+  }
+  .page-header-sub {
+    font-size: 10px;
+    color: var(--muted);
+    line-height: 1.6;
+  }
+
+  /* ── App toggle tabs ── */
+  .tabs {
+    display: flex;
+    gap: 8px;
+    width: 100%;
+    max-width: 420px;
+    margin-bottom: 14px;
+  }
+  .tab-btn {
+    flex: 1;
+    padding: 9px 12px;
+    border-radius: 8px;
+    border: 1px solid rgba(255,255,255,0.12);
+    background: transparent;
+    color: var(--muted);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    cursor: pointer;
+    transition: all .2s;
+    letter-spacing: .03em;
+  }
+  .tab-btn.active {
+    background: rgba(49,130,246,0.14);
+    border-color: var(--blue);
+    color: var(--white);
+  }
+
+  /* ── Story frame (9:16) ── */
+  .story-wrap {
+    width: 100%;
+    max-width: 420px;
+    position: relative;
+  }
+  .story-frame {
+    aspect-ratio: 9/16;
+    width: 100%;
+    border-radius: 20px;
+    overflow: hidden;
+    position: relative;
+    background: var(--space);
+    box-shadow: 0 24px 80px rgba(0,0,0,0.7), 0 0 0 1px rgba(255,255,255,0.07);
+  }
+
+  /* ── Stars canvas (ambient bg) ── */
+  canvas {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+  }
+
+  /* ── Glow orb ── */
+  .glow-orb {
+    position: absolute;
+    border-radius: 50%;
+    pointer-events: none;
+    filter: blur(80px);
+    opacity: .18;
+    transition: all .5s ease;
+  }
+  #glowA {
+    width: 55%; height: 40%;
+    top: 10%; left: 20%;
+  }
+  #glowB {
+    width: 35%; height: 25%;
+    bottom: 20%; right: 10%;
+  }
+
+  /* ── Story content ── */
+  .story-content {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    padding: 22px 22px 28px;
+  }
+
+  /* Instagram-style top bar */
+  .ig-bar {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 4px;
+  }
+  .ig-progress {
+    display: flex;
+    gap: 4px;
+    width: 100%;
+    margin-bottom: 10px;
+  }
+  .ig-seg {
+    flex: 1;
+    height: 2px;
+    border-radius: 2px;
+    background: rgba(255,255,255,0.25);
+    transition: background .3s;
+  }
+  .ig-seg.done { background: rgba(255,255,255,0.9); }
+
+  .ig-avatar {
+    width: 30px; height: 30px;
+    border-radius: 50%;
+    border: 2px solid var(--orange);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 14px; flex-shrink: 0;
+    background: rgba(255,128,0,0.08);
+  }
+  .ig-meta { flex: 1; }
+  .ig-name {
+    font-size: 11px;
+    font-weight: 600;
+    color: rgba(255,255,255,0.9);
+    letter-spacing: .02em;
+  }
+  .ig-time { font-size: 9px; color: rgba(255,255,255,0.4); }
+
+  /* ── Main area ── */
+  .story-main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 8px 0;
+  }
+
+  /* Report badge — the "scientific parody" element */
+  .report-badge {
+    font-size: 8.5px;
+    letter-spacing: .18em;
+    color: var(--mono-acc);
+    text-transform: uppercase;
+    border: 1px solid rgba(255,167,90,0.22);
+    border-radius: 4px;
+    padding: 4px 10px;
+    margin-bottom: 22px;
+    white-space: nowrap;
+  }
+
+  .app-icon-wrap {
+    position: relative;
+    margin-bottom: 12px;
+  }
+  .app-icon {
+    font-size: 62px;
+    line-height: 1;
+    display: block;
+    filter: drop-shadow(0 0 28px rgba(255,128,0,0.35));
+    transition: filter .4s;
+  }
+
+  .app-name {
+    font-family: 'Noto Serif KR', 'Nanum Myeongjo', 'Batang', Georgia, serif;
+    font-size: 40px;
+    font-weight: 900;
+    color: var(--white);
+    letter-spacing: -.025em;
+    line-height: 1;
+    margin-bottom: 10px;
+    text-shadow: 0 0 48px rgba(49,130,246,0.25);
+    transition: all .4s;
+  }
+
+  .app-tagline {
+    font-family: 'Noto Serif KR', 'Nanum Myeongjo', Georgia, serif;
+    font-size: 13.5px;
+    line-height: 1.75;
+    color: rgba(255,255,255,0.6);
+    margin-bottom: 22px;
+    white-space: pre-line;
+  }
+
+  .tag-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+  .tag {
+    font-size: 8.5px;
+    letter-spacing: .06em;
+    color: var(--mono-acc);
+    border: 1px solid rgba(255,167,90,0.22);
+    border-radius: 3px;
+    padding: 3px 8px;
+  }
+
+  .story-divider {
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.10), transparent);
+    margin-bottom: 16px;
+  }
+
+  .cross-note {
+    font-size: 9.5px;
+    color: rgba(255,255,255,0.30);
+    letter-spacing: .04em;
+  }
+
+  /* ── CTA area ── */
+  .story-cta {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .cta-hint {
+    font-size: 9px;
+    color: rgba(255,255,255,0.30);
+    letter-spacing: .12em;
+    text-transform: uppercase;
+  }
+
+  .cta-btn {
+    display: block;
+    width: 100%;
+    background: var(--blue);
+    color: #fff;
+    text-decoration: none;
+    border-radius: 999px;
+    padding: 14px 20px;
+    font-family: 'Noto Serif KR', 'Nanum Myeongjo', Georgia, serif;
+    font-size: 14.5px;
+    font-weight: 700;
+    text-align: center;
+    box-shadow: 0 6px 28px rgba(49,130,246,0.40);
+    transition: background .25s, box-shadow .25s;
+  }
+
+  .cta-url {
+    font-size: 8.5px;
+    color: rgba(255,255,255,0.22);
+    letter-spacing: .05em;
+  }
+
+  /* ── Instructions panel ── */
+  .instructions {
+    width: 100%;
+    max-width: 420px;
+    margin-top: 20px;
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 12px;
+    padding: 18px 20px;
+    background: rgba(255,255,255,0.03);
+  }
+  .inst-title {
+    font-size: 9px;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    color: var(--mono-acc);
+    margin-bottom: 12px;
+  }
+  .inst-steps {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .inst-step {
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+  }
+  .inst-num {
+    font-size: 9px;
+    color: var(--blue);
+    flex-shrink: 0;
+    padding-top: 1px;
+    letter-spacing: .05em;
+  }
+  .inst-text {
+    font-size: 10px;
+    color: rgba(255,255,255,0.55);
+    line-height: 1.55;
+  }
+  .inst-text strong { color: rgba(255,255,255,0.8); }
+  .inst-url {
+    display: inline-block;
+    margin-top: 6px;
+    font-size: 9px;
+    color: var(--blue);
+    background: rgba(49,130,246,0.10);
+    border: 1px solid rgba(49,130,246,0.25);
+    border-radius: 4px;
+    padding: 3px 8px;
+    letter-spacing: .03em;
+  }
+</style>
+
+<div class="page-header">
+  <div class="page-header-eyebrow">인스타그램 스토리 시안</div>
+  <div class="page-header-title">🔮 별핑계 &amp; 🌙 별점</div>
+  <div class="page-header-sub">앱 탭으로 전환 · 스크린샷 후 스토리에 올리세요</div>
+</div>
+
+<div class="tabs">
+  <button class="tab-btn active" onclick="setApp('starexcuse', this)">🔮 별핑계</button>
+  <button class="tab-btn" onclick="setApp('starrating', this)">🌙 별점</button>
+</div>
+
+<div class="story-wrap">
+  <div class="story-frame" id="storyFrame">
+    <canvas id="starsCanvas"></canvas>
+
+    <!-- glow orbs -->
+    <div class="glow-orb" id="glowA" style="background:#FF8000;"></div>
+    <div class="glow-orb" id="glowB" style="background:#3182F6;"></div>
+
+    <div class="story-content">
+      <!-- Instagram-style top -->
+      <div class="ig-progress">
+        <div class="ig-seg" id="seg1"></div>
+        <div class="ig-seg" id="seg2"></div>
+      </div>
+      <div class="ig-bar">
+        <div class="ig-avatar" id="igAvatar">🔮</div>
+        <div class="ig-meta">
+          <div class="ig-name">꿈청</div>
+          <div class="ig-time">방금 전</div>
+        </div>
+      </div>
+
+      <!-- Main -->
+      <div class="story-main">
+        <div class="report-badge" id="reportBadge">COSMOS OBS. REPORT · 2026.08.10</div>
+        <div class="app-icon-wrap">
+          <span class="app-icon" id="appIcon">🔮</span>
+        </div>
+        <div class="app-name" id="appName">별핑계</div>
+        <div class="app-tagline" id="appTagline">오늘도 우주 탓입니다</div>
+        <div class="tag-row" id="tagRow">
+          <span class="tag">화성 역행</span>
+          <span class="tag">목성 인력</span>
+          <span class="tag">태양 흑점</span>
+        </div>
+        <div class="story-divider"></div>
+        <div class="cross-note" id="crossNote">🌙 별점 크로스 연동 앱</div>
+      </div>
+
+      <!-- CTA -->
+      <div class="story-cta">
+        <div class="cta-hint">↓ 탭해서 열기</div>
+        <a class="cta-btn" id="ctaBtn" href="intoss://starexcuse">토스 앱에서 열기</a>
+        <div class="cta-url" id="ctaUrl">starexcuse.vercel.app</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Instructions -->
+<div class="instructions">
+  <div class="inst-title">사용 방법</div>
+  <div class="inst-steps">
+    <div class="inst-step">
+      <span class="inst-num">01</span>
+      <span class="inst-text">위 스토리 영역을 <strong>길게 눌러 스크린샷</strong> → 인스타 스토리에 사진으로 올리기</span>
+    </div>
+    <div class="inst-step">
+      <span class="inst-num">02</span>
+      <span class="inst-text">스토리 편집 화면에서 <strong>링크 스티커</strong> 추가 → 아래 URL 붙여넣기
+        <br><span class="inst-url" id="instUrl">starexcuse.vercel.app</span>
+      </span>
+    </div>
+    <div class="inst-step">
+      <span class="inst-num">03</span>
+      <span class="inst-text">링크 스티커 텍스트를 <strong>"토스 앱에서 열기 →"</strong> 로 수정</span>
+    </div>
+    <div class="inst-step">
+      <span class="inst-num">04</span>
+      <span class="inst-text">Vercel 배포 후 <strong>별점 스토리</strong>도 탭 전환 후 같은 방법으로 업로드</span>
+    </div>
+  </div>
+</div>
+
+<script>
+/* ── Stars canvas ── */
+const canvas = document.getElementById('starsCanvas');
+const ctx = canvas.getContext('2d');
+let W = 0, H = 0;
+const stars = [];
+
+function resize() {
+  const f = document.getElementById('storyFrame');
+  W = canvas.width  = f.offsetWidth;
+  H = canvas.height = f.offsetHeight;
+}
+
+function buildStars() {
+  stars.length = 0;
+  for (let i = 0; i < 90; i++) {
+    stars.push({ x: Math.random(), y: Math.random(), r: Math.random() * 1.1 + 0.2,
+      a: Math.random() * 0.7 + 0.15, sp: Math.random() * 0.0004 + 0.0001,
+      ph: Math.random() * Math.PI * 2, orange: i >= 80 });
+  }
+}
+
+let raf, t = 0;
+function tick() {
+  if (!W) { raf = requestAnimationFrame(tick); return; }
+  ctx.clearRect(0, 0, W, H);
+  t++;
+  for (const s of stars) {
+    const tw = s.a * (0.55 + 0.45 * Math.sin(t * s.sp * 200 + s.ph));
+    ctx.beginPath();
+    ctx.arc(s.x * W, s.y * H, s.r, 0, Math.PI * 2);
+    ctx.fillStyle = s.orange ? `rgba(255,167,90,${tw})` : `rgba(255,255,255,${tw})`;
+    ctx.fill();
+  }
+  raf = requestAnimationFrame(tick);
+}
+
+resize();
+buildStars();
+tick();
+window.addEventListener('resize', () => { resize(); buildStars(); });
+
+/* ── App data ── */
+const apps = {
+  starexcuse: {
+    icon: '🔮', name: '별핑계',
+    tagline: '오늘도 우주 탓입니다',
+    tags: ['화성 역행', '목성 인력', '태양 흑점'],
+    cross: '🌙 별점 크로스 연동 앱',
+    report: 'COSMOS OBS. REPORT · 2026.08.10',
+    deeplink: 'intoss://starexcuse',
+    url: 'starexcuse.vercel.app',
+    glow: '#FF8000',
+    seg: [true, false],
+  },
+  starrating: {
+    icon: '🌙', name: '별점',
+    tagline: '내 하루 점수를\n우주가 재채점합니다',
+    tags: ['반전 상승', '긍정 강화', '우주 무관심'],
+    cross: '🔮 별핑계 크로스 연동 앱',
+    report: 'COSMOS SCORE REPORT · 2026.08.10',
+    deeplink: 'intoss://starrating',
+    url: 'star-excuse.vercel.app',
+    glow: '#a07eff',
+    seg: [false, true],
+  }
+};
+
+function setApp(id, btn) {
+  const a = apps[id];
+
+  document.getElementById('igAvatar').textContent   = a.icon;
+  document.getElementById('reportBadge').textContent = a.report;
+  document.getElementById('appIcon').textContent     = a.icon;
+  document.getElementById('appName').textContent     = a.name;
+  document.getElementById('appTagline').textContent  = a.tagline;
+  document.getElementById('crossNote').textContent   = a.cross;
+  document.getElementById('ctaBtn').href             = a.deeplink;
+  document.getElementById('ctaUrl').textContent      = a.url;
+  document.getElementById('instUrl').textContent     = a.url;
+
+  document.getElementById('tagRow').innerHTML =
+    a.tags.map(t => `<span class="tag">${t}</span>`).join('');
+
+  document.getElementById('seg1').className = 'ig-seg' + (a.seg[0] ? ' done' : '');
+  document.getElementById('seg2').className = 'ig-seg' + (a.seg[1] ? ' done' : '');
+
+  document.getElementById('glowA').style.background = a.glow;
+
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  if (btn) btn.classList.add('active');
+}
+</script>
+
+</body></html>
