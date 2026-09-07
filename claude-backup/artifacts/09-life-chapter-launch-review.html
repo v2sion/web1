@@ -1,0 +1,837 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1"><style>:root{color-scheme:light}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}</style></head><body>
+<title>인생 챕터 출시 검토</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans+KR:wght@300;400;500;600;700&display=swap">
+
+<style>
+  :root {
+    --paper:      #EDF0EE;
+    --surface:    #FBFCFB;
+    --surface-2:  #E3E8E5;
+    --ink:        #151A18;
+    --ink-2:      #4C5551;
+    --ink-3:      #78827D;
+    --rule:       #CBD3CE;
+    --rule-soft:  #DEE4E0;
+    --accent:     #1C5A4B;
+    --accent-2:   #2E7D68;
+    --block:      #A02A1C;
+    --block-bg:   #F6E4E1;
+    --caution:    #8A5A05;
+    --caution-bg: #F7ECD8;
+    --ok:         #2C6438;
+    --ok-bg:      #E1EDE2;
+    --shadow:     0 1px 2px rgba(21,26,24,.05), 0 8px 24px -16px rgba(21,26,24,.28);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --paper:      #101413;
+      --surface:    #181D1B;
+      --surface-2:  #212825;
+      --ink:        #E4EAE6;
+      --ink-2:      #A6B0AB;
+      --ink-3:      #7C8781;
+      --rule:       #2C3532;
+      --rule-soft:  #232A28;
+      --accent:     #62C0A4;
+      --accent-2:   #7FD0B7;
+      --block:      #E8806F;
+      --block-bg:   #2E1A17;
+      --caution:    #D9A445;
+      --caution-bg: #2B2314;
+      --ok:         #6FBB7C;
+      --ok-bg:      #17251A;
+      --shadow:     0 1px 2px rgba(0,0,0,.3), 0 8px 24px -16px rgba(0,0,0,.7);
+    }
+  }
+  :root[data-theme="dark"] {
+    --paper:      #101413;
+    --surface:    #181D1B;
+    --surface-2:  #212825;
+    --ink:        #E4EAE6;
+    --ink-2:      #A6B0AB;
+    --ink-3:      #7C8781;
+    --rule:       #2C3532;
+    --rule-soft:  #232A28;
+    --accent:     #62C0A4;
+    --accent-2:   #7FD0B7;
+    --block:      #E8806F;
+    --block-bg:   #2E1A17;
+    --caution:    #D9A445;
+    --caution-bg: #2B2314;
+    --ok:         #6FBB7C;
+    --ok-bg:      #17251A;
+    --shadow:     0 1px 2px rgba(0,0,0,.3), 0 8px 24px -16px rgba(0,0,0,.7);
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: "IBM Plex Sans KR", system-ui, -apple-system, "Malgun Gothic", sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.72;
+    -webkit-font-smoothing: antialiased;
+    word-break: keep-all;
+  }
+
+  .wrap {
+    max-width: 62rem;
+    margin: 0 auto;
+    padding: 0 1.5rem 6rem;
+  }
+
+  /* ---------- masthead ---------- */
+  .masthead {
+    border-bottom: 2px solid var(--ink);
+    padding: 3.5rem 0 1.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+  .eyebrow {
+    font-family: "IBM Plex Mono", ui-monospace, monospace;
+    font-size: .7rem;
+    font-weight: 500;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+  h1 {
+    font-size: clamp(2rem, 5.5vw, 3rem);
+    line-height: 1.12;
+    font-weight: 600;
+    letter-spacing: -.02em;
+    margin: 0;
+    text-wrap: balance;
+  }
+  .standfirst {
+    font-size: 1.0625rem;
+    color: var(--ink-2);
+    max-width: 42rem;
+    margin: 0;
+  }
+  .meta {
+    font-family: "IBM Plex Mono", ui-monospace, monospace;
+    font-size: .75rem;
+    color: var(--ink-3);
+    display: flex;
+    flex-wrap: wrap;
+    gap: .5rem 1.5rem;
+  }
+
+  /* ---------- clock strip ---------- */
+  .clocks {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr));
+    gap: 1px;
+    background: var(--rule);
+    border: 1px solid var(--rule);
+    margin: 2.5rem 0 0;
+  }
+  .clock {
+    background: var(--surface);
+    padding: 1rem 1.125rem 1.125rem;
+    display: flex;
+    flex-direction: column;
+    gap: .3rem;
+  }
+  .clock-label {
+    font-family: "IBM Plex Mono", ui-monospace, monospace;
+    font-size: .68rem;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+  }
+  .clock-value {
+    font-family: "IBM Plex Mono", ui-monospace, monospace;
+    font-size: 1.5rem;
+    font-weight: 600;
+    font-variant-numeric: tabular-nums;
+    letter-spacing: -.02em;
+    line-height: 1.1;
+  }
+  .clock-value.hot { color: var(--block); }
+  .clock-value.warm { color: var(--caution); }
+  .clock-note {
+    font-size: .8rem;
+    color: var(--ink-2);
+    line-height: 1.5;
+  }
+
+  /* ---------- sections ---------- */
+  section { margin-top: 4.5rem; }
+  .sec-head {
+    display: flex;
+    align-items: baseline;
+    gap: .875rem;
+    border-bottom: 1px solid var(--ink);
+    padding-bottom: .625rem;
+    margin-bottom: 1.75rem;
+  }
+  .sec-num {
+    font-family: "IBM Plex Mono", ui-monospace, monospace;
+    font-size: .8rem;
+    font-weight: 600;
+    color: var(--accent);
+    font-variant-numeric: tabular-nums;
+  }
+  h2 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    letter-spacing: -.015em;
+    margin: 0;
+    flex: 1;
+  }
+  .sec-count {
+    font-family: "IBM Plex Mono", ui-monospace, monospace;
+    font-size: .75rem;
+    color: var(--ink-3);
+  }
+  .lede {
+    color: var(--ink-2);
+    max-width: 44rem;
+    margin: 0 0 2rem;
+  }
+
+  /* ---------- verdict ---------- */
+  .verdict {
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    border-left: 4px solid var(--accent);
+    padding: 1.5rem 1.625rem;
+    box-shadow: var(--shadow);
+    display: flex;
+    flex-direction: column;
+    gap: .875rem;
+  }
+  .verdict p { margin: 0; }
+  .verdict strong { font-weight: 600; }
+
+  /* ---------- finding ledger ---------- */
+  .ledger {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+    background: var(--rule);
+    border: 1px solid var(--rule);
+  }
+  .item {
+    background: var(--surface);
+    display: grid;
+    grid-template-columns: 8.5rem 1fr;
+    gap: 0 1.5rem;
+    padding: 1.5rem 1.5rem 1.625rem;
+  }
+  .item-rail {
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+    align-items: flex-start;
+  }
+  .item-id {
+    font-family: "IBM Plex Mono", ui-monospace, monospace;
+    font-size: .78rem;
+    font-weight: 600;
+    color: var(--ink-3);
+    letter-spacing: .04em;
+  }
+  .chip {
+    font-family: "IBM Plex Mono", ui-monospace, monospace;
+    font-size: .66rem;
+    font-weight: 600;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    padding: .2rem .5rem;
+    border-radius: 3px;
+    white-space: nowrap;
+  }
+  .chip.block   { background: var(--block-bg);   color: var(--block); }
+  .chip.caution { background: var(--caution-bg); color: var(--caution); }
+  .chip.ok      { background: var(--ok-bg);      color: var(--ok); }
+
+  .item-body { min-width: 0; }
+  .item-body h3 {
+    font-size: 1.0625rem;
+    font-weight: 600;
+    letter-spacing: -.01em;
+    margin: 0 0 .625rem;
+    line-height: 1.45;
+    text-wrap: balance;
+  }
+  .item-body p { margin: 0 0 .75rem; }
+  .item-body p:last-child { margin-bottom: 0; }
+  .item-body ul {
+    margin: 0 0 .75rem;
+    padding-left: 1.1rem;
+    display: flex;
+    flex-direction: column;
+    gap: .35rem;
+  }
+  .item-body li::marker { color: var(--ink-3); }
+
+  .action {
+    background: var(--surface-2);
+    border-left: 3px solid var(--accent);
+    padding: .75rem .9rem;
+    margin-top: .875rem;
+    font-size: .9375rem;
+    line-height: 1.6;
+  }
+  .action .k {
+    font-family: "IBM Plex Mono", ui-monospace, monospace;
+    font-size: .66rem;
+    font-weight: 600;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--accent);
+    display: block;
+    margin-bottom: .25rem;
+  }
+
+  code, .mono {
+    font-family: "IBM Plex Mono", ui-monospace, monospace;
+    font-size: .875em;
+    background: var(--surface-2);
+    padding: .08em .34em;
+    border-radius: 3px;
+    word-break: break-all;
+  }
+  .action code { background: rgba(0,0,0,.06); }
+  :root[data-theme="dark"] .action code { background: rgba(255,255,255,.07); }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) .action code { background: rgba(255,255,255,.07); }
+  }
+
+  .src {
+    font-size: .8125rem;
+    color: var(--ink-3);
+    line-height: 1.6;
+    margin-top: .75rem;
+    padding-top: .625rem;
+    border-top: 1px dashed var(--rule);
+  }
+  .src b { font-weight: 500; color: var(--ink-2); }
+
+  /* ---------- table ---------- */
+  .tablewrap { overflow-x: auto; border: 1px solid var(--rule); background: var(--surface); }
+  table { border-collapse: collapse; width: 100%; min-width: 34rem; }
+  th, td {
+    text-align: left;
+    padding: .7rem .9rem;
+    border-bottom: 1px solid var(--rule-soft);
+    font-size: .9rem;
+    vertical-align: top;
+  }
+  th {
+    font-family: "IBM Plex Mono", ui-monospace, monospace;
+    font-size: .68rem;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    font-weight: 600;
+    border-bottom: 1px solid var(--rule);
+    white-space: nowrap;
+  }
+  tr:last-child td { border-bottom: none; }
+  td.num {
+    font-family: "IBM Plex Mono", ui-monospace, monospace;
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+  }
+
+  /* ---------- timeline ---------- */
+  .phase {
+    border: 1px solid var(--rule);
+    background: var(--surface);
+    padding: 1.375rem 1.5rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: .875rem;
+  }
+  .phases { display: flex; flex-direction: column; gap: 1rem; }
+  .phase-head {
+    display: flex;
+    align-items: baseline;
+    gap: .75rem;
+    flex-wrap: wrap;
+  }
+  .phase-name { font-size: 1.05rem; font-weight: 600; letter-spacing: -.01em; }
+  .phase-date {
+    font-family: "IBM Plex Mono", ui-monospace, monospace;
+    font-size: .78rem;
+    color: var(--ink-3);
+    font-variant-numeric: tabular-nums;
+  }
+  .phase ol {
+    margin: 0;
+    padding-left: 1.2rem;
+    display: flex;
+    flex-direction: column;
+    gap: .45rem;
+    font-size: .9375rem;
+  }
+  .phase ol li::marker { color: var(--accent); font-family: "IBM Plex Mono", monospace; font-size: .85em; }
+  .gate {
+    background: var(--caution-bg);
+    color: var(--caution);
+    border-left: 3px solid var(--caution);
+    padding: .7rem .9rem;
+    font-size: .9rem;
+    line-height: 1.6;
+  }
+  .gate b { font-weight: 600; }
+
+  /* ---------- decisions ---------- */
+  .decisions { display: flex; flex-direction: column; gap: 1px; background: var(--rule); border: 1px solid var(--rule); }
+  .dec { background: var(--surface); padding: 1.25rem 1.5rem 1.375rem; }
+  .dec h3 { margin: 0 0 .5rem; font-size: 1rem; font-weight: 600; }
+  .dec p { margin: 0 0 .5rem; }
+  .dec p:last-child { margin-bottom: 0; }
+  .rec {
+    font-size: .9375rem;
+    color: var(--accent);
+    font-weight: 500;
+  }
+  .rec .k {
+    font-family: "IBM Plex Mono", ui-monospace, monospace;
+    font-size: .66rem;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    margin-right: .5rem;
+  }
+
+  footer {
+    margin-top: 4.5rem;
+    padding-top: 1.25rem;
+    border-top: 1px solid var(--rule);
+    font-family: "IBM Plex Mono", ui-monospace, monospace;
+    font-size: .75rem;
+    color: var(--ink-3);
+    line-height: 1.7;
+  }
+
+  @media (max-width: 640px) {
+    .item { grid-template-columns: 1fr; gap: .875rem; }
+    .item-rail { flex-direction: row; align-items: center; gap: .625rem; }
+    .masthead { padding-top: 2.5rem; }
+    section { margin-top: 3.25rem; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    * { animation: none !important; transition: none !important; }
+  }
+</style>
+
+<div class="wrap">
+
+  <header class="masthead">
+    <div class="eyebrow">출시 준비 검토 · PRD v1 초안</div>
+    <h1>인생 챕터 출시 검토</h1>
+    <p class="standfirst">PRD 자체는 지금까지 만든 기획서 중 가장 촘촘합니다. 문제는 PRD 안이 아니라 밖에 있습니다 — 9월 캘린더에 이미 마감이 셋 걸려 있고, 착수 대기 중인 앱이 하나 더 있습니다.</p>
+    <div class="meta">
+      <span>검토일 2026-09-02</span>
+      <span>대상 PRD-인생챕터.md (2026-08-31)</span>
+      <span>대조 토스미니앱_제작_백서 · 플랫폼공지 2026-08 · 운영 6앱</span>
+    </div>
+  </header>
+
+  <div class="clocks">
+    <div class="clock">
+      <span class="clock-label">SDK 3.x 전환 마감</span>
+      <span class="clock-value hot">D-12</span>
+      <span class="clock-note">2026-09-14 · 운영 4앱 전부 <span class="mono">^2.10.5</span> 미착수. 3.x 배포 후 롤백 불가.</span>
+    </div>
+    <div class="clock">
+      <span class="clock-label">광고성 스마트발송 종료</span>
+      <span class="clock-value warm">D-28</span>
+      <span class="clock-note">소재 등록·발송 9/30까지 · 성과 데이터 조회 10/31까지. 9월이 마지막.</span>
+    </div>
+    <div class="clock">
+      <span class="clock-label">대기 중인 신규 앱</span>
+      <span class="clock-value">2</span>
+      <span class="clock-note">지름신 대기실(브리핑 완료, 코드 0) + 인생 챕터. 동시 진행 불가.</span>
+    </div>
+  </div>
+
+  <section>
+    <div class="sec-head">
+      <span class="sec-num">00</span>
+      <h2>판정</h2>
+    </div>
+    <div class="verdict">
+      <p><strong>기획으로서는 통과.</strong> AI 호출 상한 5회 서버 강제, 이정표를 이탈 지점으로 설계한 관점, 로그 스펙을 개발 지시문에 통째로 박아넣은 것 — 이 세 가지는 기존 6개 앱 어느 것보다 앞서 있습니다. 정책 반려 리스크도 낮게 보는 판정에 동의합니다.</p>
+      <p><strong>실행 계획으로서는 보류.</strong> PRD §15는 D-day를 기준일 없이 "1주차 / 2주차"로 잡았습니다. 실제 캘린더에 얹으면 SDK 3.x 마감(D-12)과 광고성 푸시 라스트콜(D-28) 위를 그대로 지나갑니다. 지금 착수하면 세 가지를 동시에 하게 됩니다.</p>
+      <p><strong>기술 설계는 한 군데를 크게 고쳐야 합니다.</strong> Supabase + Edge Function은 새 인프라입니다. 같은 일을 하는 검증된 스택이 <span class="mono">핑계운세/개발/app/api/</span>에 이미 돌아가고 있습니다 — GROQ 프록시 + Upstash Redis + 한국어 후처리 가드. 이걸 쓰면 개발 1~2일이 줄고 새 장애 표면이 0입니다.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head">
+      <span class="sec-num">01</span>
+      <h2>착수 전에 풀어야 하는 것</h2>
+      <span class="sec-count">3건</span>
+    </div>
+    <p class="lede">전부 PRD 밖의 문제입니다. 코드를 한 줄도 쓰기 전에 결론이 나야 합니다.</p>
+
+    <div class="ledger">
+
+      <article class="item">
+        <div class="item-rail">
+          <span class="item-id">차단 · 01</span>
+          <span class="chip block">일정 충돌</span>
+        </div>
+        <div class="item-body">
+          <h3>SDK 3.x 전환 마감이 12일 남았고, 운영 중인 앱 전부가 미착수입니다</h3>
+          <p>별핑계 · 별점 · 무더위 버블 타임 · 무더위 체감 랭킹 네 앱의 <code>package.json</code>이 모두 <code>@apps-in-toss/web-framework: ^2.10.5</code>입니다. 마감은 2026-09-14이고, <b>3.x로 배포하면 2.x로 롤백할 수 없습니다.</b> 각 앱의 <span class="mono">_세션인계.md</span> 최상단에 경고가 붙어 있지만 아직 아무도 손대지 않았습니다.</p>
+          <p>여기에 인생 챕터를 얹으면 D-12 안에 "신규 앱 착수 + 기존 4앱 마이그레이션 + 롤백 불가 배포 검증"을 동시에 하게 됩니다. 마이그레이션은 origin 변경에 따른 localStorage 이슈까지 딸려 있어 앱당 반나절로 끝나지 않습니다.</p>
+          <div class="action">
+            <span class="k">권고</span>
+            9/2~9/14는 SDK 3.x 전환 전용으로 비웁니다. 인생 챕터 코드 착수는 9/15 이후. 목표 버전은 <code>^3.1.1</code> 이상 — 3.0.x대는 origin 이슈가 있었고 3.1.1+에서 해결됐다고 별점 <span class="mono">_SDK3전환.md</span>에 기록돼 있습니다. 신규 앱도 처음부터 3.1.1+로 시작합니다.
+          </div>
+          <p class="src"><b>근거</b> · 앱 6개 <span class="mono">package.json</span> 실측(2026-09-02) · <span class="mono">별점/개발/_SDK3전환.md</span> · 공지 postId 52453(2026-08-18), 52623(2026-08-25)</p>
+        </div>
+      </article>
+
+      <article class="item">
+        <div class="item-rail">
+          <span class="item-id">차단 · 02</span>
+          <span class="chip block">우선순위</span>
+        </div>
+        <div class="item-body">
+          <h3>지름신 대기실이 이미 착수 대기 중입니다 — 둘 중 하나를 골라야 합니다</h3>
+          <p>지름신 대기실은 2026-08-30에 기획 · 개발 · 디자인 브리핑 3종이 완성됐고, 포트(5178)까지 임시 배정된 상태입니다. 코드만 아직 없습니다. 인생 챕터 PRD는 그 다음 날인 8/31에 작성됐습니다. 두 앱을 병행하면 루트 <span class="mono">CLAUDE.md</span>의 "한 저장소 = 한 writer" 원칙이 아니라 <b>사람의 캐파</b>가 먼저 깨집니다. 검증된 4일 스프린트 리듬은 한 앱에 온전히 집중했을 때 나온 숫자입니다.</p>
+          <div class="tablewrap">
+            <table>
+              <thead>
+                <tr><th>비교 축</th><th>지름신 대기실</th><th>인생 챕터</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>화면 수</td><td class="num">3 (검증된 규모)</td><td class="num">5 (재검토 임계점)</td></tr>
+                <tr><td>AI 의존</td><td>없음</td><td>핵심 가치 전부</td></tr>
+                <tr><td>서버 상태</td><td>필요 (48h 만료 스케줄링)</td><td>필요 (수 주간 누적)</td></tr>
+                <tr><td>착수 준비</td><td>브리핑 3종 완료</td><td>PRD 1종</td></tr>
+                <tr><td>선행 검증</td><td>재테크 탭 28개 전수 확인 완료</td><td>AI 요약 품질 미검증</td></tr>
+                <tr><td>실패 시 손실</td><td>개발 시간</td><td>개발 시간 + 프롬프트 R&amp;D</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="action">
+            <span class="k">권고</span>
+            <b>지름신 대기실을 먼저</b> 냅니다. 준비도가 높고, 화면 3개라 검증된 패턴 그대로 갈 수 있고, AI 품질이라는 미검증 변수가 없습니다. 인생 챕터는 그동안 <b>코드가 필요 없는 선행 작업 2건</b>(질문 풀 40개 작성, AI 요약 프롬프트 품질 테스트)만 진행합니다 — 이 둘은 지름신 개발과 병행해도 충돌하지 않습니다.
+          </div>
+          <p class="src"><b>근거</b> · <span class="mono">지름신 대기실/기획·개발·디자인/*.md</span>(2026-08-30) · 백서 부록 "화면 3개는 MVP로 적정, 5개 이상이면 재검토"</p>
+        </div>
+      </article>
+
+      <article class="item">
+        <div class="item-rail">
+          <span class="item-id">차단 · 03</span>
+          <span class="chip caution">기회비용</span>
+        </div>
+        <div class="item-body">
+          <h3>9월은 광고성 스마트발송을 쓸 수 있는 마지막 달입니다</h3>
+          <p>10/1부터 스마트발송의 광고성 푸시·알림 운영이 종료됩니다. 소재 등록·발송은 9/30까지, <b>발송 성과 데이터 조회는 10/31까지</b>만 가능하고 그 뒤로는 다시 볼 수 없습니다. 별점의 9월 마케팅 스케줄은 이미 9/1~9/30이 채워져 있습니다.</p>
+          <p>즉 9월의 한 시간은 신규 앱 개발보다 기존 운영 앱의 마지막 유입 실험에 쓰는 편이 회수율이 높습니다. 이건 인생 챕터를 하지 말자는 뜻이 아니라, <b>9월 착수는 대체 불가능한 기회를 태우는 선택</b>이라는 뜻입니다.</p>
+          <div class="action">
+            <span class="k">권고</span>
+            10/31 전에 광고성 발송 성과 지표를 CSV로 백업해두는 작업을 별도 항목으로 캘린더에 고정합니다 (<span class="mono">dashboard_export_csv</span>). 지금 안 잡아두면 데이터가 사라진 뒤에 알게 됩니다.
+          </div>
+          <p class="src"><b>근거</b> · <span class="mono">_플랫폼공지_2026-08.md</span> postId 52717(2026-08-27) · <span class="mono">별점/마케팅/9월_마케팅스케줄.md</span></p>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head">
+      <span class="sec-num">02</span>
+      <h2>PRD 설계 수정 권고</h2>
+      <span class="sec-count">7건</span>
+    </div>
+    <p class="lede">착수가 결정되면 PRD를 아래대로 고친 뒤 기획 브리핑으로 승격시키는 걸 권합니다.</p>
+
+    <div class="ledger">
+
+      <article class="item">
+        <div class="item-rail">
+          <span class="item-id">수정 · 01</span>
+          <span class="chip block">아키텍처</span>
+        </div>
+        <div class="item-body">
+          <h3>Supabase를 쓰지 마세요 — 같은 일을 하는 스택이 이미 운영 중입니다</h3>
+          <p>PRD §11은 Supabase + Edge Function 프록시를 지정합니다. 그런데 <span class="mono">핑계운세/개발/app/api/</span>에 필요한 조각이 전부 이미 있고, 별핑계로 실서비스 검증까지 끝난 상태입니다.</p>
+          <ul>
+            <li><span class="mono">fortune.js</span> — GROQ 프록시. 키는 Vercel 환경변수, 클라이언트 노출 0. 인생 챕터의 "AI 호출은 반드시 서버 경유" 요구를 그대로 만족합니다.</li>
+            <li><span class="mono">_lib/redis.js</span> — Upstash Redis. KST 일자 키(<span class="mono">todayKeyKST</span>)와 자정 만료(<span class="mono">secondsUntilMidnightKST</span>) 헬퍼까지 구현돼 있어, §6의 "anonKey 기준 일일 AI 호출 10회 제한"이 새로 짤 게 없습니다.</li>
+            <li><span class="mono">_lib/korean.js</span> — <span class="mono">stripReasoning</span> · <span class="mono">isUsableKorean</span> · <span class="mono">cleanToKorean</span>. AI 출력 후처리 가드. 수정·05에서 다시 필요합니다.</li>
+            <li><span class="mono">.agents/skills/</span>에 <span class="mono">upstash-redis-js</span> · <span class="mono">upstash-ratelimit-js</span> 스킬이 이미 설치돼 있습니다.</li>
+          </ul>
+          <p>데이터 모델도 Postgres가 필요 없습니다. 인생 챕터의 저장 단위는 "anonKey 하나당 진행상태 문서 하나"(프리셋 · 챕터별 답변 · 챕터별 요약문 · 완료 플래그)라서 Redis Hash 또는 JSON 한 키로 끝납니다. 조인이 없습니다.</p>
+          <div class="action">
+            <span class="k">대체안</span>
+            Vercel 서버리스 함수 + Upstash Redis. <span class="mono">api/chapter-summary.js</span>(챕터 요약 생성, 호출 상한 검사 후 GROQ 프록시) · <span class="mono">api/final-summary.js</span> · <span class="mono">api/progress.js</span>(진행상태 read/write) 셋이면 충분합니다. 지름신 대기실 개발 브리핑도 사흘 전에 같은 결론을 내렸습니다 — "Supabase 같은 새 외부 의존성을 들이지 말 것".
+          </div>
+          <p class="src"><b>근거</b> · <span class="mono">핑계운세/개발/app/api/</span> 실측 · <span class="mono">지름신 대기실/개발/01_개발_브리핑.md</span> §6</p>
+        </div>
+      </article>
+
+      <article class="item">
+        <div class="item-rail">
+          <span class="item-id">수정 · 02</span>
+          <span class="chip block">존립 리스크</span>
+        </div>
+        <div class="item-body">
+          <h3>오픈이슈 ① anonKey — 답은 절반 나와 있고, 진짜 위험은 다른 데 있습니다</h3>
+          <p>PRD가 "앱의 존립 문제"로 지목한 부분이 맞습니다. 다만 질문을 정확히 나눠야 합니다.</p>
+          <ul>
+            <li><b>anonKey 자체는 안정적입니다.</b> 백서에 "로그인 강제 없이 <span class="mono">getAnonymousKey()</span> 익명 식별만으로 운영 가능"이 첫 프로젝트 검증 결과로 남아 있습니다. 동일 기기 · 동일 토스 계정 기준입니다.</li>
+            <li><b>위험한 건 클라이언트 저장소입니다.</b> 2026-08-25 공지(52623) — SDK 3.x origin 변경 시 기존 localStorage 데이터에 접근하지 못할 수 있고 마이그레이션 API로 병합이 필요합니다. 별점이 이 이유로 <span class="mono">_SDK3전환.md</span>에 localStorage 키 목록을 따로 적어뒀습니다.</li>
+            <li><b>기기 변경 승계는 anonKey로 불가능합니다.</b> 이건 로그인 없이는 해결되지 않습니다.</li>
+          </ul>
+          <div class="action">
+            <span class="k">설계 결정</span>
+            <b>서버(Redis)를 진실 원본으로, anonKey를 키로, 클라이언트 저장은 캐시로만</b> 씁니다. 이러면 origin 변경으로 localStorage가 날아가도 답변은 살아남습니다 — PRD가 그린 최악의 시나리오가 구조적으로 막힙니다. 기기 변경 승계는 v1 범위에서 빼고, 온보딩에 한 줄로 고지합니다. 토스 로그인은 완주율 데이터를 본 뒤 판단합니다 (로그인 추가로 인한 이탈은 확실하고, 기기 변경은 저빈도).
+          </div>
+          <p class="src"><b>근거</b> · 백서 §6 제출 치트시트 · <span class="mono">별점/개발/_SDK3전환.md</span> · 공지 postId 52623</p>
+        </div>
+      </article>
+
+      <article class="item">
+        <div class="item-rail">
+          <span class="item-id">수정 · 03</span>
+          <span class="chip caution">품질 게이트</span>
+        </div>
+        <div class="item-body">
+          <h3>오픈이슈 ② AI 요약 품질 — 게이트는 맞지만 합격 기준이 없습니다</h3>
+          <p>"착수 전 프롬프트를 여러 번 테스트해서 공유하고 싶은 수준인지 확인"은 옳은 판단인데, 이대로면 판정이 주관적으로 흐르고 결국 "일단 만들면서 고치자"로 넘어갑니다. 백서 B2의 교훈이 정확히 이 지점입니다 — <b>"완료" 판정은 실제 산출물을 확인한 뒤에만.</b></p>
+          <p>별핑계에서 GROQ를 쓰면서 배운 것도 있습니다. qwen3.6은 리즈닝 모델이라 <span class="mono">reasoning_effort</span>를 끄지 않으면 영어 사고 과정이 본문에 그대로 노출됩니다. 병맛 핑계는 톤이 무너져도 웃고 넘어가지만, <b>자기서사는 톤이 한 번 어긋나면 그 사용자를 영구히 잃습니다.</b> 모델 선택을 별핑계와 같이 두지 말고 다시 고르세요 — 1인당 호출이 5회뿐이라 상위 모델을 써도 비용이 감당됩니다.</p>
+          <div class="action">
+            <span class="k">합격 기준</span>
+            프리셋 4종 × 답변 유형 3종(부실 = 대부분 건너뛰고 한두 단어 / 보통 / 성실 = 문항당 60자 이상) = <b>샘플 12개를 실제로 생성</b>하고, 사람이 각각에 "이걸 카톡에 공유할 것인가 Y/N"으로 판정합니다. <b>9개 이상 Y가 아니면 착수하지 않습니다.</b> 이 테스트는 코드 없이 API 콘솔만으로 가능하므로 지금 바로 시작할 수 있습니다.
+          </div>
+          <p class="src"><b>근거</b> · 메모리 <span class="mono">reference_groq_reasoning_model</span> · <span class="mono">핑계운세/개발/app/api/_lib/korean.js</span> · 백서 §4 B2</p>
+        </div>
+      </article>
+
+      <article class="item">
+        <div class="item-rail">
+          <span class="item-id">수정 · 04</span>
+          <span class="chip caution">검수 리스크</span>
+        </div>
+        <div class="item-body">
+          <h3>정책 판정 §14가 낙관적입니다 — 민감 주제는 질문이 아니라 답변에서 들어옵니다</h3>
+          <p>PRD §7은 질문 풀에서 죽음 · 질병 · 이별을 배제했고, §14는 그걸 근거로 "민감 콘텐츠 해당 없음 예상"으로 판정했습니다. 이 논리에 구멍이 있습니다. <b>AI 요약의 재료는 질문이 아니라 사용자 답변입니다.</b> "그 시절 가장 고마웠던 사람은?"에 사별한 가족을 쓰는 사용자는 반드시 나오고, 요약문은 그걸 그대로 서술합니다.</p>
+          <p>여기에 2026-08-19 공지(52485)가 겹칩니다 — 재난 · 죽음 · 질병 등 민감 주제 검수 기준 강화, <b>기존 출시 앱에도 소급 적용</b>, 민감 주제를 다루는 서비스는 <b>검수에 최대 1주일</b>. PRD §15의 3주차 출시 일정에는 이 버퍼가 0입니다.</p>
+          <div class="action">
+            <span class="k">필요 조치 3건</span>
+            ① AI 시스템 프롬프트에 "사별 · 투병 · 이별이 답변에 등장하면 사실만 담담히 다루고 극적으로 서술하지 않는다" 지침 명시 &nbsp;② 요약 출력 후처리 가드 — <span class="mono">korean.js</span>의 <span class="mono">isUsableKorean</span> 패턴을 확장해 금칙 표현 검사 후 실패 시 재생성(이 재시도는 사용자 호출 상한 5회에 포함하지 않음) &nbsp;③ 콘솔 상세설명 · 스크린샷은 "회고 · 추억" 톤만 노출, "인생 정리"처럼 읽힐 문구 배제
+          </div>
+          <p class="src"><b>근거</b> · <span class="mono">_플랫폼공지_2026-08.md</span> postId 52485(2026-08-19)</p>
+        </div>
+      </article>
+
+      <article class="item">
+        <div class="item-rail">
+          <span class="item-id">수정 · 05</span>
+          <span class="chip caution">구조</span>
+        </div>
+        <div class="item-body">
+          <h3>화면 5개는 vanilla 단일 파일의 재검토 임계점입니다</h3>
+          <p>백서 부록의 결론이 "화면 3개에선 프레임워크 없는 단일 파일이 오히려 빨랐다. <b>화면 5개 이상이면 재검토.</b>" 인생 챕터는 정확히 5개인 데다, 상태 복원 로직(어느 프리셋 · 몇 번째 챕터 · 몇 번째 질문 · 요약 생성 완료 여부)이 기존 앱 중 가장 복잡합니다.</p>
+          <p>그리고 이미 대가를 치르고 있습니다. 루트 <span class="mono">CLAUDE.md</span>에 "<span class="mono">main.js</span> 한 번 읽으면 200k 컨텍스트의 15%가 날아간다"는 경고가 있고, 무더위 체감 랭킹 94KB · 별점 75KB가 그 결과입니다. 단일 파일을 6번째 앱에서 또 선택하면 같은 비용을 또 냅니다.</p>
+          <div class="action">
+            <span class="k">권고</span>
+            <b>vanilla + ES 모듈 분할</b>로 시작합니다 — <span class="mono">main.js</span>(부트 · 라우팅)와 화면별 모듈 5개, 상태는 단일 스토어 모듈. React + <span class="mono">toss-miniapp-ui</span> 도입은 권하지 않습니다: 그 라이브러리를 실제 앱에 붙여본 적이 한 번도 없어서, 신규 앱의 첫 시도로 삼기엔 리스크가 겹칩니다.
+          </div>
+          <p class="src"><b>근거</b> · 백서 부록 · 루트 <span class="mono">CLAUDE.md</span> "대형 파일은 통째로 읽지 말 것"</p>
+        </div>
+      </article>
+
+      <article class="item">
+        <div class="item-rail">
+          <span class="item-id">수정 · 06</span>
+          <span class="chip caution">푸시</span>
+        </div>
+        <div class="item-body">
+          <h3>푸시 §10 — 주간 리마인드는 빼고, 템플릿은 MCP로 만들지 마세요</h3>
+          <p>PRD가 스스로 "별도 목적 동의 필요"라고 적은 주간 리마인드는 순수 리텐션 목적이라 광고성에 가깝고, 광고성 스마트발송은 10/1에 종료됩니다. v1.1 목록에서 삭제하고 <b>기능성 2종(이어할까요 / 요약 완성)만</b> 유지하는 게 안전합니다. 이 둘은 "사용자가 시작한 작업의 진행 상태 안내"라 허용 범주로 설계한 PRD의 판단이 맞습니다.</p>
+          <p>더 중요한 함정이 하나 있습니다. <b>기능성 푸시 템플릿을 콘솔 MCP(<span class="mono">push_template_create</span>)로 만들면 <span class="mono">enabled:false</span> 상태로 고착</b>돼, 앱에서 알림 동의 팝업을 띄워도 아무 반응이 없습니다. 이 증상은 이미 한 번 겪었습니다 — 라이브에서 수 주간 방치됐습니다.</p>
+          <div class="action">
+            <span class="k">규칙</span>
+            기능성 푸시 템플릿은 <b>반드시 콘솔 웹에서 직접 등록</b>합니다. 그리고 mTLS 인증서는 아직 어느 앱도 발급받은 이력이 없으니(백서 시점 미착수 → 지름신 브리핑에도 Day 1 할 일로만 남아 있음) <b>발급 리드타임을 먼저 확인</b>한 뒤 일정을 확정하세요. PRD가 mTLS를 1일차 선행으로 잡은 판단 자체는 정확합니다.
+          </div>
+          <p class="src"><b>근거</b> · 메모리 <span class="mono">feedback_push_template_create_enabled_bug</span> · 백서 §5 Day 1 · 공지 postId 52717</p>
+        </div>
+      </article>
+
+      <article class="item">
+        <div class="item-rail">
+          <span class="item-id">수정 · 07</span>
+          <span class="chip caution">검증</span>
+        </div>
+        <div class="item-body">
+          <h3>이 앱은 dev 서버로 검증 불가한 SDK를 세 개 씁니다</h3>
+          <p><span class="mono">requestNotificationAgreement</span>(알림 동의) · <span class="mono">share</span> / <span class="mono">getTossShareLink</span>(공유) · <span class="mono">requestReview</span>. 셋 다 브라우저에서 <span class="mono">ReactNativeWebView is not available</span>로 <b>조용히 실패</b>합니다. 에러가 안 나기 때문에 "구현 완료"로 문서에 적히고 그대로 라이브로 나갑니다 — 2026-08-31 알림 버튼 무반응이 정확히 이 경로였습니다.</p>
+          <p>인생 챕터는 공유가 유입의 전부이고 알림이 리텐션의 전부라, 이 셋이 무반응이면 앱이 작동하는 것처럼 보이면서 성장 경로만 끊깁니다. 가장 잡기 어려운 종류의 실패입니다.</p>
+          <div class="action">
+            <span class="k">게이트</span>
+            <span class="mono">.ait</span> 테스트 발송(<span class="mono">bundle_test_push</span>) 후 <b>실기기 탭 시퀀스 확인 회신을 받기 전에는 <span class="mono">review_submit</span>으로 넘어가지 않습니다.</b> 확인할 시퀀스를 인계 문장으로 미리 적어서 함께 넘기세요 — 예: "프리셋 선택 → 챕터1 질문 6개 답변 → 요약 화면에서 [공유하기] 탭 → 공유시트 뜨는지 → 뒤로 → [나중에 할게요] 탭 → 알림 동의 팝업 뜨는지".
+          </div>
+          <p class="src"><b>근거</b> · 루트 <span class="mono">CLAUDE.md</span> 「검증」 · 메모리 <span class="mono">feedback_sdk_device_test</span></p>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head">
+      <span class="sec-num">03</span>
+      <h2>그대로 두어야 할 것</h2>
+      <span class="sec-count">4건</span>
+    </div>
+    <p class="lede">고치지 마세요. 기존 앱들이 뒤늦게 배운 것을 PRD가 선제적으로 반영한 부분입니다.</p>
+
+    <div class="ledger">
+      <article class="item">
+        <div class="item-rail"><span class="item-id">유지 · 01</span><span class="chip ok">유지</span></div>
+        <div class="item-body">
+          <h3>AI 호출 상한 5회를 서버에서 강제 + 요약 DB 저장 후 재사용</h3>
+          <p>기존 6개 앱 어디에도 이 수준의 비용 상한 설계가 없습니다. "재진입 시 재생성하지 않고 저장본을 읽는다"는 결정이 특히 중요합니다 — 재생성을 허용하면 사용자가 마음에 들 때까지 돌리면서 비용이 선형으로 늘고, 동시에 "내 이야기"라는 서사 자산의 고유성도 사라집니다.</p>
+        </div>
+      </article>
+      <article class="item">
+        <div class="item-rail"><span class="item-id">유지 · 02</span><span class="chip ok">유지</span></div>
+        <div class="item-body">
+          <h3>로그 스펙을 개발 지시문(§16)에 통째로 박아넣은 것</h3>
+          <p>백서가 "Analytics 계측을 처음부터 넣기"를 Day 1 항목으로 못 박았는데, 실제로 이렇게 이벤트명·파라미터까지 확정해서 지시문에 넣은 건 이 PRD가 처음입니다. "답변 원문은 로그에 절대 넣지 말고 길이만"이라는 제약도 정확합니다.</p>
+        </div>
+      </article>
+      <article class="item">
+        <div class="item-rail"><span class="item-id">유지 · 03</span><span class="chip ok">유지</span></div>
+        <div class="item-body">
+          <h3>이정표를 "보상"이 아니라 "이탈 지점"으로 설계한 관점</h3>
+          <p>§4-2의 "사용자는 어디서든 이탈하지만, 이정표가 있으면 이탈이 챕터 경계에 모인다"가 이 앱의 진짜 발명입니다. 이탈을 막으려는 게 아니라 <b>이탈 위치를 예측 가능하게 만들어 푸시 명분을 확보한다</b>는 구조 — 웨비나 사례에서 전환을 9%→14%로 올린 "대기 구간 + 기능성 푸시"와 같은 원리입니다.</p>
+        </div>
+      </article>
+      <article class="item">
+        <div class="item-rail"><span class="item-id">유지 · 04</span><span class="chip ok">유지</span></div>
+        <div class="item-body">
+          <h3>챕터1→챕터2 전환율을 단일 생사 지표로 잡은 것</h3>
+          <p>§17의 "이게 낮으면 이정표 구조가 작동하지 않는다는 뜻이고, 다른 어떤 개선도 소용없다"는 판단이 맞습니다. 이 지표 하나를 <span class="mono">core_metric</span>의 대표 전환 지표로 등록하고, 나머지는 보조로 두세요.</p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head">
+      <span class="sec-num">04</span>
+      <h2>수정 일정안</h2>
+    </div>
+    <p class="lede">PRD §15를 실제 캘린더에 얹고, 검수 버퍼와 품질 게이트를 넣은 버전입니다.</p>
+
+    <div class="phases">
+
+      <div class="phase">
+        <div class="phase-head">
+          <span class="phase-name">Phase 0 — 마감 처리 + 코드 없는 선행</span>
+          <span class="phase-date">09-02 → 09-14 · D-12</span>
+        </div>
+        <ol>
+          <li>운영 4앱 SDK 3.x 전환 (<code>^3.1.1</code>+). 앱당 빌드 성공 직후 <code>git commit</code> — 롤백 불가이므로 스냅샷 필수</li>
+          <li>광고성 스마트발송 마지막 캠페인 집행 (9/30 마감)</li>
+          <li><b>인생 챕터 선행 A</b> — mTLS 인증서 발급 신청, 리드타임 확인 (코드 무관, 지금 시작)</li>
+          <li><b>인생 챕터 선행 B</b> — 질문 풀 40개 작성. 챕터당 10개, 선택형 칩 + 자유서술 혼합</li>
+          <li><b>인생 챕터 선행 C</b> — AI 요약 프롬프트 12샘플 테스트 (수정·03의 합격 기준)</li>
+          <li>루트 <span class="mono">CLAUDE.md</span> 앱 대장 표에 <span class="mono">누구게</span> · <span class="mono">지름신 대기실</span> 행 추가 — 지금 누락돼 있습니다</li>
+        </ol>
+        <div class="gate"><b>게이트</b> — 선행 C에서 12샘플 중 9개 미만이 합격이면 인생 챕터는 여기서 폐기합니다. 요약 품질이 이 앱의 유일한 가치이므로, 만들면서 고칠 수 있는 종류의 문제가 아닙니다.</div>
+      </div>
+
+      <div class="phase">
+        <div class="phase-head">
+          <span class="phase-name">Phase 1 — 지름신 대기실 출시</span>
+          <span class="phase-date">09-15 → 09-26 (권고안)</span>
+        </div>
+        <ol>
+          <li>브리핑 3종이 이미 완성돼 있어 Day 0 없이 바로 개발 착수 가능</li>
+          <li>이 기간 인생 챕터는 질문 풀 다듬기와 화면 5개 TDS 디자인만 (코드 착수 금지)</li>
+        </ol>
+      </div>
+
+      <div class="phase">
+        <div class="phase-head">
+          <span class="phase-name">Phase 2 — 인생 챕터 개발</span>
+          <span class="phase-date">Phase 1 종료 후 · 12영업일 (권고안)</span>
+        </div>
+        <ol>
+          <li><b>D1</b> — 프로젝트 뼈대. <code>@apps-in-toss/web-framework@^3.1.1</code> 정식 설치, <code>API_BASE</code> 절대 URL, <code>withTimeout</code> 래퍼, <code>trackScreen/trackClick</code>, <code>initSafeArea</code>를 첫날부터. Vercel 프로젝트 <b><code>npx vercel link --project &lt;고유이름&gt; --yes</code> 먼저</b> — 2026-07-26 alias 탈취 사고 재발 방지</li>
+          <li><b>D2~D3</b> — 화면 5개 구현 (모듈 분할), 상태 복원 로직. Redis 진행상태 read/write</li>
+          <li><b>D4</b> — AI 프록시 3종 + 호출 상한 서버 강제 + 일일 레이트리밋. 생성 중 로딩 화면 별도 설계 (검수 "응답 지연 2초 이상" 조항)</li>
+          <li><b>D5</b> — 로그 15종 심기, AI 사전 고지 + 라벨 배지 UI, 광고 테스트 ID 연결, 990원 결제는 기능 플래그 비활성</li>
+          <li><b>D6</b> — 답변 부실 시 처리(챕터당 최소 3개 미달이면 요약 차단 + 유도 문구), 민감 표현 후처리 가드</li>
+          <li><b>D7</b> — 콘솔 에셋: 로고 600×600 라이트/다크, 썸네일 1932×828, 가로 1504×741, 세로 636×1048. <b>최종 화면으로 재캡처</b> (목업 캡처를 그대로 두다 재작업한 전례)</li>
+          <li><b>D8</b> — 개인정보처리방침 <code>/privacy</code> 정적 라우트로 웹 게시. 답변 = 개인 회고 = 민감 정보, 암호화 저장 사실을 방침에 명시</li>
+          <li><b>D9</b> — 실기기 QA. 수정·07의 탭 시퀀스 + Android/iOS/데스크톱 3종. "프로토타입/TODO/mock" grep</li>
+          <li><b>D10</b> — <code>.ait</code> 빌드(<code>dist</code>·<code>node_modules/.vite</code> 삭제 후) → grep 검증 → 업로드 → 테스트 발송 → <b>사용자 실기기 확인 회신 대기</b></li>
+        </ol>
+        <div class="gate"><b>버퍼</b> — 검수에 최대 1주일. 자기서사 = 민감 주제 인접이라 표준 리드타임을 기대하지 마세요. 출시 목표일에서 7일을 빼고 제출일을 잡습니다.</div>
+      </div>
+
+      <div class="phase">
+        <div class="phase-head">
+          <span class="phase-name">Phase 3 — 출시 후 4주</span>
+          <span class="phase-date">출시일 기준</span>
+        </div>
+        <ol>
+          <li>프리셋 → 챕터1 완료 구간 이탈률 확인 → 질문 수·문구 튜닝 (<code>APPROVED</code> 상태면 메타는 심사 없이 즉시 수정 가능)</li>
+          <li><code>requestReview</code>를 이정표 요약 도달 직후에 호출</li>
+          <li>챕터1→2 전환율이 50% 미달이면 <b>수익화 도입 전에 구조부터 재검토</b> — PRD §17의 판단대로</li>
+          <li>지표 확보 후 990원 결제 플래그 해제. 인앱결제 실판매 시작 시 통신판매업 신고 필요 여부 재검토</li>
+        </ol>
+      </div>
+
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head">
+      <span class="sec-num">05</span>
+      <h2>결정이 필요한 것</h2>
+      <span class="sec-count">3건</span>
+    </div>
+    <p class="lede">아래 셋은 제 판단으로 정할 수 없습니다. 답이 나오면 PRD를 기획 브리핑으로 승격시키고 5트랙 폴더를 만들겠습니다.</p>
+
+    <div class="decisions">
+      <div class="dec">
+        <h3>① 지름신 대기실과 인생 챕터 중 무엇을 먼저 냅니까?</h3>
+        <p>둘 다 브리핑 단계이고 코드는 없습니다. 병행은 캐파상 불가능합니다.</p>
+        <p class="rec"><span class="k">권고</span>지름신 대기실 먼저. 인생 챕터는 코드 없는 선행 3건만 병행.</p>
+      </div>
+      <div class="dec">
+        <h3>② 인생 챕터의 사용자 식별을 anonKey로만 갑니까?</h3>
+        <p>서버를 진실 원본으로 두면 데이터 유실은 막히지만, 기기 변경 승계는 여전히 불가능합니다. 토스 로그인을 넣으면 승계는 되지만 온보딩 이탈이 확실히 오릅니다.</p>
+        <p class="rec"><span class="k">권고</span>v1은 anonKey + 온보딩 고지. 완주율 데이터를 본 뒤 재판단.</p>
+      </div>
+      <div class="dec">
+        <h3>③ Supabase를 폐기하고 기존 스택(Vercel + Upstash Redis + GROQ 프록시)으로 갑니까?</h3>
+        <p>PRD §11·§16이 Supabase Edge Function을 전제로 쓰여 있어, 승인되면 그 두 절을 다시 씁니다.</p>
+        <p class="rec"><span class="k">권고</span>폐기. 별핑계에서 검증된 조합을 그대로 재사용.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    검토 대조 자료 · 토스미니앱_제작_백서.md · 무더위 체감 랭킹/기획/06_업데이트_운영_프로세스.md · */개발/_SDK3전환.md · */개발/_플랫폼공지_2026-08.md · 지름신 대기실/기획·개발 브리핑 · 핑계운세/개발/app/api/ 실측 · 앱 6개 package.json 실측<br>
+    문서 위생 — PRD의 근거 문서로 적힌 <span class="mono">미니앱-기획개발-상시-체크리스트.md</span>와 <span class="mono">앱인토스-웨비나-수익화-분석.md</span>는 이 저장소에 없습니다(Claude 프로젝트 쪽 파일로 보임). 백서 §2-1이 지적한 "깨진 참조"와 같은 패턴이니, 착수 시 로컬로 복사하거나 출처를 명시해 두세요.
+  </footer>
+
+</div>
+
+</body></html>
