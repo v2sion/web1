@@ -1,0 +1,991 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1"><style>:root{color-scheme:light}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}</style></head><body>
+<title>크로스앱 별자리 연동 가이드 v1.0</title>
+<style>
+  :root {
+    --bg:        #09101e;
+    --surface:   #111827;
+    --surface2:  #0d1623;
+    --border:    rgba(255,167,90,0.14);
+    --accent:    #FFA75A;
+    --accent-dim: rgba(255,167,90,0.35);
+    --text:      #dde6f5;
+    --muted:     rgba(221,230,245,0.42);
+    --muted2:    rgba(221,230,245,0.2);
+    --code-bg:   #0a1322;
+    --tag-bg:    rgba(255,167,90,0.1);
+  }
+  @media (prefers-color-scheme: light) {
+    :root {
+      --bg:        #f0f3f9;
+      --surface:   #ffffff;
+      --surface2:  #f7f9fc;
+      --border:    rgba(200,130,40,0.18);
+      --accent:    #d47a20;
+      --accent-dim: rgba(212,122,32,0.3);
+      --text:      #1a2234;
+      --muted:     rgba(26,34,52,0.48);
+      --muted2:    rgba(26,34,52,0.22);
+      --code-bg:   #e8eef8;
+      --tag-bg:    rgba(212,122,32,0.1);
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg:        #09101e;
+    --surface:   #111827;
+    --surface2:  #0d1623;
+    --border:    rgba(255,167,90,0.14);
+    --accent:    #FFA75A;
+    --accent-dim: rgba(255,167,90,0.35);
+    --text:      #dde6f5;
+    --muted:     rgba(221,230,245,0.42);
+    --muted2:    rgba(221,230,245,0.2);
+    --code-bg:   #0a1322;
+    --tag-bg:    rgba(255,167,90,0.1);
+  }
+  :root[data-theme="light"] {
+    --bg:        #f0f3f9;
+    --surface:   #ffffff;
+    --surface2:  #f7f9fc;
+    --border:    rgba(200,130,40,0.18);
+    --accent:    #d47a20;
+    --accent-dim: rgba(212,122,32,0.3);
+    --text:      #1a2234;
+    --muted:     rgba(26,34,52,0.48);
+    --muted2:    rgba(26,34,52,0.22);
+    --code-bg:   #e8eef8;
+    --tag-bg:    rgba(212,122,32,0.1);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { font-size: 15px; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', sans-serif;
+    line-height: 1.7;
+    padding: 0 20px 80px;
+  }
+
+  /* ── Layout ── */
+  .wrap { max-width: 760px; margin: 0 auto; }
+
+  /* ── Top nav strip ── */
+  .topbar {
+    border-bottom: 1px solid var(--border);
+    padding: 14px 0;
+    margin-bottom: 60px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .topbar-star {
+    width: 22px; height: 22px; flex-shrink: 0;
+  }
+  .topbar-label {
+    font-family: 'Courier New', Consolas, monospace;
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .topbar-version {
+    margin-left: auto;
+    font-family: 'Courier New', Consolas, monospace;
+    font-size: 11px;
+    color: var(--accent);
+    letter-spacing: 0.08em;
+  }
+
+  /* ── Page title ── */
+  .page-title {
+    font-size: 2rem;
+    font-weight: 700;
+    line-height: 1.25;
+    letter-spacing: -0.02em;
+    text-wrap: balance;
+    margin-bottom: 10px;
+  }
+  .page-title em {
+    font-style: normal;
+    color: var(--accent);
+  }
+  .page-sub {
+    font-size: 0.93rem;
+    color: var(--muted);
+    margin-bottom: 44px;
+    max-width: 560px;
+    line-height: 1.65;
+  }
+
+  /* ── Section ── */
+  .section {
+    margin-bottom: 52px;
+    padding-top: 28px;
+    border-top: 1px solid var(--border);
+  }
+  .section-eyebrow {
+    font-family: 'Courier New', Consolas, monospace;
+    font-size: 10px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 8px;
+  }
+  .section-title {
+    font-size: 1.22rem;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    margin-bottom: 18px;
+  }
+  p { margin-bottom: 12px; color: var(--text); font-size: 0.95rem; }
+  p:last-child { margin-bottom: 0; }
+
+  /* ── Principle list ── */
+  .principle-list { list-style: none; display: flex; flex-direction: column; gap: 10px; margin-bottom: 16px; }
+  .principle-list li {
+    padding: 11px 14px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--accent-dim);
+    font-size: 0.9rem;
+    display: flex; align-items: baseline; gap: 10px;
+  }
+  .principle-list li strong {
+    color: var(--accent);
+    font-family: 'Courier New', Consolas, monospace;
+    font-size: 0.82rem;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+  .principle-list li span { color: var(--muted); }
+
+  /* ── Architecture diagram ── */
+  .arch {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    padding: 28px 20px;
+    margin: 20px 0;
+    overflow-x: auto;
+  }
+  .arch-flow {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    min-width: 520px;
+  }
+  .arch-app {
+    flex: 0 0 140px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    padding: 14px 10px;
+    text-align: center;
+  }
+  .arch-app-name {
+    font-family: 'Courier New', Consolas, monospace;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    color: var(--accent);
+    margin-bottom: 3px;
+  }
+  .arch-app-sub {
+    font-size: 10px;
+    color: var(--muted2);
+  }
+  .arch-arrow {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+    padding: 0 4px;
+  }
+  .arch-arrow-line {
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(90deg, var(--accent-dim), var(--accent), var(--accent-dim));
+    position: relative;
+  }
+  .arch-arrow-label {
+    font-family: 'Courier New', Consolas, monospace;
+    font-size: 9px;
+    color: var(--muted);
+    letter-spacing: 0.06em;
+    text-align: center;
+    line-height: 1.3;
+    margin-top: 3px;
+  }
+  .arch-center {
+    flex: 0 0 120px;
+    background: var(--surface);
+    border: 1px solid var(--accent-dim);
+    padding: 14px 10px;
+    text-align: center;
+  }
+  .arch-center-name {
+    font-family: 'Courier New', Consolas, monospace;
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    color: var(--accent);
+    margin-bottom: 3px;
+  }
+  .arch-center-sub {
+    font-size: 9px;
+    color: var(--muted2);
+    line-height: 1.4;
+  }
+
+  /* ── DeviceId flow ── */
+  .flow-steps {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    margin: 16px 0;
+    border: 1px solid var(--border);
+    overflow: hidden;
+  }
+  .flow-step {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 13px 16px;
+    border-bottom: 1px solid var(--border);
+    font-size: 0.88rem;
+  }
+  .flow-step:last-child { border-bottom: none; }
+  .flow-step-num {
+    flex-shrink: 0;
+    width: 20px; height: 20px;
+    border: 1px solid var(--accent-dim);
+    color: var(--accent);
+    font-family: 'Courier New', Consolas, monospace;
+    font-size: 10px;
+    display: flex; align-items: center; justify-content: center;
+    margin-top: 1px;
+  }
+  .flow-step-body { flex: 1; }
+  .flow-step-app {
+    font-family: 'Courier New', Consolas, monospace;
+    font-size: 10px;
+    color: var(--accent);
+    letter-spacing: 0.1em;
+    margin-bottom: 3px;
+  }
+  .flow-step-desc { color: var(--muted); line-height: 1.5; }
+
+  /* ── New constellations ── */
+  .const-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    margin: 16px 0;
+  }
+  .const-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    padding: 18px;
+    display: grid;
+    grid-template-columns: 72px 1fr;
+    gap: 16px;
+    align-items: start;
+  }
+  .const-svg-box {
+    width: 72px; height: 72px;
+  }
+  .const-card-title {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--accent);
+    margin-bottom: 3px;
+  }
+  .const-card-desc {
+    font-family: 'Courier New', Consolas, monospace;
+    font-size: 0.78rem;
+    color: var(--muted);
+    margin-bottom: 10px;
+    line-height: 1.5;
+  }
+  .const-card-story {
+    font-size: 0.87rem;
+    color: var(--text);
+    font-style: italic;
+    margin-bottom: 10px;
+    padding-left: 10px;
+    border-left: 2px solid var(--accent-dim);
+  }
+  .const-card-check {
+    font-family: 'Courier New', Consolas, monospace;
+    font-size: 0.78rem;
+    color: var(--muted);
+    background: var(--code-bg);
+    padding: 8px 10px;
+    border: 1px solid var(--border);
+    line-height: 1.55;
+    word-break: break-word;
+  }
+
+  /* ── API spec ── */
+  .api-block {
+    margin: 16px 0;
+    border: 1px solid var(--border);
+  }
+  .api-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 14px;
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+  }
+  .api-method {
+    font-family: 'Courier New', Consolas, monospace;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    color: var(--bg);
+    background: var(--accent);
+    padding: 2px 7px;
+    flex-shrink: 0;
+  }
+  .api-path {
+    font-family: 'Courier New', Consolas, monospace;
+    font-size: 12px;
+    color: var(--text);
+  }
+  .api-body { padding: 14px; background: var(--code-bg); }
+  .api-label {
+    font-family: 'Courier New', Consolas, monospace;
+    font-size: 9px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--muted2);
+    margin-bottom: 6px;
+    margin-top: 14px;
+  }
+  .api-label:first-child { margin-top: 0; }
+
+  /* ── Code ── */
+  pre, code {
+    font-family: 'Courier New', Consolas, monospace;
+  }
+  pre {
+    background: var(--code-bg);
+    border: 1px solid var(--border);
+    padding: 14px 16px;
+    font-size: 0.8rem;
+    line-height: 1.6;
+    overflow-x: auto;
+    margin: 12px 0;
+    color: var(--text);
+    border-left: 3px solid var(--accent-dim);
+  }
+  code {
+    font-size: 0.82em;
+    background: var(--tag-bg);
+    color: var(--accent);
+    padding: 1px 5px;
+  }
+  pre code {
+    background: none;
+    color: inherit;
+    padding: 0;
+    font-size: inherit;
+  }
+  .cm { color: var(--muted); font-style: italic; }
+  .ck { color: #90aacc; }
+  .cs { color: #98c49a; }
+  .cn { color: #f5c87a; }
+
+  /* ── Change checklist ── */
+  .change-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    border: 1px solid var(--border);
+    margin: 14px 0;
+  }
+  .change-item {
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+    padding: 11px 14px;
+    border-bottom: 1px solid var(--border);
+    font-size: 0.88rem;
+  }
+  .change-item:last-child { border-bottom: none; }
+  .change-file {
+    font-family: 'Courier New', Consolas, monospace;
+    font-size: 0.78rem;
+    color: var(--accent);
+    flex-shrink: 0;
+    width: 160px;
+  }
+  .change-desc { color: var(--muted); flex: 1; line-height: 1.5; }
+
+  /* ── Future apps ── */
+  .future-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin: 14px 0;
+  }
+  @media (max-width: 500px) { .future-grid { grid-template-columns: 1fr; } }
+  .future-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    padding: 14px;
+  }
+  .future-app {
+    font-family: 'Courier New', Consolas, monospace;
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    color: var(--accent);
+    margin-bottom: 5px;
+  }
+  .future-idea { font-size: 0.85rem; color: var(--muted); line-height: 1.55; }
+
+  /* ── Table ── */
+  .data-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.83rem;
+    margin: 14px 0;
+    font-variant-numeric: tabular-nums;
+    overflow-x: auto;
+    display: block;
+  }
+  .data-table th {
+    font-family: 'Courier New', Consolas, monospace;
+    font-size: 9px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--muted2);
+    text-align: left;
+    padding: 8px 12px;
+    border-bottom: 1px solid var(--border);
+    white-space: nowrap;
+  }
+  .data-table td {
+    padding: 9px 12px;
+    border-bottom: 1px solid var(--border);
+    color: var(--muted);
+    vertical-align: top;
+  }
+  .data-table tr:last-child td { border-bottom: none; }
+  .data-table td:first-child { color: var(--text); font-family: 'Courier New', Consolas, monospace; font-size: 0.82rem; }
+
+  /* ── Inline warning ── */
+  .note {
+    background: var(--tag-bg);
+    border: 1px solid var(--accent-dim);
+    border-left: 3px solid var(--accent);
+    padding: 10px 14px;
+    font-size: 0.85rem;
+    color: var(--muted);
+    margin: 14px 0;
+    line-height: 1.6;
+  }
+  .note strong { color: var(--accent); }
+</style>
+
+<div class="wrap">
+
+  <!-- Topbar -->
+  <div class="topbar">
+    <svg class="topbar-star" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect x="10" y="0" width="2" height="2" fill="#FFA75A"/>
+      <rect x="8"  y="2" width="2" height="2" fill="#FFA75A"/>
+      <rect x="10" y="2" width="2" height="2" fill="#FFA75A"/>
+      <rect x="12" y="2" width="2" height="2" fill="#FFA75A"/>
+      <rect x="4"  y="4" width="2" height="2" fill="#FFA75A"/>
+      <rect x="6"  y="4" width="2" height="2" fill="#FFA75A"/>
+      <rect x="8"  y="4" width="2" height="2" fill="#FFA75A"/>
+      <rect x="10" y="4" width="2" height="2" fill="#FFA75A"/>
+      <rect x="12" y="4" width="2" height="2" fill="#FFA75A"/>
+      <rect x="14" y="4" width="2" height="2" fill="#FFA75A"/>
+      <rect x="16" y="4" width="2" height="2" fill="#FFA75A"/>
+      <rect x="2"  y="6" width="18" height="2" fill="#FFA75A"/>
+      <rect x="4"  y="8" width="2" height="2" fill="#FFA75A"/>
+      <rect x="16" y="8" width="2" height="2" fill="#FFA75A"/>
+      <rect x="6"  y="10" width="2" height="2" fill="#FFA75A"/>
+      <rect x="8"  y="10" width="2" height="2" fill="#FFA75A"/>
+      <rect x="12" y="10" width="2" height="2" fill="#FFA75A"/>
+      <rect x="14" y="10" width="2" height="2" fill="#FFA75A"/>
+      <rect x="4"  y="12" width="2" height="2" fill="#FFA75A"/>
+      <rect x="6"  y="12" width="2" height="2" fill="#FFA75A"/>
+      <rect x="14" y="12" width="2" height="2" fill="#FFA75A"/>
+      <rect x="16" y="12" width="2" height="2" fill="#FFA75A"/>
+      <rect x="2"  y="14" width="4" height="2" fill="#FFA75A"/>
+      <rect x="16" y="14" width="4" height="2" fill="#FFA75A"/>
+    </svg>
+    <span class="topbar-label">별자리 연동 프로젝트 · 내부 기술 가이드</span>
+    <span class="topbar-version">v1.0 · 2026-08-08</span>
+  </div>
+
+  <!-- Title -->
+  <h1 class="page-title">크로스앱 <em>별자리</em> 연동 가이드</h1>
+  <p class="page-sub">별점 × 핑계운세를 시작으로, 앱 간 행동 데이터를 공유해 단일 앱에서는 절대 발견할 수 없는 별자리를 해금시키는 시스템의 설계 원칙과 구현 명세.</p>
+
+  <!-- 1. 개요 -->
+  <div class="section">
+    <div class="section-eyebrow">section 01</div>
+    <div class="section-title">왜 크로스앱 별자리인가</div>
+    <p>별점의 별자리 수집은 단일 앱 내 반복 행동에서 의미를 찾는 메커닉이다. 그런데 두 앱 모두 같은 세계관(우주 / 별 / 핑계)을 공유하고 있다. 유저가 별점에서 스스로 낮은 점수를 주고, 곧이어 핑계운세에서 이유를 찾는 행동 패턴은 — 앱 안에서 각각 보면 분리된 이벤트지만 — 합쳐 보면 하나의 이야기가 된다.</p>
+    <p>크로스앱 별자리는 이 이야기를 포착한다. 유저는 "내가 두 앱을 어떻게 써왔는지"가 눈에 보이는 시각적 기억으로 남는다는 걸 나중에서야 발견하게 된다. 조건을 미리 노출하지 않는다는 별자리 원칙은 여기서도 동일하게 적용된다.</p>
+
+    <ul class="principle-list">
+      <li><strong>익명성</strong> <span>계정 없음. 기기 고유 UUID만 사용. 어디에도 개인 식별 정보를 저장하지 않는다.</span></li>
+      <li><strong>단방향 이벤트</strong> <span>앱은 이벤트를 발행(publish)하고 각자 소비(consume)한다. 앱 간 직접 통신은 없다.</span></li>
+      <li><strong>느슨한 결합</strong> <span>한 앱이 없어도, 이벤트를 아직 보내지 않아도 나머지 앱이 정상 작동해야 한다. 크로스 별자리는 빠져도 기본 별자리는 정상 동작한다.</span></li>
+      <li><strong>발견의 순수함</strong> <span>조건을 인앱에서 절대 노출하지 않는다. 힌트는 "특별한 방법으로 나타납니다"로만 표시한다.</span></li>
+    </ul>
+  </div>
+
+  <!-- 2. 아키텍처 -->
+  <div class="section">
+    <div class="section-eyebrow">section 02</div>
+    <div class="section-title">아키텍처 개요</div>
+    <p>두 앱은 이미 같은 Vercel 백엔드(<code>star-excuse.vercel.app</code>)와 Upstash Redis를 공유하고 있다. 새 엔드포인트 두 개만 추가하면 된다.</p>
+
+    <div class="arch">
+      <div class="arch-flow">
+        <div class="arch-app">
+          <div class="arch-app-name">starrating</div>
+          <div class="arch-app-sub">별점 앱<br>localStorage: sr_history</div>
+        </div>
+        <div class="arch-arrow">
+          <div class="arch-arrow-line"></div>
+          <div class="arch-arrow-label">POST /api/cross-event<br>GET /api/cross-data</div>
+        </div>
+        <div class="arch-center">
+          <div class="arch-center-name">Vercel API<br>+ Upstash Redis</div>
+          <div class="arch-center-sub">cross:events:{uid}<br>TTL 365일</div>
+        </div>
+        <div class="arch-arrow">
+          <div class="arch-arrow-line"></div>
+          <div class="arch-arrow-label">POST /api/cross-event<br>(방문 시 기록)</div>
+        </div>
+        <div class="arch-app">
+          <div class="arch-app-name">starexcuse</div>
+          <div class="arch-app-sub">핑계운세 앱<br>URL param: _uid</div>
+        </div>
+      </div>
+    </div>
+
+    <p>Toss 미니앱은 앱마다 별도 WebView에서 실행되므로 localStorage가 격리된다. 두 앱이 동일한 <code>universe_device_id</code>를 갖도록 별점이 핑계운세를 열 때 deep link 파라미터로 UID를 전달한다.</p>
+
+    <div class="note">
+      <strong>핵심 제약</strong> — 첫 번째 연결은 반드시 별점→핑계운세 방향이어야 한다. 핑계운세를 먼저 독립 설치한 유저는 UID가 달라 크로스 별자리가 발견되지 않을 수 있다. 이 경우는 수용 가능한 엣지케이스로 간주한다.
+    </div>
+  </div>
+
+  <!-- 3. DeviceId 전파 -->
+  <div class="section">
+    <div class="section-eyebrow">section 03</div>
+    <div class="section-title">DeviceId 전파 방식</div>
+    <p>두 앱이 공통 <code>universe_device_id</code>를 공유하는 절차.</p>
+
+    <div class="flow-steps">
+      <div class="flow-step">
+        <div class="flow-step-num">1</div>
+        <div class="flow-step-body">
+          <div class="flow-step-app">starrating · 초기화 시</div>
+          <div class="flow-step-desc"><code>universe_device_id</code>가 localStorage에 없으면 UUID v4 생성 후 저장. 이미 있으면 재사용.</div>
+        </div>
+      </div>
+      <div class="flow-step">
+        <div class="flow-step-num">2</div>
+        <div class="flow-step-body">
+          <div class="flow-step-app">starrating · 결과 뷰에서 핑계운세 버튼 탭 시</div>
+          <div class="flow-step-desc">deep link 파라미터에 UID와 별점 컨텍스트를 포함해 핑계운세를 오픈한다.<br>
+          <code>intoss://starexcuse?_src=starrating&amp;_uid=&lt;uuid&gt;&amp;_score=2&amp;_date=20260808</code></div>
+        </div>
+      </div>
+      <div class="flow-step">
+        <div class="flow-step-num">3</div>
+        <div class="flow-step-body">
+          <div class="flow-step-app">starexcuse · 앱 로드 시</div>
+          <div class="flow-step-desc">URL params에서 <code>_uid</code> 읽어 <code>universe_device_id</code>로 localStorage에 저장. <code>_src=starrating</code>이면 cross-event POST 전송.</div>
+        </div>
+      </div>
+      <div class="flow-step">
+        <div class="flow-step-num">4</div>
+        <div class="flow-step-body">
+          <div class="flow-step-app">starrating · 별자리 체크 시</div>
+          <div class="flow-step-desc"><code>/api/cross-data?uid=&lt;uuid&gt;</code> 호출 → Redis에 기록된 크로스 이벤트를 가져와 새 별자리 check 함수에 전달.</div>
+        </div>
+      </div>
+    </div>
+
+    <pre><span class="cm">// 두 앱 공통 — 최초 실행 시 UID 확보</span>
+<span class="ck">function</span> <span class="cn">getOrCreateDeviceId</span>() {
+  <span class="ck">const</span> KEY = <span class="cs">'universe_device_id'</span>;
+  <span class="ck">let</span> uid = localStorage.getItem(KEY);
+  <span class="ck">if</span> (!uid) {
+    uid = crypto.randomUUID();
+    localStorage.setItem(KEY, uid);
+  }
+  <span class="ck">return</span> uid;
+}</pre>
+  </div>
+
+  <!-- 4. API 명세 -->
+  <div class="section">
+    <div class="section-eyebrow">section 04</div>
+    <div class="section-title">API 엔드포인트 명세</div>
+    <p>Vercel 프로젝트(<code>star-excuse.vercel.app</code>)에 추가할 두 엔드포인트.</p>
+
+    <!-- POST cross-event -->
+    <div class="api-block">
+      <div class="api-header">
+        <span class="api-method">POST</span>
+        <span class="api-path">/api/cross-event</span>
+      </div>
+      <div class="api-body">
+        <div class="api-label">Request body</div>
+        <pre style="margin:0;border:none;border-left:none;padding:0;background:none">{
+  <span class="cs">"uid"</span>:  <span class="cs">"uuid-xxxx"</span>,     <span class="cm">// universe_device_id</span>
+  <span class="cs">"src"</span>:  <span class="cs">"starexcuse"</span>,   <span class="cm">// 이벤트 발생 앱</span>
+  <span class="cs">"type"</span>: <span class="cs">"visit"</span>,        <span class="cm">// 이벤트 타입</span>
+  <span class="cs">"payload"</span>: {
+    <span class="cs">"date"</span>:  <span class="cs">"20260808"</span>,    <span class="cm">// YYYYMMDD (KST)</span>
+    <span class="cs">"score"</span>: <span class="cn">2</span>            <span class="cm">// 별점 (있을 때만)</span>
+  }
+}</pre>
+        <div class="api-label" style="margin-top:14px">Response</div>
+        <pre style="margin:0;border:none;padding:0;background:none">{ <span class="cs">"ok"</span>: <span class="ck">true</span> }</pre>
+        <div class="api-label" style="margin-top:14px">Redis 작업</div>
+        <pre style="margin:0;border:none;padding:0;background:none"><span class="cm">// 이벤트 저장</span>
+LPUSH cross:events:{uid}  JSON.stringify({ src, type, payload, ts })
+LTRIM cross:events:{uid}  0 499     <span class="cm">// 최대 500개 보관</span>
+EXPIRE cross:events:{uid} 31536000  <span class="cm">// TTL 365일</span></pre>
+      </div>
+    </div>
+
+    <!-- GET cross-data -->
+    <div class="api-block">
+      <div class="api-header">
+        <span class="api-method">GET</span>
+        <span class="api-path">/api/cross-data?uid=&lt;uuid&gt;</span>
+      </div>
+      <div class="api-body">
+        <div class="api-label">Response</div>
+        <pre style="margin:0;border:none;padding:0;background:none">{
+  <span class="cs">"events"</span>: [
+    {
+      <span class="cs">"src"</span>:     <span class="cs">"starexcuse"</span>,
+      <span class="cs">"type"</span>:    <span class="cs">"visit"</span>,
+      <span class="cs">"payload"</span>: { <span class="cs">"date"</span>: <span class="cs">"20260808"</span>, <span class="cs">"score"</span>: <span class="cn">2</span> },
+      <span class="cs">"ts"</span>:      <span class="cn">1754649600</span>
+    }
+    <span class="cm">// ... 최대 500개</span>
+  ]
+}</pre>
+        <div class="api-label" style="margin-top:14px">Redis 작업</div>
+        <pre style="margin:0;border:none;padding:0;background:none">LRANGE cross:events:{uid} 0 499</pre>
+      </div>
+    </div>
+
+    <!-- event types table -->
+    <div class="api-label" style="margin-top:20px">정의된 이벤트 타입</div>
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>src</th>
+          <th>type</th>
+          <th>payload 필드</th>
+          <th>발생 시점</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>starexcuse</td>
+          <td>visit</td>
+          <td>date, score(optional)</td>
+          <td>별점에서 deep link로 핑계운세 진입 시</td>
+        </tr>
+        <tr>
+          <td>starexcuse</td>
+          <td>excuse_generated</td>
+          <td>date, category</td>
+          <td>핑계 생성 완료 시 (향후 확장)</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- 5. 새 별자리 -->
+  <div class="section">
+    <div class="section-eyebrow">section 05</div>
+    <div class="section-title">신규 크로스앱 별자리 스펙 (3개)</div>
+    <p>모두 <code>별점/개발/app/src/main.js</code>의 <code>CONSTELLATIONS</code> 배열에 추가. <code>check</code> 함수 시그니처를 <code>check(history, crossEvents)</code>로 확장하고 기존 별자리는 <code>crossEvents</code>를 무시하도록 유지.</p>
+
+    <div class="const-cards">
+
+      <!-- 쌍성계 -->
+      <div class="const-card">
+        <div class="const-svg-box">
+          <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+            <line x1="30" y1="25" x2="70" y2="75" stroke="rgba(255,167,90,0.35)" stroke-width="1"/>
+            <circle cx="30" cy="25" r="5" fill="rgba(255,167,90,0.2)"/>
+            <circle cx="30" cy="25" r="2.8" fill="#FFA75A"/>
+            <circle cx="70" cy="75" r="5" fill="rgba(255,167,90,0.2)"/>
+            <circle cx="70" cy="75" r="2.8" fill="#FFA75A"/>
+            <circle cx="50" cy="50" r="3.5" fill="rgba(255,167,90,0.2)"/>
+            <circle cx="50" cy="50" r="2" fill="#FFA75A" opacity="0.6"/>
+          </svg>
+        </div>
+        <div>
+          <div class="const-card-title">쌍성계</div>
+          <div class="const-card-desc">Binary Star System · 크로스앱 전용</div>
+          <div class="const-card-story">힘든 날, 핑계가 별이 됐습니다</div>
+          <div class="const-card-check">check: (h, cx) =&gt; cx.some(e =&gt;<br>
+  e.src === 'starexcuse' &amp;&amp;<br>
+  e.type === 'visit' &amp;&amp;<br>
+  h[e.payload.date]?.myScore === 1<br>
+)<br><br>
+getDates: (h, cx) =&gt; cx<br>
+  .filter(e =&gt; e.src === 'starexcuse' &amp;&amp; h[e.payload.date]?.myScore === 1)<br>
+  .map(e =&gt; e.payload.date)</div>
+        </div>
+      </div>
+
+      <!-- 혜성 -->
+      <div class="const-card">
+        <div class="const-svg-box">
+          <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+            <line x1="15" y1="85" x2="75" y2="12" stroke="rgba(255,167,90,0.3)" stroke-width="0.8"/>
+            <line x1="25" y1="88" x2="78" y2="22" stroke="rgba(255,167,90,0.18)" stroke-width="0.6"/>
+            <circle cx="75" cy="12" r="6" fill="rgba(255,167,90,0.22)"/>
+            <circle cx="75" cy="12" r="3.2" fill="#FFA75A"/>
+            <circle cx="55" cy="38" r="1.5" fill="#FFA75A" opacity="0.5"/>
+            <circle cx="40" cy="58" r="1.2" fill="#FFA75A" opacity="0.35"/>
+            <circle cx="25" cy="76" r="0.9" fill="#FFA75A" opacity="0.2"/>
+          </svg>
+        </div>
+        <div>
+          <div class="const-card-title">혜성</div>
+          <div class="const-card-desc">Comet · 크로스앱 전용</div>
+          <div class="const-card-story">핑계들이 꼬리별이 되어 우주를 가로질렀습니다</div>
+          <div class="const-card-check">check: (h, cx) =&gt; {<br>
+  const low = cx.filter(e =&gt;<br>
+    e.src === 'starexcuse' &amp;&amp;<br>
+    (h[e.payload.date]?.myScore ?? 9) &lt;= 2<br>
+  );<br>
+  return low.length &gt;= 5;<br>
+}<br><br>
+getDates: (h, cx) =&gt; cx<br>
+  .filter(e =&gt; e.src === 'starexcuse' &amp;&amp; (h[e.payload.date]?.myScore ?? 9) &lt;= 2)<br>
+  .map(e =&gt; e.payload.date)</div>
+        </div>
+      </div>
+
+      <!-- 은하수 -->
+      <div class="const-card">
+        <div class="const-svg-box">
+          <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+            <ellipse cx="50" cy="50" rx="42" ry="14" fill="none" stroke="rgba(255,167,90,0.2)" stroke-width="0.7" transform="rotate(-25 50 50)"/>
+            <circle cx="22" cy="40" r="1.8" fill="#FFA75A" opacity="0.5"/>
+            <circle cx="38" cy="48" r="2.8" fill="rgba(255,167,90,0.2)"/>
+            <circle cx="38" cy="48" r="1.6" fill="#FFA75A"/>
+            <circle cx="55" cy="52" r="1.4" fill="#FFA75A" opacity="0.6"/>
+            <circle cx="70" cy="58" r="2.4" fill="rgba(255,167,90,0.2)"/>
+            <circle cx="70" cy="58" r="1.4" fill="#FFA75A"/>
+            <circle cx="82" cy="60" r="1" fill="#FFA75A" opacity="0.4"/>
+          </svg>
+        </div>
+        <div>
+          <div class="const-card-title">은하수</div>
+          <div class="const-card-desc">Milky Way · 크로스앱 전용</div>
+          <div class="const-card-story">좋은 날에도 우주에서 이유를 찾았습니다 — 진정한 탐구자</div>
+          <div class="const-card-check">check: (h, cx) =&gt; cx.some(e =&gt;<br>
+  e.src === 'starexcuse' &amp;&amp;<br>
+  h[e.payload.date]?.myScore === 5<br>
+)<br><br>
+getDates: (h, cx) =&gt; cx<br>
+  .filter(e =&gt; e.src === 'starexcuse' &amp;&amp; h[e.payload.date]?.myScore === 5)<br>
+  .map(e =&gt; e.payload.date)</div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="note">
+      <strong>힌트 표시 방침</strong> — 세 별자리 모두 <code>hint: '특별한 방법으로 나타납니다'</code>로 통일. 다른 앱의 존재를 암시하지 않는다. 유저가 두 앱을 함께 쓰다가 자연스럽게 발견하는 것이 목표.
+    </div>
+  </div>
+
+  <!-- 6. 별점 변경사항 -->
+  <div class="section">
+    <div class="section-eyebrow">section 06</div>
+    <div class="section-title">별점 앱 변경사항</div>
+
+    <ul class="change-list">
+      <li class="change-item">
+        <div class="change-file">src/main.js</div>
+        <div class="change-desc"><code>getOrCreateDeviceId()</code> 함수 추가. <code>bootstrap()</code>에서 호출해 모듈 스코프 변수 <code>const _uid</code>에 캐싱.</div>
+      </li>
+      <li class="change-item">
+        <div class="change-file">src/main.js</div>
+        <div class="change-desc"><code>fetchCrossEvents()</code> 추가 — <code>/api/cross-data?uid=_uid</code> GET, 실패 시 빈 배열 반환. 별자리 화면 진입 시 1회 호출 후 캐싱.</div>
+      </li>
+      <li class="change-item">
+        <div class="change-file">src/main.js</div>
+        <div class="change-desc"><code>CONSTELLATIONS</code>에 쌍성계·혜성·은하수 3개 추가. <code>check(h, cx)</code>, <code>getDates(h, cx)</code>로 시그니처 변경. 기존 10개는 <code>cx</code> 파라미터 무시.</div>
+      </li>
+      <li class="change-item">
+        <div class="change-file">src/main.js</div>
+        <div class="change-desc">결과 뷰 하단 "오늘 핑계 찾기" 버튼 — <code>myScore &lt;= 2</code>일 때만 표시. 탭 시 <code>intoss://starexcuse?_src=starrating&_uid={_uid}&_score={score}&_date={date}</code> 딥링크 오픈.</div>
+      </li>
+      <li class="change-item">
+        <div class="change-file">index.html</div>
+        <div class="change-desc">"오늘 핑계 찾기" 버튼 CSS 추가. 별점 낮은 날에만 표시되는 서브텍스트 위치 확보.</div>
+      </li>
+    </ul>
+
+    <pre><span class="cm">// 별자리 지도 진입 시 크로스 이벤트 가져오기</span>
+<span class="ck">async function</span> <span class="cn">fetchCrossEvents</span>() {
+  <span class="ck">try</span> {
+    <span class="ck">const</span> r = <span class="ck">await</span> fetch(`${API_BASE}/api/cross-data?uid=${_uid}`);
+    <span class="ck">const</span> { events } = <span class="ck">await</span> r.json();
+    <span class="ck">return</span> events ?? [];
+  } <span class="ck">catch</span> { <span class="ck">return</span> []; }
+}
+
+<span class="cm">// 결과 뷰 — 낮은 점수 시 핑계 버튼</span>
+<span class="ck">function</span> <span class="cn">renderPinkyBtn</span>(score, date) {
+  <span class="ck">const</span> btn = document.getElementById(<span class="cs">'pinkyBtn'</span>);
+  btn.classList.toggle(<span class="cs">'hidden'</span>, score > <span class="cn">2</span>);
+  btn.onclick = () => {
+    <span class="ck">const</span> dl = `intoss://starexcuse?_src=starrating&_uid=${_uid}&_score=${score}&_date=${date}`;
+    location.href = dl;
+  };
+}</pre>
+  </div>
+
+  <!-- 7. 핑계운세 변경사항 -->
+  <div class="section">
+    <div class="section-eyebrow">section 07</div>
+    <div class="section-title">핑계운세 앱 변경사항</div>
+
+    <ul class="change-list">
+      <li class="change-item">
+        <div class="change-file">src/main.js (또는 app entry)</div>
+        <div class="change-desc">앱 로드 시 URL searchParams에서 <code>_uid</code>, <code>_src</code>, <code>_score</code>, <code>_date</code> 파싱.</div>
+      </li>
+      <li class="change-item">
+        <div class="change-file">src/main.js</div>
+        <div class="change-desc"><code>_uid</code> 값이 있으면 <code>universe_device_id</code>로 localStorage에 저장. 없으면 기존 저장값 사용, 그것도 없으면 새로 생성.</div>
+      </li>
+      <li class="change-item">
+        <div class="change-file">src/main.js</div>
+        <div class="change-desc"><code>_src === 'starrating'</code>이면 즉시 <code>/api/cross-event</code>에 <code>{ uid, src: 'starexcuse', type: 'visit', payload: { date: _date || todayKST(), score: +_score || null } }</code> POST.</div>
+      </li>
+    </ul>
+
+    <pre><span class="cm">// 핑계운세 app entry — 크로스 진입 처리</span>
+<span class="ck">const</span> params = <span class="ck">new</span> URLSearchParams(location.search);
+<span class="ck">const</span> _src   = params.get(<span class="cs">'_src'</span>);
+<span class="ck">const</span> _uid   = params.get(<span class="cs">'_uid'</span>);
+<span class="ck">const</span> _score = params.get(<span class="cs">'_score'</span>);
+<span class="ck">const</span> _date  = params.get(<span class="cs">'_date'</span>);
+
+<span class="ck">if</span> (_uid) localStorage.setItem(<span class="cs">'universe_device_id'</span>, _uid);
+<span class="ck">const</span> uid = localStorage.getItem(<span class="cs">'universe_device_id'</span>)
+          ?? crypto.randomUUID();
+
+<span class="ck">if</span> (_src === <span class="cs">'starrating'</span> && uid) {
+  fetch(<span class="cs">`${API_BASE}/api/cross-event`</span>, {
+    method: <span class="cs">'POST'</span>,
+    headers: { <span class="cs">'Content-Type'</span>: <span class="cs">'application/json'</span> },
+    body: JSON.stringify({
+      uid,
+      src: <span class="cs">'starexcuse'</span>,
+      type: <span class="cs">'visit'</span>,
+      payload: { date: _date ?? todayKST(), score: _score ? +_score : null },
+    }),
+  }).catch(() => {}); <span class="cm">// 실패 시 무시</span>
+}</pre>
+  </div>
+
+  <!-- 8. Vercel API 파일 -->
+  <div class="section">
+    <div class="section-eyebrow">section 08</div>
+    <div class="section-title">Vercel API 파일 추가</div>
+
+    <p>두 파일 모두 <code>핑계운세/개발/app/api/</code>에 추가. <code>_lib/redis.js</code>는 변경 없이 그대로 사용.</p>
+
+    <pre><span class="cm">// api/cross-event.js</span>
+<span class="ck">import</span> { redis, setCors } <span class="ck">from</span> <span class="cs">'./_lib/redis.js'</span>;
+
+<span class="ck">export default async function</span> handler(req, res) {
+  setCors(res);
+  <span class="ck">if</span> (req.method === <span class="cs">'OPTIONS'</span>) <span class="ck">return</span> res.status(<span class="cn">200</span>).end();
+  <span class="ck">if</span> (req.method !== <span class="cs">'POST'</span>) <span class="ck">return</span> res.status(<span class="cn">405</span>).end();
+
+  <span class="ck">const</span> { uid, src, type, payload } = req.body ?? {};
+  <span class="ck">if</span> (!uid || !src || !type) <span class="ck">return</span> res.status(<span class="cn">400</span>).json({ error: <span class="cs">'missing fields'</span> });
+
+  <span class="ck">const</span> key   = `cross:events:${uid}`;
+  <span class="ck">const</span> event = JSON.stringify({ src, type, payload: payload ?? {}, ts: Date.now() });
+
+  <span class="ck">await</span> redis.lpush(key, event);
+  <span class="ck">await</span> redis.ltrim(key, <span class="cn">0</span>, <span class="cn">499</span>);
+  <span class="ck">await</span> redis.expire(key, <span class="cn">31536000</span>);
+
+  res.json({ ok: <span class="ck">true</span> });
+}</pre>
+
+    <pre><span class="cm">// api/cross-data.js</span>
+<span class="ck">import</span> { redis, setCors } <span class="ck">from</span> <span class="cs">'./_lib/redis.js'</span>;
+
+<span class="ck">export default async function</span> handler(req, res) {
+  setCors(res);
+  <span class="ck">if</span> (req.method === <span class="cs">'OPTIONS'</span>) <span class="ck">return</span> res.status(<span class="cn">200</span>).end();
+
+  <span class="ck">const</span> { uid } = req.query;
+  <span class="ck">if</span> (!uid) <span class="ck">return</span> res.status(<span class="cn">400</span>).json({ error: <span class="cs">'uid required'</span> });
+
+  <span class="ck">const</span> raw    = <span class="ck">await</span> redis.lrange(`cross:events:${uid}`, <span class="cn">0</span>, <span class="cn">499</span>);
+  <span class="ck">const</span> events = (raw ?? []).map(e => {
+    <span class="ck">try</span> { <span class="ck">return</span> JSON.parse(e); } <span class="ck">catch</span> { <span class="ck">return</span> null; }
+  }).filter(Boolean);
+
+  res.json({ events });
+}</pre>
+  </div>
+
+  <!-- 9. 향후 확장 -->
+  <div class="section">
+    <div class="section-eyebrow">section 09</div>
+    <div class="section-title">향후 앱 확장 계획</div>
+    <p>같은 이벤트 스키마를 따르는 앱은 추가 인프라 없이 참여 가능. 각 앱은 진입 시 <code>_src</code>와 <code>_uid</code>를 URL로 수신하고 cross-event를 POST하면 된다.</p>
+
+    <div class="future-grid">
+      <div class="future-card">
+        <div class="future-app">누구게?</div>
+        <div class="future-idea">데일리 퀴즈에서 모두 맞춘 날의 별점 점수가 낮다면 → "탐정의 역설" 별자리. 세상을 꿰뚫어 봤지만 하루는 별로였던 날.</div>
+      </div>
+      <div class="future-card">
+        <div class="future-app">비눗방울 타임</div>
+        <div class="future-idea">비눗방울에 글을 남긴 날 별점이 3점인 날들이 쌓이면 → "평범한 날의 기록들" 별자리. 특별하지 않은 날을 나눈 흔적.</div>
+      </div>
+      <div class="future-card">
+        <div class="future-app">더위배틀</div>
+        <div class="future-idea">배틀에서 최고 순위를 달성한 날 별점이 1점이라면 → "뜨거운 실패" 별자리. 더위와 싸웠지만 하루는 졌다.</div>
+      </div>
+      <div class="future-card">
+        <div class="future-app">보험천재</div>
+        <div class="future-idea">보험 정보를 확인한 날 별점 점수가 낮다면 → "대비의 별" 별자리. 힘든 날일수록 내일을 준비했다.</div>
+      </div>
+    </div>
+
+    <div class="note" style="margin-top:20px">
+      <strong>새 앱 참여 체크리스트</strong> — ① URL param에서 <code>_uid / _src</code> 읽기 ② <code>universe_device_id</code> localStorage 저장 ③ <code>POST /api/cross-event</code>에 이벤트 발행 ④ 별점 <code>CONSTELLATIONS</code>에 신규 별자리 추가 (check·getDates 함수 포함). 인프라 추가 없음.
+    </div>
+  </div>
+
+</div>
+
+</body></html>
