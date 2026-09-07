@@ -1,0 +1,426 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1"><style>:root{color-scheme:light}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found]){display:none!important}</style></head><body>
+<title>인생 챕터 레벨 디자인</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hahmlet:wght@500;600;700&family=Gothic+A1:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap">
+
+<style>
+  :root {
+    --paper:     #F4F3F9;
+    --surface:   #FFFFFF;
+    --surface-2: #EAE8F3;
+    --ink:       #16151F;
+    --ink-2:     #55536B;
+    --ink-3:     #86849B;
+    --rule:      #DCDAE9;
+    --rule-soft: #E9E7F2;
+    --accent:    #4E47C2;
+    --give:      #2C6438;
+    --give-bg:   #E2EDE3;
+    --ask:       #8A5A05;
+    --ask-bg:    #F7ECD6;
+    --pay:       #4E47C2;
+    --pay-bg:    #E7E5FA;
+    --warn:      #A0291B;
+    --warn-bg:   #F6E3E0;
+    --shadow:    0 1px 2px rgba(22,21,31,.05), 0 10px 30px -20px rgba(22,21,31,.4);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --paper:#111019; --surface:#191826; --surface-2:#232134;
+      --ink:#E7E5F0; --ink-2:#A9A6BD; --ink-3:#807DA0;
+      --rule:#2E2C42; --rule-soft:#242234; --accent:#8F88F0;
+      --give:#6FBB7C; --give-bg:#16261A; --ask:#D9A445; --ask-bg:#2A2214;
+      --pay:#8F88F0; --pay-bg:#201E3A; --warn:#E88170; --warn-bg:#2C1916;
+      --shadow:0 1px 2px rgba(0,0,0,.35), 0 10px 30px -20px rgba(0,0,0,.8);
+    }
+  }
+  :root[data-theme="dark"] {
+    --paper:#111019; --surface:#191826; --surface-2:#232134;
+    --ink:#E7E5F0; --ink-2:#A9A6BD; --ink-3:#807DA0;
+    --rule:#2E2C42; --rule-soft:#242234; --accent:#8F88F0;
+    --give:#6FBB7C; --give-bg:#16261A; --ask:#D9A445; --ask-bg:#2A2214;
+    --pay:#8F88F0; --pay-bg:#201E3A; --warn:#E88170; --warn-bg:#2C1916;
+    --shadow:0 1px 2px rgba(0,0,0,.35), 0 10px 30px -20px rgba(0,0,0,.8);
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--paper); color: var(--ink);
+    font-family: "Gothic A1", system-ui, -apple-system, "Malgun Gothic", sans-serif;
+    font-size: 16px; line-height: 1.75; word-break: keep-all;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: 64rem; margin: 0 auto; padding: 0 1.5rem 6rem; }
+
+  .mono { font-family: "JetBrains Mono", ui-monospace, monospace; font-size: .875em; }
+  code {
+    font-family: "JetBrains Mono", ui-monospace, monospace; font-size: .84em;
+    background: var(--surface-2); padding: .1em .38em; border-radius: 3px; word-break: break-all;
+  }
+
+  .masthead { padding: 3.5rem 0 1.5rem; border-bottom: 2px solid var(--ink); display: flex; flex-direction: column; gap: 1.125rem; }
+  .eyebrow { font-family: "JetBrains Mono", monospace; font-size: .7rem; font-weight: 500; letter-spacing: .16em; text-transform: uppercase; color: var(--accent); }
+  h1 { font-family: "Hahmlet", Georgia, serif; font-size: clamp(2rem, 5.4vw, 3rem); font-weight: 700; line-height: 1.2; letter-spacing: -.02em; margin: 0; text-wrap: balance; }
+  .standfirst { font-size: 1.0625rem; color: var(--ink-2); max-width: 44rem; margin: 0; }
+  .meta { font-family: "JetBrains Mono", monospace; font-size: .74rem; color: var(--ink-3); display: flex; flex-wrap: wrap; gap: .4rem 1.5rem; }
+
+  section { margin-top: 4.25rem; }
+  .sec-head { display: flex; align-items: baseline; gap: .875rem; border-bottom: 1px solid var(--ink); padding-bottom: .6rem; margin-bottom: 1.625rem; }
+  .sec-num { font-family: "JetBrains Mono", monospace; font-size: .78rem; font-weight: 600; color: var(--accent); }
+  h2 { font-family: "Hahmlet", Georgia, serif; font-size: 1.375rem; font-weight: 600; letter-spacing: -.015em; margin: 0; flex: 1; text-wrap: balance; }
+  h3 { font-family: "Hahmlet", Georgia, serif; font-size: 1.0625rem; font-weight: 600; letter-spacing: -.01em; margin: 0 0 .5rem; line-height: 1.5; text-wrap: balance; }
+  .lede { color: var(--ink-2); max-width: 46rem; margin: 0 0 1.75rem; }
+  p { margin: 0 0 .875rem; } p:last-child { margin-bottom: 0; }
+
+  .verdict {
+    background: var(--surface); border: 1px solid var(--rule); border-left: 4px solid var(--accent);
+    padding: 1.5rem 1.625rem; box-shadow: var(--shadow); display: flex; flex-direction: column; gap: .875rem;
+  }
+  .verdict strong { font-weight: 700; }
+
+  .correction {
+    background: var(--warn-bg); border: 1px solid var(--warn); border-left: 4px solid var(--warn);
+    padding: 1.125rem 1.375rem; margin-bottom: 1.75rem;
+  }
+  .correction .k {
+    font-family: "JetBrains Mono", monospace; font-size: .64rem; font-weight: 600;
+    letter-spacing: .1em; text-transform: uppercase; color: var(--warn); display: block; margin-bottom: .4rem;
+  }
+  .correction p { color: var(--ink); font-size: .9375rem; line-height: 1.7; }
+
+  /* track diagram */
+  .trackwrap { border: 1px solid var(--rule); background: var(--surface); overflow-x: auto; box-shadow: var(--shadow); }
+  .track { min-width: 46rem; padding: 1.75rem 1.5rem 1.5rem; }
+  .track-legend { display: flex; gap: 1.25rem; flex-wrap: wrap; font-size: .78rem; color: var(--ink-2); margin-bottom: 1.5rem; }
+  .track-legend i { display: inline-block; width: 10px; height: 10px; border-radius: 2px; margin-right: .4rem; }
+  .lg-give { background: var(--give); } .lg-ask { background: var(--ask); }
+  .cols { display: grid; grid-template-columns: repeat(5, 1fr); gap: 1px; background: var(--rule-soft); }
+  .col { background: var(--surface); padding: 0 .75rem; display: flex; flex-direction: column; }
+  .col-stage { font-family: "JetBrains Mono", monospace; font-size: .68rem; letter-spacing: .06em; color: var(--ink-3); text-transform: uppercase; padding-bottom: .4rem; }
+  .col-name { font-size: .9rem; font-weight: 700; letter-spacing: -.01em; margin-bottom: .75rem; line-height: 1.35; }
+  .give-box { background: var(--give-bg); border-left: 3px solid var(--give); padding: .55rem .6rem; font-size: .78rem; line-height: 1.55; color: var(--give); font-weight: 500; min-height: 6.5rem; }
+  .askzone { margin-top: .75rem; display: flex; flex-direction: column; justify-content: flex-end; height: 5.5rem; }
+  .askbar { border-radius: 3px 3px 0 0; width: 100%; }
+  .ask-none { height: 3px; background: var(--rule); }
+  .ask-1 { height: 30px; background: var(--ask); opacity: .5; }
+  .ask-2 { height: 62px; background: var(--ask); opacity: .8; }
+  .ask-label { font-size: .74rem; line-height: 1.45; margin-top: .5rem; color: var(--ink-2); font-weight: 500; min-height: 3.2rem; }
+  .ask-label.none { color: var(--ink-3); font-weight: 400; }
+  .baseline { height: 2px; background: var(--ink); opacity: .18; margin-top: -1px; }
+
+  .ledger { display: flex; flex-direction: column; gap: 1px; background: var(--rule); border: 1px solid var(--rule); }
+  .item { background: var(--surface); display: grid; grid-template-columns: 7.5rem 1fr; gap: 0 1.5rem; padding: 1.5rem 1.5rem 1.625rem; }
+  .item-rail { display: flex; flex-direction: column; gap: .5rem; align-items: flex-start; }
+  .item-id { font-family: "JetBrains Mono", monospace; font-size: .76rem; font-weight: 600; color: var(--ink-3); letter-spacing: .04em; }
+  .chip { font-family: "JetBrains Mono", monospace; font-size: .64rem; font-weight: 600; letter-spacing: .07em; text-transform: uppercase; padding: .2rem .5rem; border-radius: 3px; white-space: nowrap; }
+  .chip.give { background: var(--give-bg); color: var(--give); }
+  .chip.warn { background: var(--warn-bg); color: var(--warn); }
+  .chip.ask { background: var(--ask-bg); color: var(--ask); }
+  .chip.pay { background: var(--pay-bg); color: var(--pay); }
+  .item-body { min-width: 0; }
+  .item-body ul { margin: 0 0 .875rem; padding-left: 1.1rem; display: flex; flex-direction: column; gap: .4rem; }
+  .item-body li::marker { color: var(--ink-3); }
+
+  .action { background: var(--surface-2); border-left: 3px solid var(--accent); padding: .8rem .95rem; margin-top: .875rem; font-size: .9375rem; line-height: 1.65; }
+  .action .k { font-family: "JetBrains Mono", monospace; font-size: .64rem; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--accent); display: block; margin-bottom: .3rem; }
+  .action code { background: rgba(0,0,0,.06); }
+  :root[data-theme="dark"] .action code { background: rgba(255,255,255,.08); }
+  @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .action code { background: rgba(255,255,255,.08); } }
+
+  .tablewrap { overflow-x: auto; border: 1px solid var(--rule); background: var(--surface); box-shadow: var(--shadow); }
+  table { border-collapse: collapse; width: 100%; min-width: 34rem; }
+  th, td { text-align: left; padding: .72rem .9rem; border-bottom: 1px solid var(--rule-soft); font-size: .9rem; vertical-align: top; }
+  th { font-family: "JetBrains Mono", monospace; font-size: .66rem; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-3); font-weight: 600; border-bottom: 1px solid var(--rule); white-space: nowrap; }
+  tr:last-child td { border-bottom: none; }
+  td.num { font-family: "JetBrains Mono", monospace; font-variant-numeric: tabular-nums; white-space: nowrap; }
+  td strong { font-weight: 700; }
+  .hot { color: var(--warn); font-weight: 700; }
+  .caption { font-size: .8125rem; color: var(--ink-3); line-height: 1.6; margin-top: .75rem; }
+
+  .decisions { display: flex; flex-direction: column; gap: 1px; background: var(--rule); border: 1px solid var(--rule); }
+  .dec { background: var(--surface); padding: 1.25rem 1.5rem 1.375rem; }
+  .rec { font-size: .9375rem; color: var(--accent); font-weight: 600; }
+  .rec .k { font-family: "JetBrains Mono", monospace; font-size: .64rem; letter-spacing: .1em; text-transform: uppercase; margin-right: .5rem; font-weight: 600; }
+
+  footer { margin-top: 4.25rem; padding-top: 1.25rem; border-top: 1px solid var(--rule); font-family: "JetBrains Mono", monospace; font-size: .74rem; color: var(--ink-3); line-height: 1.75; }
+
+  @media (max-width: 640px) {
+    .item { grid-template-columns: 1fr; gap: .875rem; }
+    .item-rail { flex-direction: row; align-items: center; gap: .625rem; }
+    .masthead { padding-top: 2.5rem; } section { margin-top: 3.25rem; }
+  }
+  @media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; } }
+</style>
+
+<div class="wrap">
+
+  <header class="masthead">
+    <div class="eyebrow">BM 재설계 · 콘솔 실측 반영 v2</div>
+    <h1>인생 챕터 레벨 디자인</h1>
+    <p class="standfirst">콘솔에서 운영 3앱의 실제 사용자 수를 조회했습니다. 결과가 이 문서의 v1 결론을 뒤집었습니다 — <strong>가격이 문제가 아니라 결제할 사람이 존재하지 않습니다.</strong> 그리고 그 사실이 AI 이미지 생성에 대한 답까지 바꿉니다.</p>
+    <div class="meta">
+      <span>갱신 2026-09-04</span>
+      <span>실측 워크스페이스 꿈청 · 58697</span>
+      <span>v1 대비 02·03·04번 전면 교체</span>
+    </div>
+  </header>
+
+  <section>
+    <div class="sec-head"><span class="sec-num">00</span><h2>판정</h2></div>
+
+    <div class="correction">
+      <span class="k">이전 검토 정정</span>
+      <p>이 문서 v1의 경제성 표는 "4주 누적 500명"을 가정했습니다. <strong>실측은 최대 MAU 49명이었습니다 — 10배 낙관이었고, 그 표는 폐기합니다.</strong> 추정으로 계산할 게 아니라 처음부터 콘솔을 봤어야 했습니다.</p>
+    </div>
+
+    <div class="verdict">
+      <p><strong>질문 2(2,900원이 적절한가 / 광고로 갈까)에 대한 답 — 둘 다 아닙니다.</strong> MAU 13~49명 규모에서는 IAP도 광고도 4주 수익이 <strong>0원에서 몇천 원 사이</strong>입니다. 가격을 990원으로 내리든 4,900원으로 올리든, 광고를 늘리든 빼든 결과가 같습니다. 지금 BM을 정교하게 설계하는 건 <strong>존재하지 않는 매출을 최적화하는 일</strong>입니다.</p>
+      <p><strong>"유저가 직접 AI 돌리면 되지 않나"라는 지적은 정확합니다.</strong> 텍스트 요약에는 방어력이 없습니다. 2026년에 "내가 답한 걸 정리해주는 것"은 누구나 무료로 얻을 수 있고, 그걸 2,900원에 파는 건 성립하지 않습니다. 그 직관을 신뢰하시는 게 맞습니다.</p>
+      <p><strong>질문 1(AI 이미지 생성)의 개인정보 회피 논리는 맞습니다. 다만 결론은 반대입니다.</strong> 실제 규모로 비용을 계산하면 <strong>월 1,000원 미만</strong>입니다. 비용이 문제가 아니라면, 이미지를 유료 앨범에 가둘 이유가 없습니다. <strong>이미지는 팔 물건이 아니라 무료로 뿌려야 하는 유입 엔진입니다</strong> — 이 앱의 진짜 병목이 매출이 아니라 유입이기 때문입니다.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head"><span class="sec-num">01</span><h2>실측 — 이 워크스페이스가 실제로 얼마나 큰가</h2></div>
+    <p class="lede">2026-09-04 앱인토스 콘솔 조회 결과입니다. 추정치가 아니라 실제 값입니다.</p>
+
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th>앱</th><th>출시</th><th>7월 MAU</th><th>8월 MAU</th><th>9월 1–3일</th></tr></thead>
+        <tbody>
+          <tr><td><strong>무더위 체감 랭킹</strong></td><td class="num">07-16</td><td class="num"><strong>49</strong></td><td class="num">25</td><td class="num hot">2</td></tr>
+          <tr><td><strong>별점</strong></td><td class="num">08-09</td><td class="num">—</td><td class="num">16</td><td class="num">9</td></tr>
+          <tr><td><strong>별핑계</strong></td><td class="num">08-09</td><td class="num">—</td><td class="num">13</td><td class="num">6</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="caption">MAU = 월간 활성 사용자. 무더위 체감 랭킹은 출시 첫 달 49명이 최고점이었고 두 달 만에 사실상 소멸했습니다.</p>
+
+    <div class="ledger" style="margin-top:1.75rem;">
+      <article class="item">
+        <div class="item-rail"><span class="item-id">실측 · 01</span><span class="chip warn">결정적</span></div>
+        <div class="item-body">
+          <h3>유일하게 작동한 유입 채널은 푸시였고, 그게 10월에 사라집니다</h3>
+          <p>무더위 체감 랭킹의 유입 경로 분해가 이 워크스페이스에서 가장 값진 데이터입니다.</p>
+          <div class="tablewrap" style="margin:.875rem 0;">
+            <table>
+              <thead><tr><th>유입 경로</th><th>2026-07 (MAU 49)</th><th>2026-08 (MAU 25)</th></tr></thead>
+              <tbody>
+                <tr><td><strong>푸시알림</strong></td><td class="num hot">63.8%</td><td class="num">12.9%</td></tr>
+                <tr><td>기타(직접 링크·공유)</td><td class="num">15.5%</td><td class="num">51.6%</td></tr>
+                <tr><td>미니앱홈</td><td class="num">10.3%</td><td class="num">19.4%</td></tr>
+                <tr><td>전체탭</td><td class="num">8.6%</td><td class="num">12.9%</td></tr>
+                <tr><td>검색</td><td class="num">1.7%</td><td class="num">3.2%</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p>7월에 푸시가 유입의 <strong>3분의 2</strong>를 만들었고, 8월에 푸시가 12.9%로 떨어지자 MAU도 절반이 됐습니다. 백서와 웨비나가 "스마트 발송 푸시가 앱인토스 성공 공식의 1번"이라고 한 게 실측으로 확인됩니다.</p>
+          <div class="action">
+            <span class="k">그런데</span>
+            <strong>광고성 스마트발송은 10월 1일에 운영이 종료됩니다</strong>(공지 52717, 소재 등록·발송은 9/30까지). 7월의 63.8%가 광고성 발송이었다면 그 채널은 사라집니다 — 확인이 필요한 항목입니다. <strong>인생 챕터의 "챕터 이어하기" 알림은 기능성 푸시라 이 종료의 영향을 받지 않습니다.</strong> 이게 우연히도 이 앱의 가장 큰 구조적 강점이 됐습니다.
+          </div>
+        </div>
+      </article>
+
+      <article class="item">
+        <div class="item-rail"><span class="item-id">실측 · 02</span><span class="chip warn">주의</span></div>
+        <div class="item-body">
+          <h3>별점·별핑계 사용자는 오가닉이 아닐 가능성이 높습니다</h3>
+          <ul>
+            <li>별핑계: 남성 <strong>94.7%</strong> · 30대 초반 68% · 안드로이드 <strong>100%</strong></li>
+            <li>별점: 남성 <strong>92%</strong> · 30대 초반 56% · 안드로이드 92%</li>
+            <li>대조군 — 무더위 체감 랭킹: 남성 67% / 여성 33%, 연령 20~60대 고르게 분산, iOS 37%</li>
+          </ul>
+          <p>무더위 체감 랭킹은 푸시로 실제 오가닉 유입을 받아서 인구 구성이 자연스럽게 흩어졌습니다. 반면 별점·별핑계의 극단적 편중은 <strong>지인 유입과 본인 계정</strong>의 특징입니다. 즉 두 앱의 13~16명은 "시장이 반응한 숫자"가 아니라 "직접 밀어넣은 숫자"에 가깝습니다.</p>
+          <div class="action">
+            <span class="k">함의</span>
+            인생 챕터의 성공 기준(PRD §17: 챕터1→2 전환 50%)을 <strong>10~20명의 지인 표본으로 판정하면 안 됩니다.</strong> 그 표본은 완주율이 실제보다 높게 나옵니다(아는 사람이 만든 앱이라 끝까지 해줌). 지표를 볼 때 이 편향을 반드시 감안하세요.
+          </div>
+        </div>
+      </article>
+
+      <article class="item">
+        <div class="item-rail"><span class="item-id">실측 · 03</span><span class="chip ask">선행조건</span></div>
+        <div class="item-body">
+          <h3>인앱광고 약관에 아직 동의하지 않았습니다 — 지금까지 광고 수익은 0원입니다</h3>
+          <p>IAA 성과 리포트를 조회하려 했으나 <code>인앱광고 약관 동의가 되지 않았어요</code>로 실패했습니다. 즉 운영 중인 3개 앱 모두 <strong>광고를 통한 수익이 발생한 적이 없습니다.</strong></p>
+          <p>"광고 쪽에 포커싱해서 BM을 잡자"는 방향을 잡으시려면 이게 첫 단계입니다. 동의는 MCP로 할 수 없고, <strong>워크스페이스 대표관리자(OWNER)가 콘솔 웹의 '광고관리권한동의' 페이지에서 직접</strong> 해야 합니다. 관리자(ADMIN)·구성원(MEMBER) 권한으로는 불가능합니다.</p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head"><span class="sec-num">02</span><h2>AI 이미지 생성 — 비용은 문제가 아닙니다</h2></div>
+    <p class="lede">사진 업로드를 AI 생성 이미지로 대체하자는 방향은 개인정보 리스크를 정확히 겨냥했습니다. 비용 우려만 실측 규모로 다시 계산하면 결론이 달라집니다.</p>
+
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th>항목</th><th>계산</th><th>월 비용</th></tr></thead>
+        <tbody>
+          <tr><td>MAU (실측 상단 가정)</td><td class="num">30명</td><td class="num">—</td></tr>
+          <tr><td>챕터1 이정표 도달 (40%)</td><td class="num">12명 × 1장</td><td class="num">12장</td></tr>
+          <tr><td>완주자 (15%)</td><td class="num">4~5명 × 추가 4장</td><td class="num">18장</td></tr>
+          <tr><td>월 생성량 합계</td><td class="num">약 30장</td><td class="num">—</td></tr>
+          <tr><td>이미지 1장당 단가</td><td class="num">$0.01 ~ $0.08</td><td class="num"><strong>약 400 ~ 3,300원</strong></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="caption">단가는 2026년 기준 일반적인 이미지 생성 API의 대략적 범위입니다 — <strong>실제 공급자·모델을 정한 뒤 반드시 재확인해야 하는 값</strong>이고, 여기서는 자릿수 판단에만 씁니다. GROQ는 이미지 생성을 하지 않으므로 새 공급자가 필요합니다.</p>
+
+    <div class="ledger" style="margin-top:1.75rem;">
+      <article class="item">
+        <div class="item-rail"><span class="item-id">전환</span><span class="chip give">권고</span></div>
+        <div class="item-body">
+          <h3>월 몇천 원이면, 이미지는 파는 게 아니라 뿌리는 게 맞습니다</h3>
+          <p>이미지를 유료 앨범에 가두면 얻는 것은 "월 0~3,000원의 매출 가능성"이고, 잃는 것은 <strong>이 앱이 가질 수 있는 유일하게 강력한 공유 자산</strong>입니다.</p>
+          <ul>
+            <li><strong>공유 전파력이 텍스트와 비교가 안 됩니다.</strong> 인스타 스토리·카톡에서 텍스트 요약 카드와 이미지는 클릭률이 다른 종목입니다. 실측 01번이 보여주듯 이 워크스페이스의 진짜 병목은 유입이고, 이미지는 그 병목을 직접 칩니다.</li>
+            <li><strong>챕터1에서 줘야 합니다.</strong> PRD §17의 생사 지표인 챕터1→2 전환이 일어나는 지점이 곧 첫 공유가 발생하는 지점입니다. 여기에 이미지가 있으면 전환과 바이럴을 동시에 얻습니다.</li>
+            <li><strong>"직접 AI 돌리면 되지"에 대한 방어도 이쪽이 더 강합니다.</strong> 다만 그 방어의 목적이 과금이 아니라 <em>앱을 쓸 이유</em>가 됩니다 — 답변 5개를 넣으면 일관된 스타일의 이미지가 자동으로 나오는 경험은, 사용자가 직접 프롬프트를 짜서 재현하기 번거롭습니다.</li>
+          </ul>
+          <div class="action">
+            <span class="k">비용 안전장치</span>
+            무료로 뿌리되 <strong>1인당 5장 상한을 서버에서 강제</strong>합니다 — 텍스트 요약에 이미 구현된 <code>MAX_AI_CALLS_PER_USER</code> 패턴을 그대로 씁니다. 전역 일일 상한(<code>MAX_DAILY_AI_CALLS</code>)도 이미 있으니 이미지용 카운터만 추가하면 됩니다. 규모가 MAU 1,000을 넘어가면 그때 유료화를 다시 논의하면 됩니다 — 그건 좋은 문제입니다.
+          </div>
+        </div>
+      </article>
+
+      <article class="item">
+        <div class="item-rail"><span class="item-id">리스크</span><span class="chip warn">필수</span></div>
+        <div class="item-body">
+          <h3>진짜 리스크는 비용이 아니라 "사람을 그리는 것"입니다</h3>
+          <p>사용자 답변에는 사람이 등장합니다("같은 반 친구들", "사장님"). 이미지 모델이 이걸 사람 얼굴로 렌더링하면 세 가지가 한꺼번에 터집니다 — 실존 인물 오인, 2026-08-19 강화된 민감 주제 검수, 그리고 자기서사 앱의 톤 붕괴(내 기억 속 사람이 낯선 얼굴로 나오는 불쾌감).</p>
+          <div class="action">
+            <span class="k">해결</span>
+            <strong>사람을 그리지 않는 스타일을 프롬프트에서 강제합니다.</strong> 풍경·사물·빛·계절감만 — "야자 끝나고 들르던 뒷문 분식집"이면 사람 없는 저녁 골목과 불 켜진 가게. 이건 제약이 아니라 오히려 이 앱의 톤에 더 맞습니다. 기억은 원래 얼굴보다 장면으로 남으니까요. 텍스트 요약에 이미 있는 <code>api/_lib/guard.js</code>와 같은 자리에 이미지 프롬프트 가드를 두면 됩니다.
+          </div>
+        </div>
+      </article>
+
+      <article class="item">
+        <div class="item-rail"><span class="item-id">확인</span><span class="chip ask">미확인</span></div>
+        <div class="item-body">
+          <h3>착수 전에 확인해야 하는 것 셋</h3>
+          <ul>
+            <li><strong>카테고리 판정.</strong> 별핑계·별점은 <span class="mono">생활&gt;콘텐츠&gt;운세</span>인데 보험천재는 <span class="mono">생활&gt;AI&gt;AI</span>였습니다. 이미지 생성이 추가되면 AI 카테고리로 분류될 수 있고, 그 경우 추가 요건이 붙는지 확인이 필요합니다.</li>
+            <li><strong>AI 생성 라벨을 이미지에도.</strong> 텍스트에 붙인 라벨(<code>aiBadge()</code>)과 동일하게, 이미지 자체와 공유 카드 양쪽에 표시해야 합니다. 미준수 시 최대 3천만 원 과태료 대상입니다.</li>
+            <li><strong>생성 지연.</strong> 이미지는 텍스트보다 느립니다(체감 5~15초). 현재 로딩 화면은 텍스트 기준으로 "10초 정도"라고 안내하는데, 이미지가 붙으면 문구와 단계 표시를 다시 설계해야 합니다 — 검수의 "응답 지연" 조항과 직결됩니다.</li>
+          </ul>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head"><span class="sec-num">03</span><h2>수정된 레벨 디자인 — v1에 결제는 없습니다</h2></div>
+    <p class="lede">받는 것은 다섯 단계 내내 100%. 요구는 광고 2회와 알림 동의 1회가 전부입니다. 결제 접점이 사라졌습니다.</p>
+
+    <div class="trackwrap">
+      <div class="track">
+        <div class="track-legend">
+          <span><i class="lg-give"></i>사용자가 받는 것</span>
+          <span><i class="lg-ask"></i>앱이 요구하는 것 (막대 높이 = 요구 강도)</span>
+        </div>
+        <div class="cols">
+          <div class="col">
+            <div class="col-stage">Stage 1</div>
+            <div class="col-name">챕터 1<br>이정표</div>
+            <div class="give-box">요약 전문<br>+ AI 이미지<br>+ 공유 카드</div>
+            <div class="askzone"><div class="askbar ask-none"></div></div>
+            <div class="ask-label none">아무것도 요구하지 않음</div>
+          </div>
+          <div class="col">
+            <div class="col-stage">Stage 2</div>
+            <div class="col-name">챕터 2<br>이정표</div>
+            <div class="give-box">요약 전문<br>+ AI 이미지<br>+ 공유 카드</div>
+            <div class="askzone"><div class="askbar ask-1"></div></div>
+            <div class="ask-label">알림 동의<br><span class="mono">(유일한 재방문 채널)</span></div>
+          </div>
+          <div class="col">
+            <div class="col-stage">Stage 3</div>
+            <div class="col-name">챕터 3<br>이정표</div>
+            <div class="give-box">요약 전문<br>+ AI 이미지<br>+ 공유 카드</div>
+            <div class="askzone"><div class="askbar ask-2"></div></div>
+            <div class="ask-label">전면형 광고 1회<br><span class="mono">(요약 본 뒤)</span></div>
+          </div>
+          <div class="col">
+            <div class="col-stage">Stage 4</div>
+            <div class="col-name">챕터 4<br>이정표</div>
+            <div class="give-box">요약 전문<br>+ AI 이미지<br>+ 공유 카드</div>
+            <div class="askzone"><div class="askbar ask-2"></div></div>
+            <div class="ask-label">전면형 광고 1회<br>+ 리뷰 요청</div>
+          </div>
+          <div class="col">
+            <div class="col-stage">Stage 5</div>
+            <div class="col-name">최종<br>인생 요약</div>
+            <div class="give-box">최종 서사<br>+ 커버 이미지<br>+ 앨범 5장 저장</div>
+            <div class="askzone"><div class="askbar ask-none"></div></div>
+            <div class="ask-label none">아무것도 요구하지 않음<br><span class="mono">(보상의 정점)</span></div>
+          </div>
+        </div>
+        <div class="baseline"></div>
+      </div>
+    </div>
+    <p class="caption">앨범(챕터별 이미지 5장을 기기에 저장)은 v1에서 무료 완주 보상입니다. <code>saveBase64Data</code> + <code>html2canvas-pro</code> — 무더위 체감 랭킹과 핑계운세에서 이미 검증된 경로를 그대로 씁니다.</p>
+  </section>
+
+  <section>
+    <div class="sec-head"><span class="sec-num">04</span><h2>그럼 BM은 언제 하나</h2></div>
+    <p class="lede">지금 안 한다는 게 영원히 안 한다는 뜻은 아닙니다. 조건을 명시해두면 나중에 판단이 쉬워집니다.</p>
+
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th>단계</th><th>조건</th><th>할 일</th></tr></thead>
+        <tbody>
+          <tr><td><strong>지금</strong></td><td>—</td><td>IAA 약관 동의(OWNER, 콘솔 웹). 광고 자리만 붙이고 <strong>수익이 아니라 지표 확보가 목적</strong></td></tr>
+          <tr><td><strong>MAU 300+</strong></td><td>오가닉 유입이 지인 표본을 넘어섬</td><td>IAA 실적으로 eCPM 실측 → 광고 배치 최적화가 처음으로 의미를 가짐</td></tr>
+          <tr><td><strong>MAU 1,000+</strong></td><td>이미지 생성 비용이 월 몇만 원대 진입</td><td>이미지 상한을 유료로 푸는 구조 검토. 이때는 원가가 실재해서 가격 정당성이 생김</td></tr>
+          <tr><td><strong>완주율 25%+</strong></td><td>앨범에 실제 애착이 확인됨</td><td>비로소 IAP 상품 등록·심사. 그전까지는 리드타임만 낭비</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="action" style="margin-top:1.25rem;">
+      <span class="k">v1에서 결제를 빼면 얻는 것</span>
+      인앱결제 상품 등록·심사 리드타임이 출시 경로에서 사라집니다. 통신판매업 신고 필요 여부 재검토도 미룰 수 있습니다. 그리고 무엇보다 <strong>결제 UI가 없는 앱은 검수에서 볼 게 줄어듭니다</strong> — 자기서사라는 민감 주제 인접 앱이라 검수에 최대 1주가 걸릴 수 있는 상황에서, 심사 표면을 줄이는 건 그 자체로 이득입니다.
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head"><span class="sec-num">05</span><h2>결정이 필요한 것</h2></div>
+
+    <div class="decisions">
+      <div class="dec">
+        <h3>① AI 이미지를 v1에 넣을까요, v1.1로 미룰까요?</h3>
+        <p>넣으면: 새 공급자 의존성 + 프롬프트 가드 + 로딩 UX 재설계 + 카테고리 확인. 대략 +3~4일. 미루면 출시가 빨라지지만 v1의 공유 자산이 텍스트 카드뿐입니다.</p>
+        <p class="rec"><span class="k">권고</span><strong>v1에 넣기.</strong> 유입이 이 워크스페이스의 확인된 병목이고, 이미지는 그걸 직접 칩니다. 텍스트만으로 낸 앱 3개가 MAU 13~49에서 멈춘 게 근거입니다.</p>
+      </div>
+      <div class="dec">
+        <h3>② 이미지를 몇 장 줄까요?</h3>
+        <p>챕터별 1장(총 5장)이 앨범다운 형태지만, 최종 커버 1장만 주면 비용과 지연이 5분의 1입니다.</p>
+        <p class="rec"><span class="k">권고</span><strong>챕터별 1장.</strong> 챕터1에서 이미지를 받아야 첫 공유가 발생하고, 그게 챕터1→2 전환과 같은 지점입니다. 최종에만 주면 완주자 15%만 공유 자산을 갖습니다.</p>
+      </div>
+      <div class="dec">
+        <h3>③ 광고를 v1에 붙일까요?</h3>
+        <p>수익은 사실상 0이지만 IAA 지표는 나중 판단의 근거가 됩니다. 다만 OWNER 약관 동의가 선행돼야 합니다.</p>
+        <p class="rec"><span class="k">권고</span><strong>붙이되 챕터 3·4에만.</strong> 약관 동의를 먼저 해두시고, 동의가 늦어지면 광고 없이 출시하고 나중에 추가해도 됩니다 — 이건 출시를 막을 사유가 아닙니다.</p>
+      </div>
+      <div class="dec">
+        <h3>④ 유료 상품을 v1에서 완전히 뺄까요?</h3>
+        <p>현재 코드의 <code>unlock-purchase</code>는 이미 "준비 중" 안내만 띄웁니다. 완전히 제거하거나, 최종 화면에 "앨범 더 받기(준비 중)" 티저만 남겨 수요를 측정할 수 있습니다.</p>
+        <p class="rec"><span class="k">권고</span><strong>완전히 제거.</strong> MAU 30명 규모에서 티저 클릭 수는 통계적으로 아무 의미가 없고, 결제 UI의 흔적은 검수 표면만 늘립니다.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    실측 출처 · apps-in-toss 콘솔 MCP, 워크스페이스 꿈청(58697), 2026-09-04 조회 · <span class="mono">dashboard_dau</span> (miniAppId 52367 · 61859 · 61765) · <span class="mono">iaa_report_performance</span> → IAA_TERMS_NOT_AGREED · <span class="mono">miniapp_list_overview</span><br>
+    문서 대조 · PRD-인생챕터.md §5 / §10 / §12④ / §13 / §17 · 토스미니앱_제작_백서.md (A4 · B2 · 8-1) · 공지 52717(광고성 스마트발송 종료) · 52485(민감 주제 검수 강화) · 구현 코드(api/_lib/guard.js · summary.js · milestone.js)<br>
+    미확인 항목 · 이미지 생성 단가는 공급자 확정 후 재확인 필요 · 7월 푸시 유입 63.8%가 광고성 발송이었는지 확인 필요 · 이미지 생성 추가 시 카테고리 판정 확인 필요
+  </footer>
+
+</div>
+
+</body></html>
