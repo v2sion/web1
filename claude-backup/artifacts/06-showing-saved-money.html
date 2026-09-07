@@ -1,0 +1,656 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1"><style>:root{color-scheme:light}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found]){display:none!important}</style></head><body>
+<title>아낀 돈을 보여주는 법</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=IBM+Plex+Sans+KR:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+
+<style>
+  :root {
+    --ground:#FAF9FC; --surface:#FFFFFF; --surface-2:#F3F1F7;
+    --ink:#1A1826; --ink-2:#423E52; --muted:#6E6980;
+    --hairline:#E2DEEA; --hairline-2:#CFC9DC;
+    --accent:#56479B; --accent-soft:#EDE9F7;
+    --critical:#AE3327; --critical-bg:#FBEEEC;
+    --warn:#8F6208; --warn-bg:#FAF2E0;
+    --ok:#2C6349; --ok-bg:#E8F2EC;
+    --lensA:#1F5F7A; --lensA-bg:#E4F0F5;
+    --lensB:#7A3E6B; --lensB-bg:#F6E9F3;
+    --lensC:#7A5A1F; --lensC-bg:#F7EFDE;
+    --shadow:0 1px 2px rgba(26,24,38,.05), 0 8px 24px -16px rgba(26,24,38,.30);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --ground:#131219; --surface:#1C1A24; --surface-2:#24222E;
+      --ink:#EDEAF2; --ink-2:#C3BED0; --muted:#918BA1;
+      --hairline:#2E2B38; --hairline-2:#3E3A4C;
+      --accent:#A99AE8; --accent-soft:#272238;
+      --critical:#E88478; --critical-bg:#2E1E1D;
+      --warn:#D9AC55; --warn-bg:#2B2418;
+      --ok:#7FBF9F; --ok-bg:#1A2721;
+      --lensA:#7FC0DB; --lensA-bg:#152730;
+      --lensB:#D99BC8; --lensB-bg:#2B1B27;
+      --lensC:#D9B871; --lensC-bg:#2B2415;
+      --shadow:0 1px 2px rgba(0,0,0,.30), 0 8px 24px -16px rgba(0,0,0,.70);
+    }
+  }
+  :root[data-theme="dark"] {
+    --ground:#131219; --surface:#1C1A24; --surface-2:#24222E;
+    --ink:#EDEAF2; --ink-2:#C3BED0; --muted:#918BA1;
+    --hairline:#2E2B38; --hairline-2:#3E3A4C;
+    --accent:#A99AE8; --accent-soft:#272238;
+    --critical:#E88478; --critical-bg:#2E1E1D;
+    --warn:#D9AC55; --warn-bg:#2B2418;
+    --ok:#7FBF9F; --ok-bg:#1A2721;
+    --lensA:#7FC0DB; --lensA-bg:#152730;
+    --lensB:#D99BC8; --lensB-bg:#2B1B27;
+    --lensC:#D9B871; --lensC-bg:#2B2415;
+    --shadow:0 1px 2px rgba(0,0,0,.30), 0 8px 24px -16px rgba(0,0,0,.70);
+  }
+
+  * { box-sizing:border-box; }
+  body {
+    background:var(--ground); color:var(--ink);
+    font-family:"IBM Plex Sans KR", system-ui, -apple-system, "Malgun Gothic", sans-serif;
+    font-size:16px; line-height:1.75; margin:0; padding:0 20px 96px;
+    -webkit-font-smoothing:antialiased; word-break:keep-all;
+  }
+  .wrap { max-width:880px; margin:0 auto; }
+
+  .masthead { padding:64px 0 32px; border-bottom:2px solid var(--ink); }
+  .eyebrow {
+    font-family:"IBM Plex Mono",monospace; font-size:11.5px; letter-spacing:.16em;
+    text-transform:uppercase; color:var(--muted); margin:0 0 18px;
+  }
+  h1 {
+    font-family:"Gowun Batang","Nanum Myeongjo",serif; font-weight:700;
+    font-size:clamp(34px,6.5vw,52px); line-height:1.22; letter-spacing:-.015em;
+    margin:0 0 16px; text-wrap:balance;
+  }
+  .standfirst { font-size:17px; color:var(--ink-2); max-width:62ch; margin:0 0 28px; }
+  .standfirst strong { color:var(--ink); font-weight:600; }
+  .meta {
+    display:flex; flex-wrap:wrap; gap:6px 20px;
+    font-family:"IBM Plex Mono",monospace; font-size:12px; color:var(--muted);
+  }
+
+  section { padding-top:56px; }
+  h2 {
+    font-family:"Gowun Batang",serif; font-size:27px; font-weight:700;
+    letter-spacing:-.01em; line-height:1.3; margin:0 0 6px;
+    display:flex; align-items:baseline; gap:14px; text-wrap:balance;
+  }
+  h2 .num {
+    font-family:"IBM Plex Mono",monospace; font-size:12px; font-weight:500;
+    color:var(--accent); letter-spacing:.1em; flex:none;
+  }
+  .lede { color:var(--muted); font-size:15px; margin:0 0 24px; max-width:64ch; }
+  h3 { font-size:16.5px; font-weight:600; margin:30px 0 10px; letter-spacing:-.005em; }
+  h4 { font-size:14.5px; font-weight:600; margin:22px 0 8px; color:var(--ink-2); }
+  p { margin:0 0 14px; max-width:70ch; }
+  ul, ol { margin:0 0 14px; padding-left:20px; max-width:70ch; }
+  li { margin-bottom:7px; }
+  li::marker { color:var(--hairline-2); }
+  strong { font-weight:600; }
+  code {
+    font-family:"IBM Plex Mono",monospace; font-size:.875em; background:var(--surface-2);
+    border:1px solid var(--hairline); border-radius:3px; padding:.08em .38em;
+  }
+
+  /* lens chips */
+  .lens {
+    display:inline-block; font-family:"IBM Plex Mono",monospace; font-size:10.5px;
+    letter-spacing:.1em; text-transform:uppercase; padding:3px 8px; border-radius:2px;
+    font-weight:500; white-space:nowrap;
+  }
+  .lens-a { background:var(--lensA-bg); color:var(--lensA); }
+  .lens-b { background:var(--lensB-bg); color:var(--lensB); }
+  .lens-c { background:var(--lensC-bg); color:var(--lensC); }
+  .lens-none { background:var(--surface-2); color:var(--muted); }
+
+  /* tables */
+  .scroll { overflow-x:auto; margin:0 0 18px; border:1px solid var(--hairline); border-radius:3px; background:var(--surface); }
+  table { border-collapse:collapse; width:100%; font-size:14.5px; min-width:600px; }
+  th, td { text-align:left; padding:12px 16px; border-bottom:1px solid var(--hairline); vertical-align:top; }
+  thead th {
+    font-family:"IBM Plex Mono",monospace; font-size:11px; letter-spacing:.1em;
+    text-transform:uppercase; color:var(--muted); font-weight:500;
+    background:var(--surface-2); white-space:nowrap;
+  }
+  tbody tr:last-child td { border-bottom:0; }
+  td.mono { font-family:"IBM Plex Mono",monospace; font-size:13px; font-variant-numeric:tabular-nums; white-space:nowrap; }
+
+  /* lens section blocks */
+  .lensblock {
+    background:var(--surface); border:1px solid var(--hairline);
+    border-left:4px solid var(--hairline-2); border-radius:3px;
+    padding:24px 26px; margin:0 0 16px; box-shadow:var(--shadow);
+  }
+  .lensblock.a { border-left-color:var(--lensA); }
+  .lensblock.b { border-left-color:var(--lensB); }
+  .lensblock.c { border-left-color:var(--lensC); }
+  .lensblock-head { display:flex; align-items:baseline; gap:12px; flex-wrap:wrap; margin-bottom:12px; }
+  .lensblock-head h3 { margin:0; font-size:18px; }
+  .lensblock > :last-child { margin-bottom:0; }
+
+  /* copy specimen */
+  .copy {
+    font-family:"Gowun Batang",serif; font-size:18px; line-height:1.6; color:var(--ink);
+    background:var(--surface-2); border-radius:3px; padding:14px 18px; margin:10px 0 14px;
+  }
+  .copy b { font-weight:700; }
+  .copy .tag {
+    display:block; font-family:"IBM Plex Sans KR",sans-serif; font-size:11px;
+    letter-spacing:.08em; text-transform:uppercase; color:var(--muted); margin-bottom:7px; font-weight:500;
+  }
+  .copy.bad { background:var(--critical-bg); }
+  .copy.bad .tag { color:var(--critical); }
+  .copy.good { background:var(--ok-bg); }
+  .copy.good .tag { color:var(--ok); }
+
+  .callout {
+    border:1px solid var(--hairline); background:var(--surface-2); border-radius:3px;
+    padding:18px 22px; margin:0 0 18px; font-size:15px;
+  }
+  .callout > :last-child { margin-bottom:0; }
+  .callout .ctag {
+    font-family:"IBM Plex Mono",monospace; font-size:10.5px; letter-spacing:.1em;
+    text-transform:uppercase; color:var(--accent); font-weight:500;
+    display:block; margin-bottom:6px;
+  }
+  .callout.warn { background:var(--warn-bg); border-color:var(--warn); }
+  .callout.warn .ctag { color:var(--warn); }
+
+  .rule {
+    border:1px solid var(--accent); background:var(--accent-soft); border-radius:3px;
+    padding:16px 20px; margin:0 0 14px;
+  }
+  .rule b {
+    display:block; font-family:"IBM Plex Mono",monospace; font-size:10.5px;
+    letter-spacing:.1em; text-transform:uppercase; color:var(--accent);
+    margin-bottom:5px; font-weight:500;
+  }
+  .rule p { margin:0; font-size:15px; }
+
+  footer {
+    margin-top:64px; padding-top:24px; border-top:1px solid var(--hairline);
+    font-size:13px; color:var(--muted); max-width:70ch;
+  }
+  footer a { color:var(--accent); }
+
+  @media (max-width:560px) {
+    body { padding:0 16px 72px; }
+    .masthead { padding-top:44px; }
+    h2 { flex-direction:column; gap:4px; }
+  }
+</style>
+
+<div class="wrap">
+
+  <header class="masthead">
+    <p class="eyebrow">지름신 대기실 · 환산 설계</p>
+    <h1>아낀 돈을 보여주는 법</h1>
+    <p class="standfirst">
+      A(시간)·B(패턴)·C(경험)는 <strong>같은 자리를 두고 경쟁하는 세 후보가 아닙니다.</strong>
+      작동하는 순간이 다르고, 필요한 데이터의 양이 다르고, 심지어 방향이 다릅니다 —
+      하나는 사용자를 말리고, 하나는 이해시키고, 하나는 실감시킵니다.
+      그래서 조합이 가능하고, 조합해야 각자가 제 몫을 합니다. 아래는 무엇을 어디에 놓을지에 대한 설계입니다.
+    </p>
+    <div class="meta">
+      <span>작성 2026-09-03</span>
+      <span>기준 최저시급 10,320원 (2026 적용, 고용노동부)</span>
+      <span>선행 검토 — 절약을 투자로 잇기</span>
+    </div>
+  </header>
+
+  <!-- 01 -->
+  <section>
+    <h2><span class="num">01</span>세 렌즈는 축이 다르다</h2>
+    <p class="lede">먼저 왜 조합이 성립하는지부터. 세 가지를 같은 기준으로 세워보면 겹치지 않는 게 보입니다.</p>
+
+    <div class="scroll">
+      <table>
+        <thead>
+          <tr><th>축</th><th>A · 시간</th><th>B · 패턴</th><th>C · 경험</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>심리적 방향</strong></td>
+            <td><span class="lens lens-a">억제 ↔ 보상</span><br>배치에 따라 양쪽 다</td>
+            <td><span class="lens lens-b">자기 이해</span><br>중립·분석적</td>
+            <td><span class="lens lens-c">실감·확대</span><br>보상 쪽</td>
+          </tr>
+          <tr>
+            <td><strong>필요 데이터</strong></td>
+            <td>금액 하나<br>(1회차부터 작동)</td>
+            <td>판정 이력 누적<br>(N회차부터)</td>
+            <td>누적 금액이 커야<br>의미 발생</td>
+          </tr>
+          <tr>
+            <td><strong>작동 시점</strong></td>
+            <td>건별 — 대기 중, 판정 직후</td>
+            <td>주기적 — 월간, 재방문</td>
+            <td>누적 — 홈 히어로</td>
+          </tr>
+          <tr>
+            <td><strong>도달 사용자</strong></td>
+            <td>전원</td>
+            <td>헤비 유저 소수</td>
+            <td>2~3회차 이상</td>
+          </tr>
+          <tr>
+            <td><strong>구현 비용</strong></td>
+            <td class="mono">반나절</td>
+            <td class="mono">2~3일</td>
+            <td class="mono">반나절 ~ 3일</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="rule">
+      <b>여기서 나오는 결론</b>
+      <p>
+        A는 <strong>모든 사용자에게 1회차부터</strong> 작동하고, C는 <strong>몇 번 쌓인 뒤</strong>,
+        B는 <strong>한참 뒤 소수에게</strong> 작동합니다. 시간축으로 자연스럽게 이어지므로
+        <strong>A를 먼저 넣고 C, B를 나중에 얹는 순서</strong>가 그대로 나옵니다.
+        셋을 동시에 만들 이유가 없습니다.
+      </p>
+    </div>
+  </section>
+
+  <!-- 02 -->
+  <section>
+    <h2><span class="num">02</span>순간별 배치 지도</h2>
+    <p class="lede">앱의 각 순간에 렌즈를 하나씩 배정한 결과입니다. 이 표가 이 문서의 핵심입니다.</p>
+
+    <div class="scroll">
+      <table>
+        <thead>
+          <tr><th>순간</th><th>렌즈</th><th>문구</th><th>왜 여기인가</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>등록 폼</strong><br><span style="font-size:13px;color:var(--muted)">입력 중</span></td>
+            <td><span class="lens lens-none">없음</span></td>
+            <td style="color:var(--muted)">—</td>
+            <td>등록이 이 앱의 첫 전환이다. 여기서 말리면 <strong>등록 자체가 줄어든다</strong></td>
+          </tr>
+          <tr>
+            <td><strong>등록 직후</strong><br><span style="font-size:13px;color:var(--muted)">토스트·확인</span></td>
+            <td><span class="lens lens-a">A 억제</span></td>
+            <td>"이거 사려면 <b>나흘 넘게</b> 일해야 해요"</td>
+            <td>이미 등록은 끝났으므로 전환을 방해하지 않는다. 대기의 명분을 준다</td>
+          </tr>
+          <tr>
+            <td><strong>대기 상세</strong><br><span style="font-size:13px;color:var(--muted)">카운트다운 화면</span></td>
+            <td><span class="lens lens-a">A 억제</span></td>
+            <td>금액 아래 한 줄로 상시 노출</td>
+            <td>"역시 사야겠어요" 버튼이 있는 화면이다. <strong>흔들리는 순간에 개입</strong></td>
+          </tr>
+          <tr>
+            <td><strong>결과 · 참았을 때</strong></td>
+            <td><span class="lens lens-a">A 보상</span></td>
+            <td>"<b>나흘 치 일당</b>을 아꼈어요"</td>
+            <td>같은 숫자를 보상으로 뒤집는다. 03 참고</td>
+          </tr>
+          <tr>
+            <td><strong>결과 · 샀을 때</strong></td>
+            <td><span class="lens lens-none">없음</span></td>
+            <td style="color:var(--muted)">담담한 톤 유지</td>
+            <td>여기에 시간 환산을 넣으면 <strong>죄책감을 주는 앱</strong>이 된다. 절대 넣지 말 것</td>
+          </tr>
+          <tr>
+            <td><strong>홈 히어로</strong><br><span style="font-size:13px;color:var(--muted)">누적 절약액</span></td>
+            <td><span class="lens lens-c">C</span></td>
+            <td>"1,247,000원 — <b>제주도 왕복 항공권만큼</b>"</td>
+            <td>누적액은 추상적이다. 크기를 실감시키는 자리</td>
+          </tr>
+          <tr>
+            <td><strong>재등록 감지</strong><br><span style="font-size:13px;color:var(--muted)">같은 품목 2회+</span></td>
+            <td><span class="lens lens-b">B 신호</span></td>
+            <td>"이거 <b>세 번째</b> 등록이에요"</td>
+            <td>가장 싸고 가장 강력한 B. 04 참고</td>
+          </tr>
+          <tr>
+            <td><strong>월간 리포트</strong><br><span style="font-size:13px;color:var(--muted)">v1.1 프리미엄</span></td>
+            <td><span class="lens lens-b">B 리포트</span></td>
+            <td>"8번 중 <b>6번</b>은 48시간 뒤에도 안 샀어요"</td>
+            <td>데이터가 쌓여야 성립. 990원의 실질 가치</td>
+          </tr>
+          <tr>
+            <td><strong>공유 카드</strong></td>
+            <td><span class="lens lens-b">B</span> + <span class="lens lens-a">A</span></td>
+            <td>"이번 달 <b>8번 중 6번</b> 참았다 · 나흘 치 일당"</td>
+            <td>비율은 성적표라 자랑거리가 된다. 금액만으로는 약하다</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="rule">
+      <b>불변 규칙</b>
+      <p><strong>한 화면에 렌즈는 하나만.</strong> 결과 화면에 이미 금액·누적·공유·광고·프리미엄이 있습니다.
+      여기에 시간·경험·패턴을 다 얹으면 숫자가 네 개가 되고, 그러면 <strong>아무것도 읽히지 않습니다.</strong></p>
+    </div>
+  </section>
+
+  <!-- 03 -->
+  <section>
+    <h2><span class="num">03</span>A · 시간 — 같은 숫자를 두 방향으로 쓴다</h2>
+    <p class="lede">A의 진짜 가치는 환산 자체가 아니라, 배치 위치에 따라 의미가 정반대로 뒤집힌다는 점에 있습니다.</p>
+
+    <div class="lensblock a">
+      <div class="lensblock-head">
+        <span class="lens lens-a">이중 프레이밍</span>
+        <h3>사기 전엔 비용, 산 뒤엔 성과</h3>
+      </div>
+      <p>359,000원은 최저시급 10,320원으로 <strong>34.8시간</strong>, 하루 8시간 기준 <strong>4.3일</strong>입니다. 같은 숫자입니다.</p>
+      <div class="copy">
+        <span class="tag">결정 전 — 대기 상세</span>
+        이거 사려면 <b>나흘 넘게</b> 일해야 해요
+      </div>
+      <div class="copy">
+        <span class="tag">결정 후 — 결과(참았을 때)</span>
+        <b>나흘 치 일당</b>을 아꼈어요
+      </div>
+      <p>
+        다른 어떤 환산도 이걸 못 합니다. C는 어디에 놓아도 "이걸 살 수 있다"로 끝나고,
+        B는 분석이라 감정 방향이 없습니다. <strong>A만 소비 억제 방향으로 작동할 수 있고,
+        그건 이 앱의 목적과 방향이 같은 유일한 축입니다.</strong>
+      </p>
+    </div>
+
+    <h3>시급을 어떻게 얻을 것인가</h3>
+    <p>세 가지 방식이 있고, 셋 중 하나만 고르는 문제가 아닙니다.</p>
+    <div class="scroll">
+      <table>
+        <thead><tr><th>방식</th><th>장점</th><th>문제</th></tr></thead>
+        <tbody>
+          <tr><td>최저시급 고정</td><td>마찰 0, 즉시 작동</td><td>개인화 없음. 고소득자에겐 과장된 숫자</td></tr>
+          <tr><td>사용자 입력 필수</td><td>정확</td><td><strong>"월급 얼마세요?"는 민감하다.</strong> 등록 전 마찰</td></tr>
+          <tr><td><strong>기본 최저시급 + 선택 변경</strong></td><td>즉시 작동 + 원하면 정확</td><td>없음 — <strong>이걸 권고</strong></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="callout warn">
+      <span class="ctag">주의 두 가지</span>
+      <p>
+        <strong>1. 시급은 소득 정보다.</strong> 서버로 보내지 말고 기기에만 저장하세요.
+        그리고 <strong>이미 작성해둔 개인정보처리방침에 항목을 추가해야 합니다</strong> —
+        지금 <code>public/privacy.html</code>의 수집 항목 표에는 시급이 없습니다.
+      </p>
+      <p>
+        <strong>2. "최저시급"을 전면에 쓰지 마세요.</strong> 사용자의 노동 가치를 앱이 최저임금으로
+        규정하는 것처럼 읽힐 수 있습니다. 화면에는 <strong>"내 시급 기준"</strong>이라고만 쓰고,
+        미입력 시 조용히 최저시급을 기본값으로 쓰되 설정 화면에서만 그 사실을 밝히세요.
+      </p>
+    </div>
+
+    <h3>단위 전환 규칙</h3>
+    <p>"4.3일"은 어색하고 "34.8시간"은 안 읽힙니다. 금액대별로 단위를 바꿔야 합니다.</p>
+    <div class="scroll">
+      <table>
+        <thead><tr><th>금액</th><th class="mono">환산</th><th>표기</th></tr></thead>
+        <tbody>
+          <tr><td>30,000원</td><td class="mono">2.9h</td><td>"세 시간 일해야 버는 돈"</td></tr>
+          <tr><td>89,000원</td><td class="mono">8.6h</td><td>"하루 꼬박 일해야 버는 돈"</td></tr>
+          <tr><td>359,000원</td><td class="mono">34.8h / 4.3일</td><td>"나흘 넘게 일해야 버는 돈"</td></tr>
+          <tr><td>498,000원</td><td class="mono">48.3h / 6.0일</td><td>"엿새 치 일당"</td></tr>
+          <tr><td>1,247,000원</td><td class="mono">120.8h / 15.1일</td><td>"보름 치 일당"</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>
+      10시간 미만은 시간, 그 이상은 8시간을 하루로 쳐서 일 단위. 순우리말 수사(사흘·나흘·엿새·보름)를
+      쓰면 숫자 피로가 줄고 톤도 부드러워집니다. <strong>소수점은 절대 노출하지 마세요.</strong>
+    </p>
+  </section>
+
+  <!-- 04 -->
+  <section>
+    <h2><span class="num">04</span>B · 패턴 — 세 층위로 나누면 콜드스타트가 풀린다</h2>
+    <p class="lede">B의 약점은 "데이터가 쌓여야 한다"입니다. 그런데 B를 하나로 보지 않으면 그 약점이 대부분 사라집니다.</p>
+
+    <div class="lensblock b">
+      <div class="lensblock-head">
+        <span class="lens lens-b">B2 · 최우선</span>
+        <h3>재등록 감지 — 가장 싸고 가장 강력하다</h3>
+      </div>
+      <p>같은 품목명을 두 번 이상 등록했는지만 보면 됩니다. <strong>2회차부터 작동하고, 클라이언트만으로 구현되고, 계산이랄 것도 없습니다.</strong></p>
+      <div class="copy good">
+        <span class="tag">등록 직후</span>
+        "에어팟 프로", <b>세 번째</b> 등록이에요.<br>계속 생각나는 걸 보면 충동은 아닌 것 같아요.
+      </div>
+      <p>
+        이게 왜 중요하냐면 — <strong>앱이 항상 "사지 마"만 하면 사용자는 떠납니다.</strong>
+        가끔 "이건 사셔도 될 것 같아요"라고 말해주는 앱이 오래 갑니다.
+        결과 화면의 "샀을 때" 담담한 톤을 설계한 것과 같은 철학이고,
+        <strong>반복 등록은 "진짜 원하는 것"의 가장 정직한 신호</strong>입니다.
+      </p>
+      <p>
+        품목명 비교는 기기 안에서만 일어나므로 <strong>"품목명을 서버에 보내지 않는다"는 약속을 깨지 않습니다.</strong>
+        공백 제거 + 소문자화 정도의 느슨한 정규화면 충분합니다.
+      </p>
+    </div>
+
+    <div class="lensblock b">
+      <div class="lensblock-head">
+        <span class="lens lens-b">B1 · v1.1</span>
+        <h3>개인 리포트 — 소수용이라는 걸 인정하고 설계할 것</h3>
+      </div>
+      <p>후보 지표 중 실제로 인사이트가 되는 것만 골랐습니다.</p>
+      <div class="scroll">
+        <table>
+          <thead><tr><th>지표</th><th>평가</th></tr></thead>
+          <tbody>
+            <tr><td><strong>시간대 패턴</strong><br>"밤 11시 이후 등록한 건 80%를 안 샀어요"</td>
+                <td><strong>최고.</strong> 심야 충동이라는 <strong>사용자가 몰랐던 사실</strong>을 알려준다. 리포트의 존재 이유</td></tr>
+            <tr><td><strong>금액대 패턴</strong><br>"10만원 넘는 건 거의 다 참으셨네요"</td>
+                <td>좋음. 자기 이해에 직결되고 집계가 간단</td></tr>
+            <tr><td>참기 비율<br>"8번 중 6번"</td>
+                <td>기본. 공유 카드용으로는 이게 가장 낫다</td></tr>
+            <tr><td>조기 판정 비율</td>
+                <td>보통. "만료 전에 샀다" = 진짜 필요했던 것. 해석이 어려워 노출은 신중히</td></tr>
+            <tr><td><s>카테고리 분류</s><br>"패션에 약하시네요"</td>
+                <td><strong>제외.</strong> 품목명 분류에 AI가 필요 → <strong>AI 고지·라벨 의무 발생</strong>. v1 범위 밖</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="callout warn">
+        <span class="ctag">현실 직시</span>
+        <p>
+          무더위 체감 랭킹은 <strong>4주에 누적 100명</strong>이었습니다. 판정 5회 이상 도달하는 사용자는
+          그중에서도 소수입니다. <strong>B1에 큰 공을 들이면 ROI가 안 나옵니다.</strong>
+          전체 리포트는 판정 5회부터 열고, 그 전에는 B2(재등록)와 A로 버티게 하세요.
+        </p>
+      </div>
+    </div>
+
+    <div class="lensblock b">
+      <div class="lensblock-head">
+        <span class="lens lens-b">B3 · 서버 이후</span>
+        <h3>집단 통계 — 첫 사용자에게도 B를 줄 수 있는 유일한 방법</h3>
+      </div>
+      <div class="copy">
+        <span class="tag">밤에 등록했을 때</span>
+        이 시간에 등록한 물건은<br><b>10명 중 8명</b>이 결국 안 사셨어요
+      </div>
+      <p>
+        개인 데이터가 0인 첫 사용자에게도 작동합니다. <strong>B의 콜드스타트를 근본적으로 푸는 건 이것뿐입니다.</strong>
+        다만 서버 집계가 필요하므로 Redis 연동 이후이고, <strong>표본이 적을 때 숫자를 노출하면 오히려 신뢰를 깎으니</strong>
+        최소 표본(예: 100건) 미만이면 숨기는 가드를 반드시 두세요.
+      </p>
+    </div>
+  </section>
+
+  <!-- 05 -->
+  <section>
+    <h2><span class="num">05</span>C · 경험 — 프레이밍 하나로 독이 되기도 약이 되기도</h2>
+    <p class="lede">C는 셋 중 유일하게 앱 목적과 충돌할 수 있는 렌즈입니다. 그래서 표현 방식이 전부입니다.</p>
+
+    <div class="lensblock c">
+      <div class="lensblock-head">
+        <span class="lens lens-c">표현</span>
+        <h3>"살 수 있어요"와 "만큼"의 차이</h3>
+      </div>
+      <div class="copy bad">
+        <span class="tag">나쁨 — 소비 유도</span>
+        제주도 왕복 항공권을 <b>살 수 있어요</b>
+      </div>
+      <div class="copy good">
+        <span class="tag">좋음 — 크기 척도</span>
+        제주도 왕복 항공권 <b>만큼</b>
+      </div>
+      <p>
+        전자는 사실상 "제주도 가라"는 메시지입니다. 소비 억제 앱에서. 후자는 같은 실감을 주면서
+        <strong>행동을 권하지 않습니다.</strong> 조사 하나 차이지만 성격이 완전히 다릅니다.
+      </p>
+      <p><strong>특정 브랜드·판매처·상품명은 절대 넣지 마세요.</strong> 카테고리 수준에서 멈춰야 상품 추천으로 읽히지 않습니다.</p>
+    </div>
+
+    <div class="lensblock c">
+      <div class="lensblock-head">
+        <span class="lens lens-c">v1.1+</span>
+        <h3>목표 설정형 — C의 진짜 잠재력</h3>
+      </div>
+      <p>
+        고정 리스트 대신 <strong>사용자가 직접 "진짜 갖고 싶은 것"을 등록</strong>하고,
+        절약액이 그쪽으로 쌓이는 걸 보여주는 방식입니다.
+      </p>
+      <div class="copy">
+        <span class="tag">홈 히어로</span>
+        제주도 여행까지 <b>68%</b><br><span style="font-size:14px;color:var(--muted)">1,247,000원 / 1,800,000원</span>
+      </div>
+      <p>
+        <strong>충동구매의 반대는 "안 사기"가 아니라 "진짜 원하는 걸 사기"입니다.</strong>
+        이 프레이밍은 소비를 억제하는 대신 <strong>재배치</strong>하고, 진행바가 생기므로
+        재방문 이유가 만들어집니다. 무더위 체감 랭킹 회고에서 가장 아쉬웠던 "재방문 구조"에 직접 답합니다.
+      </p>
+      <div class="callout warn">
+        <span class="ctag">두 가지 비용</span>
+        <p>
+          <strong>1. 화면이 늘어납니다.</strong> 목표 설정·수정 화면이 필요하고,
+          화면 3개 = vanilla 단일 파일이라는 전제가 흔들립니다(백서: 5개 이상이면 재검토).
+        </p>
+        <p>
+          <strong>2. 표현이 저축 상품에 가까워집니다.</strong> 실제 돈이 이동하지 않으니 금융 서비스는 아니지만,
+          <code>CLAUDE.md</code> 금지 은유에 이미 "통장·저금통·잔액"이 있습니다.
+          <strong>"모은다·적립"이 아니라 "다가간다·남았다"</strong>로 어휘를 잡으세요.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 06 -->
+  <section>
+    <h2><span class="num">06</span>조합할 때 실제로 생기는 문제</h2>
+    <p class="lede">배치를 나눠도 남는 부작용들입니다. 미리 알고 시작하는 것과 아닌 것의 차이가 큽니다.</p>
+
+    <h4>숫자 피로</h4>
+    <p>
+      결과 화면 하나에 359,000원 · 34시간 · 제주도 · 6/8이 다 있으면 뇌가 전부 무시합니다.
+      02의 "한 화면에 렌즈 하나" 규칙이 이걸 막습니다. <strong>지키기 어려운 건 이 규칙이 아니라,
+      나중에 하나씩 추가될 때 규칙이 조용히 깨진다는 점</strong>입니다. 코드에 주석으로 못 박아두세요.
+    </p>
+
+    <h4>톤 충돌</h4>
+    <p>
+      A는 무겁고(노동), C는 밝고(여행), B는 분석적입니다. 같은 화면에서 섞이면 앱 성격이 흐려집니다.
+      순간별 분리가 이걸 해결하지만, <strong>공유 카드만은 예외적으로 A+B가 함께</strong> 들어갑니다 —
+      거기선 "성적표" 톤으로 통일하세요.
+    </p>
+
+    <h4>과잉 개입</h4>
+    <p>
+      A(억제)를 등록 직후에도, 대기 상세에도, 푸시에도 넣으면 <strong>잔소리하는 앱</strong>이 됩니다.
+      대기 상세의 상시 노출 한 곳이면 충분하고, 등록 직후 토스트는 첫 등록 때만 보여주는 걸 권합니다.
+    </p>
+
+    <h4>"샀을 때" 화면의 오염</h4>
+    <p>
+      가장 조심할 지점입니다. 사용자가 사기로 결정한 순간에 "나흘 치 일당인데요"라고 하면
+      <strong>앱이 사용자를 비난하게 됩니다.</strong> 그러면 다음부터 안 옵니다.
+      02 표에서 이 칸만 "없음"인 이유이고, <strong>여기는 어떤 렌즈도 들어가면 안 됩니다.</strong>
+    </p>
+  </section>
+
+  <!-- 07 -->
+  <section>
+    <h2><span class="num">07</span>구현 순서</h2>
+    <p class="lede">지금 MVP 단계라는 걸 감안한 현실적인 순서입니다.</p>
+
+    <div class="scroll">
+      <table>
+        <thead><tr><th>단계</th><th>넣을 것</th><th class="mono">비용</th><th>선행 조건</th></tr></thead>
+        <tbody>
+          <tr>
+            <td><strong>지금</strong><br><span style="font-size:13px;color:var(--muted)">출시 전</span></td>
+            <td><span class="lens lens-a">A</span> 시간 환산 (억제 1곳 + 보상 1곳)<br><span class="lens lens-b">B2</span> 재등록 감지</td>
+            <td class="mono">1일</td>
+            <td>없음 — 데이터가 이미 다 있다.<br>privacy.html에 시급 항목 추가</td>
+          </tr>
+          <tr>
+            <td><strong>출시 직후</strong></td>
+            <td><span class="lens lens-c">C</span> 고정 리스트 환산 (홈 히어로)</td>
+            <td class="mono">반나절</td>
+            <td>누적액이 쌓이는 걸 보고 판단</td>
+          </tr>
+          <tr>
+            <td><strong>서버 이후</strong></td>
+            <td><span class="lens lens-b">B3</span> 집단 통계</td>
+            <td class="mono">1일</td>
+            <td>Redis 연동 + 표본 100건</td>
+          </tr>
+          <tr>
+            <td><strong>v1.1</strong></td>
+            <td><span class="lens lens-b">B1</span> 월간 리포트 (990원 프리미엄)<br><span class="lens lens-c">C</span> 목표 설정형</td>
+            <td class="mono">3~4일</td>
+            <td>판정 5회 도달 사용자가 실제로<br>있는지 확인한 뒤</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="rule">
+      <b>지금 당장 할 것</b>
+      <p>
+        <strong>A + B2만.</strong> 둘 다 이미 있는 데이터로 하루면 되고, 첫 사용자부터 작동하고,
+        출시 일정을 밀지 않습니다. 나머지는 실제 사용자 수를 보고 결정하는 게 맞습니다 —
+        B1에 사흘을 썼는데 판정 5회 사용자가 세 명이면 그 사흘이 통째로 날아갑니다.
+      </p>
+    </div>
+  </section>
+
+  <!-- 08 -->
+  <section>
+    <h2><span class="num">08</span>정책 재점검</h2>
+    <p class="lede">세 렌즈 모두 금융 요소가 없지만, 조합하면서 새로 생긴 표현 리스크만 짚습니다.</p>
+    <div class="scroll">
+      <table>
+        <thead><tr><th>항목</th><th>판정</th><th>근거 · 주의</th></tr></thead>
+        <tbody>
+          <tr><td>시간 환산 (A)</td><td><strong>안전</strong></td><td>금융상품·종목·수익률 어느 것도 등장하지 않음</td></tr>
+          <tr><td>재등록 감지 (B2)</td><td><strong>안전</strong></td><td>사용자가 등록한 것에 대한 언급. 특정 상품 추천이 아님</td></tr>
+          <tr><td>패턴 리포트 (B1)</td><td><strong>안전</strong></td><td>단 카테고리 분류에 AI를 쓰면 <strong>AI 고지·라벨 의무</strong> 발생 — v1 제외</td></tr>
+          <tr><td>경험 환산 (C)</td><td><strong>조건부</strong></td><td>브랜드·판매처·상품명 금지. "만큼"으로 표기, "살 수 있어요" 금지</td></tr>
+          <tr><td>목표 설정형 (C+)</td><td><strong>조건부</strong></td><td>"모은다·적립·저금통·통장" 어휘 금지. "다가간다·남았다"로</td></tr>
+          <tr><td>시급 입력</td><td><strong>방침 수정 필요</strong></td><td>소득 정보다. 기기 저장만, <code>privacy.html</code> 수집 항목에 추가</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <footer>
+    <p>
+      근거 — 선행 검토 <em>절약을 투자로 잇기</em>(2026-09-03),
+      <a href="https://www.moel.go.kr/news/enews/report/enewsView.do?news_seq=18144">2026년 적용 최저임금 시간급 10,320원</a>(고용노동부),
+      토스미니앱 제작 백서 8장(공유 카피·재방문 구조), 무더위 체감 랭킹 최종 회고(누적 100명·재방문 구조),
+      지름신 대기실 기획 브리핑 및 앱 <code>CLAUDE.md</code> 정책 절.
+    </p>
+    <p>작성 2026-09-03 · 구현 착수 전 설계안</p>
+  </footer>
+
+</div>
+
+</body></html>
