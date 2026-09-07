@@ -1,0 +1,2201 @@
+{
+  "backed_up_at": "2026-09-07T03:34Z",
+  "completeness": "list_sessions가 돌려준 레코드 원본 그대로입니다. 표본 2건(session_019Kpy…, session_015XKG…)에 get_session을 교차 호출해 필드가 완전히 동일함을 확인했습니다 — 이 API 표면에서 세션당 얻을 수 있는 데이터의 전부입니다. 대화 본문은 포함되지 않습니다.",
+  "session_count": 74,
+  "sessions": [
+    {
+      "configured_model": "claude-opus-5",
+      "connection_status": "connected",
+      "created_at": "2026-09-07T03:34:00.516301Z",
+      "environment_id": "env_017cTx9nfY4ynRrZMiRQpF6k",
+      "environment_kind": "anthropic_cloud",
+      "external_metadata": {
+        "container_cc_version": "2.1.263",
+        "context_usage": {
+          "max_tokens": 1000000,
+          "used_tokens": 0
+        },
+        "cross_session_inbound": "available",
+        "last_served_model": "claude-opus-5",
+        "permission_mode": "auto",
+        "permission_mode_seq": "5",
+        "rate_limit_info": {
+          "isUsingOverage": false,
+          "rateLimitType": "seven_day",
+          "resetsAt": 1789156800,
+          "status": "allowed_warning"
+        }
+      },
+      "id": "session_01FaaxQxiuGLqLnWsnRVuTHr",
+      "origin": "android",
+      "permission_mode": "PERMISSION_MODE_AUTO",
+      "session_context": {
+        "effort_level": "high",
+        "model": "claude-opus-5",
+        "outcomes": [
+          {
+            "git_repository": {
+              "git_info": {
+                "branches": [
+                  "claude/session-data-backup-mj8x46"
+                ],
+                "repo": "v2sion/web1"
+              }
+            }
+          },
+          {
+            "git_repository": {
+              "git_info": {
+                "branches": [
+                  "claude/session-data-backup-mj8x46"
+                ],
+                "repo": "v2sion/hwaseong-heatfeel-miniapp"
+              }
+            }
+          },
+          {
+            "git_repository": {
+              "git_info": {
+                "branches": [
+                  "claude/session-data-backup-mj8x46"
+                ],
+                "repo": "v2sion/mudeowebubble"
+              }
+            }
+          },
+          {
+            "git_repository": {
+              "git_info": {
+                "branches": [
+                  "claude/session-data-backup-mj8x46"
+                ],
+                "repo": "v2sion/mudeowe-battle"
+              }
+            }
+          }
+        ],
+        "permission_mode": "auto",
+        "sources": [
+          {
+            "git_repository": {
+              "revision": "refs/heads/master",
+              "url": "https://github.com/v2sion/web1"
+            }
+          },
+          {
+            "git_repository": {
+              "revision": "refs/heads/master",
+              "url": "https://github.com/v2sion/hwaseong-heatfeel-miniapp"
+            }
+          },
+          {
+            "git_repository": {
+              "revision": "refs/heads/master",
+              "url": "https://github.com/v2sion/mudeowebubble"
+            }
+          },
+          {
+            "git_repository": {
+              "revision": "refs/heads/master",
+              "url": "https://github.com/v2sion/mudeowe-battle"
+            }
+          }
+        ]
+      },
+      "session_status": "SESSION_STATUS_RUNNING",
+      "status_bucket": "SESSION_STATUS_BUCKET_WORKING",
+      "title": "세션 데이터 백업",
+      "unread": true,
+      "updated_at": "2026-09-07T03:34:19.020577Z"
+    },
+    {
+      "configured_model": "claude-opus-5",
+      "connection_status": "disconnected",
+      "created_at": "2026-09-06T07:17:55.484220Z",
+      "environment_kind": "bridge",
+      "external_metadata": {
+        "container_cc_version": "2.1.260",
+        "cross_session_inbound": "available",
+        "effort_level": "high",
+        "last_init_error": {
+          "at": "2026-09-06T08:35:41Z",
+          "error_kind": "computer_unreachable",
+          "recoverable": "true",
+          "worker_epoch": "1"
+        },
+        "rate_limit_info": {
+          "isUsingOverage": false,
+          "rateLimitType": "five_hour",
+          "resetsAt": 1788694200,
+          "status": "allowed"
+        }
+      },
+      "id": "session_01Px9hEHPGeTj8HpK62Z3wVf",
+      "origin": "claude_code_cli",
+      "session_context": {
+        "effort_level": "high",
+        "model": "claude-opus-5"
+      },
+      "session_status": "SESSION_STATUS_IDLE",
+      "status_bucket": "SESSION_STATUS_BUCKET_REVIEW_READY",
+      "tags": [
+        "remote-control-sdk"
+      ],
+      "title": "로컬 파일 손실 복구",
+      "updated_at": "2026-09-06T08:34:39.743121Z"
+    },
+    {
+      "configured_model": "claude-sonnet-5",
+      "connection_status": "disconnected",
+      "created_at": "2026-09-05T03:26:40.457160Z",
+      "environment_kind": "bridge",
+      "external_metadata": {
+        "container_cc_version": "2.1.258",
+        "cross_session_inbound": "available",
+        "effort_level": "high",
+        "last_init_error": {
+          "at": "2026-09-05T04:38:08Z",
+          "error_kind": "computer_unreachable",
+          "recoverable": "true",
+          "worker_epoch": "1"
+        },
+        "rate_limit_info": {
+          "isUsingOverage": false,
+          "rateLimitType": "five_hour",
+          "resetsAt": 1788593400,
+          "status": "allowed"
+        }
+      },
+      "id": "session_015XKGHCTjYRfoRd4AZUkAWd",
+      "origin": "claude_code_cli",
+      "session_context": {
+        "effort_level": "high",
+        "model": "claude-sonnet-5"
+      },
+      "session_status": "SESSION_STATUS_IDLE",
+      "status_bucket": "SESSION_STATUS_BUCKET_REVIEW_READY",
+      "tags": [
+        "remote-control-sdk"
+      ],
+      "title": "미니앱 운영 전략 및 폴더 구조 정리",
+      "unread": true,
+      "updated_at": "2026-09-05T03:33:58.459304Z"
+    },
+    {
+      "configured_model": "claude-sonnet-4-6",
+      "connection_status": "disconnected",
+      "created_at": "2026-09-05T03:21:28.864013Z",
+      "environment_kind": "bridge",
+      "external_metadata": {
+        "container_cc_version": "2.1.260",
+        "cross_session_inbound": "available",
+        "effort_level": "high",
+        "last_init_error": {
+          "at": "2026-09-05T13:44:33Z",
+          "error_kind": "computer_unreachable",
+          "recoverable": "true",
+          "worker_epoch": "2"
+        },
+        "rate_limit_info": {
+          "isUsingOverage": false,
+          "rateLimitType": "five_hour",
+          "resetsAt": 1788611400,
+          "status": "allowed"
+        }
+      },
+      "id": "session_0117FWwrPX5qeh9hJYunqdQN",
+      "origin": "claude_code_cli",
+      "session_context": {
+        "effort_level": "high",
+        "model": "claude-sonnet-4-6"
+      },
+      "session_status": "SESSION_STATUS_IDLE",
+      "status_bucket": "SESSION_STATUS_BUCKET_REVIEW_READY",
+      "tags": [
+        "remote-control-sdk"
+      ],
+      "title": "[업데이트]별핑계 기능 및 방향성 개선",
+      "updated_at": "2026-09-05T07:32:00.002084Z"
+    },
+    {
+      "configured_model": "claude-opus-5",
+      "connection_status": "disconnected",
+      "created_at": "2026-09-04T13:20:15.195138Z",
+      "environment_kind": "bridge",
+      "external_metadata": {
+        "container_cc_version": "2.1.260",
+        "cross_session_inbound": "available",
+        "last_init_error": {
+          "at": "2026-09-05T13:43:46Z",
+          "error_kind": "computer_unreachable",
+          "recoverable": "true",
+          "worker_epoch": "2"
+        },
+        "rate_limit_info": {
+          "isUsingOverage": false,
+          "rateLimitType": "seven_day",
+          "resetsAt": 1789156800,
+          "status": "allowed_warning"
+        }
+      },
+      "id": "session_01SWGQhXZpN5c3MkZQ7Bkk9B",
+      "origin": "claude_code_cli",
+      "session_context": {
+        "model": "claude-opus-5"
+      },
+      "session_status": "SESSION_STATUS_IDLE",
+      "status_bucket": "SESSION_STATUS_BUCKET_REVIEW_READY",
+      "tags": [
+        "remote-control-sdk"
+      ],
+      "title": "(폐기)언제 출발해 기획 및 설계",
+      "updated_at": "2026-09-05T08:24:06.817765Z"
+    },
+    {
+      "configured_model": "claude-opus-5",
+      "connection_status": "disconnected",
+      "created_at": "2026-09-04T13:19:59.941657Z",
+      "environment_kind": "bridge",
+      "external_metadata": {
+        "container_cc_version": "2.1.260",
+        "cross_session_inbound": "available",
+        "effort_level": "high",
+        "last_init_error": {
+          "at": "2026-09-05T13:33:30Z",
+          "error_kind": "computer_unreachable",
+          "recoverable": "true",
+          "worker_epoch": "3"
+        },
+        "rate_limit_info": {
+          "isUsingOverage": false,
+          "rateLimitType": "seven_day",
+          "resetsAt": 1789156800,
+          "status": "allowed_warning"
+        }
+      },
+      "id": "session_013w27ry4c6zJ5UnqcYonRXR",
+      "origin": "claude_code_cli",
+      "session_context": {
+        "effort_level": "high",
+        "model": "claude-opus-5"
+      },
+      "session_status": "SESSION_STATUS_IDLE",
+      "status_bucket": "SESSION_STATUS_BUCKET_REVIEW_READY",
+      "tags": [
+        "remote-control-sdk"
+      ],
+      "title": "맛마따나 세션 킥오프",
+      "updated_at": "2026-09-05T13:23:06.780368Z"
+    },
+    {
+      "configured_model": "claude-sonnet-5",
+      "connection_status": "disconnected",
+      "created_at": "2026-09-04T12:43:00.712474Z",
+      "environment_kind": "bridge",
+      "external_metadata": {
+        "container_cc_version": "2.1.260",
+        "cross_session_inbound": "available",
+        "effort_level": "high",
+        "last_init_error": {
+          "at": "2026-09-06T07:25:28Z",
+          "error_kind": "computer_unreachable",
+          "recoverable": "true",
+          "worker_epoch": "2"
+        },
+        "rate_limit_info": {
+          "isUsingOverage": false,
+          "rateLimitType": "five_hour",
+          "resetsAt": 1788694200,
+          "status": "allowed"
+        }
+      },
+      "id": "session_01G9cWXwRX4Lk2MPUBSj8ndp",
+      "origin": "claude_code_cli",
+      "session_context": {
+        "effort_level": "high",
+        "model": "claude-sonnet-5"
+      },
+      "session_status": "SESSION_STATUS_IDLE",
+      "status_bucket": "SESSION_STATUS_BUCKET_REVIEW_READY",
+      "tags": [
+        "remote-control-sdk"
+      ],
+      "title": "토스 미니앱 SDK 전환 검토",
+      "updated_at": "2026-09-06T07:15:01.683263Z"
+    },
+    {
+      "configured_model": "claude-sonnet-4-6",
+      "connection_status": "disconnected",
+      "created_at": "2026-09-03T14:41:13.415210Z",
+      "environment_kind": "bridge",
+      "external_metadata": {
+        "container_cc_version": "2.1.260",
+        "cross_session_inbound": "available",
+        "effort_level": "high",
+        "last_init_error": {
+          "at": "2026-09-06T07:25:33Z",
+          "error_kind": "computer_unreachable",
+          "recoverable": "true",
+          "worker_epoch": "3"
+        },
+        "rate_limit_info": {
+          "isUsingOverage": false,
+          "rateLimitType": "five_hour",
+          "resetsAt": 1788669000,
+          "status": "allowed"
+        }
+      },
+      "id": "session_01MSWmEdtBE1M82prrkuRAgq",
+      "origin": "claude_code_cli",
+      "session_context": {
+        "effort_level": "high",
+        "model": "claude-sonnet-4-6"
+      },
+      "session_status": "SESSION_STATUS_IDLE",
+      "status_bucket": "SESSION_STATUS_BUCKET_REVIEW_READY",
+      "tags": [
+        "remote-control-sdk"
+      ],
+      "title": "[운영]별핑계 이슈 및 버그 대응",
+      "updated_at": "2026-09-06T00:19:02.409434Z"
+    },
+    {
+      "configured_model": "claude-opus-5",
+      "connection_status": "disconnected",
+      "created_at": "2026-09-02T13:38:50.710234Z",
+      "environment_kind": "bridge",
+      "external_metadata": {
+        "container_cc_version": "2.1.260",
+        "cross_session_inbound": "available",
+        "effort_level": "high",
+        "last_init_error": {
+          "at": "2026-09-05T13:43:30Z",
+          "error_kind": "computer_unreachable",
+          "recoverable": "true",
+          "worker_epoch": "5"
+        },
+        "rate_limit_info": {
+          "isUsingOverage": false,
+          "rateLimitType": "seven_day",
+          "resetsAt": 1789156800,
+          "status": "allowed_warning"
+        }
+      },
+      "id": "session_016uYYucbF55rcFwFheRXxYH",
+      "origin": "claude_code_cli",
+      "session_context": {
+        "effort_level": "high",
+        "model": "claude-opus-5"
+      },
+      "session_status": "SESSION_STATUS_IDLE",
+      "status_bucket": "SESSION_STATUS_BUCKET_REVIEW_READY",
+      "tags": [
+        "remote-control-sdk"
+      ],
+      "title": "지름신 대기실 미니앱 출시 준비",
+      "updated_at": "2026-09-05T08:23:34.237259Z"
+    },
+    {
+      "configured_model": "claude-opus-5",
+      "connection_status": "disconnected",
+      "created_at": "2026-09-02T13:36:23.466227Z",
+      "environment_kind": "bridge",
+      "external_metadata": {
+        "container_cc_version": "2.1.260",
+        "cross_session_inbound": "available",
+        "effort_level": "high",
+        "last_init_error": {
+          "at": "2026-09-06T07:24:54Z",
+          "error_kind": "computer_unreachable",
+          "recoverable": "true",
+          "worker_epoch": "6"
+        },
+        "rate_limit_info": {
+          "isUsingOverage": false,
+          "rateLimitType": "five_hour",
+          "resetsAt": 1788669000,
+          "status": "allowed"
+        }
+      },
+      "id": "session_01GFhwytbyL1iszUDzSp5Zbt",
+      "origin": "claude_code_cli",
+      "session_context": {
+        "effort_level": "high",
+        "model": "claude-opus-5"
+      },
+      "session_status": "SESSION_STATUS_IDLE",
+      "status_bucket": "SESSION_STATUS_BUCKET_REVIEW_READY",
+      "tags": [
+        "remote-control-sdk"
+      ],
+      "title": "인생 챕터 검토 및 출시 준비",
+      "unread": true,
+      "updated_at": "2026-09-06T00:17:20.807062Z"
+    },
+    {
+      "configured_model": "claude-sonnet-4-6",
+      "connection_status": "disconnected",
+      "created_at": "2026-09-01T12:40:49.377413Z",
+      "environment_kind": "bridge",
+      "external_metadata": {
+        "container_cc_version": "2.1.260",
+        "cross_session_inbound": "available",
+        "effort_level": "high",
+        "last_init_error": {
+          "at": "2026-09-05T13:43:48Z",
+          "error_kind": "computer_unreachable",
+          "recoverable": "true",
+          "worker_epoch": "5"
+        },
+        "rate_limit_info": {
+          "isUsingOverage": false,
+          "rateLimitType": "seven_day",
+          "resetsAt": 1789156800,
+          "status": "allowed_warning"
+        }
+      },
+      "id": "session_011qVUp3HbPY3eGfUrcoEp8a",
+      "origin": "claude_code_cli",
+      "session_context": {
+        "effort_level": "high",
+        "model": "claude-sonnet-4-6"
+      },
+      "session_status": "SESSION_STATUS_IDLE",
+      "status_bucket": "SESSION_STATUS_BUCKET_REVIEW_READY",
+      "tags": [
+        "remote-control-sdk"
+      ],
+      "title": "[업데이트]별점 기능 및 방향성 개선",
+      "unread": true,
+      "updated_at": "2026-09-05T08:19:04.437499Z"
+    },
+    {
+      "configured_model": "claude-sonnet-4-6",
+      "connection_status": "disconnected",
+      "created_at": "2026-08-30T08:15:36.321207Z",
+      "environment_kind": "bridge",
+      "external_metadata": {
+        "container_cc_version": "2.1.247",
+        "cross_session_inbound": "available",
+        "effort_level": "high",
+        "last_init_error": {
+          "at": "2026-09-03T14:44:05Z",
+          "error_kind": "computer_unreachable",
+          "recoverable": "true",
+          "worker_epoch": "6"
+        },
+        "rate_limit_info": {
+          "isUsingOverage": false,
+          "rateLimitType": "five_hour",
+          "resetsAt": 1788459600,
+          "status": "allowed"
+        }
+      },
+      "id": "session_01GF1fJdDCJTahiGXmuD4PLk",
+      "origin": "claude_code_cli",
+      "session_context": {
+        "effort_level": "high",
+        "model": "claude-sonnet-4-6"
+      },
+      "session_status": "SESSION_STATUS_IDLE",
+      "status_bucket": "SESSION_STATUS_BUCKET_REVIEW_READY",
+      "tags": [
+        "remote-control-sdk"
+      ],
+      "title": "[마케팅]별핑계 푸시·프로모션·핵심지표",
+      "updated_at": "2026-09-03T13:35:37.091591Z"
+    },
+    {
+      "configured_model": "claude-sonnet-4-6",
+      "connection_status": "disconnected",
+      "created_at": "2026-08-30T08:15:31.380753Z",
+      "environment_kind": "bridge",
+      "external_metadata": {
+        "container_cc_version": "2.1.247",
+        "cross_session_inbound": "available",
+        "effort_level": "high",
+        "last_init_error": {
+          "at": "2026-09-02T14:11:02Z",
+          "error_kind": "computer_unreachable",
+          "recoverable": "true",
+          "worker_epoch": "5"
+        },
+        "rate_limit_info": {
+          "isUsingOverage": false,
+          "rateLimitType": "five_hour",
+          "resetsAt": 1788371400,
+          "status": "allowed"
+        }
+      },
+      "id": "session_01BFLRVQZsjhzdrwC8S4PzbA",
+      "origin": "claude_code_cli",
+      "session_context": {
+        "effort_level": "high",
+        "model": "claude-sonnet-4-6"
+      },
+      "session_status": "SESSION_STATUS_IDLE",
+      "status_bucket": "SESSION_STATUS_BUCKET_REVIEW_READY",
+      "tags": [
+        "remote-control-sdk"
+      ],
+      "title": "[마케팅]별점 푸시·프로모션·핵심지표",
+      "updated_at": "2026-09-02T13:36:35.513578Z"
+    },
+    {
+      "configured_model": "claude-sonnet-4-6",
+      "connection_status": "disconnected",
+      "created_at": "2026-08-29T09:55:09.568836Z",
+      "environment_kind": "bridge",
+      "external_metadata": {
+        "container_cc_version": "2.1.234",
+        "current_branches": {
+          "v2sion/hwaseong-heatfeel-miniapp": "master"
+        },
+        "effort_level": "high",
+        "last_init_error": {
+          "at": "2026-08-29T10:48:13Z",
+          "error_kind": "computer_unreachable",
+          "recoverable": "true",
+          "worker_epoch": "1"
+        },
+        "rate_limit_info": {
+          "rateLimitType": "five_hour",
+          "resetsAt": 1788013800,
+          "status": "allowed"
+        }
+      },
+      "id": "session_01ChqQsw3HP8J1baQJp8dFjW",
+      "origin": "claude_code_cli",
+      "session_context": {
+        "effort_level": "high",
+        "model": "claude-sonnet-4-6",
+        "outcomes": [
+          {
+            "git_repository": {
+              "git_info": {
+                "repo": "v2sion/hwaseong-heatfeel-miniapp"
+              }
+            }
+          }
+        ],
+        "sources": [
+          {
+            "git_repository": {
+              "revision": "master",
+              "url": "https://github.com/v2sion/hwaseong-heatfeel-miniapp"
+            }
+          }
+        ]
+      },
+      "session_status": "SESSION_STATUS_IDLE",
+      "status_bucket": "SESSION_STATUS_BUCKET_REVIEW_READY",
+      "tags": [
+        "remote-control-sdk"
+      ],
+      "title": "Toss 미니앱 출시 성공 사례 분석",
+      "updated_at": "2026-08-29T10:04:37.110257Z"
+    },
+    {
+      "configured_model": "claude-sonnet-4-6",
+      "connection_status": "disconnected",
+      "created_at": "2026-08-22T02:59:59.971290Z",
+      "environment_id": "env_017cTx9nfY4ynRrZMiRQpF6k",
+      "environment_kind": "anthropic_cloud",
+      "external_metadata": {
+        "container_cc_version": "2.1.239",
+        "cross_session_inbound": "available",
+        "last_served_model": "claude-sonnet-4-6",
+        "permission_mode": "auto",
+        "permission_mode_seq": "5",
+        "post_turn_summary": {
+          "needs_action": "add starscore & starexcuse repos to Claude GitHub connector, or confirm their location",
+          "status_category": "need_input",
+          "status_detail": "starscore/starexcuse repos not accessible; need GitHub access"
+        },
+        "rate_limit_info": {
+          "isUsingOverage": false,
+          "rateLimitType": "five_hour",
+          "resetsAt": 1788348600,
+          "status": "allowed"
+        },
+        "usage": {
+          "cache_read_tokens": 763541,
+          "cache_write_tokens": 193483,
+          "cost_usd": 2.7917925,
+          "input_tokens": 33,
+          "output_tokens": 7431
+        }
+      },
+      "id": "session_012BFqmEu2ZemQmchBmqtj6f",
+      "origin": "android",
+      "permission_mode": "PERMISSION_MODE_AUTO",
+      "post_turn_summary": {
+        "needs_action": "add starscore & starexcuse repos to Claude GitHub connector, or confirm their location",
+        "status_category": "need_input",
+        "status_detail": "starscore/starexcuse repos not accessible; need GitHub access"
+      },
+      "session_context": {
+        "effort_level": "high",
+        "model": "claude-sonnet-4-6",
+        "outcomes": [
+          {
+            "git_repository": {
+              "git_info": {
+                "branches": [
+                  "claude/photo-attachment-impact-review-csf8l1"
+                ],
+                "repo": "v2sion/web1"
+              }
+            }
+          },
+          {
+            "git_repository": {
+              "git_info": {
+                "branches": [
+                  "claude/photo-attachment-impact-review-csf8l1"
+                ],
+                "repo": "v2sion/hwaseong-heatfeel-miniapp"
+              }
+            }
+          },
+          {
+            "git_repository": {
+              "git_info": {
+                "branches": [
+                  "claude/photo-attachment-impact-review-csf8l1"
+                ],
+                "repo": "v2sion/mudeowebubble"
+              }
+            }
+          },
+          {
+            "git_repository": {
+              "git_info": {
+                "branches": [
+                  "claude/photo-attachment-impact-review-csf8l1"
+                ],
+                "repo": "v2sion/mudeowe-battle"
+              }
+            }
+          }
+        ],
+        "permission_mode": "auto",
+        "sources": [
+          {
+            "git_repository": {
+              "revision": "refs/heads/master",
+              "url": "https://github.com/v2sion/web1"
+            }
+          },
+          {
+            "git_repository": {
+              "revision": "refs/heads/master",
+              "url": "https://github.com/v2sion/hwaseong-heatfeel-miniapp"
+            }
+          },
+          {
+            "git_repository": {
+              "revision": "refs/heads/master",
+              "url": "https://github.com/v2sion/mudeowebubble"
+            }
+          },
+          {
+            "git_repository": {
+              "revision": "refs/heads/master",
+              "url": "https://github.com/v2sion/mudeowe-battle"
+            }
+          }
+        ]
+      },
+      "session_status": "SESSION_STATUS_IDLE",
+      "status_bucket": "SESSION_STATUS_BUCKET_BLOCKED",
+      "title": "사진 첨부 서비스 영향도 검토",
+      "updated_at": "2026-09-02T06:43:00.595028Z"
+    },
+    {
+      "configured_model": "claude-sonnet-4-6",
+      "connection_status": "disconnected",
+      "created_at": "2026-08-17T04:02:55.837625Z",
+      "environment_kind": "bridge",
+      "external_metadata": {
+        "current_branches": {
+          "v2sion/hwaseong-heatfeel-miniapp": "master"
+        },
+        "rate_limit_info": {
+          "rateLimitType": "five_hour",
+          "resetsAt": 1786954800,
+          "status": "allowed"
+        }
+      },
+      "id": "session_01Sffh9eP8e6TaT5XvLCeW8b",
+      "origin": "claude_code_cli",
+      "session_context": {
+        "model": "claude-sonnet-4-6",
+        "outcomes": [
+          {
+            "git_repository": {
+              "git_info": {
+                "repo": "v2sion/hwaseong-heatfeel-miniapp"
+              }
+            }
+          }
+        ],
+        "sources": [
+          {
+            "git_repository": {
+              "revision": "master",
+              "url": "https://github.com/v2sion/hwaseong-heatfeel-miniapp"
+            }
+          }
+        ]
+      },
+      "session_status": "SESSION_STATUS_IDLE",
+      "status_bucket": "SESSION_STATUS_BUCKET_REVIEW_READY",
+      "tags": [
+        "remote-control-sdk"
+      ],
+      "title": "상태줄 확인해보기",
+      "unread": true,
+      "updated_at": "2026-08-17T05:22:46.155445Z"
+    },
+    {
+      "configured_model": "claude-opus-5",
+      "connection_status": "disconnected",
+      "created_at": "2026-08-17T02:18:35.465028Z",
+      "environment_kind": "bridge",
+      "external_metadata": {
+        "rate_limit_info": {
+          "rateLimitType": "five_hour",
+          "resetsAt": 1786954800,
+          "status": "allowed"
+        }
+      },
+      "id": "session_01KGMLMJTGaE6syZaAFkH78R",
+      "origin": "claude_code_cli",
+      "session_context": {
+        "model": "claude-opus-5"
+      },
+      "session_status": "SESSION_STATUS_IDLE",
+      "status_bucket": "SESSION_STATUS_BUCKET_REVIEW_READY",
+      "tags": [
+        "remote-control-sdk"
+      ],
+      "title": "Claude Code 사용 행태 분석 및 개선 전략",
+      "unread": true,
+      "updated_at": "2026-08-17T05:18:03.762393Z"
+    },
+    {
+      "configured_model": "claude-sonnet-4-6",
+      "connection_status": "disconnected",
+      "created_at": "2026-08-16T12:58:55.008467Z",
+      "environment_kind": "bridge",
+      "external_metadata": {
+        "rate_limit_info": {
+          "rateLimitType": "five_hour",
+          "resetsAt": 1786894200,
+          "status": "allowed"
+        }
+      },
+      "id": "session_01SD1L1VWzhVA2SrLqp7edsN",
+      "origin": "claude_code_cli",
+      "session_context": {
+        "model": "claude-sonnet-4-6"
+      },
+      "session_status": "SESSION_STATUS_IDLE",
+      "status_bucket": "SESSION_STATUS_BUCKET_REVIEW_READY",
+      "tags": [
+        "remote-control-sdk"
+      ],
+      "title": "hbjh-concurrent-puffin",
+      "unread": true,
+      "updated_at": "2026-08-16T13:01:26.118694Z"
+    },
+    {
+      "configured_model": "claude-sonnet-4-6",
+      "connection_status": "disconnected",
+      "created_at": "2026-08-16T12:55:09.360836Z",
+      "environment_kind": "bridge",
+      "external_metadata": {
+        "rate_limit_info": {
+          "rateLimitType": "five_hour",
+          "resetsAt": 1786894200,
+          "status": "allowed"
+        }
+      },
+      "id": "session_01VpkefZ5WaFVQwzwzUQaM9M",
+      "origin": "claude_code_cli",
+      "session_context": {
+        "model": "claude-sonnet-4-6"
+      },
+      "session_status": "SESSION_STATUS_IDLE",
+      "status_bucket": "SESSION_STATUS_BUCKET_REVIEW_READY",
+      "tags": [
+        "remote-control-sdk"
+      ],
+      "title": "[업데이트]별핑계 기능 및 방향성 개선",
+      "unread": true,
+      "updated_at": "2026-08-16T12:57:47.999556Z"
+    },
+    {
+      "configured_model": "claude-sonnet-4-6",
+      "connection_status": "connected",
+      "created_at": "2026-08-16T05:58:43.030753Z",
+      "environment_kind": "bridge",
+      "external_metadata": {
+        "rate_limit_info": {
+          "rateLimitType": "five_hour",
+          "resetsAt": 1786876200,
+          "status": "allowed"
+        }
+      },
+      "id": "session_01SMbmvsaAehMQN6XvxCxoei",
+      "origin": "claude_code_cli",
+      "session_context": {
+        "model": "claude-sonnet-4-6"
+      },
+      "session_status": "SESSION_STATUS_ARCHIVED",
+      "status_bucket": "SESSION_STATUS_BUCKET_COMPLETED",
+      "tags": [
+        "remote-control-sdk"
+      ],
+      "title": "[업데이트]별핑계 기능 및 방향성 개선",
+      "unread": true,
+      "updated_at": "2026-08-16T06:00:39.785807Z"
+    },
+    {
+      "configured_model": "claude-sonnet-4-6",
+      "connection_status": "disconnected",
+      "created_at": "2026-08-16T05:58:34.594903Z",
+      "environment_kind": "bridge",
+      "external_metadata": {
+        "rate_limit_info": {
+          "rateLimitType": "five_hour",
+          "resetsAt": 1786894200,
+          "status": "allowed"
+        }
+      },
+      "id": "session_01H5dXseKNWXSkTC1H9jLGUc",
+      "origin": "claude_code_cli",
+      "session_context": {
+        "model": "claude-sonnet-4-6"
+      },
+      "session_status": "SESSION_STATUS_IDLE",
+      "status_bucket": "SESSION_STATUS_BUCKET_REVIEW_READY",
+      "tags": [
+        "remote-control-sdk"
+      ],
+      "title": "[업데이트]별점 기능 및 방향성 개선",
+      "unread": true,
+      "updated_at": "2026-08-16T12:55:34.969540Z"
+    },
+    {
+      "configured_model": "claude-sonnet-4-6",
+      "connection_status": "disconnected",
+      "created_at": "2026-08-14T22:31:44.740124Z",
+      "environment_kind": "bridge",
+      "external_metadata": {
+        "rate_limit_info": {
+          "rateLimitType": "five_hour",
+          "resetsAt": 1786760400,
+          "status": "allowed"
+        }
+      },
+      "id": "session_01J5oy4KxspFyihSssRYPQ3A",
+      "origin": "claude_code_cli",
+      "session_context": {
+        "model": "claude-sonnet-4-6"
+      },
+      "session_status": "SESSION_STATUS_IDLE",
+      "status_bucket": "SESSION_STATUS_BUCKET_REVIEW_READY",
+      "tags": [
+        "remote-control-sdk"
+      ],
+      "title": "[업데이트]별핑계 기능 및 방향성 개선",
+      "updated_at": "2026-08-14T22:46:24.367028Z"
+    },
+    {
+      "configured_model": "claude-sonnet-4-6",
+      "connection_status": "disconnected",
+      "created_at": "2026-08-14T22:31:36.410094Z",
+      "environment_kind": "bridge",
+      "external_metadata": {
+        "rate_limit_info": {
+          "rateLimitType": "five_hour",
+          "resetsAt": 1786760400,
+          "status": "allowed"
+        }
+      },
+      "id": "session_01H28UsX3Rgxdcs8Whtjzug7",
+      "origin": "claude_code_cli",
+      "session_context": {
+        "model": "claude-sonnet-4-6"
+      },
+      "session_status": "SESSION_STATUS_IDLE",
+      "status_bucket": "SESSION_STATUS_BUCKET_REVIEW_READY",
+      "tags": [
+        "remote-control-sdk"
+      ],
+      "title": "[운영]별핑계 이슈 및 버그 대응",
+      "updated_at": "2026-08-14T22:34:26.574056Z"
+    },
+    {
+      "configured_model": "claude-sonnet-4-6",
+      "connection_status": "disconnected",
+      "created_at": "2026-08-14T21:29:18.946107Z",
+      "environment_id": "env_017cTx9nfY4ynRrZMiRQpF6k",
+      "environment_kind": "anthropic_cloud",
+      "external_metadata": {
+        "container_cc_version": "",
+        "last_served_model": "claude-sonnet-4-6",
+        "permission_mode": "auto",
+        "permission_mode_seq": "4",
+        "post_turn_summary": {
+          "needs_action": "아니면 다른 계정/조직에 있는 레포인가요?",
+          "status_category": "need_input",
+          "status_detail": "아니면 다른 계정/조직에 있는 레포인가요?"
+        },
+        "rate_limit_info": {
+          "rateLimitType": "five_hour",
+          "resetsAt": 1786760400,
+          "status": "allowed"
+        },
+        "usage": {
+          "cache_read_tokens": 673197,
+          "cache_write_tokens": 47193,
+          "cost_usd": 0.5268501,
+          "input_tokens": 234,
+          "output_tokens": 3845
+        }
+      },
+      "id": "session_01V57WPc6ycXjQzf5whgWJDC",
+      "origin": "android",
+      "permission_mode": "PERMISSION_MODE_AUTO",
+      "post_turn_summary": {
+        "needs_action": "아니면 다른 계정/조직에 있는 레포인가요?",
+        "status_category": "need_input",
+        "status_detail": "아니면 다른 계정/조직에 있는 레포인가요?"
+      },
+      "session_context": {
+        "model": "claude-sonnet-4-6",
+        "outcomes": [
+          {
+            "git_repository": {
+              "git_info": {
+                "branches": [
+                  "claude/llama-3-3-model-migration-eheabv"
+                ],
+                "repo": "v2sion/web1"
+              }
+            }
+          },
+          {
+            "git_repository": {
+              "git_info": {
+                "branches": [
+                  "claude/llama-3-3-model-migration-eheabv"
+                ],
+                "repo": "v2sion/hwaseong-heatfeel-miniapp"
+              }
+            }
+          }
+        ],
+        "permission_mode": "auto",
+        "sources": [
+          {
+            "git_repository": {
+              "revision": "refs/heads/master",
+              "url": "https://github.com/v2sion/web1"
+            }
+          },
+          {
+            "git_repository": {
+              "revision": "refs/heads/master",
+              "url": "https://github.com/v2sion/hwaseong-heatfeel-miniapp"
+            }
+          },
+          {
+            "git_repository": {
+              "url": "https://github.com/v2sion/mudeowe-battle"
+            }
+          }
+        ]
+      },
+      "session_status": "SESSION_STATUS_IDLE",
+      "status_bucket": "SESSION_STATUS_BUCKET_BLOCKED",
+      "title": "Llama 3.3 70B 모델 변경 검토",
+      "updated_at": "2026-08-14T21:37:02.595721Z"
+    },
+    {
+      "configured_model": "claude-sonnet-4-6",
+      "connection_status": "connected",
+      "created_at": "2026-08-14T11:04:40.870308Z",
+      "environment_kind": "bridge",
+      "external_metadata": {},
+      "id": "session_01AZuuVamoTNaVpM8mRiCoyU",
+      "origin": "claude_code_cli",
+      "session_context": {
+        "model": "claude-sonnet-4-6"
+      },
+      "session_status": "SESSION_STATUS_ARCHIVED",
+      "status_bucket": "SESSION_STATUS_BUCKET_COMPLETED",
+      "tags": [
+        "remote-control-sdk"
+      ],
+      "title": "Windows PC 순차적 최적화 진행",
+      "unread": true,
+      "updated_at": "2026-08-14T13:27:05.177098Z"
+    },
+    {
+      "configured_model": "claude-sonnet-4-6",
+      "connection_status": "disconnected",
+      "created_at": "2026-08-14T11:03:31.461373Z",
+      "environment_kind": "bridge",
+      "external_metadata": {},
+      "id": "session_01TpPminpL8aDfm13TFb2mhM",
+      "origin": "claude_code_cli",
+      "session_context": {
+        "model": "claude-sonnet-4-6"
+      },
+      "session_status": "SESSION_STATUS_IDLE",
+      "status_bucket": "SESSION_STATUS_BUCKET_REVIEW_READY",
+      "tags": [
+        "remote-control-sdk"
+      ],
+      "title": "[업데이트]별점 기능 및 방향성 개선",
+      "unread": true,
+      "updated_at": "2026-08-14T13:54:09.145290Z"
+    },
+    {
+      "configured_model": "claude-sonnet-4-6",
+      "connection_status": "connected",
+      "created_at": "2026-08-14T11:03:26.688425Z",
+      "environment_kind": "bridge",
+      "external_metadata": {},
+      "id": "session_018mc8MFPv6BwY3wpKKR1X8Q",
+      "origin": "claude_code_cli",
+      "session_context": {
+        "model": "claude-sonnet-4-6"
+      },
+      "session_status": "SESSION_STATUS_ARCHIVED",
+      "status_bucket": "SESSION_STATUS_BUCKET_COMPLETED",
+      "tags": [
+        "remote-control-sdk"
+      ],
+      "title": "[업데이트]별핑계 기능 및 방향성 개선",
+      "unread": true,
+      "updated_at": "2026-08-14T13:47:50.758315Z"
+    },
+    {
+      "configured_model": "claude-sonnet-4-6",
+      "connection_status": "disconnected",
+      "created_at": "2026-08-13T14:07:44.883020Z",
+      "environment_id": "env_017cTx9nfY4ynRrZMiRQpF6k",
+      "environment_kind": "anthropic_cloud",
+      "external_metadata": {
+        "container_cc_version": "",
+        "last_served_model": "claude-sonnet-4-6",
+        "post_turn_summary": {
+          "needs_action": "",
+          "status_category": "review_ready",
+          "status_detail": "identified Vercel transient error on chunk 3; adding retry logic to workflow"
+        },
+        "rate_limit_info": {
+          "rateLimitType": "seven_day",
+          "resetsAt": 1786737600,
+          "status": "allowed_warning"
+        },
+        "usage": {
+          "cache_read_tokens": 1217157,
+          "cache_write_tokens": 68883,
+          "cost_usd": 0.9247011,
+          "input_tokens": 32,
+          "output_tokens": 9744
+        }
+      },
+      "id": "session_019S4DEgGpojuHBn3bke8UXX",
+      "origin": "android",
+      "post_turn_summary": {
+        "status_category": "review_ready",
+        "status_detail": "identified Vercel transient error on chunk 3; adding retry logic to workflow"
+      },
+      "session_context": {
+        "model": "claude-sonnet-4-6",
+        "outcomes": [
+          {
+            "git_repository": {
+              "git_info": {
+                "branches": [
+                  "claude/hwaseong-heatfeel-ranking-failure-5hdn24"
+                ],
+                "repo": "v2sion/web1"
+              }
+            }
+          },
+          {
+            "git_repository": {
+              "git_info": {
+                "branches": [
+                  "claude/hwaseong-heatfeel-ranking-failure-5hdn24"
+                ],
+                "repo": "v2sion/hwaseong-heatfeel-miniapp"
+              }
+            }
+          }
+        ],
+        "sources": [
+          {
+            "git_repository": {
+              "revision": "refs/heads/master",
+              "url": "https://github.com/v2sion/web1"
+            }
+          },
+          {
+            "git_repository": {
+              "revision": "refs/heads/master",
+              "url": "https://github.com/v2sion/hwaseong-heatfeel-miniapp"
+            }
+          }
+        ]
+      },
+      "session_status": "SESSION_STATUS_IDLE",
+      "status_bucket": "SESSION_STATUS_BUCKET_REVIEW_READY",
+      "title": "전국 체감온도 순위 수집 실패",
+      "updated_at": "2026-08-13T14:11:25.238391Z"
+    },
+    {
+      "configured_model": "claude-sonnet-4-6",
+      "connection_status": "disconnected",
+      "created_at": "2026-08-13T13:48:45.284252Z",
+      "environment_kind": "bridge",
+      "external_metadata": {},
+      "id": "session_01Xw8CAHRRAf4jfuQGGJoTwu",
+      "origin": "claude_code_cli",
+      "session_context": {
+        "model": "claude-sonnet-4-6"
+      },
+      "session_status": "SESSION_STATUS_IDLE",
+      "status_bucket": "SESSION_STATUS_BUCKET_REVIEW_READY",
+      "tags": [
+        "remote-control-sdk"
+      ],
+      "title": "[마케팅]별점 푸시·프로모션·핵심지표",
+      "updated_at": "2026-08-13T13:50:13.968749Z"
+    },
+    {
+      "configured_model": "claude-sonnet-4-6",
+      "connection_status": "disconnected",
+      "created_at": "2026-08-13T13:48:32.081322Z",
+      "environment_kind": "bridge",
+      "external_metadata": {},
+      "id": "session_01S5f8DUpisgRCaAdyHjsWqU",
+      "origin": "claude_code_cli",
+      "session_context": {
+        "model": "claude-sonnet-4-6"
+      },
+      "session_status": "SESSION_STATUS_IDLE",
+      "status_bucket": "SESSION_STATUS_BUCKET_REVIEW_READY",
+      "tags": [
+        "remote-control-sdk"
+      ],
+      "title": "[업데이트]별핑계 기능 및 방향성 개선",
+      "updated_at": "2026-08-13T13:52:50.514679Z"
+    },
+    {
+      "configured_model": "claude-sonnet-4-6",
+      "connection_status": "disconnected",
+      "created_at": "2026-08-13T13:48:21.192635Z",
+      "environment_kind": "bridge",
+      "external_metadata": {},
+      "id": "session_013crFFQ9ozNRpWbjpSDLxKD",
+      "origin": "claude_code_cli",
+      "session_context": {
+        "model": "claude-sonnet-4-6"
+      },
+      "session_status": "SESSION_STATUS_IDLE",
+      "status_bucket": "SESSION_STATUS_BUCKET_REVIEW_READY",
+      "tags": [
+        "remote-control-sdk"
+      ],
+      "title": "[업데이트]별점 기능 및 방향성 개선",
+      "updated_at": "2026-08-13T13:58:01.462619Z"
+    },
+    {
+      "configured_model": "claude-sonnet-4-6",
+      "connection_status": "disconnected",
+      "created_at": "2026-08-10T13:51:53.559001Z",
+      "environment_kind": "bridge",
+      "external_metadata": {},
+      "id": "session_01Qt1jtoHCzcND7ZuzCQgYEP",
+      "origin": "claude_code_cli",
+      "session_context": {
+        "model": "claude-sonnet-4-6"
+      },
+      "session_status": "SESSION_STATUS_IDLE",
+      "status_bucket": "SESSION_STATUS_BUCKET_REVIEW_READY",
+      "tags": [
+        "remote-control-sdk"
+      ],
+      "title": "토스 미니앱 로컬 저장소 용량 최적화",
+      "unread": true,
+      "updated_at": "2026-08-10T14:26:43.284965Z"
+    },
+    {
+      "configured_model": "claude-sonnet-4-6",
+      "connection_status": "disconnected",
+      "created_at": "2026-08-10T11:30:10.141496Z",
+      "environment_kind": "bridge",
+      "external_metadata": {},
+      "id": "session_01Jm5eJfwnUi7vgdWfbyRKb6",
+      "origin": "claude_code_cli",
+      "session_context": {
+        "model": "claude-sonnet-4-6"
+      },
+      "session_status": "SESSION_STATUS_IDLE",
+      "status_bucket": "SESSION_STATUS_BUCKET_REVIEW_READY",
+      "tags": [
+        "remote-control-sdk"
+      ],
+      "title": "[운영]별점 이슈 및 버그 대응",
+      "unread": true,
+      "updated_at": "2026-08-10T11:31:46.488555Z"
+    },
+    {
+      "configured_model": "claude-sonnet-4-6",
+      "connection_status": "connected",
+      "created_at": "2026-08-10T11:29:44.073645Z",
+      "environment_kind": "bridge",
+      "external_metadata": {},
+      "id": "session_0158Lt75pPCvJAgJo3B1f4Xc",
+      "origin": "claude_code_cli",
+      "session_context": {
+        "model": "claude-sonnet-4-6"
+      },
+      "session_status": "SESSION_STATUS_ARCHIVED",
+      "status_bucket": "SESSION_STATUS_BUCKET_COMPLETED",
+      "tags": [
+        "remote-control-sdk"
+      ],
+      "title": "[마케팅]별점 푸시·프로모션·핵심지표",
+      "unread": true,
+      "updated_at": "2026-08-10T11:38:03.463616Z"
+    },
+    {
+      "configured_model": "claude-sonnet-4-6",
+      "connection_status": "connected",
+      "created_at": "2026-08-10T11:29:05.907083Z",
+      "environment_kind": "bridge",
+      "external_metadata": {},
+      "id": "session_01UJMzsTRzDWwWBYnp3C5vnv",
+      "origin": "claude_code_cli",
+      "session_context": {
+        "model": "claude-sonnet-4-6"
+      },
+      "session_status": "SESSION_STATUS_ARCHIVED",
+      "status_bucket": "SESSION_STATUS_BUCKET_COMPLETED",
+      "tags": [
+        "remote-control-sdk"
+      ],
+      "title": "[업데이트]별점 기능 및 방향성 개선",
+      "unread": true,
+      "updated_at": "2026-08-10T14:07:20.864205Z"
+    },
+    {
+      "configured_model": "claude-sonnet-4-6",
+      "connection_status": "connected",
+      "created_at": "2026-08-10T11:25:28.303621Z",
+      "environment_kind": "bridge",
+      "external_metadata": {},
+      "id": "session_01YJqiUtqCtzmHVPW555qwuE",
+      "origin": "claude_code_cli",
+      "session_context": {
+        "model": "claude-sonnet-4-6"
+      },
+      "session_status": "SESSION_STATUS_ARCHIVED",
+      "status_bucket": "SESSION_STATUS_BUCKET_COMPLETED",
+      "tags": [
+        "remote-control-sdk"
+      ],
+      "title": "[운영]별핑계 이슈 및 버그 대응",
+      "unread": true,
+      "updated_at": "2026-08-10T13:41:31.924685Z"
+    },
+    {
+      "configured_model": "claude-sonnet-4-6",
+      "connection_status": "connected",
+      "created_at": "2026-08-10T11:25:14.963349Z",
+      "environment_kind": "bridge",
+      "external_metadata": {},
+      "id": "session_01S9d8FEzbuHZse34pMkyG5Q",
+      "origin": "claude_code_cli",
+      "session_context": {
+        "model": "claude-sonnet-4-6"
+      },
+      "session_status": "SESSION_STATUS_ARCHIVED",
+      "status_bucket": "SESSION_STATUS_BUCKET_COMPLETED",
+      "tags": [
+        "remote-control-sdk"
+      ],
+      "title": "[마케팅]별핑계 푸시·프로모션·핵심지표",
+      "unread": true,
+      "updated_at": "2026-08-10T13:42:26.490007Z"
+    },
+    {
+      "configured_model": "claude-sonnet-4-6",
+      "connection_status": "connected",
+      "created_at": "2026-08-10T11:24:27.960368Z",
+      "environment_kind": "bridge",
+      "external_metadata": {},
+      "id": "session_01HP59ayN5QKEdbzdh5BrgjL",
+      "origin": "claude_code_cli",
+      "session_context": {
+        "model": "claude-sonnet-4-6"
+      },
+      "session_status": "SESSION_STATUS_ARCHIVED",
+      "status_bucket": "SESSION_STATUS_BUCKET_COMPLETED",
+      "tags": [
+        "remote-control-sdk"
+      ],
+      "title": "[업데이트]별핑계 기능 및 방향성 개선",
+      "unread": true,
+      "updated_at": "2026-08-10T14:01:41.034319Z"
+    },
+    {
+      "configured_model": "claude-sonnet-4-6",
+      "connection_status": "disconnected",
+      "created_at": "2026-08-10T06:20:39.270942Z",
+      "environment_id": "env_017cTx9nfY4ynRrZMiRQpF6k",
+      "environment_kind": "anthropic_cloud",
+      "external_metadata": {
+        "container_cc_version": "",
+        "last_served_model": "claude-sonnet-4-6",
+        "post_turn_summary": {
+          "needs_action": "upgrade Vercel Blob plan OR approve 2h cron interval",
+          "status_category": "need_input",
+          "status_detail": "budget exhausted Aug 31; needs plan upgrade or cron interval change"
+        },
+        "usage": {
+          "cache_read_tokens": 414433,
+          "cache_write_tokens": 92757,
+          "cost_usd": 0.7269441,
+          "input_tokens": 18,
+          "output_tokens": 16712
+        }
+      },
+      "id": "session_01SNycx6BWCCqm9H4RKu3eTF",
+      "origin": "android",
+      "post_turn_summary": {
+        "needs_action": "upgrade Vercel Blob plan OR approve 2h cron interval",
+        "status_category": "need_input",
+        "status_detail": "budget exhausted Aug 31; needs plan upgrade or cron interval change"
+      },
+      "session_context": {
+        "model": "claude-sonnet-4-6",
+        "outcomes": [
+          {
+            "git_repository": {
+              "git_info": {
+                "branches": [
+                  "claude/vercel-blob-requests-review-w8crvf"
+                ],
+                "repo": "v2sion/web1"
+              }
+            }
+          },
+          {
+            "git_repository": {
+              "git_info": {
+                "branches": [
+                  "claude/vercel-blob-requests-review-w8crvf"
+                ],
+                "repo": "v2sion/hwaseong-heatfeel-miniapp"
+              }
+            }
+          }
+        ],
+        "sources": [
+          {
+            "git_repository": {
+              "revision": "refs/heads/master",
+              "url": "https://github.com/v2sion/web1"
+            }
+          },
+          {
+            "git_repository": {
+              "revision": "refs/heads/master",
+              "url": "https://github.com/v2sion/hwaseong-heatfeel-miniapp"
+            }
+          }
+        ]
+      },
+      "session_status": "SESSION_STATUS_IDLE",
+      "status_bucket": "SESSION_STATUS_BUCKET_BLOCKED",
+      "title": "Vercel Blob Advanced Requests 검토",
+      "updated_at": "2026-08-10T14:25:48.130498Z"
+    },
+    {
+      "configured_model": "claude-sonnet-4-6",
+      "connection_status": "disconnected",
+      "created_at": "2026-08-08T23:55:37.974332Z",
+      "environment_kind": "bridge",
+      "external_metadata": {
+        "permission_mode": "auto",
+        "permission_mode_seq": "110"
+      },
+      "id": "session_01WVMm3XRTMiTmwDnmpLQBMd",
+      "origin": "claude_code_cli",
+      "permission_mode": "PERMISSION_MODE_AUTO",
+      "session_context": {
+        "model": "claude-sonnet-4-6",
+        "permission_mode": "auto"
+      },
+      "session_status": "SESSION_STATUS_IDLE",
+      "status_bucket": "SESSION_STATUS_BUCKET_REVIEW_READY",
+      "tags": [
+        "remote-control-sdk"
+      ],
+      "title": "[MVP]별점 첫 출시",
+      "updated_at": "2026-08-09T08:19:25.668463Z"
+    },
+    {
+      "configured_model": "claude-sonnet-4-6",
+      "connection_status": "disconnected",
+      "created_at": "2026-08-08T23:55:32.094229Z",
+      "environment_kind": "bridge",
+      "external_metadata": {
+        "permission_mode": "auto",
+        "permission_mode_seq": "106"
+      },
+      "id": "session_01EcA8qeYKzDTucJ68A9hsGF",
+      "origin": "claude_code_cli",
+      "permission_mode": "PERMISSION_MODE_AUTO",
+      "session_context": {
+        "model": "claude-sonnet-4-6",
+        "permission_mode": "auto"
+      },
+      "session_status": "SESSION_STATUS_IDLE",
+      "status_bucket": "SESSION_STATUS_BUCKET_REVIEW_READY",
+      "tags": [
+        "remote-control-sdk"
+      ],
+      "title": "[MVP]별핑계 첫 출시",
+      "updated_at": "2026-08-09T08:46:25.506719Z"
+    },
+    {
+      "configured_model": "claude-sonnet-4-6",
+      "connection_status": "disconnected",
+      "created_at": "2026-08-08T05:44:48.410057Z",
+      "environment_kind": "bridge",
+      "external_metadata": {
+        "permission_mode": "auto",
+        "permission_mode_seq": "68"
+      },
+      "id": "session_01477VLbYPR1MyQNpC4yh6pu",
+      "origin": "claude_code_cli",
+      "permission_mode": "PERMISSION_MODE_AUTO",
+      "session_context": {
+        "model": "claude-sonnet-4-6",
+        "permission_mode": "auto"
+      },
+      "session_status": "SESSION_STATUS_IDLE",
+      "status_bucket": "SESSION_STATUS_BUCKET_REVIEW_READY",
+      "tags": [
+        "remote-control-sdk"
+      ],
+      "title": "[MVP]별점 첫 출시",
+      "updated_at": "2026-08-08T14:24:24.243823Z"
+    },
+    {
+      "configured_model": "claude-sonnet-4-6",
+      "connection_status": "disconnected",
+      "created_at": "2026-08-08T05:44:41.925716Z",
+      "environment_kind": "bridge",
+      "external_metadata": {
+        "permission_mode": "auto",
+        "permission_mode_seq": "8"
+      },
+      "id": "session_01R93N8uxPXcNxYVazWf8xRd",
+      "origin": "claude_code_cli",
+      "permission_mode": "PERMISSION_MODE_AUTO",
+      "session_context": {
+        "model": "claude-sonnet-4-6",
+        "permission_mode": "auto"
+      },
+      "session_status": "SESSION_STATUS_IDLE",
+      "status_bucket": "SESSION_STATUS_BUCKET_REVIEW_READY",
+      "tags": [
+        "remote-control-sdk"
+      ],
+      "title": "[MVP]별핑계 첫 출시",
+      "updated_at": "2026-08-08T14:14:11.978751Z"
+    },
+    {
+      "configured_model": "claude-sonnet-4-6",
+      "connection_status": "disconnected",
+      "created_at": "2026-08-07T13:48:10.400969Z",
+      "environment_kind": "bridge",
+      "external_metadata": {},
+      "id": "session_01FtBKksHqcerGEMHYFAYwMy",
+      "origin": "claude_code_cli",
+      "session_context": {
+        "model": "claude-sonnet-4-6"
+      },
+      "session_status": "SESSION_STATUS_IDLE",
+      "status_bucket": "SESSION_STATUS_BUCKET_REVIEW_READY",
+      "tags": [
+        "remote-control-sdk"
+      ],
+      "title": "[MVP]별점 첫 출시",
+      "unread": true,
+      "updated_at": "2026-08-07T14:25:30.147583Z"
+    },
+    {
+      "configured_model": "claude-sonnet-4-6",
+      "connection_status": "disconnected",
+      "created_at": "2026-08-07T10:51:40.324962Z",
+      "environment_kind": "bridge",
+      "external_metadata": {},
+      "id": "session_018JHJVnNXHunRwbx76XzBUq",
+      "origin": "claude_code_cli",
+      "session_context": {
+        "model": "claude-sonnet-4-6"
+      },
+      "session_status": "SESSION_STATUS_IDLE",
+      "status_bucket": "SESSION_STATUS_BUCKET_REVIEW_READY",
+      "tags": [
+        "remote-control-sdk"
+      ],
+      "title": "[MVP]별핑계 첫 출시",
+      "unread": true,
+      "updated_at": "2026-08-07T14:26:56.345871Z"
+    },
+    {
+      "configured_model": "claude-sonnet-4-6",
+      "connection_status": "disconnected",
+      "created_at": "2026-08-05T13:43:56.127345Z",
+      "environment_kind": "bridge",
+      "external_metadata": {},
+      "id": "session_014mkCmeice2SduhWhVTLJdf",
+      "origin": "claude_code_cli",
+      "session_context": {
+        "model": "claude-sonnet-4-6"
+      },
+      "session_status": "SESSION_STATUS_IDLE",
+      "status_bucket": "SESSION_STATUS_BUCKET_REVIEW_READY",
+      "tags": [
+        "remote-control-sdk"
+      ],
+      "title": "새로운 앱 방향 기획 및 실행 전략 수립",
+      "unread": true,
+      "updated_at": "2026-08-05T13:46:59.197151Z"
+    },
+    {
+      "configured_model": "claude-sonnet-4-6",
+      "connection_status": "disconnected",
+      "created_at": "2026-08-02T13:10:39.963307Z",
+      "environment_kind": "bridge",
+      "external_metadata": {},
+      "id": "session_01PnuGTb21vwfUgq7NYyrxNT",
+      "origin": "claude_code_cli",
+      "session_context": {
+        "model": "claude-sonnet-4-6"
+      },
+      "session_status": "SESSION_STATUS_IDLE",
+      "status_bucket": "SESSION_STATUS_BUCKET_REVIEW_READY",
+      "tags": [
+        "remote-control-sdk"
+      ],
+      "title": "[MVP] 보험천재",
+      "unread": true,
+      "updated_at": "2026-08-02T13:17:01.120191Z"
+    },
+    {
+      "configured_model": "claude-sonnet-4-6",
+      "connection_status": "disconnected",
+      "created_at": "2026-07-31T20:36:54.149293Z",
+      "environment_kind": "bridge",
+      "external_metadata": {},
+      "id": "session_015kdQ771NtNSpHihZpRCGFB",
+      "origin": "claude_code_cli",
+      "session_context": {
+        "model": "claude-sonnet-4-6"
+      },
+      "session_status": "SESSION_STATUS_ARCHIVED",
+      "status_bucket": "SESSION_STATUS_BUCKET_COMPLETED",
+      "tags": [
+        "remote-control-sdk"
+      ],
+      "title": "[마케팅] 무더위 랭킹 마케팅 분석",
+      "updated_at": "2026-08-01T10:54:07.003631Z"
+    },
+    {
+      "configured_model": "claude-sonnet-4-6",
+      "connection_status": "disconnected",
+      "created_at": "2026-07-29T10:20:06.093793Z",
+      "environment_kind": "bridge",
+      "external_metadata": {},
+      "id": "session_01FUPpb9y2mFUYLQkzAjTqSQ",
+      "origin": "claude_code_cli",
+      "session_context": {
+        "model": "claude-sonnet-4-6"
+      },
+      "session_status": "SESSION_STATUS_IDLE",
+      "status_bucket": "SESSION_STATUS_BUCKET_REVIEW_READY",
+      "tags": [
+        "remote-control-sdk"
+      ],
+      "title": "[마케팅] 푸시·프로모션·핵심지표_3",
+      "unread": true,
+      "updated_at": "2026-07-29T10:20:46.279951Z"
+    },
+    {
+      "configured_model": "claude-sonnet-4-6",
+      "connection_status": "disconnected",
+      "created_at": "2026-07-29T10:17:17.087097Z",
+      "environment_kind": "bridge",
+      "external_metadata": {},
+      "id": "session_01PqoV9QqckutYnNaXrH45Xc",
+      "origin": "claude_code_cli",
+      "session_context": {
+        "model": "claude-sonnet-4-6"
+      },
+      "session_status": "SESSION_STATUS_IDLE",
+      "status_bucket": "SESSION_STATUS_BUCKET_REVIEW_READY",
+      "tags": [
+        "remote-control-sdk"
+      ],
+      "title": "[운영] 이슈 및 버그 대응_3",
+      "unread": true,
+      "updated_at": "2026-07-29T10:17:37.582271Z"
+    },
+    {
+      "configured_model": "claude-sonnet-4-6",
+      "connection_status": "disconnected",
+      "created_at": "2026-07-29T10:16:18.982280Z",
+      "environment_kind": "bridge",
+      "external_metadata": {},
+      "id": "session_01UBVfkRcEqiyuFEEHqPLznx",
+      "origin": "claude_code_cli",
+      "session_context": {
+        "model": "claude-sonnet-4-6"
+      },
+      "session_status": "SESSION_STATUS_IDLE",
+      "status_bucket": "SESSION_STATUS_BUCKET_REVIEW_READY",
+      "tags": [
+        "remote-control-sdk"
+      ],
+      "title": "[업데이트] 기능 및 방향성 개선_3",
+      "unread": true,
+      "updated_at": "2026-07-29T11:57:10.345887Z"
+    },
+    {
+      "configured_model": "claude-sonnet-4-6",
+      "connection_status": "disconnected",
+      "created_at": "2026-07-27T12:56:05.596574Z",
+      "environment_kind": "bridge",
+      "external_metadata": {},
+      "id": "session_014pB11AA2Qrhp48Pd3VLpGF",
+      "origin": "claude_code_cli",
+      "session_context": {
+        "model": "claude-sonnet-4-6"
+      },
+      "session_status": "SESSION_STATUS_ARCHIVED",
+      "status_bucket": "SESSION_STATUS_BUCKET_COMPLETED",
+      "tags": [
+        "remote-control-sdk"
+      ],
+      "title": "[업데이트] 기능 및 방향성 개선",
+      "updated_at": "2026-07-27T13:18:31.718207Z"
+    },
+    {
+      "configured_model": "claude-sonnet-4-6",
+      "connection_status": "disconnected",
+      "created_at": "2026-07-26T12:29:10.750854Z",
+      "environment_kind": "bridge",
+      "external_metadata": {},
+      "id": "session_018cD2ytNZVoNVwLvLZEYG84",
+      "origin": "claude_code_cli",
+      "session_context": {
+        "model": "claude-sonnet-4-6"
+      },
+      "session_status": "SESSION_STATUS_IDLE",
+      "status_bucket": "SESSION_STATUS_BUCKET_REVIEW_READY",
+      "tags": [
+        "remote-control-sdk"
+      ],
+      "title": "[MVP] 보험천재",
+      "updated_at": "2026-07-26T12:30:14.586751Z"
+    },
+    {
+      "configured_model": "claude-sonnet-4-6",
+      "connection_status": "disconnected",
+      "created_at": "2026-07-26T07:44:16.234217Z",
+      "environment_kind": "bridge",
+      "external_metadata": {},
+      "id": "session_01BvrSK9R8v7B1yVevjbgTE9",
+      "origin": "claude_code_cli",
+      "session_context": {
+        "model": "claude-sonnet-4-6"
+      },
+      "session_status": "SESSION_STATUS_IDLE",
+      "status_bucket": "SESSION_STATUS_BUCKET_REVIEW_READY",
+      "tags": [
+        "remote-control-sdk"
+      ],
+      "title": "[MVP] 초기 히스토리_3",
+      "updated_at": "2026-07-26T08:27:57.237087Z"
+    },
+    {
+      "configured_model": "claude-sonnet-4-6",
+      "connection_status": "disconnected",
+      "created_at": "2026-07-25T11:31:40.461142Z",
+      "environment_kind": "bridge",
+      "external_metadata": {},
+      "id": "session_018fMmy3prP9KqN3iqztPxUx",
+      "origin": "claude_code_cli",
+      "session_context": {
+        "model": "claude-sonnet-4-6"
+      },
+      "session_status": "SESSION_STATUS_IDLE",
+      "status_bucket": "SESSION_STATUS_BUCKET_REVIEW_READY",
+      "tags": [
+        "remote-control-sdk"
+      ],
+      "title": "[MVP] 초기 히스토리_3",
+      "unread": true,
+      "updated_at": "2026-07-25T14:47:09.191567Z"
+    },
+    {
+      "configured_model": "claude-sonnet-4-6",
+      "connection_status": "disconnected",
+      "created_at": "2026-07-25T07:06:36.454949Z",
+      "environment_kind": "bridge",
+      "external_metadata": {},
+      "id": "session_015Mf5Yko4zWL7ecxA8NnXbQ",
+      "origin": "claude_code_cli",
+      "session_context": {
+        "model": "claude-sonnet-4-6"
+      },
+      "session_status": "SESSION_STATUS_ARCHIVED",
+      "status_bucket": "SESSION_STATUS_BUCKET_COMPLETED",
+      "tags": [
+        "remote-control-sdk"
+      ],
+      "title": "[업데이트] 기능 및 방향성 개선",
+      "unread": true,
+      "updated_at": "2026-07-25T07:29:32.231615Z"
+    },
+    {
+      "configured_model": "claude-sonnet-5",
+      "connection_status": "connected",
+      "created_at": "2026-07-25T06:46:26.514510Z",
+      "environment_kind": "bridge",
+      "external_metadata": {},
+      "id": "session_016cbxo8LnDfN7LL4TuknToi",
+      "origin": "claude_code_cli",
+      "session_context": {
+        "model": "claude-sonnet-5"
+      },
+      "session_status": "SESSION_STATUS_ARCHIVED",
+      "status_bucket": "SESSION_STATUS_BUCKET_COMPLETED",
+      "tags": [
+        "remote-control-sdk"
+      ],
+      "title": "[MVP] 보험천재",
+      "unread": true,
+      "updated_at": "2026-07-25T11:31:09.190591Z"
+    },
+    {
+      "configured_model": "claude-sonnet-5",
+      "connection_status": "disconnected",
+      "created_at": "2026-07-19T06:47:39.378678Z",
+      "environment_kind": "bridge",
+      "external_metadata": {},
+      "id": "session_01PqXzTCtcSP25GPUWSs3ssT",
+      "session_context": {
+        "model": "claude-sonnet-5"
+      },
+      "session_status": "SESSION_STATUS_IDLE",
+      "status_bucket": "SESSION_STATUS_BUCKET_REVIEW_READY",
+      "tags": [
+        "remote-control-sdk"
+      ],
+      "title": "[MVP] 초기 히스토리_2",
+      "updated_at": "2026-07-19T12:59:04.191279Z"
+    },
+    {
+      "configured_model": "claude-sonnet-5",
+      "connection_status": "disconnected",
+      "created_at": "2026-07-19T06:47:32.365278Z",
+      "environment_kind": "bridge",
+      "external_metadata": {},
+      "id": "session_01Jdnc4Hd7ycfFK9mjcfYDvR",
+      "session_context": {
+        "model": "claude-sonnet-5"
+      },
+      "session_status": "SESSION_STATUS_ARCHIVED",
+      "status_bucket": "SESSION_STATUS_BUCKET_COMPLETED",
+      "tags": [
+        "remote-control-sdk"
+      ],
+      "title": "[업데이트] 기능 및 방향성 개선",
+      "unread": true,
+      "updated_at": "2026-07-19T13:31:01.290367Z"
+    },
+    {
+      "configured_model": "claude-sonnet-5",
+      "connection_status": "connected",
+      "created_at": "2026-07-19T06:22:29.845650Z",
+      "environment_kind": "bridge",
+      "external_metadata": {},
+      "id": "session_01VURGiHqtRwoHWrmvMDCqso",
+      "session_context": {
+        "model": "claude-sonnet-5"
+      },
+      "session_status": "SESSION_STATUS_ARCHIVED",
+      "status_bucket": "SESSION_STATUS_BUCKET_COMPLETED",
+      "tags": [
+        "remote-control-sdk"
+      ],
+      "title": "백로그 정리: 게임 및 커뮤니티 앱 아이디어",
+      "unread": true,
+      "updated_at": "2026-07-19T06:47:08.689183Z"
+    },
+    {
+      "configured_model": "claude-sonnet-5",
+      "connection_status": "disconnected",
+      "created_at": "2026-07-19T00:05:09.812333Z",
+      "environment_kind": "bridge",
+      "external_metadata": {},
+      "id": "session_01J1rsaycGDLbq37uZq6PXLk",
+      "session_context": {
+        "model": "claude-sonnet-5"
+      },
+      "session_status": "SESSION_STATUS_ARCHIVED",
+      "status_bucket": "SESSION_STATUS_BUCKET_COMPLETED",
+      "tags": [
+        "remote-control-sdk"
+      ],
+      "title": "[업데이트] 기능 및 방향성 개선",
+      "unread": true,
+      "updated_at": "2026-07-19T00:05:13.899583Z"
+    },
+    {
+      "configured_model": "claude-sonnet-5",
+      "connection_status": "disconnected",
+      "created_at": "2026-07-19T00:05:00.085518Z",
+      "environment_kind": "bridge",
+      "external_metadata": {},
+      "id": "session_01EyKUQzDHyiCXfdM7tiAovj",
+      "session_context": {
+        "model": "claude-sonnet-5"
+      },
+      "session_status": "SESSION_STATUS_ARCHIVED",
+      "status_bucket": "SESSION_STATUS_BUCKET_COMPLETED",
+      "tags": [
+        "remote-control-sdk"
+      ],
+      "title": "[마케팅] 푸시·프로모션·핵심지표",
+      "unread": true,
+      "updated_at": "2026-07-19T00:05:56.092447Z"
+    },
+    {
+      "configured_model": "claude-sonnet-5",
+      "connection_status": "disconnected",
+      "created_at": "2026-07-17T22:35:07.900755Z",
+      "environment_kind": "bridge",
+      "external_metadata": {},
+      "id": "session_011aGonoyErf7c4iUNtYPnok",
+      "session_context": {
+        "model": "claude-sonnet-5"
+      },
+      "session_status": "SESSION_STATUS_ARCHIVED",
+      "status_bucket": "SESSION_STATUS_BUCKET_COMPLETED",
+      "tags": [
+        "remote-control-sdk"
+      ],
+      "title": "[업데이트] 기능 및 방향성 개선",
+      "unread": true,
+      "updated_at": "2026-07-18T12:20:12.793311Z"
+    },
+    {
+      "configured_model": "claude-sonnet-5",
+      "connection_status": "disconnected",
+      "created_at": "2026-07-17T22:35:00.507009Z",
+      "environment_kind": "bridge",
+      "external_metadata": {},
+      "id": "session_013bNQMkbK2e8c42M1BqMF5T",
+      "session_context": {
+        "model": "claude-sonnet-5"
+      },
+      "session_status": "SESSION_STATUS_ARCHIVED",
+      "status_bucket": "SESSION_STATUS_BUCKET_COMPLETED",
+      "tags": [
+        "remote-control-sdk"
+      ],
+      "title": "[MVP] 초기 히스토리_2",
+      "unread": true,
+      "updated_at": "2026-07-18T03:03:22.841791Z"
+    },
+    {
+      "configured_model": "claude-sonnet-5",
+      "connection_status": "disconnected",
+      "created_at": "2026-07-17T06:54:44.058290Z",
+      "environment_kind": "bridge",
+      "external_metadata": {},
+      "id": "session_0137jRhPwppHGLMvf1ZsZme7",
+      "session_context": {
+        "model": "claude-sonnet-5"
+      },
+      "session_status": "SESSION_STATUS_ARCHIVED",
+      "status_bucket": "SESSION_STATUS_BUCKET_COMPLETED",
+      "tags": [
+        "remote-control-sdk"
+      ],
+      "title": "[마케팅] 푸시·프로모션·핵심지표",
+      "unread": true,
+      "updated_at": "2026-07-17T07:26:24.403919Z"
+    },
+    {
+      "configured_model": "claude-sonnet-5",
+      "connection_status": "disconnected",
+      "created_at": "2026-07-16T21:49:45.123432Z",
+      "environment_kind": "bridge",
+      "external_metadata": {},
+      "id": "session_01AtmV61CjBKx5T6MR9KnRsg",
+      "session_context": {
+        "model": "claude-sonnet-5"
+      },
+      "session_status": "SESSION_STATUS_ARCHIVED",
+      "status_bucket": "SESSION_STATUS_BUCKET_COMPLETED",
+      "tags": [
+        "remote-control-sdk"
+      ],
+      "title": "[디자인]Global System",
+      "unread": true,
+      "updated_at": "2026-07-17T02:42:57.881119Z"
+    },
+    {
+      "configured_model": "claude-sonnet-5",
+      "connection_status": "disconnected",
+      "created_at": "2026-07-16T20:50:20.409624Z",
+      "environment_kind": "bridge",
+      "external_metadata": {},
+      "id": "session_01SNjNpqSg9CP8xV8EJ9gDUj",
+      "session_context": {
+        "model": "claude-sonnet-5"
+      },
+      "session_status": "SESSION_STATUS_ARCHIVED",
+      "status_bucket": "SESSION_STATUS_BUCKET_COMPLETED",
+      "tags": [
+        "remote-control-sdk"
+      ],
+      "title": "[업데이트] 기능 및 방향성 개선",
+      "updated_at": "2026-07-17T02:12:55.635615Z"
+    },
+    {
+      "configured_model": "claude-sonnet-5",
+      "connection_status": "disconnected",
+      "created_at": "2026-07-16T12:26:21.937575Z",
+      "environment_kind": "bridge",
+      "external_metadata": {},
+      "id": "session_018QAvPNA8DKMrMNCndij5DC",
+      "session_context": {
+        "model": "claude-sonnet-5"
+      },
+      "session_status": "SESSION_STATUS_ARCHIVED",
+      "status_bucket": "SESSION_STATUS_BUCKET_COMPLETED",
+      "tags": [
+        "remote-control-sdk"
+      ],
+      "title": "[운영] 이슈 및 버그 대응",
+      "unread": true,
+      "updated_at": "2026-07-17T07:45:40.415151Z"
+    },
+    {
+      "configured_model": "claude-sonnet-5",
+      "connection_status": "disconnected",
+      "created_at": "2026-07-16T11:14:42.601812Z",
+      "environment_kind": "bridge",
+      "external_metadata": {},
+      "id": "session_01LSm4cuTXnggdjj6UnZzJ4b",
+      "session_context": {
+        "model": "claude-sonnet-5"
+      },
+      "session_status": "SESSION_STATUS_IDLE",
+      "status_bucket": "SESSION_STATUS_BUCKET_REVIEW_READY",
+      "tags": [
+        "remote-control-sdk"
+      ],
+      "title": "앱인토스 콘솔 MCP 연결하기",
+      "updated_at": "2026-07-16T11:26:49.513359Z"
+    },
+    {
+      "configured_model": "claude-fable-5",
+      "connection_status": "disconnected",
+      "created_at": "2026-07-15T14:03:11.282679Z",
+      "environment_kind": "bridge",
+      "external_metadata": {},
+      "id": "session_01217cmqPuQJByvgUBtLf8Ns",
+      "session_context": {
+        "model": "claude-fable-5"
+      },
+      "session_status": "SESSION_STATUS_ARCHIVED",
+      "status_bucket": "SESSION_STATUS_BUCKET_COMPLETED",
+      "tags": [
+        "remote-control-sdk"
+      ],
+      "title": "Toss mini-app project guide",
+      "updated_at": "2026-07-15T14:06:37.933999Z"
+    },
+    {
+      "configured_model": "claude-sonnet-5",
+      "connection_status": "disconnected",
+      "created_at": "2026-07-14T13:58:18.183625Z",
+      "environment_kind": "bridge",
+      "external_metadata": {
+        "pending_action": {
+          "action_description": "디자인 가이드 처리",
+          "display_tool_name": "Question",
+          "input": {
+            "questions": [
+              {
+                "header": "디자인 가이드 처리",
+                "multiSelect": false,
+                "options": [
+                  {
+                    "description": "디자인/가이드는 루트에 그대로 두고, 디자인/산출물(로고·스크린샷·섬네일)만 '무더위 체감 랑킹' 안으로 이동 — 사업자등록/백서와 같은 성격의 '공유 자원'으로 취급",
+                    "label": "루트에 공유 자원으로 남김 (권장)"
+                  },
+                  {
+                    "description": "가이드까지 포함해서 통째로 이동 — 더위배틀은 나중에 필요하면 복사해서 쓰는 식",
+                    "label": "디자인 폴더 전체를 '무더위 체감 랑킹'으로 이동"
+                  }
+                ],
+                "question": "`디자인/가이드/`(TDS 토큰 레퍼런스 등, 앱 무관한 공통 자산)도 '무더위 체감 랑킹' 폴더 안으로 같이 이동할까요, 아니면 루트에 공유 자원으로 남겨둘까요?"
+              }
+            ]
+          },
+          "request_id": "",
+          "tool_name": "AskUserQuestion",
+          "tool_use_id": "toolu_01BxfkJ3wUqDJmnqB5X7V5Ng"
+        },
+        "pending_actions": [
+          {
+            "action_description": "디자인 가이드 처리",
+            "display_tool_name": "Question",
+            "input": {
+              "questions": [
+                {
+                  "header": "디자인 가이드 처리",
+                  "multiSelect": false,
+                  "options": [
+                    {
+                      "description": "디자인/가이드는 루트에 그대로 두고, 디자인/산출물(로고·스크린샷·섬네일)만 '무더위 체감 랑킹' 안으로 이동 — 사업자등록/백서와 같은 성격의 '공유 자원'으로 취급",
+                      "label": "루트에 공유 자원으로 남김 (권장)"
+                    },
+                    {
+                      "description": "가이드까지 포함해서 통째로 이동 — 더위배틀은 나중에 필요하면 복사해서 쓰는 식",
+                      "label": "디자인 폴더 전체를 '무더위 체감 랑킹'으로 이동"
+                    }
+                  ],
+                  "question": "`디자인/가이드/`(TDS 토큰 레퍼런스 등, 앱 무관한 공통 자산)도 '무더위 체감 랑킹' 폴더 안으로 같이 이동할까요, 아니면 루트에 공유 자원으로 남겨둘까요?"
+                }
+              ]
+            },
+            "request_id": "",
+            "tool_name": "AskUserQuestion",
+            "tool_use_id": "toolu_01BxfkJ3wUqDJmnqB5X7V5Ng"
+          }
+        ]
+      },
+      "id": "session_018SmnXs1pq8nYwhWBbBPAq7",
+      "session_context": {
+        "model": "claude-sonnet-5"
+      },
+      "session_status": "SESSION_STATUS_REQUIRES_ACTION",
+      "status_bucket": "SESSION_STATUS_BUCKET_BLOCKED",
+      "tags": [
+        "remote-control-sdk"
+      ],
+      "title": "Development continuation from briefs/mockups",
+      "updated_at": "2026-07-15T14:06:39.048703Z"
+    },
+    {
+      "configured_model": "claude-fable-5",
+      "connection_status": "disconnected",
+      "created_at": "2026-07-12T12:42:17.210837Z",
+      "environment_kind": "bridge",
+      "external_metadata": {},
+      "id": "session_015McZRia7TygfEyoM1YH4Ls",
+      "session_context": {
+        "model": "claude-fable-5"
+      },
+      "session_status": "SESSION_STATUS_ARCHIVED",
+      "status_bucket": "SESSION_STATUS_BUCKET_COMPLETED",
+      "tags": [
+        "remote-control-sdk"
+      ],
+      "title": "hbjh-purrfect-jellyfish",
+      "updated_at": "2026-07-12T12:42:27.318863Z"
+    },
+    {
+      "connection_status": "disconnected",
+      "created_at": "2026-07-11T22:52:42.943237Z",
+      "environment_id": "env_018e3eST1XnYHEzQ3FVgKzoJ",
+      "environment_kind": "bridge",
+      "external_metadata": {
+        "container_cc_version": "0.3.260",
+        "last_init_error": {
+          "at": "2026-09-06T07:15:54Z",
+          "error_kind": "computer_unreachable",
+          "recoverable": "true",
+          "worker_epoch": "63"
+        }
+      },
+      "id": "session_019XVvkqDcYezUN99rvZhMeU",
+      "origin": "desktop_app",
+      "session_context": {},
+      "session_status": "SESSION_STATUS_IDLE",
+      "status_bucket": "SESSION_STATUS_BUCKET_REVIEW_READY",
+      "tags": [
+        "config:cowork",
+        "config:cowork-dispatch",
+        "cowork-dispatch-local",
+        "product:cowork"
+      ],
+      "title": "Dispatch background conversation",
+      "updated_at": "2026-07-12T06:42:28.082191Z"
+    },
+    {
+      "connection_status": "disconnected",
+      "created_at": "2026-05-14T13:25:00.460640Z",
+      "environment_id": "env_012zwEgioCANQUuC4joXyF7D",
+      "environment_kind": "bridge",
+      "external_metadata": {
+        "last_init_error": {
+          "at": "2026-07-25T07:18:23Z",
+          "error_kind": "environment_deleted",
+          "error_type": "not_found",
+          "message": "Environment env_012zwEgioCANQUuC4joXyF7D was deleted while this session was active; its state cannot be recovered.",
+          "recoverable": "",
+          "source_type": "",
+          "worker_epoch": ""
+        },
+        "permission_mode": "default"
+      },
+      "id": "session_019KpyY8bPVBKVF9iDT7wDgi",
+      "permission_mode": "PERMISSION_MODE_DEFAULT",
+      "session_context": {
+        "permission_mode": "default"
+      },
+      "session_status": "SESSION_STATUS_ARCHIVED",
+      "status_bucket": "SESSION_STATUS_BUCKET_COMPLETED",
+      "tags": [
+        "cowork-dispatch-local"
+      ],
+      "title": "Dispatch background conversation",
+      "updated_at": "2026-05-16T01:32:26.327120Z"
+    }
+  ],
+  "source": "Claude Code Remote MCP · list_sessions (limit=100, 페이지네이션으로 전체 확인)"
+}
