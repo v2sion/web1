@@ -1,0 +1,485 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1"><style>:root{color-scheme:light}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}</style></head><body>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+<title>별핑계 마케팅 플랜</title>
+<style>
+  :root{
+    --bg:#f6f3ee;
+    --surface:#ffffff;
+    --surface-2:#ece6d9;
+    --ink:#221f1a;
+    --ink-soft:#6f6858;
+    --ink-faint:#9a9284;
+    --border:#ddd5c5;
+    --accent:#c1611c;
+    --accent-ink:#7a3d10;
+    --accent-soft:#f3e2cf;
+    --good:#3f7a4d;
+    --good-soft:#e1eee2;
+    --warn:#9c7311;
+    --warn-soft:#f3e8cd;
+    --bad:#a83f2c;
+    --bad-soft:#f4e0da;
+    --shadow: 0 1px 2px rgba(34,31,26,0.06), 0 8px 24px -12px rgba(34,31,26,0.18);
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --bg:#181613;
+      --surface:#211e19;
+      --surface-2:#2a2620;
+      --ink:#f0ece3;
+      --ink-soft:#b3a998;
+      --ink-faint:#78705f;
+      --border:#3a352c;
+      --accent:#f0954a;
+      --accent-ink:#ffd8ae;
+      --accent-soft:#3d2c1a;
+      --good:#7cc389;
+      --good-soft:#213a29;
+      --warn:#dab24a;
+      --warn-soft:#3d3419;
+      --bad:#e28a71;
+      --bad-soft:#402521;
+      --shadow: 0 1px 2px rgba(0,0,0,0.35), 0 12px 32px -16px rgba(0,0,0,0.6);
+    }
+  }
+  :root[data-theme="dark"]{
+    --bg:#181613; --surface:#211e19; --surface-2:#2a2620;
+    --ink:#f0ece3; --ink-soft:#b3a998; --ink-faint:#78705f; --border:#3a352c;
+    --accent:#f0954a; --accent-ink:#ffd8ae; --accent-soft:#3d2c1a;
+    --good:#7cc389; --good-soft:#213a29; --warn:#dab24a; --warn-soft:#3d3419;
+    --bad:#e28a71; --bad-soft:#402521;
+    --shadow: 0 1px 2px rgba(0,0,0,0.35), 0 12px 32px -16px rgba(0,0,0,0.6);
+  }
+
+  *{ box-sizing:border-box; }
+  body{
+    margin:0; background:var(--bg); color:var(--ink);
+    font-family:'IBM Plex Sans KR','Noto Sans KR',sans-serif;
+    -webkit-font-smoothing:antialiased; line-height:1.6;
+  }
+  .wrap{ max-width:860px; margin:0 auto; padding:56px 24px 96px; }
+  .mono{ font-family:'IBM Plex Mono','JetBrains Mono',monospace; font-variant-numeric:tabular-nums; }
+
+  header.page{ margin-bottom:44px; }
+  .eyebrow{
+    display:inline-flex; align-items:center; gap:8px;
+    font-size:12.5px; font-weight:600; letter-spacing:0.08em; text-transform:uppercase;
+    color:var(--accent-ink); background:var(--accent-soft);
+    padding:5px 11px; border-radius:999px; margin-bottom:18px;
+  }
+  h1{ font-size:clamp(28px,4.4vw,36px); font-weight:700; letter-spacing:-0.01em; margin:0 0 12px; text-wrap:balance; }
+  .lede{ font-size:16.5px; color:var(--ink-soft); max-width:64ch; margin:0; }
+  .lede b{ color:var(--ink); font-weight:600; }
+
+  section{ margin-top:52px; }
+  .sec-head{ display:flex; align-items:baseline; justify-content:space-between; gap:16px; margin-bottom:18px; flex-wrap:wrap; }
+  h2{ font-size:21px; font-weight:700; margin:0; letter-spacing:-0.005em; }
+  .sec-note{ font-size:13px; color:var(--ink-faint); }
+
+  /* status grid */
+  .status-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(190px,1fr)); gap:12px; }
+  .status-card{
+    background:var(--surface); border:1px solid var(--border); border-radius:12px;
+    padding:16px 18px; box-shadow:var(--shadow);
+  }
+  .status-card .label{ font-size:12px; color:var(--ink-faint); margin-bottom:6px; }
+  .status-card .value{ font-size:14.5px; font-weight:600; }
+  .status-card .value.pending{ color:var(--warn); }
+  .status-card .value.none{ color:var(--bad); }
+  .status-card .value.ready{ color:var(--good); }
+  .status-card .sub{ font-size:12.5px; color:var(--ink-soft); margin-top:4px; }
+
+  /* timeline */
+  .timeline{ display:flex; flex-direction:column; }
+  .tl-item{ display:grid; grid-template-columns:96px 1fr; gap:20px; position:relative; padding-bottom:28px; }
+  .tl-item:last-child{ padding-bottom:0; }
+  .tl-item::before{
+    content:''; position:absolute; left:44px; top:26px; bottom:-2px; width:1px; background:var(--border);
+  }
+  .tl-item:last-child::before{ display:none; }
+  .tl-date{ display:flex; flex-direction:column; align-items:flex-end; padding-top:2px; }
+  .tl-date .d{ font-size:13px; font-weight:700; color:var(--accent-ink); }
+  .tl-date .w{ font-size:11px; color:var(--ink-faint); margin-top:2px; }
+  .tl-dot{ position:relative; }
+  .tl-dot::after{
+    content:''; position:absolute; left:40px; top:6px; width:9px; height:9px; border-radius:50%;
+    background:var(--accent); border:2px solid var(--surface); box-shadow:0 0 0 1px var(--border);
+  }
+  .tl-card{
+    background:var(--surface); border:1px solid var(--border); border-radius:12px;
+    padding:16px 18px; box-shadow:var(--shadow); margin-left:20px;
+  }
+  .tl-title{ font-size:15px; font-weight:700; margin-bottom:4px; }
+  .tl-desc{ font-size:13.5px; color:var(--ink-soft); margin:0; }
+  .tl-desc + .tl-desc{ margin-top:6px; }
+  .tl-tag{
+    display:inline-block; font-size:11px; font-weight:600; padding:2px 8px; border-radius:999px;
+    background:var(--accent-soft); color:var(--accent-ink); margin-bottom:8px;
+  }
+
+  /* app card / materials (registration) */
+  .app-card{
+    background:var(--surface); border:1px solid var(--border); border-radius:14px;
+    box-shadow:var(--shadow); padding:24px 26px; margin-bottom:20px;
+  }
+  .settings-grid{
+    display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:14px;
+    padding:14px 16px; background:var(--surface-2); border-radius:10px; margin-bottom:20px;
+  }
+  .settings-grid dt{ font-size:11px; font-weight:600; text-transform:uppercase; letter-spacing:0.05em; color:var(--ink-faint); margin-bottom:3px; }
+  .settings-grid dd{ margin:0; font-size:13.5px; }
+
+  .materials{ display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+  @media (max-width:640px){ .materials{ grid-template-columns:1fr; } }
+  .material{ border:1px solid var(--border); border-radius:10px; overflow:hidden; }
+  .material-head{ display:flex; align-items:center; justify-content:space-between; padding:9px 14px; background:var(--surface-2); border-bottom:1px solid var(--border); }
+  .material-label{ font-size:12px; font-weight:700; letter-spacing:0.03em; color:var(--ink-soft); }
+  .copy-btn{
+    font-family:inherit; font-size:11.5px; font-weight:600; color:var(--accent-ink);
+    background:var(--accent-soft); border:none; border-radius:6px; padding:4px 9px; cursor:pointer;
+  }
+  .copy-btn:active{ transform:translateY(1px); }
+  .copy-btn:focus-visible{ outline:2px solid var(--accent); outline-offset:2px; }
+  .material-body{ padding:14px; }
+  .field-label{ font-size:10.5px; color:var(--ink-faint); text-transform:uppercase; letter-spacing:0.05em; margin-bottom:3px; }
+  .field-value{ font-size:14px; margin:0 0 12px; }
+  .field-value:last-child{ margin-bottom:0; }
+
+  /* SNS content cards */
+  .sns-card{
+    background:var(--surface); border:1px solid var(--border); border-radius:12px;
+    box-shadow:var(--shadow); margin-bottom:16px; overflow:hidden;
+  }
+  .sns-head{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:12px 18px; background:var(--surface-2); border-bottom:1px solid var(--border);
+  }
+  .sns-head .name{ font-size:13.5px; font-weight:700; }
+  .sns-head .platform{ font-size:11px; color:var(--ink-faint); }
+  .sns-body{ padding:18px 20px; }
+  .sns-body p{ margin:0 0 10px; font-size:14px; }
+  .sns-body p:last-child{ margin-bottom:0; }
+  .quote{
+    border-left:3px solid var(--accent); padding:10px 14px; margin:12px 0;
+    background:var(--accent-soft); border-radius:0 8px 8px 0; font-size:13.5px; color:var(--ink);
+  }
+  .hashtags{ font-size:12.5px; color:var(--accent-ink); font-family:'IBM Plex Mono','JetBrains Mono',monospace; }
+  .slide-set{ display:grid; grid-template-columns:repeat(3,1fr); gap:10px; }
+  @media (max-width:560px){ .slide-set{ grid-template-columns:1fr; } }
+  .slide{
+    background:var(--surface-2); border-radius:10px; padding:14px; text-align:center;
+    font-size:13px; display:flex; flex-direction:column; gap:8px; justify-content:center; min-height:100px;
+  }
+  .slide .n{ font-size:10.5px; color:var(--ink-faint); font-weight:700; letter-spacing:0.05em; }
+
+  .checklist{ margin:0; padding:0; list-style:none; display:flex; flex-direction:column; gap:8px; }
+  .checklist li{
+    display:flex; gap:10px; align-items:flex-start; font-size:13.5px; color:var(--ink-soft);
+    padding:10px 12px; background:var(--surface-2); border-radius:8px;
+  }
+  .checklist li::before{ content:'→'; color:var(--accent); font-weight:700; flex-shrink:0; }
+
+  footer.page{ margin-top:60px; padding-top:24px; border-top:1px solid var(--border); font-size:13px; color:var(--ink-faint); }
+  footer.page strong{ color:var(--bad); font-weight:600; }
+
+  @media (prefers-reduced-motion: reduce){ *{ animation:none !important; transition:none !important; } }
+</style>
+
+<div class="wrap">
+
+  <header class="page">
+    <span class="eyebrow">별핑계 · starexcuse · 2026년 9월</span>
+    <h1>이 앱엔 아직 SNS 글 한 줄이 없다</h1>
+    <p class="lede">별점은 8월 10일에 LinkedIn·인스타 초안까지 다 써놨는데, 별핑계는 <b>기능 개발만 하고 마케팅 채널을 하나도 안 열었다.</b>
+      게다가 10월 1일부터 광고성 스마트발송이 아예 사라지니, 9월 안에 순서대로 다 해치워야 한다.</p>
+  </header>
+
+  <section id="status">
+    <div class="sec-head">
+      <h2>8월 31일 현재 상태</h2>
+    </div>
+    <div class="status-grid">
+      <div class="status-card">
+        <div class="label">기능성 푸시</div>
+        <div class="value pending">빌드 대기</div>
+        <div class="sub">오렌지 CTA 색상 변경분 재빌드·테스트발송·검토신청 전</div>
+      </div>
+      <div class="status-card">
+        <div class="label">광고성 캠페인</div>
+        <div class="value none">없음</div>
+        <div class="sub">신규 등록 전 — 아래 안 참고</div>
+      </div>
+      <div class="status-card">
+        <div class="label">SNS 콘텐츠</div>
+        <div class="value none">없음</div>
+        <div class="sub">LinkedIn·인스타 초안 미작성</div>
+      </div>
+      <div class="status-card">
+        <div class="label">챌린지</div>
+        <div class="value ready">제출 완료</div>
+        <div class="sub">8월 바이브코딩 챌린지, 결과 대기 중</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="synergy">
+    <div class="sec-head">
+      <h2>별점과의 시너지 점검</h2>
+      <span class="sec-note">중복 없이 서로 트래픽을 밀어주는지 확인</span>
+    </div>
+    <div class="status-grid">
+      <div class="status-card">
+        <div class="label">별점 SNS 초안</div>
+        <div class="value pending">게시 여부 불명</div>
+        <div class="sub">2026-08-10 작성. 별점은 사용자가 별도 관리 — 확인 후 진행</div>
+      </div>
+      <div class="status-card">
+        <div class="label">해시태그</div>
+        <div class="value ready">이미 교차 태깅됨</div>
+        <div class="sub">별점 초안에 #별핑계, 이 문서에 #별점 — 중복 아닌 상호 유입 구조</div>
+      </div>
+      <div class="status-card">
+        <div class="label">광고성 캠페인</div>
+        <div class="value ready">양쪽 다 없음</div>
+        <div class="sub">겹칠 대상 자체가 없어 충돌 위험 없음</div>
+      </div>
+      <div class="status-card">
+        <div class="label">크로스 배너</div>
+        <div class="value ready">색상 통일됨</div>
+        <div class="sub">별핑계 crossCta가 최근 보라(별점 팔레트)로 변경 — 연동 느낌 강화</div>
+      </div>
+    </div>
+    <p class="lede" style="font-size:14px; margin-top:16px;"><b>정정(2026-08-31 저녁): 챌린지 심사가 9/1~9/30 지표 기준이라 모든 최초 게시를 9/1 이후로 옮겼다.</b>
+      8/31에 올리면 첫 24~48시간 폭발력의 절반이 심사 기간 밖에서 소모된다. 또한 얼리 유입일수록 심사 기간 내내 재방문할 날이
+      길어지므로, 별점·별핑계 LinkedIn 간격도 "겹침 방지" 목적의 7일에서 3일로 좁혔다 — 완전히 같은 날만 피하고 최대한 이른 유입을 우선했다.</p>
+  </section>
+
+  <section id="timeline">
+    <div class="sec-head">
+      <h2>9월 실행 순서</h2>
+      <span class="sec-note">기능 마무리 → 광고 → LinkedIn → 인스타 → 모니터링</span>
+    </div>
+    <div class="timeline">
+
+      <div class="tl-item">
+        <div class="tl-date"><span class="d">완료</span><span class="w">8/31</span></div>
+        <div class="tl-dot"></div>
+        <div class="tl-card">
+          <span class="tl-tag">콘솔 등록</span>
+          <div class="tl-title">광고성 캠페인 등록 완료 (계획보다 하루 앞당김)</div>
+          <p class="tl-desc"><b>발견: 재방문 유도하기 동반 등록 필수.</b> 신규 유입 유도하기만 등록하려 하면 세그먼트를 다 채워도 "발송대상을 추가해주세요" 오류가 계속 떴다 — 콘솔이 두 캠페인 타입을 세트로 강제하는 정책이었다(세그먼트 문제 아니었음). 신규 유입 유도하기는 "발송중", 재방문 유도하기는 "유저 모으는 중" 상태.</p>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-date"><span class="d">9/1–9/3</span><span class="w">화~목</span></div>
+        <div class="tl-dot"></div>
+        <div class="tl-card">
+          <span class="tl-tag">기능 마무리</span>
+          <div class="tl-title">기능성 CTA 마감 (마케팅과 병행)</div>
+          <p class="tl-desc">오렌지 색상 변경분 재빌드 → 테스트 발송 → 사용자 확인 후 검토 신청. 콘텐츠 게시와 무관한 별도 트랙이라 위 광고 등록과 순서 상관없이 진행 가능.</p>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-date"><span class="d">9/4</span><span class="w">금</span></div>
+        <div class="tl-dot"></div>
+        <div class="tl-card">
+          <span class="tl-tag">LinkedIn</span>
+          <div class="tl-title">LinkedIn 포스팅</div>
+          <p class="tl-desc">아래 초안 그대로 게시. 단순 홍보가 아니라 "우주 탓 컨셉을 왜 만들었는지" 서사로.</p>
+          <p class="tl-desc">별점 LinkedIn이 9/1(화)에 나가므로 3일 뒤로 배치 — 겹침 방지보다 얼리 유입 극대화가 우선이라 간격을 7일에서 3일로 좁혔다.</p>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-date"><span class="d">9/6</span><span class="w">일</span></div>
+        <div class="tl-dot"></div>
+        <div class="tl-card">
+          <span class="tl-tag">인스타그램</span>
+          <div class="tl-title">인스타 스토리 + 피드</div>
+          <p class="tl-desc">스토리는 슬라이드 3장 구성, 피드는 버전 A(인증서 카드) 또는 B(공감 훅) 중 택1. LinkedIn 게시 이틀 후 — 일요일이라 "여유로울 때 가볍게"라는 별핑계 컨셉과도 잘 맞는다.</p>
+          <p class="tl-desc">인스타 링크 스티커는 <span class="mono">intoss://</span> 직결 금지 — https 링크(랜딩 또는 공식 공유 링크) 경유 필수(인앱 브라우저가 커스텀 스킴을 못 받음).</p>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-date"><span class="d">9/15–9/17</span><span class="w">Wave 2</span></div>
+        <div class="tl-dot"></div>
+        <div class="tl-card">
+          <span class="tl-tag">중간 리마인드</span>
+          <div class="tl-title">실사용 기반 콘텐츠로 재점화</div>
+          <p class="tl-desc">런칭 스파이크는 며칠 지나면 가라앉는다 — 이때쯤 쌓인 실제 사용 데이터(핑계 사례, 반응)로 두 번째 파도를 만든다. 카피는 그때 실사용 데이터를 보고 확정 — 지금 미리 쓰면 허수 기반이 된다.</p>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-date"><span class="d">9/26–9/28</span><span class="w">Wave 3</span></div>
+        <div class="tl-dot"></div>
+        <div class="tl-card">
+          <span class="tl-tag">마감 임박</span>
+          <div class="tl-title">9/30 마감 전 마지막 유입 푸시</div>
+          <p class="tl-desc">광고성 발송 종료(9/30)와 챌린지 심사 마감이 겹치는 시점 — 마지막 트래픽을 한 번 더 끌어올린다. 이때 캠페인이 실제로 자동 종료되는지 아니면 수동으로 꺼야 하는지도 확인.</p>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-date"><span class="d">상시</span><span class="w">9/1–9/29</span></div>
+        <div class="tl-dot"></div>
+        <div class="tl-card">
+          <span class="tl-tag">모니터링</span>
+          <div class="tl-title">캠페인 성과 점검 · 소재 교체</div>
+          <p class="tl-desc">주 1회 sentCount·pCTR 확인. 9/30 전이 소재를 바꿀 수 있는 마지막 기회 — 승자 소재로 단일화 검토.</p>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-date"><span class="d">9/30</span><span class="w">화</span></div>
+        <div class="tl-dot"></div>
+        <div class="tl-card">
+          <span class="tl-tag">마감</span>
+          <div class="tl-title">광고 소재 등록·발송 마지막 날</div>
+          <p class="tl-desc">이날 이후로는 소재 수정도 불가. 10/31까지는 성과 데이터가 남으니 필요한 지표는 미리 캡처해둘 것.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section id="ad-registration">
+    <div class="sec-head">
+      <h2>광고성 푸시 콘솔 등록 — 완료 (2026-08-31)</h2>
+      <span class="sec-note">실제 등록된 최종 문구 (사용자가 초안에서 일부 조정함)</span>
+    </div>
+    <div class="app-card">
+      <p style="margin:0 0 6px; font-size:13.5px; color:var(--ink-soft);">신규 유입 유도하기 · 세그먼트: 주거지역_시도 18개 전체 · 이동 URL: <span class="mono">intoss://starexcuse</span> · 상태: 발송중</p>
+      <div class="materials">
+        <div class="material">
+          <div class="material-head"><span class="material-label">소재 A — 오늘 별핑계</span></div>
+          <div class="material-body">
+            <p class="field-value mono">(광고) 오늘 핑계가 필요한 순간을 확인해봐요. (별핑계 알림) * 알림 끄기는 토스 앱 설정에서</p>
+          </div>
+        </div>
+        <div class="material">
+          <div class="material-head"><span class="material-label">소재 B — 우주 핑계</span></div>
+          <div class="material-body">
+            <p class="field-value mono">(광고) 토스에서 우주 공식 핑계를 확인해봐요. (별핑계 알림) * 알림 끄기는 토스 앱 설정에서</p>
+          </div>
+        </div>
+      </div>
+      <p style="margin:16px 0 6px; font-size:13.5px; color:var(--ink-soft);">재방문 유도하기(동반 필수, 콘솔 정책) · 상태: 유저 모으는 중</p>
+      <div class="materials" style="grid-template-columns:1fr;">
+        <div class="material">
+          <div class="material-head"><span class="material-label">소재 A — 핑계 필요</span></div>
+          <div class="material-body">
+            <p class="field-value mono">(광고) 토스에서 오늘의 핑계를 확인해봐요. (별핑계 알림) * 알림 끄기는 토스 앱 설정에서</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="sns">
+    <div class="sec-head">
+      <h2>SNS 콘텐츠 초안</h2>
+      <span class="sec-note">별점 SNS_게시물.md와 같은 톤 — 자매 앱으로 자연스럽게 언급</span>
+    </div>
+
+    <div class="sns-card">
+      <div class="sns-head"><span class="name">LinkedIn 포스팅</span><span class="platform">게시 전 자유 수정 가능</span></div>
+      <div class="sns-body">
+        <p>오늘 운동 못 한 거, 연락 씹은 거, 지각한 거 — 사실 다 이유가 있었어요.</p>
+        <p>그 이유, 우주가 대신 증명해드립니다.</p>
+        <p><b>별핑계</b>를 만들었습니다. 오늘 나에게 필요한 핑계 상황을 고르면, 화성 역행이나 태양풍처럼 완전히 진지한 우주 현상을 근거로 핑계 사유서를 발급해주는 앱이에요.</p>
+        <div class="quote">"오늘 화성 표면에서 방출된 고에너지 우주선이 대기권을 통과해 당신의 근섬유 수축 신호를 최대 43.2% 감쇠시켰습니다. 이 상태에서의 운동은 인체공학적으로 무의미합니다. 이건 과학입니다."</div>
+        <p>문체는 논문처럼 진지한데 내용은 완전히 하찮습니다. 근데 그 하찮음이 묘하게 위로가 됩니다.</p>
+        <p>같이 만든 자매 앱 <b>별점</b>(오늘 하루를 우주가 재채점해주는 앱)과도 연결돼 있어서, 두 앱을 같이 쓰면 숨겨진 별자리가 열립니다.</p>
+        <p>토스 앱 안에서 무료로 쓸 수 있어요. "하찮아도 괜찮다"는 말을, 우주 공식 문서로 받아보세요.</p>
+        <p>👉 토스 앱 → 별핑계 검색</p>
+        <p class="hashtags">#토스미니앱 #별핑계 #하찮아도괜찮아 #AI위로 #사이드프로젝트 #인디개발 #PM</p>
+      </div>
+    </div>
+
+    <div class="sns-card">
+      <div class="sns-head"><span class="name">인스타 피드 — 버전 A (인증서 카드)</span><span class="platform">이미지: 결과 카드 캡처</span></div>
+      <div class="sns-body">
+        <p>오늘 지각했어요? 연락 씹었어요? 운동 또 안 갔어요?</p>
+        <p>우주가 대신 증명해드립니다 👇</p>
+        <div class="quote">
+          ★ STELLAR EXCUSE CERTIFICATE ★<br>
+          운동 포기<br><br>
+          "화성발 고에너지 우주선이 근섬유 수축 신호를 43.2% 감쇠시켰습니다.<br>
+          이건 과학입니다."<br><br>
+          🤖 엉터리 AI가 성심성의껏 만든 핑계입니다
+        </div>
+        <p>토스 앱 → 별핑계 🔮<br>링크는 바이오에 🔗</p>
+        <p class="hashtags">#별핑계 #하찮아도괜찮아 #토스미니앱 #AI위로 #오늘의핑계 #우주과학 #별점</p>
+      </div>
+    </div>
+
+    <div class="sns-card">
+      <div class="sns-head"><span class="name">인스타 피드 — 버전 B (공감 훅)</span><span class="platform">이미지 없이도 가능</span></div>
+      <div class="sns-body">
+        <p>오늘도 미룬 거, 사실 내 잘못 아니에요.</p>
+        <p>수성이 역행 중이라 디지털 자제력 회로가 하락했거든요 🪐</p>
+        <p>토스 앱에서 '별핑계' 검색하면<br>오늘 저지른 일에 대한 우주 공식 사유서를 발급해줘요</p>
+        <p>(진지한 척 완전 병맛 ㅋㅋ)</p>
+        <p class="hashtags">#별핑계 #하찮아도괜찮아 #토스미니앱</p>
+      </div>
+    </div>
+
+    <div class="sns-card">
+      <div class="sns-head"><span class="name">인스타 스토리 — 슬라이드 3장</span><span class="platform">Vercel 랜딩 링크 경유</span></div>
+      <div class="sns-body">
+        <div class="slide-set">
+          <div class="slide"><span class="n">1장</span>"오늘 뭐 하나 못 한 거 있어요?"</div>
+          <div class="slide"><span class="n">2장</span>"우주가 대신 증명해드릴게요 🔮"<br><span style="font-size:11px;color:var(--ink-faint);">(인증서 카드 이미지)</span></div>
+          <div class="slide"><span class="n">3장</span>"토스 앱 → 별핑계 검색<br>오늘의 핑계, 지금 발급받기"</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="checklist">
+    <div class="sec-head"><h2>게시 전 체크리스트</h2></div>
+    <ul class="checklist">
+      <li>인스타 링크 스티커는 <span class="mono">intoss://starexcuse</span> 직결이 아니라 Vercel 랜딩 페이지로 걸 것 (인앱 브라우저가 딥링크를 차단함)</li>
+      <li>랜딩 페이지에 "토스 앱에서 열기" 버튼이 있는지 먼저 확인 — 없으면 추가하고 재배포 후 스토리 업로드</li>
+      <li>LinkedIn 게시 후 1~2일 뒤에 인스타 게시 — 순서 바뀌지 않게</li>
+    </ul>
+  </section>
+
+  <footer class="page">
+    <strong>9월 30일</strong>이 광고성 소재를 등록·수정할 수 있는 마지막 날. 10월 1일부터는 기능성 푸시만 남는다.
+  </footer>
+
+</div>
+
+<script>
+  document.querySelectorAll('.copy-btn').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var target = document.getElementById(btn.getAttribute('data-copy'));
+      if(!target) return;
+      var text = target.textContent;
+      var done = function(){
+        var original = btn.textContent;
+        btn.textContent = '복사됨';
+        setTimeout(function(){ btn.textContent = original; }, 1400);
+      };
+      try{
+        if(navigator.clipboard && navigator.clipboard.writeText){
+          navigator.clipboard.writeText(text).then(done).catch(function(){ fallbackCopy(text); done(); });
+        } else { fallbackCopy(text); done(); }
+      }catch(e){ try{ fallbackCopy(text); done(); }catch(e2){} }
+    });
+  });
+  function fallbackCopy(text){
+    var ta = document.createElement('textarea');
+    ta.value = text; ta.style.position='fixed'; ta.style.opacity='0';
+    document.body.appendChild(ta); ta.focus(); ta.select();
+    try{ document.execCommand('copy'); }catch(e){}
+    document.body.removeChild(ta);
+  }
+</script>
+
+</body></html>
