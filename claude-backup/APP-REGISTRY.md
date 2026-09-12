@@ -17,7 +17,7 @@
 | **무더위 체감 랭킹** (mudeowerank) | `mudeowerank` / `52367` | — | — | (hwaseong-heatfeel-miniapp 저장소로 추정) | `SESSIONS.md` 제목 대조 |
 | 무더위 배틀 (mudeowebattle) | `mudeowebattle` | — | — | `mudeowe-battle` 저장소 | 저장소명 대조 |
 | 무더위버블 (mudeowebubble) | `mudeowebubble` | — | — | `mudeowebubble` 저장소 | 저장소명 대조 |
-| 보험천재(?) (boheoncheonjae) | `boheoncheonjae` | — | — | 미상 — 저장소 목록에 없음 | 세션 제목/아티팩트에서만 확인 |
+| 보험천재 (bohum-cheonje) | `bohum-cheonje` | — | `bohum-cheonje.vercel.app` | Vercel 프로젝트 존재 확인(2026-09-12) | Vercel API 조회 |
 
 공통: **workspaceId `58697`** (꿈청) — 별점·별핑계 계열이 같은 워크스페이스 소속으로 추정됨.
 
@@ -70,9 +70,44 @@ starrating: { deeplink: 'intoss://starrating', url: 'star-excuse.vercel.app', ..
 극히 드문 경우는 이론상 남아 있지만, 지금까지 나온 증거 — 3주 전부터의 동일 증상, 로컬 PC
 소실과 시점이 겹침 — 를 볼 때 가능성은 낮게 봅니다.)
 
+### 2-1. Vercel API 실측 (2026-09-12) — ② 물증 확보 + 서비스 영향도 확인
+
+Vercel MCP(team slug `v2sioninmymind-4818`)로 프로젝트를 직접 조회해 **추론이 아니라
+증거로 ②를 확정**했습니다.
+
+| 프로젝트 | 배포 방식 | 마지막 배포 | 상태 |
+| --- | --- | --- | --- |
+| `starexcuse` | **`source: "cli"`** (git 연동 없음, `vercel --prod` 직접 배포) | 2026-09-06 09:18 KST · 커밋 `87276b5` (`main`, SDK 3.3.0 전환 빌드) | 🟢 **현재도 정상 서비스 중** (`starexcuse.vercel.app`, READY) |
+| `starrating` | framework: vite로 프로젝트만 생성, **배포 이력 0건** | — | 별도 앱으로 배포된 적 없음 — 별핑계 백엔드에 얹혀 동작하는 구조 추정과 일치 |
+| `starrating-landing` | git 메타데이터 없는 배포 2건 | 2026-08-31 08:52 UTC | 🟢 정상 서비스 중 |
+
+**결정적 증거: `"source": "cli"`.** Vercel이 배포를 Git 저장소 대신 로컬 CLI(`vercel --prod`,
+Claude Code 에이전트가 실행)에서 직접 받았다는 뜻입니다. 커밋 SHA(`87276b536dfd...`)는
+**로컬 git 저장소에는 존재했지만 GitHub에 push된 적이 없는 커밋**입니다 — 그래서 GitHub
+저장소 목록에 안 뜨는 것과 정확히 앞뒤가 맞습니다.
+
+**중요 — 서비스는 멈추지 않았습니다.** `starexcuse.vercel.app`과 `starrating-landing.vercel.app`
+둘 다 **지금 이 순간도 마지막으로 배포된 빌드가 정상 응답 중**입니다(readyState: READY,
+target: production). 즉 **사용자에게 보이는 서비스 자체는 영향이 없고**, 잃어버린 것은
+"그 빌드를 만들어낸, 앞으로 수정 가능한 원본 소스 코드"입니다.
+
+**한계 — 이걸로 원본 소스까지 되찾을 순 없습니다.** Vercel API/MCP 도구 어디에도 배포에
+포함된 원본 파일을 나열·다운로드하는 기능이 없습니다(빌드 로그·런타임 로그·배포 메타데이터만
+조회 가능). 빌드 로그에서 확인되는 건 결과물 요약뿐입니다:
+
+```
+dist/web/index.html                 36.18 kB
+dist/web/assets/index-BIonvo8q.js  348.63 kB (번들·압축됨, 원본 아님)
+```
+
+이 번들 JS를 가져와 리버스 엔지니어링하는 것은 이론상 가능하지만(`web_fetch_vercel_url`로
+라이브 사이트 fetch), **압축·난독화된 결과물이라 유지보수 가능한 원본 코드로 되돌릴 수
+없습니다.** 원본 소스를 되찾는 유일한 경로는 여전히 `REVIVE-PLAN.md` 4-A(세션 대화
+수동 복사)입니다.
+
 ---
 
-## 3. SDK 3.x 전환 마감 — 무더위 3종만 해당
+## 3. SDK 3.x 전환 마감 — 무더위 3종만 해당, 별핑계는 이미 완료 정황
 
 `09-life-chapter-launch-review.html` 근거:
 
@@ -84,6 +119,11 @@ starrating: { deeplink: 'intoss://starrating', url: 'star-excuse.vercel.app', ..
 
 마감이 이틀 앞으로 다가온 만큼, 무더위 3종의 SDK 버전 점검은 **미루지 말고 지금 진행하는 것을
 권장**합니다.
+
+**참고 — 별핑계는 이미 전환된 것으로 보입니다.** 2-1의 마지막 배포 빌드 로그에 `ait build` 및
+"앱인토스 빌드가 완료되었습니다(starexcuse.ait)" 로그가 확인되어, 최소 2026-09-06 시점에는
+새 빌드 툴체인(SDK 전환 이후)으로 정상 빌드된 것으로 보입니다. 다만 `package.json`의 정확한
+버전 문자열은 원본 소스가 없어 확인 불가 — 현재 라이브 사이트 응답으로 간접 추정만 가능합니다.
 
 ---
 
