@@ -1,0 +1,25 @@
+body {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0 16px;
+  line-height: 1.6;
+}
+
+nav a[aria-current="page"] {
+  font-weight: bold;
+  text-decoration: none;
+  color: inherit;
+}
+
+main img {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin: 1em 0 45px;
+}
+
+footer {
+  margin-top: 2em;
+  font-size: 0.9em;
+  color: #555;
+}
