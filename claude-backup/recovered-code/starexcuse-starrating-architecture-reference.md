@@ -177,6 +177,62 @@ intoss://starexcuse?_src=starrating&_uid=<uuid>&_score=2&_date=20260808
 
 근거: `09-life-chapter-launch-review.html` L566-600.
 
+### 4-1. LLM 적용 상세 — GROQ + qwen3.6
+
+> ⚠️ **용어 주의: `Grok`(xAI의 모델)이 아니라 `GROQ`(추론 서비스 업체)입니다.**
+> 기록에 남은 것은 전부 GROQ이며, 둘은 완전히 다른 제품입니다. 검색할 때 혼동 금지.
+
+| 항목 | 내용 |
+| --- | --- |
+| 공급자 | **GROQ** |
+| 모델 | **`qwen3.6`** (리즈닝 모델) |
+| 적용 앱 | **별핑계 (starexcuse)** — 병맛 핑계 텍스트 생성 |
+| 호출 경로 | 클라이언트 → Vercel 서버리스 `api/fortune.js` → GROQ API |
+| 키 관리 | Vercel 환경변수. 클라이언트 노출 0 |
+| 비용 통제 | `MAX_AI_CALLS_PER_USER`(1인당 상한) · `MAX_DAILY_AI_CALLS`(전역 일일 상한) **서버 강제** |
+
+**"무료"에 대한 정확한 표현**: 남아있는 기록에 "무료"라는 단어는 없습니다. 확인되는 것은
+① GROQ를 썼다 ② 키를 서버에만 뒀다 ③ 호출 상한을 서버에서 강제했다 입니다. GROQ 무료
+티어를 사용했을 가능성이 높지만, 문서로 증명되는 것은 **"무료 티어 안에 머물도록 상한을
+설계했다"**까지입니다.
+
+**필수 노하우 — 리즈닝 노출 버그**:
+
+> "qwen3.6은 리즈닝 모델이라 `reasoning_effort`를 끄지 않으면 **영어 사고 과정이 본문에
+> 그대로 노출**됩니다." (`09-life-chapter-launch-review.html` L612)
+
+`_lib/korean.js`의 `stripReasoning`이 존재하는 이유가 이것입니다. 메모리에도
+`reference_groq_reasoning_model`로 저장되어 있었습니다. **다른 무료 리즈닝 모델로
+교체할 때도 동일하게 적용되는 교훈**이므로, 새 모델을 붙이면 반드시 출력에 영어 사고과정이
+섞이는지 먼저 확인하세요.
+
+**톤 민감도 판단 기준**: 같은 리뷰에서 "병맛 핑계는 톤이 무너져도 웃고 넘어가지만,
+자기서사는 톤이 한 번 어긋나면 그 사용자를 영구히 잃는다"며, 신규 앱(인생 챕터)은
+**별핑계와 같은 모델을 쓰지 말고 다시 고르라**고 권고했습니다. 1인당 호출이 5회뿐이라
+상위 모델을 써도 비용이 감당된다는 계산이 근거였습니다.
+
+### 4-2. Llama 3.3 70B 교체 시도 — 무산 (코드 없음)
+
+2026-08-15에 `Llama 3.3 70B 모델 변경 검토` 세션(`session_01V57WPc6ycXjQzf5whgWJDC`,
+클라우드 환경)에서 모델 교체를 시도했습니다. 세션 메타데이터에 산출 브랜치가
+`claude/llama-3-3-model-migration-eheabv`로 잡혀 있고 대상 저장소는 `v2sion/web1` ·
+`v2sion/hwaseong-heatfeel-miniapp` 두 곳이었습니다.
+
+**2026-10-08 GitHub 전수 확인 결과 — 그 브랜치는 두 저장소 어디에도 존재하지 않습니다.**
+
+```
+v2sion/web1                      → master, claude/session-data-backup-mj8x46
+v2sion/hwaseong-heatfeel-miniapp → master, claude/hwaseong-heatfeel-ranking-failure-5hdn24,
+                                    claude/vercel-blob-requests-review-w8crvf
+```
+
+세션이 `need_input` 상태("아니면 다른 계정/조직에 있는 레포인가요?")로 멈췄기 때문입니다 —
+starscore/starexcuse 저장소에 접근할 수 없다는, 이 사고 전반을 관통한 그 차단입니다.
+**푸시 전에 멈췄으므로 교체 작업 코드는 한 줄도 남아있지 않습니다.**
+
+→ 모델을 다시 교체하려면 처음부터 작업해야 합니다. 단, 위 4-1의 리즈닝 노출 가드
+(`stripReasoning`)는 어떤 모델로 가든 유지해야 합니다.
+
 ---
 
 ## 5. 알려진 이슈 · 운영 노하우 (재구현 시 반드시 참고)
@@ -189,7 +245,7 @@ intoss://starexcuse?_src=starrating&_uid=<uuid>&_score=2&_date=20260808
 2. **SDK origin 변경 시 localStorage 유실 위험**: 2026-08-25 공지(postId 52623).
    마이그레이션 API로 병합 필요 — 별점의 `_SDK3전환.md`에 영향받는 localStorage 키
    목록이 별도 기록되어 있었음(내용 자체는 소실).
-3. **GROQ qwen3.6 리즈닝 노출 버그**: `reasoning_effort`를 끄지 않으면 영어 사고과정이
+3. **GROQ qwen3.6 리즈닝 노출 버그** (상세는 §4-1): `reasoning_effort`를 끄지 않으면 영어 사고과정이
    본문에 그대로 노출됨. 반드시 끌 것.
 4. **push_template_create MCP 버그**: 콘솔 MCP로 기능성 푸시 템플릿을 만들면
    `enabled:false`로 고착되어 알림 동의 팝업이 떠도 무반응. **반드시 콘솔 웹에서 직접
